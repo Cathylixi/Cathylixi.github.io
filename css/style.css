@@ -808,6 +808,21 @@ footer {
   text-decoration: underline;
 }
 
+.repo-item__inline-links {
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.repo-item__inline-links a {
+  color: #2c6bbf;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.repo-item__inline-links a:hover {
+  text-decoration: underline;
+}
+
 .repo-item__desc {
   font-size: 0.95rem;
   line-height: 1.5;
@@ -839,26 +854,6 @@ footer {
   line-height: 1.4;
 }
 
-.repo-item__links {
-  margin-top: 4px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.repo-item__links a {
-  font-size: 0.85rem;
-  color: #2c6bbf;
-  text-decoration: none;
-  border: 1px solid #2c6bbf;
-  padding: 1px 8px;
-  border-radius: 3px;
-}
-
-.repo-item__links a:hover {
-  background: #2c6bbf;
-  color: #fff;
-}
 
 @media (max-width: 840px) {
   .repo-item {
