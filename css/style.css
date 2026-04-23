@@ -397,15 +397,69 @@ a.badge:hover {
   border-bottom: 1px solid #eee;
 }
 
+.pub-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.pub-media {
+  flex: 0 0 240px;
+}
+
+.pub-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.pub-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.pub-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.pub-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #ececec;
+  color: #222;
+  font-size: 0.84rem;
+  line-height: 1.3;
+}
+
+.pub-tag--gray {
+  background: #d8d8d8;
+}
+
+.pub-tag--soft {
+  background: #e3f0de;
+}
+
+.pub-tag--blue {
+  background: #dcecff;
+}
+
 .pub-item .pub-title {
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.28;
+  margin-bottom: 8px;
 }
 
 .pub-item .pub-authors {
   color: #555;
   font-size: 0.9rem;
-  margin: 4px 0;
+  margin: 4px 0 6px;
 }
 
 .pub-item .pub-venue {
@@ -432,6 +486,18 @@ a.badge:hover {
 .pub-item .pub-links a:hover {
   background: #2c6bbf;
   color: #fff;
+}
+
+@media (max-width: 760px) {
+  .pub-layout {
+    flex-direction: column;
+  }
+
+  .pub-media {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 320px;
+  }
 }
 
 /* ── Footer ── */
