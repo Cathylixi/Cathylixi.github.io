@@ -476,11 +476,16 @@ footer {
 }
 
 .projects-tab {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
   font-size: 0.72rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #9b9b9b;
   text-decoration: none;
+  font-family: inherit;
   padding: 6px 0;
   border-bottom: 1px solid transparent;
 }
@@ -492,6 +497,10 @@ footer {
 .projects-tab.is-active {
   color: #333;
   border-color: #333;
+}
+
+.projects-panel[hidden] {
+  display: none;
 }
 
 .projects-grid {

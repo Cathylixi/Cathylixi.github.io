@@ -22,68 +22,147 @@
   <h2 class="page-title">Side-Project</h2>
 
   <div class="projects-tabs" role="tablist" aria-label="Side project categories">
-    <a class="projects-tab is-active" href="#" role="tab" aria-selected="true">PROJECTS</a>
-    <a class="projects-tab" href="#" role="tab" aria-selected="false">TOOLS</a>
+    <button class="projects-tab is-active" type="button" role="tab" id="tab-projects"
+            aria-selected="true" aria-controls="panel-projects" data-target="panel-projects">
+      PROJECTS
+    </button>
+    <button class="projects-tab" type="button" role="tab" id="tab-tools"
+            aria-selected="false" aria-controls="panel-tools" data-target="panel-tools">
+      TOOLS
+    </button>
   </div>
 
-  <section class="projects-grid" aria-label="Side projects">
-    <article class="project-card">
-      <a class="project-card__link" href="https://github.com/Cathylixi/Medical-Agent-English-Version" target="_blank" rel="noopener noreferrer">
-        <div class="project-card__cover">
-          <img src="images/project-1.jpg" alt="" loading="lazy"
-               onerror="this.remove();this.parentElement.classList.add('project-card__cover--fallback')" />
-          <div class="project-card__title">Medical Agent</div>
-        </div>
-        <div class="project-card__body">
-          <p class="project-card__desc">An LLM-based medical report OCR and structured data extraction system for echocardiography reports.</p>
-        </div>
-      </a>
-    </article>
+  <section class="projects-panel" id="panel-projects" role="tabpanel"
+           aria-labelledby="tab-projects" aria-label="Projects">
+    <div class="projects-grid">
+      <article class="project-card">
+        <a class="project-card__link" href="https://github.com/Cathylixi/Medical-Agent-English-Version" target="_blank" rel="noopener noreferrer">
+          <div class="project-card__cover">
+            <img src="images/project-1.jpg" alt="" loading="lazy"
+                 onerror="this.remove();this.parentElement.classList.add('project-card__cover--fallback')" />
+            <div class="project-card__title">Medical Agent</div>
+          </div>
+          <div class="project-card__body">
+            <p class="project-card__desc">An LLM-based medical report OCR and structured data extraction system for echocardiography reports.</p>
+          </div>
+        </a>
+      </article>
 
-    <article class="project-card">
-      <a class="project-card__link" href="https://github.com/Cathylixi/MindFood_app" target="_blank" rel="noopener noreferrer">
-        <div class="project-card__cover">
-          <img src="images/project-2.jpg" alt="" loading="lazy"
-               onerror="this.remove();this.parentElement.classList.add('project-card__cover--fallback')" />
-          <div class="project-card__title">MindFood</div>
-        </div>
-        <div class="project-card__body">
-          <p class="project-card__desc">An health-tracking APP for pre-diabete users.</p>
-        </div>
-      </a>
-    </article>
+      <article class="project-card">
+        <a class="project-card__link" href="https://github.com/Cathylixi/MindFood_app" target="_blank" rel="noopener noreferrer">
+          <div class="project-card__cover">
+            <img src="images/project-2.jpg" alt="" loading="lazy"
+                 onerror="this.remove();this.parentElement.classList.add('project-card__cover--fallback')" />
+            <div class="project-card__title">MindFood</div>
+          </div>
+          <div class="project-card__body">
+            <p class="project-card__desc">An health-tracking APP for pre-diabete users.</p>
+          </div>
+        </a>
+      </article>
 
-    <article class="project-card">
-      <a class="project-card__link" href="#" target="_blank" rel="noopener noreferrer">
-        <div class="project-card__cover">
-          <img src="images/project-3.jpg" alt="" loading="lazy"
-               onerror="this.remove();this.parentElement.classList.add('project-card__cover--fallback')" />
-          <div class="project-card__title">Side Tool</div>
-        </div>
-        <div class="project-card__body">
-          <p class="project-card__desc">A small tool / script / package you built.</p>
-        </div>
-      </a>
-    </article>
+      <article class="project-card">
+        <a class="project-card__link" href="#" target="_blank" rel="noopener noreferrer">
+          <div class="project-card__cover">
+            <img src="images/project-3.jpg" alt="" loading="lazy"
+                 onerror="this.remove();this.parentElement.classList.add('project-card__cover--fallback')" />
+            <div class="project-card__title">NESS</div>
+          </div>
+          <div class="project-card__body">
+            <p class="project-card__desc">An R package that evaluates and improves the quality of low-dimensional embeddings from single-cell RNA sequencing (scRNA-seq) data.</p>
+          </div>
+        </a>
+      </article>
 
-    <article class="project-card">
-      <a class="project-card__link" href="#" target="_blank" rel="noopener noreferrer">
-        <div class="project-card__cover">
-          <img src="images/project-4.jpg" alt="" loading="lazy"
-               onerror="this.remove();this.parentElement.classList.add('project-card__cover--fallback')" />
-          <div class="project-card__title">Demo App</div>
-        </div>
-        <div class="project-card__body">
-          <p class="project-card__desc">A longer project description goes here (1–2 lines).</p>
-        </div>
-      </a>
-    </article>
+      <article class="project-card">
+        <a class="project-card__link" href="#" target="_blank" rel="noopener noreferrer">
+          <div class="project-card__cover">
+            <img src="images/project-4.jpg" alt="" loading="lazy"
+                 onerror="this.remove();this.parentElement.classList.add('project-card__cover--fallback')" />
+            <div class="project-card__title">Demo App</div>
+          </div>
+          <div class="project-card__body">
+            <p class="project-card__desc">A longer project description goes here (1–2 lines).</p>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="projects-panel" id="panel-tools" role="tabpanel"
+           aria-labelledby="tab-tools" aria-label="Tools" hidden>
+    <div class="projects-grid">
+      <article class="project-card">
+        <a class="project-card__link" href="#" target="_blank" rel="noopener noreferrer">
+          <div class="project-card__cover project-card__cover--fallback">
+            <div class="project-card__title">Prompt Helper</div>
+          </div>
+          <div class="project-card__body">
+            <p class="project-card__desc">A lightweight utility for organizing prompts, snippets, and reusable templates for everyday work.</p>
+          </div>
+        </a>
+      </article>
+
+      <article class="project-card">
+        <a class="project-card__link" href="#" target="_blank" rel="noopener noreferrer">
+          <div class="project-card__cover project-card__cover--fallback">
+            <div class="project-card__title">Data Cleaner</div>
+          </div>
+          <div class="project-card__body">
+            <p class="project-card__desc">A small script-based tool for cleaning messy CSV files and standardizing columns before analysis.</p>
+          </div>
+        </a>
+      </article>
+
+      <article class="project-card">
+        <a class="project-card__link" href="#" target="_blank" rel="noopener noreferrer">
+          <div class="project-card__cover project-card__cover--fallback">
+            <div class="project-card__title">Side Tool</div>
+          </div>
+          <div class="project-card__body">
+            <p class="project-card__desc">A small tool, script, or package you built and want to feature separately from larger projects.</p>
+          </div>
+        </a>
+      </article>
+
+      <article class="project-card">
+        <a class="project-card__link" href="#" target="_blank" rel="noopener noreferrer">
+          <div class="project-card__cover project-card__cover--fallback">
+            <div class="project-card__title">Automation Kit</div>
+          </div>
+          <div class="project-card__body">
+            <p class="project-card__desc">A collection of small automation helpers for repetitive workflows, personal productivity, or research tasks.</p>
+          </div>
+        </a>
+      </article>
+    </div>
   </section>
 </main>
 
 <footer>
   &copy; 2026 Cathy Li Xi &mdash; Last updated April 2026
 </footer>
+
+<script>
+  const tabs = document.querySelectorAll(".projects-tab");
+  const panels = document.querySelectorAll(".projects-panel");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const targetId = tab.dataset.target;
+
+      tabs.forEach((item) => {
+        const isActive = item === tab;
+        item.classList.toggle("is-active", isActive);
+        item.setAttribute("aria-selected", String(isActive));
+      });
+
+      panels.forEach((panel) => {
+        panel.hidden = panel.id !== targetId;
+      });
+    });
+  });
+</script>
 
 </body>
 </html>
