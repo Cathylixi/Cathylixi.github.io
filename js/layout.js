@@ -1,7 +1,6 @@
 (function () {
   var pages = [
     { href: 'index.html',        label: 'Home' },
-    { href: 'news.html',         label: 'News' },
     { href: 'publications.html', label: 'Publications' },
     { href: 'others.html',       label: 'Others' },
     { href: 'open-source.html',  label: 'Open Source' },
