@@ -1,2 +1,2 @@
 # Cathylixi.github.io
-Academic personal website
+Xi Li's Academic personal website
