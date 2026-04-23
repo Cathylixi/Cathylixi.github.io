@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --section-gap: 56px;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -75,7 +79,7 @@ main {
 }
 
 .site-section {
-  margin-top: 72px;
+  margin-top: var(--section-gap);
 }
 
 /* ── Home page profile ── */
@@ -168,7 +172,7 @@ main {
 
 /* ── Home page: Education & Experience ── */
 .home-news {
-  margin-top: 56px;
+  margin-top: var(--section-gap);
 }
 
 .home-news-list {
@@ -199,7 +203,7 @@ main {
 }
 
 .cv-sections {
-  margin-top: 72px;
+  margin-top: var(--section-gap);
 }
 
 .cv-columns {
@@ -571,7 +575,7 @@ a.badge:hover {
 }
 
 .selected-pubs-v2 {
-  margin-top: 48px;
+  margin-top: var(--section-gap);
 }
 
 .selected-pubs-v2__title,
@@ -582,14 +586,14 @@ a.badge:hover {
 
 .others-list {
   margin-left: 60px;
-  margin-bottom: 32px;
+  margin-bottom: var(--section-gap);
   line-height: 2;
   font-size: 0.95rem;
   color: #444;
 }
 
 .fun-intro {
-  margin-bottom: 24px;
+  margin-bottom: var(--section-gap);
   margin-left: 40px;
   color: #444;
   font-size: 0.95rem;
@@ -763,7 +767,7 @@ footer {
 }
 
 .repo-section {
-  margin-top: 34px;
+  margin-top: var(--section-gap);
 }
 
 .repo-section__title {
