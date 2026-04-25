@@ -55,7 +55,7 @@ Not a typical Researcher lol.
 
 [Uncovering smooth structures in single-cell data with PCS-guided neighbor embeddings](https://arxiv.org/abs/2506.22228)
 
-<span class='pub-authors'>Rong Ma<sup>*</sup>, <span class='pub-me'>Xi Li<sup>*</sup></span>, Jingyuan Hu, Bin Yu</span>
+<span class='pub-authors'>Rong Ma<sup>*</sup>, <span class='pub-me'>Xi Li<sup>*</sup></span>, Jingyuan Hu, Bin Yu<sup>📧</sup></span>
 
 [**Paper**](https://arxiv.org/abs/2506.22228) \| [**R package**](https://github.com/Cathylixi/NESS)
 
