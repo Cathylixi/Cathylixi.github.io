@@ -48,7 +48,7 @@ Not a typical Researcher lol.
   .pub-venue { color: #000; font-weight: bold; font-style: normal; }
 </style>
 
-# Publications
+# Selected Publications
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Patterns 2026</div><img src='images/publication%20NESS.png' alt="NESS publication figure" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -59,7 +59,7 @@ Not a typical Researcher lol.
 
 [**Paper**](https://arxiv.org/abs/2506.22228) \| [**R package**](https://github.com/Cathylixi/NESS)
 
-- NESS is an R package for evaluating and improving low-dimensional embeddings from single-cell RNA sequencing data.
+- Single-cell sequencing enables the study of continuous cell-state transitions, but standard neighbor embedding (NE) algorithms like t-SNE and UMAP often introduce distortions when reducing high-dimensional data. Building on the Predictability-Computability-Stability (PCS) framework, we identify key instabilities in existing NE methods and introduce NESS. NESS is a principled, interpretable machine learning approach that leverages algorithmic stability to robustly infer smooth biological structures. Applied to six diverse single-cell datasets, NESS provides quantitative stability metrics and efficient workflows that consistently uncover developmental trajectories, identify transitional cell states, and quantify transcriptional dynamics.
 </div>
 </div>
 
