@@ -101,6 +101,8 @@ Not a typical Researcher lol.
   A health-tracking app for pre-diabetes users, focused on lightweight logging and lifestyle support.
 - [**PDF Bookmark Tool**](https://github.com/Cathylixi/PDF-Bookmark-Tool)  
   A local utility that writes a one-line table bookmark into every matching PDF in a selected folder.
+- [**Combine PDF Tool**](https://github.com/Cathylixi/Combine-PDF-tool)  
+  A small local Python GUI tool that combines all PDF files in a selected folder into one output PDF, sorted by natural file-name order.
 
 <span class='anchor' id='fun'></span>
 
