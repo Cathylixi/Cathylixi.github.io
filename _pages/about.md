@@ -88,7 +88,7 @@ Not a typical Researcher lol.
 
 # Open Source
 
-## Scientific Tools & Packages
+## Scientific Packages
 
 - [**NESS**](https://github.com/Cathylixi/NESS) \| [Paper](https://arxiv.org/abs/2506.22228)  
   NESS is an R package that evaluates and improves the quality of low-dimensional embeddings from single-cell RNA sequencing (scRNA-seq) data. It is compatible with popular embedding methods such as t-SNE, UMAP, and phateR, and provides tools for assessing stability, selecting hyperparameters, and visualizing uncertainty.
@@ -99,6 +99,11 @@ Not a typical Researcher lol.
   An LLM-based medical report OCR and structured data extraction system for echocardiography reports. It supports OCR text recognition from JPG images and PDF files, AI-driven report classification, structured data extraction, a visualization interface, and flexible deployment across DashScope services.
 - [**MindFood**](https://github.com/Cathylixi/MindFood_app)  
   A health-tracking app for pre-diabetes users, focused on lightweight logging and lifestyle support.
+
+## Tools
+
+- [**Recording Translation Platform**](https://github.com/Cathylixi/recording-translation-platform)  
+  A local command-line tool that transcribes long English audio recordings and translates them into Chinese, exporting the result as Markdown, HTML, or Word.
 - [**PDF Bookmark Tool**](https://github.com/Cathylixi/PDF-Bookmark-Tool)  
   A local utility that writes a one-line table bookmark into every matching PDF in a selected folder.
 - [**Combine PDF Tool**](https://github.com/Cathylixi/Combine-PDF-tool)  
