@@ -23,7 +23,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 # Site Author
 author:
   name             : "Xi Li 李熙"
-  avatar           : "images/profile.jpg"
+  avatar           : "/images/profile.jpg"
   bio              : ""
   location         : "Boston, MA"
   employer         :

@@ -22,4 +22,4 @@ main:
     url: "/#fun"
 
   - title: "My Blog"
-    url: "/blog/"
+    url: "/#blog"
