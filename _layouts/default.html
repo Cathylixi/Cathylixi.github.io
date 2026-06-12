@@ -21,7 +21,52 @@ layout: compress
         {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
         <div class="page__inner-wrap">
           <section class="page__content" itemprop="text">
-            {{ content }}
+            <div id="academic-view">
+              {{ content }}
+            </div>
+            {% if page.url == '/' %}
+            <div id="blog-view" style="display:none;">
+              <style>
+                .blog-list { list-style: none; padding-left: 0; }
+                .blog-list li { margin-bottom: 0.5em; }
+                .blog-list .post-date { color: #888; margin-right: 0.8em; font-variant-numeric: tabular-nums; }
+              </style>
+              <h1 id="blog">My Blog</h1>
+              <ul class="blog-list">
+                {% for post in site.posts %}
+                <li><span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            <script>
+              (function () {
+                function showBlog() {
+                  document.getElementById('academic-view').style.display = 'none';
+                  document.getElementById('blog-view').style.display = 'block';
+                }
+                function showAcademic() {
+                  document.getElementById('blog-view').style.display = 'none';
+                  document.getElementById('academic-view').style.display = 'block';
+                }
+                // Delegate on document so it survives the greedy-nav rebuilding the menu.
+                document.addEventListener('click', function (e) {
+                  var a = e.target.closest && e.target.closest('#site-nav a');
+                  if (!a) return;
+                  var href = a.getAttribute('href') || '';
+                  if (href.indexOf('#blog') !== -1) {
+                    e.preventDefault();
+                    showBlog();
+                    history.replaceState(null, '', '#blog');
+                    window.scrollTo(0, 0);
+                  } else if (href.indexOf('#') !== -1) {
+                    showAcademic();
+                  }
+                });
+                // Deep-link: landing on /#blog opens the blog view directly.
+                if (location.hash === '#blog') { showBlog(); }
+              })();
+            </script>
+            {% endif %}
           </section>
         </div>
       </article>
