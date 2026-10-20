@@ -22,6 +22,7 @@ Not a typical Researcher lol.
 
 # News
 
+- *Sep 2026*: I started working on [Interactive Books for AI Education](https://cathylixi.github.io/Interactive-Video-Generation-Website/) with [Dr. Mark Chang](https://www.bu.edu/sph/profile/mark-chang/).
 - *Apr 2026*: My paper [NESS](https://arxiv.org/abs/2506.22228) is accepted at *Patterns*.
 - *Jul 2025*: I started my full-time job as a Software Engineer at [LLX Solutions](https://www.llxsolutions.com/).
 
@@ -99,6 +100,8 @@ Not a typical Researcher lol.
   An LLM-based medical report OCR and structured data extraction system for echocardiography reports. It supports OCR text recognition from JPG images and PDF files, AI-driven report classification, structured data extraction, a visualization interface, and flexible deployment across DashScope services.
 - [**MindFood**](https://github.com/Cathylixi/MindFood_app)  
   A health-tracking app for pre-diabetes users, focused on lightweight logging and lifestyle support.
+- [**Interactive Books for AI Education**](https://cathylixi.github.io/Interactive-Video-Generation-Website/)<br>
+  An interactive education project that turns concepts in AI and statistics into clear, visual learning experiences.
 
 ## Tools
 
