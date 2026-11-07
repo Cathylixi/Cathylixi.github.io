@@ -2,7 +2,7 @@
 permalink: /reading/
 title: "Reading"
 excerpt: "Things I have been reading and enjoying."
-author_profile: true
+author_profile: false
 redirect_from:
   - /2026/05/24/things-i-read-this-week/
 ---
