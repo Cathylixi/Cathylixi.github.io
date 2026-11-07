@@ -10,9 +10,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-<p class="phd-intro">I am now a Statistics Ph.D. student at NUS, working with <a href="https://zhigang-yao.github.io/">Dr. Zhigang Yao</a> on topology and high-dimensional statistics.</p>
-
-I obtained my M.S. in Computational Biology and Quantitative Genetics from [Harvard T.H. Chan School of Public Health](https://hsph.harvard.edu/), where I worked with [Dr. Rong Ma](https://hsph.harvard.edu/profile/rong-ma/). Previously, I obtained my B.A. in Statistics and Computer Science from [Boston University](https://www.bu.edu/), where I worked with [Dr. Mark Chang](https://www.bu.edu/sph/profile/mark-chang/).
+<p class="phd-intro">I am now a Statistics Ph.D. student at NUS, working with <a href="https://zhigang-yao.github.io/">Dr. Zhigang Yao</a> on topology and high-dimensional statistics. Previously, I obtained my M.S. in Computational Biology and Quantitative Genetics from <a href="https://hsph.harvard.edu/">Harvard T.H. Chan School of Public Health</a>, where I worked with <a href="https://hsph.harvard.edu/profile/rong-ma/">Dr. Rong Ma</a> on <a href="https://arxiv.org/abs/2508.00835">PCS (Predictability, Computability, Stability)</a> in dimensional reduction ML methods. I obtained my B.A. in Statistics and Computer Science from <a href="https://www.bu.edu/">Boston University</a>, where I worked with <a href="https://www.bu.edu/sph/profile/mark-chang/">Dr. Mark Chang</a> on modern AI applications.</p>
 
 **Research Interests.** My research interest focuses on AI4S.
 
