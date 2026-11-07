@@ -26,7 +26,8 @@ author_profile: false
     <div class="blog-archive" id="blog-archive">
       {% for post in site.posts %}
         {% assign words = post.content | strip_html | number_of_words %}
-        {% assign minutes = words | divided_by: 180 | plus: 1 %}
+        {% assign calculated_minutes = words | divided_by: 180 | plus: 1 %}
+        {% assign minutes = post.reading_time | default: calculated_minutes %}
         {% capture post_tags %}{% for tag in post.tags %}{{ tag | slugify }}{% unless forloop.last %}|{% endunless %}{% endfor %}{% endcapture %}
         <article class="blog-card" data-blog-tags="{{ post_tags }}">
           <a class="blog-card__link" href="{{ post.url | relative_url }}" target="_self">
