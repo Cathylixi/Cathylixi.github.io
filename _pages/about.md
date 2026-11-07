@@ -10,7 +10,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am now a Ph.D. student in Statistics at the National University of Singapore (NUS), where I work with [Dr. Zhigang Yao](https://zhigang-yao.github.io/), focusing on topology and high-dimensional statistics.
+<p class="phd-intro">I am now a Statistics Ph.D. student at the National University of Singapore (NUS), working with <a href="https://zhigang-yao.github.io/">Dr. Zhigang Yao</a> on topology and high-dimensional statistics.</p>
 
 I obtained my M.S. in Computational Biology and Quantitative Genetics from [Harvard T.H. Chan School of Public Health](https://hsph.harvard.edu/), where I worked with [Dr. Rong Ma](https://hsph.harvard.edu/profile/rong-ma/). Previously, I obtained my B.A. in Statistics and Computer Science from [Boston University](https://www.bu.edu/), where I worked with [Dr. Mark Chang](https://www.bu.edu/sph/profile/mark-chang/).
 
@@ -31,7 +31,7 @@ Not a typical Researcher lol.
 
 # Education
 
-- *2027 - Present*, **National University of Singapore (NUS)**, Ph.D. in Statistics, focusing on topology and high-dimensional statistics.
+- *2027 - Present*, **National University of Singapore (NUS)**, Ph.D. in Statistics.
 - *2023 - 2025*, **Harvard University**, M.S. in Computational Biology and Quantitative Genetics.
 - *2019 - 2023*, **Boston University**, B.A. in Statistics and Computer Science.
 
@@ -46,6 +46,13 @@ Not a typical Researcher lol.
 <span class='anchor' id='publications'></span>
 
 <style>
+  @media (min-width: 1280px) {
+    .phd-intro {
+      white-space: nowrap;
+      font-size: 0.9em;
+    }
+  }
+
   .pub-authors { color: #888; }
   .pub-me { color: #000; font-weight: bold; border: 1px solid #000; border-radius: 4px; padding: 1px 4px; margin: 0 2px; }
   .pub-venue { color: #000; font-weight: bold; font-style: normal; }
