@@ -10,13 +10,11 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am now a Ph.D. student in Statistics at the National University of Singapore (NUS), where I work with [Dr. Zhigang Yao](https://zhigang-yao.github.io/).
+I am now a Ph.D. student in Statistics at the National University of Singapore (NUS), where I work with [Dr. Zhigang Yao](https://zhigang-yao.github.io/), focusing on topology and high-dimensional statistics.
 
 I obtained my M.S. in Computational Biology and Quantitative Genetics from [Harvard T.H. Chan School of Public Health](https://hsph.harvard.edu/), where I worked with [Dr. Rong Ma](https://hsph.harvard.edu/profile/rong-ma/). Previously, I obtained my B.A. in Statistics and Computer Science from [Boston University](https://www.bu.edu/), where I worked with [Dr. Mark Chang](https://www.bu.edu/sph/profile/mark-chang/).
 
-**Research Interests.** My research interest focuses on AI4S, specifically the intersection between AI/ML and multi-omics.
-
-**Research.** Still figuring out...
+**Research Interests.** My research interest focuses on AI4S.
 
 Not a typical Researcher lol.
 
@@ -24,7 +22,7 @@ Not a typical Researcher lol.
 
 # News
 
-- *Jan 2027*: I started my Ph.D. in Statistics at the National University of Singapore (NUS), focusing on topology and high-dimensional statistics.
+- *Jan 2027*: I started my Ph.D. in Statistics at the National University of Singapore (NUS).
 - *Sep 2026*: I started working on [Interactive Books for AI Education](https://cathylixi.github.io/Interactive-Video-Generation-Website/) with [Dr. Mark Chang](https://www.bu.edu/sph/profile/mark-chang/).
 - *Apr 2026*: My paper [NESS](https://arxiv.org/abs/2506.22228) is accepted at *Patterns*.
 - *Jul 2025*: I started my full-time job as a Software Engineer at [LLX Solutions](https://www.llxsolutions.com/).
