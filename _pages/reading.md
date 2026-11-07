@@ -118,9 +118,9 @@ redirect_from:
                   data-status="{% if item.status %}{{ item.status | escape }}{% else %}Unspecified{% endif %}"
                   data-year="{% if item.year %}{{ item.year }}{% else %}Unspecified{% endif %}"
                   data-rating="{% if item.rating %}{{ item.rating | escape }}{% else %}Unspecified{% endif %}">
-                <td class="reading-table__title">{{ item.title | escape }}<span>BL</span></td>
-                <td>{% if item.author %}{{ item.author | escape }}{% else %}<span class="reading-muted">—</span>{% endif %}</td>
-                <td>
+                <td class="reading-table__title" data-label="Title">{{ item.title | escape }}<span>BL</span></td>
+                <td data-label="Writer">{% if item.author %}{{ item.author | escape }}{% else %}<span class="reading-muted">—</span>{% endif %}</td>
+                <td data-label="Status">
                   {% if item.status == "Finished" %}
                     <span class="reading-status reading-status--finished">Finished</span>
                   {% elsif item.status == "Reading" %}
@@ -131,8 +131,8 @@ redirect_from:
                     <span class="reading-muted">Not set</span>
                   {% endif %}
                 </td>
-                <td>{% if item.year %}{{ item.year }}{% else %}<span class="reading-muted">—</span>{% endif %}</td>
-                <td>
+                <td data-label="Year">{% if item.year %}{{ item.year }}{% else %}<span class="reading-muted">—</span>{% endif %}</td>
+                <td data-label="Rating">
                   {% if item.rating == "soso" %}
                     <span class="reading-rating">So-so</span>
                   {% elsif item.rating %}
