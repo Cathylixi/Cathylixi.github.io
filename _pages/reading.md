@@ -13,6 +13,7 @@ redirect_from:
 {% assign planning_items = library_items | where: "status", "Planning" %}
 {% assign great_items = library_items | where: "rating", "Great" %}
 {% assign favorite_author_items = library_items | where: "author", "水千丞" %}
+{% assign library_writers = library_items | map: "author" | compact | uniq | sort %}
 {% assign y2026 = finished_items | where: "year", 2026 %}
 {% assign y2025 = finished_items | where: "year", 2025 %}
 {% assign y2024 = finished_items | where: "year", 2024 %}
@@ -54,67 +55,82 @@ redirect_from:
           <p>Collection</p>
           <h2 id="reading-library-title">Library log</h2>
         </div>
-        <span class="reading-result-count" id="reading-result-count">{{ library_items.size }} items</span>
-      </div>
-
-      <div class="reading-filters" aria-label="Filter the library">
-        <label class="reading-search">
-          <span class="sr-only">Search title or author</span>
-          <input id="reading-search" type="search" placeholder="Search title or author" autocomplete="off">
-        </label>
-        <label>
-          <span class="sr-only">Filter by status</span>
-          <select id="reading-status">
-            <option value="all">All statuses</option>
-            <option value="Reading">Reading</option>
-            <option value="Finished">Finished</option>
-            <option value="Planning">To read</option>
-            <option value="Unspecified">Not set</option>
-          </select>
-        </label>
-        <label>
-          <span class="sr-only">Filter by year</span>
-          <select id="reading-year">
-            <option value="all">All years</option>
-            <option value="2026">2026</option>
-            <option value="2025">2025</option>
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-            <option value="2022">2022</option>
-            <option value="2021">2021</option>
-            <option value="2019">2019</option>
-            <option value="Unspecified">Not set</option>
-          </select>
-        </label>
-        <label>
-          <span class="sr-only">Filter by rating</span>
-          <select id="reading-rating">
-            <option value="all">All ratings</option>
-            <option value="Great">Great</option>
-            <option value="Good">Good</option>
-            <option value="soso">So-so</option>
-            <option value="Bad">Bad</option>
-            <option value="Unspecified">Not rated</option>
-          </select>
-        </label>
-        <button class="reading-reset" id="reading-reset" type="button">Reset</button>
+        <div class="reading-section-meta">
+          <span class="reading-result-count" id="reading-result-count">{{ library_items.size }} items</span>
+          <button class="reading-reset" id="reading-reset" type="button">Reset</button>
+        </div>
       </div>
 
       <div class="reading-table-wrap">
         <table class="reading-table">
           <thead>
             <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Writer</th>
-              <th scope="col">Status</th>
-              <th scope="col">Year</th>
-              <th scope="col">Rating</th>
+              <th scope="col">
+                <label class="reading-table-filter">
+                  <span class="sr-only">Search by title</span>
+                  <input id="reading-search" type="search" placeholder="Title" autocomplete="off">
+                </label>
+              </th>
+              <th scope="col">
+                <label class="reading-table-filter">
+                  <span class="sr-only">Filter by writer</span>
+                  <select id="reading-writer">
+                    <option value="all">Writer</option>
+                    {% for writer_name in library_writers %}
+                      <option value="{{ writer_name | escape }}">{{ writer_name | escape }}</option>
+                    {% endfor %}
+                    <option value="Unspecified">Not listed</option>
+                  </select>
+                </label>
+              </th>
+              <th scope="col">
+                <label class="reading-table-filter">
+                  <span class="sr-only">Filter by status</span>
+                  <select id="reading-status">
+                    <option value="all">Status</option>
+                    <option value="Reading">Reading</option>
+                    <option value="Finished">Finished</option>
+                    <option value="Planning">To read</option>
+                    <option value="Unspecified">Not set</option>
+                  </select>
+                </label>
+              </th>
+              <th scope="col">
+                <label class="reading-table-filter">
+                  <span class="sr-only">Filter by year</span>
+                  <select id="reading-year">
+                    <option value="all">Year</option>
+                    <option value="2026">2026</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2019">2019</option>
+                    <option value="Unspecified">Not set</option>
+                  </select>
+                </label>
+              </th>
+              <th scope="col">
+                <label class="reading-table-filter">
+                  <span class="sr-only">Filter by rating</span>
+                  <select id="reading-rating">
+                    <option value="all">Rating</option>
+                    <option value="Great">Great</option>
+                    <option value="Good">Good</option>
+                    <option value="soso">So-so</option>
+                    <option value="Bad">Bad</option>
+                    <option value="Unspecified">Not rated</option>
+                  </select>
+                </label>
+              </th>
             </tr>
           </thead>
           <tbody id="reading-table-body">
             {% for item in library_items %}
               <tr class="reading-row"
-                  data-search="{{ item.title | append: ' ' | append: item.author | downcase | escape }}"
+                  data-search="{{ item.title | downcase | escape }}"
+                  data-writer="{% if item.author %}{{ item.author | escape }}{% else %}Unspecified{% endif %}"
                   data-status="{% if item.status %}{{ item.status | escape }}{% else %}Unspecified{% endif %}"
                   data-year="{% if item.year %}{{ item.year }}{% else %}Unspecified{% endif %}"
                   data-rating="{% if item.rating %}{{ item.rating | escape }}{% else %}Unspecified{% endif %}">
@@ -209,6 +225,7 @@ redirect_from:
   (function () {
     var rows = Array.prototype.slice.call(document.querySelectorAll('.reading-row'));
     var search = document.getElementById('reading-search');
+    var writer = document.getElementById('reading-writer');
     var status = document.getElementById('reading-status');
     var year = document.getElementById('reading-year');
     var rating = document.getElementById('reading-rating');
@@ -222,6 +239,7 @@ redirect_from:
     function matches(row) {
       var query = search.value.trim().toLowerCase();
       return (!query || row.dataset.search.indexOf(query) !== -1) &&
+        (writer.value === 'all' || row.dataset.writer === writer.value) &&
         (status.value === 'all' || row.dataset.status === status.value) &&
         (year.value === 'all' || row.dataset.year === year.value) &&
         (rating.value === 'all' || row.dataset.rating === rating.value);
@@ -237,12 +255,13 @@ redirect_from:
       more.hidden = matched.length <= visibleLimit;
     }
 
-    [search, status, year, rating].forEach(function (control) {
+    [search, writer, status, year, rating].forEach(function (control) {
       control.addEventListener(control === search ? 'input' : 'change', function () { update(true); });
     });
 
     reset.addEventListener('click', function () {
       search.value = '';
+      writer.value = 'all';
       status.value = 'all';
       year.value = 'all';
       rating.value = 'all';
