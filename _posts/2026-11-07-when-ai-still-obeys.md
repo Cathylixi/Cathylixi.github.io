@@ -2,6 +2,7 @@
 title: "当 AI 仍然服从，我们还握着方向盘吗？"
 subtitle: "AI 并不需要反抗人类，也可能逐渐接管我们的判断。真正需要守住的，是理解、拒绝和纠正的能力。"
 summary: "如果 AI 没有反抗我们，却逐渐决定我们怎么做，这算不算接管？"
+cover_text: "AI × HUMAN"
 tags:
   - AI
   - Society
