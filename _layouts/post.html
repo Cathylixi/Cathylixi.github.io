@@ -1,16 +1,51 @@
 ---
 layout: default
-author_profile: true
+author_profile: false
 ---
 
-<style>
-  .post-date { color: #888; margin-bottom: 1.5em; font-variant-numeric: tabular-nums; }
-  .post-back { margin-top: 2.5em; display: inline-block; }
-</style>
+{% assign words = content | strip_html | number_of_words %}
+{% assign minutes = words | divided_by: 180 | plus: 1 %}
 
-<h1>{{ page.title }}</h1>
-<p class="post-date">{{ page.date | date: "%d %b, %Y" }}</p>
+<article class="longform-post">
+  <a class="longform-post__back" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> My Blog</a>
 
-{{ content }}
+  <header class="longform-post__header">
+    <div class="longform-post__meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+      <span aria-hidden="true">·</span>
+      <span>{{ minutes }} min read</span>
+    </div>
+    <h1>{{ page.title }}</h1>
+    {% if page.subtitle %}<p class="longform-post__subtitle">{{ page.subtitle }}</p>{% endif %}
+    {% if page.tags.size > 0 %}
+      <div class="longform-post__tags" aria-label="Topics">
+        {% for tag in page.tags %}<span>{{ tag }}</span>{% endfor %}
+      </div>
+    {% endif %}
+  </header>
 
-<p class="post-back"><a href="{{ '/blog/' | relative_url }}" target="_self">← Back to My Blog</a></p>
+  <div class="longform-post__body">
+    {{ content }}
+  </div>
+
+  <footer class="longform-post__footer">
+    <a class="longform-post__back longform-post__back--bottom" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> Back to all essays</a>
+
+    {% if page.next or page.previous %}
+      <nav class="post-pagination" aria-label="More essays">
+        {% if page.next %}
+          <a class="post-pagination__item post-pagination__item--newer" href="{{ page.next.url | relative_url }}" target="_self">
+            <span>Newer essay</span>
+            <strong>{{ page.next.title }}</strong>
+          </a>
+        {% endif %}
+        {% if page.previous %}
+          <a class="post-pagination__item post-pagination__item--older" href="{{ page.previous.url | relative_url }}" target="_self">
+            <span>Older essay</span>
+            <strong>{{ page.previous.title }}</strong>
+          </a>
+        {% endif %}
+      </nav>
+    {% endif %}
+  </footer>
+</article>
