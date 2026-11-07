@@ -46,11 +46,9 @@ Not a typical Researcher lol.
 <span class='anchor' id='publications'></span>
 
 <style>
-  @media (min-width: 1280px) {
-    .phd-intro {
-      white-space: nowrap;
-      font-size: 0.9em;
-    }
+  .phd-intro {
+    max-width: 100%;
+    white-space: normal;
   }
 
   .pub-authors { color: #888; }
