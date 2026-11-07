@@ -20,7 +20,6 @@ Not a typical Researcher lol.
 
 # News
 
-- *Jan 2027*: I started my Ph.D. in Statistics at the National University of Singapore (NUS).
 - *Sep 2026*: I started working on [Interactive Books for AI Education](https://cathylixi.github.io/Interactive-Video-Generation-Website/) with [Dr. Mark Chang](https://www.bu.edu/sph/profile/mark-chang/).
 - *Apr 2026*: My paper [NESS](https://arxiv.org/abs/2506.22228) is accepted at *Patterns*.
 - *Jul 2025*: I started my full-time job as a Software Engineer at [LLX Solutions](https://www.llxsolutions.com/).
@@ -37,7 +36,7 @@ Not a typical Researcher lol.
 
 # Experience
 
-- *2025 - 2026*, **Software Engineer**, LLX Solutions. Developed AI-assisted software for a CRO company.
+- *2025 - 2027*, **Software Engineer**, LLX Solutions. Developed AI Agent for statistical analysis.
 - *2024 - 2025*, **Research Assistant**, Harvard University. Worked on single-cell inference method development.
 - *2024 - 2025*, **Research Assistant**, Boston University. Worked on an AI agent for Word document generation.
 
