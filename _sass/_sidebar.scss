@@ -247,6 +247,25 @@
     }
   }
 
+  li.author__email {
+    a {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.25em;
+    }
+
+    i {
+      flex: 0 0 auto;
+      margin-top: 0.15em;
+    }
+
+    span {
+      min-width: 0;
+      overflow-wrap: normal;
+      word-break: normal;
+    }
+  }
+
   a {
     display: block;
     max-width: 100%;
