@@ -1544,22 +1544,6 @@
     "rating": null
   },
   {
-    "category": "TV",
-    "title": "Call Me By Your Name",
-    "creator": null,
-    "status": "Finished",
-    "year": "Before college",
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "陈情令",
-    "creator": null,
-    "status": "Finished",
-    "year": "Before college",
-    "rating": "Great"
-  },
-  {
     "category": "Film",
     "title": "喜剧之王",
     "creator": null,
@@ -1867,22 +1851,6 @@
     "category": "Book",
     "title": "同名同姓受害者协会",
     "creator": "下村敦史",
-    "status": "Finished",
-    "year": 2024,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "MIU404",
-    "creator": null,
-    "status": "Finished",
-    "year": 2024,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "反正与我无关～某律师的真实工作",
-    "creator": null,
     "status": "Finished",
     "year": 2024,
     "rating": "Great"
@@ -2272,46 +2240,6 @@
     "rating": "Great"
   },
   {
-    "category": "TV",
-    "title": "体感预报",
-    "creator": null,
-    "status": "Finished",
-    "year": 2023,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "如果是你或许可以相恋",
-    "creator": null,
-    "status": "Finished",
-    "year": 2023,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "我的第二青春",
-    "creator": null,
-    "status": "Finished",
-    "year": 2023,
-    "rating": "Good"
-  },
-  {
-    "category": "TV",
-    "title": "星条红与皇室蓝",
-    "creator": null,
-    "status": "Finished",
-    "year": 2023,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "成为bl剧的主演",
-    "creator": null,
-    "status": "Finished",
-    "year": 2023,
-    "rating": "Great"
-  },
-  {
     "category": "Anime",
     "title": "忧国的莫里亚蒂",
     "creator": null,
@@ -2462,46 +2390,6 @@
     "status": "Finished",
     "year": 2022,
     "rating": "Good"
-  },
-  {
-    "category": "TV",
-    "title": "猎罪图鉴",
-    "creator": null,
-    "status": "Finished",
-    "year": 2022,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "语义错误",
-    "creator": null,
-    "status": "Finished",
-    "year": 2022,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "致命之吻",
-    "creator": null,
-    "status": "Finished",
-    "year": 2022,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "美丽的他",
-    "creator": null,
-    "status": "Finished",
-    "year": 2022,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "消失的初恋",
-    "creator": null,
-    "status": "Finished",
-    "year": 2022,
-    "rating": "Great"
   },
   {
     "category": "Book",
@@ -2722,38 +2610,6 @@
   {
     "category": "Anime",
     "title": "死亡笔记",
-    "creator": null,
-    "status": "Finished",
-    "year": 2021,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "过了三十岁还是处男就会变成魔法师",
-    "creator": null,
-    "status": "Finished",
-    "year": 2021,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "刻在你心底的名字",
-    "creator": null,
-    "status": "Finished",
-    "year": 2021,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "变成你的那一天",
-    "creator": null,
-    "status": "Finished",
-    "year": 2021,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "3年a班",
     "creator": null,
     "status": "Finished",
     "year": 2021,
@@ -2986,22 +2842,6 @@
   {
     "category": "Film",
     "title": "霸王别姬",
-    "creator": null,
-    "status": "Finished",
-    "year": 2020,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "Love Simon",
-    "creator": null,
-    "status": "Finished",
-    "year": 2020,
-    "rating": "Great"
-  },
-  {
-    "category": "TV",
-    "title": "365逆转命运的一年",
     "creator": null,
     "status": "Finished",
     "year": 2020,
@@ -3932,22 +3772,6 @@
     "title": "西线无战事",
     "creator": "埃里希·玛利亚·雷马克",
     "status": "Planning",
-    "year": null,
-    "rating": null
-  },
-  {
-    "category": "TV",
-    "title": "半泽直树",
-    "creator": null,
-    "status": "Planning",
-    "year": null,
-    "rating": null
-  },
-  {
-    "category": "TV",
-    "title": "单人房的天使",
-    "creator": null,
-    "status": null,
     "year": null,
     "rating": null
   },

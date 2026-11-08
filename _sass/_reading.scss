@@ -154,7 +154,6 @@
 .reading-now__cover.reading-type--book { background: linear-gradient(145deg, #718d82, #365d51); }
 .reading-now__cover.reading-type--film { background: linear-gradient(145deg, #a98b5d, #725635); }
 .reading-now__cover.reading-type--anime { background: linear-gradient(145deg, #8c7baa, #5a477e); }
-.reading-now__cover.reading-type--tv { background: linear-gradient(145deg, #7f8b92, #4e5b63); }
 
 .page__content .reading-now__empty {
   grid-column: 1 / -1;
@@ -625,7 +624,6 @@
 .reading-type--book { color: #506c5c; background: #edf4f0; }
 .reading-type--film { color: #80652f; background: #f6f1e7; }
 .reading-type--anime { color: #67548a; background: #f1edf7; }
-.reading-type--tv { color: #57656d; background: #eef1f2; }
 
 .reading-status {
   &--finished { color: #506c5c; background: #edf4f0; }
