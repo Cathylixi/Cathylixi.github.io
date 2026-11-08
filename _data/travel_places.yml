@@ -1,0 +1,19 @@
+- id: boston
+  city: Boston
+  country: United States
+  latitude: 42.3601
+  longitude: -71.0589
+  kind: lived
+  years: "2019–2026"
+  note: "School, snow, the Charles River, and the place where many things began."
+  memory: "A place once called home"
+
+- id: singapore
+  city: Singapore
+  country: Singapore
+  latitude: 1.3521
+  longitude: 103.8198
+  kind: lived
+  years: "2027–Present"
+  note: "A new chapter, tropical rain, and a city that still feels full of possibility."
+  memory: "The next chapter"

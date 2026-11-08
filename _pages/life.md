@@ -45,7 +45,7 @@ author_profile: false
       <div class="life-atlas-card__body">
         <h2>My Travel</h2>
         <p>A map made from cities, train windows, borrowed rooms, and details I almost forgot.</p>
-        <span class="life-atlas__link life-atlas__link--soon">Open the travel journal</span>
+        <span class="life-atlas__link">Open the travel map</span>
       </div>
       <span class="life-atlas-card__arrow" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
     </a>
