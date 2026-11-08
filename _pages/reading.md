@@ -65,20 +65,6 @@ redirect_from:
 
       <div class="reading-type-summary" id="reading-type-summary" aria-label="Items by type"></div>
 
-      <div class="reading-milestones" aria-label="Collection achievements">
-        <div class="reading-milestone">
-          <span id="reading-milestone-finished">0</span>
-          <p><strong>Completed</strong><small>titles finished</small></p>
-        </div>
-        <div class="reading-milestone">
-          <span id="reading-milestone-year">—</span>
-          <p><strong>Biggest year</strong><small id="reading-milestone-year-copy">No year recorded</small></p>
-        </div>
-        <div class="reading-milestone">
-          <span id="reading-milestone-great">0</span>
-          <p><strong>Great finds</strong><small>top ratings</small></p>
-        </div>
-      </div>
     </section>
 
     <section class="reading-recent" aria-labelledby="reading-recent-title">
@@ -87,10 +73,8 @@ redirect_from:
           <p>Recent activity</p>
           <h2 id="reading-recent-title">Latest finishes</h2>
         </div>
-        <span>Year-level records</span>
       </div>
       <ol class="reading-recent__grid" id="reading-recent-list"></ol>
-      <p class="reading-activity-note">The spreadsheet records years rather than exact finish dates, so the timeline uses the year and source order.</p>
     </section>
   </div>
 
@@ -306,24 +290,14 @@ redirect_from:
       var finished = scoped.filter(function (item) { return item.status === 'Finished'; });
       var current = scoped.filter(function (item) { return item.status === 'Reading' || item.status === 'Watching'; });
       var planned = scoped.filter(function (item) { return item.status === 'Planning'; });
-      var great = scoped.filter(function (item) { return item.rating === 'Great'; });
       var byType = {};
-      var byYear = {};
 
       scoped.forEach(function (item) { byType[item.category] = (byType[item.category] || 0) + 1; });
-      finished.forEach(function (item) {
-        if (item.year !== null && item.year !== '') byYear[String(item.year)] = (byYear[String(item.year)] || 0) + 1;
-      });
 
-      var biggest = Object.keys(byYear).sort(function (a, b) { return byYear[b] - byYear[a] || yearRank(b) - yearRank(a); })[0];
       document.getElementById('reading-archive-total').textContent = scoped.length;
       document.getElementById('reading-archive-finished').textContent = finished.length;
       document.getElementById('reading-archive-current').textContent = current.length;
       document.getElementById('reading-archive-planned').textContent = planned.length;
-      document.getElementById('reading-milestone-finished').textContent = finished.length;
-      document.getElementById('reading-milestone-great').textContent = great.length;
-      document.getElementById('reading-milestone-year').textContent = biggest || '—';
-      document.getElementById('reading-milestone-year-copy').textContent = biggest ? byYear[biggest] + ' finished' : 'No year recorded';
       document.getElementById('reading-type-summary').innerHTML = Object.keys(byType).sort().map(function (name) {
         return '<span><strong>' + byType[name] + '</strong> ' + escapeHtml(name) + '</span>';
       }).join('');
@@ -333,7 +307,7 @@ redirect_from:
       var recent = selectedTypeItems().map(function (item) { return {item: item, index: items.indexOf(item)}; })
         .filter(function (entry) { return entry.item.status === 'Finished' && entry.item.year !== null && entry.item.year !== ''; })
         .sort(function (a, b) { return yearRank(b.item.year) - yearRank(a.item.year) || a.index - b.index; })
-        .slice(0, 6);
+        .slice(0, 4);
       recentList.innerHTML = recent.map(function (entry) {
         var item = entry.item;
         var creator = item.creator ? '<span>' + escapeHtml(item.creator) + '</span>' : '<span>' + escapeHtml(item.category) + '</span>';
