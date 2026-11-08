@@ -9,5 +9,5 @@ main:
   - title: "My Blog"
     url: "/blog/"
 
-  - title: "Reading"
-    url: "/reading/"
+  - title: "My Life"
+    url: "/life/"
