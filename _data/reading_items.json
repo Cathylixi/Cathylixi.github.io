@@ -1,5 +1,45 @@
 [
   {
+    "category": "Film",
+    "title": "八仙",
+    "creator": null,
+    "status": "Finished",
+    "year": 2026,
+    "rating": "Great"
+  },
+  {
+    "category": "Film",
+    "title": "黑球 La bola negra",
+    "creator": null,
+    "status": "Finished",
+    "year": 2026,
+    "rating": "Great"
+  },
+  {
+    "category": "Film",
+    "title": "给阿嬷的情书",
+    "creator": null,
+    "status": "Finished",
+    "year": 2026,
+    "rating": "Great"
+  },
+  {
+    "category": "Film",
+    "title": "恐怖游轮",
+    "creator": null,
+    "status": "Finished",
+    "year": 2026,
+    "rating": "Great"
+  },
+  {
+    "category": "Anime",
+    "title": "jojo",
+    "creator": null,
+    "status": "Finished",
+    "year": 2026,
+    "rating": "Great"
+  },
+  {
     "category": "Book",
     "title": "牛虻",
     "creator": "艾捷尔·丽莲·伏尼契",
@@ -3954,14 +3994,6 @@
   {
     "category": "Anime",
     "title": "网球王子",
-    "creator": null,
-    "status": null,
-    "year": null,
-    "rating": null
-  },
-  {
-    "category": "Anime",
-    "title": "jojo",
     "creator": null,
     "status": null,
     "year": null,
