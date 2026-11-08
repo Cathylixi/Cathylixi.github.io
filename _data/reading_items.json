@@ -1,5 +1,21 @@
 [
   {
+    "category": "Book",
+    "title": "牛虻",
+    "creator": "艾捷尔·丽莲·伏尼契",
+    "status": "Finished",
+    "year": 2026,
+    "rating": "Great"
+  },
+  {
+    "category": "Book",
+    "title": "复活",
+    "creator": "列夫·托尔斯泰",
+    "status": "Finished",
+    "year": 2026,
+    "rating": "Great"
+  },
+  {
     "category": "BL",
     "title": "一颗苹果",
     "creator": null,
@@ -3107,14 +3123,6 @@
     "category": "Book",
     "title": "贫穷的本质",
     "creator": "阿比吉特·班纳吉",
-    "status": "Finished",
-    "year": 2019,
-    "rating": "Great"
-  },
-  {
-    "category": "Book",
-    "title": "复活",
-    "creator": "列夫托尔斯泰",
     "status": "Finished",
     "year": 2019,
     "rating": "Great"
