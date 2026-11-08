@@ -94,7 +94,11 @@ author_profile: false
       </div>
       <div class="travel-upcoming__footer">
         <small>Private preview</small>
-        <span aria-hidden="true">→</span>
+        <span class="travel-upcoming__arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M5 12h13M13 7l5 5-5 5"></path>
+          </svg>
+        </span>
       </div>
     </aside>
   </div>
