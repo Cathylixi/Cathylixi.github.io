@@ -11,6 +11,8 @@ redirect_from:
 {% assign library_types = library_items | map: "category" | uniq | sort %}
 
 <div class="reading-home">
+  <a class="life-section__back reading-home__back" href="{{ '/life/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> My Life</a>
+
   <header class="reading-hero">
     <p class="reading-hero__eyebrow">Personal library</p>
     <h1>Reading &amp; Watching</h1>
@@ -202,6 +204,10 @@ redirect_from:
     </div>
     <button class="reading-more" id="reading-more" type="button">Show more</button>
   </main>
+
+  <footer class="reading-home__footer">
+    <a class="life-section__back" href="{{ '/life/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> Back to My Life</a>
+  </footer>
 
   <dialog class="reading-note" id="reading-note" aria-labelledby="reading-note-title">
     <button class="reading-note__close" id="reading-note-close" type="button" aria-label="Close notes">&times;</button>
