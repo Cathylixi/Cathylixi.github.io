@@ -40,6 +40,13 @@ author_profile: false
 
   <section class="travel-map-shell" aria-label="Interactive world travel map">
     <div class="travel-map-wrap">
+      <header class="travel-map-head">
+        <div>
+          <p>Places &amp; routes</p>
+          <h2>Travel atlas</h2>
+        </div>
+        <a href="#travel-archive">View all previous trips <span aria-hidden="true">→</span></a>
+      </header>
       <svg class="travel-map" id="travel-map" role="img" aria-labelledby="travel-map-title travel-map-description">
         <title id="travel-map-title">World map of travel places</title>
         <desc id="travel-map-description">Select a colored location marker to read the place and its travel note.</desc>
@@ -57,24 +64,40 @@ author_profile: false
     </aside>
   </section>
 
-  <section class="travel-log" aria-labelledby="travel-log-title">
-    <header class="travel-log__header">
-      <div>
-        <p>Travel log</p>
-        <h2 id="travel-log-title">Places &amp; chapters</h2>
+  <div class="travel-bottom-grid" id="travel-archive">
+    <section class="travel-archive" aria-labelledby="travel-archive-title">
+      <header class="travel-archive__header">
+        <div>
+          <p>From my map</p>
+          <h2 id="travel-archive-title">Journey archive</h2>
+        </div>
+      </header>
+      <div class="travel-archive__list">
+        {% for place in travel_places %}
+          <button class="travel-archive__item" type="button" data-travel-place="{{ place.id | escape }}">
+            <span class="travel-archive__icon" aria-hidden="true">{% if place.id == 'singapore' %}✦{% else %}↗{% endif %}</span>
+            <span class="travel-archive__copy">
+              <strong>{{ place.city | escape }} chapter</strong>
+              <small>{{ place.memory | escape }}</small>
+            </span>
+            <span class="travel-archive__arrow" aria-hidden="true">→</span>
+          </button>
+        {% endfor %}
       </div>
-      <span>Click a place to find it on the map.</span>
-    </header>
-    <div class="travel-log__grid">
-      {% for place in travel_places %}
-        <button class="travel-log__item" type="button" data-travel-place="{{ place.id | escape }}">
-          <span>{{ place.years | escape }}</span>
-          <strong>{{ place.city | escape }}</strong>
-          <small>{{ place.memory | escape }}</small>
-        </button>
-      {% endfor %}
-    </div>
-  </section>
+    </section>
+
+    <aside class="travel-upcoming" aria-labelledby="travel-upcoming-title">
+      <div>
+        <p>Upcoming</p>
+        <h2 id="travel-upcoming-title">Next journey</h2>
+        <span>No upcoming journey yet. Plans from Notion will appear here.</span>
+      </div>
+      <div class="travel-upcoming__footer">
+        <small>Private preview</small>
+        <span aria-hidden="true">→</span>
+      </div>
+    </aside>
+  </div>
 
   <footer class="travel-page__footer">
     <a class="life-section__back" href="{{ '/life/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> Back to My Life</a>
