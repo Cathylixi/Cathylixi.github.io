@@ -507,7 +507,7 @@
 .longform-post__body {
   max-width: 720px;
   color: #34383b;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: $global-font-family;
 
   p,
   li {
@@ -520,7 +520,7 @@
   h4 {
     margin-top: 2.25rem;
     color: #30363a;
-    font-family: $sans-serif;
+    font-family: $header-font-family;
   }
 
   h2 {
