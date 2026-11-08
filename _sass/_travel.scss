@@ -369,6 +369,7 @@
   border: 0;
   border-bottom: 1px solid #d9dfe1;
   cursor: pointer;
+  text-decoration: none;
 
   &:focus-visible {
     outline: 3px solid rgba($link-color, 0.25);
@@ -381,8 +382,421 @@
   place-items: center;
   height: 54px;
   color: #26363d;
+  font-size: 0.8rem;
   background: linear-gradient(135deg, #dff3f3, #f3d7e8);
   border-radius: 10px;
+}
+
+/* ==========================================================================
+   ROUTE LEDGER — SHARED TRIP DETAIL
+   ========================================================================== */
+
+.trip-detail-page {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.3rem 0 8rem;
+  color: #343b40;
+}
+
+.trip-detail__back { margin-top: 0; }
+
+.trip-ledger {
+  overflow: hidden;
+  border: 2px solid #26363d;
+  border-radius: 18px;
+  box-shadow: 7px 8px 0 rgba(38, 54, 61, 0.11);
+}
+
+.trip-ledger--hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(235px, 0.6fr);
+  min-height: 330px;
+  margin-top: clamp(2.3rem, 5vw, 3.7rem);
+  background: #dff3f3;
+}
+
+.trip-ledger__hero-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  min-width: 0;
+  padding: clamp(1.7rem, 4vw, 2.35rem);
+  border-right: 2px solid #26363d;
+
+  h1 {
+    max-width: 780px;
+    margin: 0.25rem 0 0.9rem;
+    padding: 0;
+    color: #343b40;
+    font-size: clamp(2.7rem, 6vw, 4.7rem);
+    font-weight: normal;
+    letter-spacing: -0.05em;
+    line-height: 0.98;
+    border: 0;
+  }
+}
+
+.page__content .trip-ledger__label {
+  margin: 0;
+  color: #2f6292;
+  font-size: 0.68rem;
+  font-weight: bold;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.page__content .trip-ledger__intro {
+  max-width: 720px;
+  margin: 0;
+  color: #66747a;
+  font-size: 1rem;
+  line-height: 1.62;
+}
+
+.trip-ledger__hero-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.4rem;
+  padding: clamp(1.6rem, 3vw, 2rem);
+  background: #fff0a8;
+}
+
+.trip-ledger__status {
+  align-self: flex-start;
+  padding: 0.45rem 0.8rem;
+  color: #26363d;
+  font-size: 0.68rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #fff;
+  border: 1.5px solid #26363d;
+  border-radius: 999px;
+}
+
+.page__content .trip-ledger__date {
+  margin: 0.35rem 0 0;
+  color: #343b40;
+  font-size: 1.45rem;
+  line-height: 1.25;
+}
+
+.trip-ledger__facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+
+  div,
+  dt,
+  dd { margin: 0; }
+
+  dt {
+    color: #343b40;
+    font-size: 1.45rem;
+    line-height: 1;
+  }
+
+  dd {
+    margin-top: 0.3rem;
+    color: #70797f;
+    font-size: 0.7rem;
+  }
+}
+
+.trip-route {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    min-width: 0;
+    padding: 1.15rem 0.25rem 0;
+    overflow: hidden;
+    color: #343b40;
+    font-size: 0.74rem;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &::before {
+      position: absolute;
+      top: 0.12rem;
+      left: 50%;
+      z-index: 2;
+      width: 0.58rem;
+      height: 0.58rem;
+      content: "";
+      background: #fff0a8;
+      border: 1.5px solid #26363d;
+      border-radius: 50%;
+      transform: translateX(-50%);
+    }
+
+    &:not(:last-child)::after {
+      position: absolute;
+      top: 0.37rem;
+      left: calc(50% + 0.3rem);
+      width: calc(100% - 0.6rem);
+      height: 1px;
+      content: "";
+      background: rgba(38, 54, 61, 0.38);
+    }
+  }
+}
+
+.trip-ledger__body {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.3fr);
+  gap: 1.4rem;
+  align-items: stretch;
+  margin-top: 1.4rem;
+}
+
+.trip-flights,
+.trip-itinerary {
+  padding: clamp(1.4rem, 3vw, 2rem);
+}
+
+.trip-flights { background: #fff; }
+.trip-itinerary { background: #e5edff; }
+
+.trip-ledger__section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
+
+  h2 {
+    margin: 0.3rem 0 0;
+    padding: 0;
+    color: #343b40;
+    font-size: 1.8rem;
+    font-weight: normal;
+    border: 0;
+  }
+
+  > span {
+    color: #7a8388;
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+}
+
+.trip-flight {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr) 118px;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.9rem 0;
+  border-top: 1px solid #e1e6e8;
+
+  &:first-child { border-top: 0; }
+
+  > time {
+    color: #737e83;
+    font-size: 0.7rem;
+  }
+}
+
+.trip-flight__route {
+  display: grid;
+  grid-template-columns: minmax(52px, auto) minmax(34px, 1fr) minmax(52px, auto);
+  gap: 0.55rem;
+  align-items: center;
+
+  > i {
+    display: block;
+    height: 1px;
+    background: rgba(38, 54, 61, 0.38);
+  }
+}
+
+.trip-flight__airport {
+  min-width: 0;
+
+  strong,
+  small { display: block; }
+
+  strong {
+    overflow: hidden;
+    color: #343b40;
+    font-size: 1.08rem;
+    font-weight: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  small {
+    margin-top: 0.15rem;
+    color: #7a8388;
+    font-size: 0.64rem;
+  }
+}
+
+.trip-flight__meta {
+  min-width: 0;
+  text-align: right;
+
+  strong,
+  small { display: block; }
+
+  strong {
+    overflow: hidden;
+    color: #343b40;
+    font-size: 0.72rem;
+    font-weight: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  small {
+    margin-top: 0.2rem;
+    color: #7a8388;
+    font-size: 0.62rem;
+    line-height: 1.3;
+  }
+}
+
+.trip-ledger__empty {
+  padding: 1.25rem 0 0.35rem;
+  border-top: 1px solid #e1e6e8;
+
+  strong {
+    color: #343b40;
+    font-size: 0.95rem;
+    font-weight: normal;
+  }
+
+  p {
+    margin: 0.55rem 0 0;
+    color: #737e83;
+    font-size: 0.76rem;
+    line-height: 1.55;
+  }
+}
+
+.trip-itinerary__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 1.4rem;
+}
+
+.trip-day {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  gap: 0.7rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid rgba(38, 54, 61, 0.15);
+
+  > time {
+    color: #6f7b82;
+    font-size: 0.68rem;
+  }
+
+  strong {
+    display: block;
+    color: #343b40;
+    font-size: 0.88rem;
+    font-weight: normal;
+  }
+
+  p {
+    margin: 0.3rem 0 0;
+    color: #68757b;
+    font-size: 0.7rem;
+    line-height: 1.45;
+  }
+}
+
+.trip-plan {
+  margin-top: 1.4rem;
+  background: #f3d7e8;
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+    padding: 1.05rem 1.4rem;
+    color: #343b40;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker { display: none; }
+
+    > span {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    strong {
+      font-size: 1.05rem;
+      font-weight: normal;
+    }
+
+    > span:last-child {
+      color: #657278;
+      font-size: 0.7rem;
+    }
+
+    i {
+      display: inline-block;
+      font-style: normal;
+      transition: transform 0.2s ease;
+    }
+  }
+
+  &[open] summary i { transform: rotate(180deg); }
+}
+
+.trip-plan__content {
+  padding: 0 1.4rem 1.25rem;
+  border-top: 1px solid rgba(38, 54, 61, 0.14);
+
+  ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem 1.5rem;
+    margin: 1rem 0;
+    padding-left: 1.2rem;
+  }
+
+  li,
+  p {
+    color: #58666c;
+    font-size: 0.76rem;
+    line-height: 1.5;
+  }
+
+  a {
+    color: #24588f;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+.trip-detail__footer {
+  margin-top: 4.5rem;
+  padding: 1.6rem 0 2rem;
+  border-top: 1px solid #e4e8ea;
+
+  a {
+    color: #68747a;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
 }
 
 .travel-archive__copy {
@@ -494,6 +908,10 @@
   .travel-bottom-grid { grid-template-columns: 1fr; }
   .travel-archive,
   .travel-upcoming { min-height: auto; }
+  .trip-ledger--hero,
+  .trip-ledger__body { grid-template-columns: 1fr; }
+  .trip-ledger__hero-main { border-right: 0; border-bottom: 2px solid #26363d; }
+  .trip-itinerary__list { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 500px) {
@@ -503,4 +921,12 @@
   .travel-map-head { align-items: flex-start; flex-direction: column; }
   .travel-archive { padding: 1.35rem; }
   .travel-archive__item { grid-template-columns: 58px minmax(0, 1fr) auto; }
+  .trip-detail-page { padding-top: 0.75rem; padding-bottom: 5rem; }
+  .trip-ledger { border-radius: 14px; }
+  .trip-route { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 0; }
+  .trip-route li::after { display: none; }
+  .trip-flight { grid-template-columns: 1fr; gap: 0.45rem; }
+  .trip-flight__meta { text-align: left; }
+  .trip-plan summary { align-items: flex-start; flex-direction: column; }
+  .trip-plan__content ul { grid-template-columns: 1fr; }
 }

@@ -9,6 +9,7 @@ author_profile: false
 {% assign travel_places = site.data.travel_places %}
 {% assign travel_countries = travel_places | map: "country" | uniq %}
 {% assign travel_homes = travel_places | where: "kind", "lived" %}
+{% assign travel_trips = site.trips | sort: "start_date" | reverse %}
 
 <article class="travel-page">
   <a class="life-section__back travel-page__back" href="{{ '/life/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> My Life</a>
@@ -20,8 +21,8 @@ author_profile: false
       <p class="travel-intro">A map of the places I have lived in, passed through, and still remember.</p>
     </div>
     <dl class="travel-stats" aria-label="Travel summary">
+      <div><dt>{{ travel_trips.size }}</dt><dd>Trips</dd></div>
       <div><dt>{{ travel_places.size }}</dt><dd>Places</dd></div>
-      <div><dt>{{ travel_countries.size }}</dt><dd>Countries</dd></div>
       <div><dt>{{ travel_homes.size }}</dt><dd>Homes</dd></div>
     </dl>
   </header>
@@ -68,20 +69,20 @@ author_profile: false
     <section class="travel-archive" aria-labelledby="travel-archive-title">
       <header class="travel-archive__header">
         <div>
-          <p>From my map</p>
+          <p>Completed journeys</p>
           <h2 id="travel-archive-title">Journey archive</h2>
         </div>
       </header>
       <div class="travel-archive__list">
-        {% for place in travel_places %}
-          <button class="travel-archive__item" type="button" data-travel-place="{{ place.id | escape }}">
-            <span class="travel-archive__icon" aria-hidden="true">{% if place.id == 'singapore' %}✦{% else %}↗{% endif %}</span>
+        {% for trip in travel_trips %}
+          <a class="travel-archive__item" href="{{ trip.url | relative_url }}" target="_self">
+            <span class="travel-archive__icon" aria-hidden="true">{{ forloop.index }}</span>
             <span class="travel-archive__copy">
-              <strong>{{ place.city | escape }} chapter</strong>
-              <small>{{ place.memory | escape }}</small>
+              <strong>{{ trip.title | escape }}</strong>
+              <small>{{ trip.date_label | escape }} · {{ trip.days }} days</small>
             </span>
             <span class="travel-archive__arrow" aria-hidden="true">→</span>
-          </button>
+          </a>
         {% endfor %}
       </div>
     </section>
@@ -191,16 +192,6 @@ author_profile: false
         mapStatus.textContent = "No places in this category yet.";
         mapStatus.hidden = false;
       }
-    });
-  });
-
-  root.querySelectorAll("[data-travel-place]").forEach((button) => {
-    button.addEventListener("click", () => {
-      activeFilter = "all";
-      root.querySelectorAll("[data-travel-filter]").forEach((item) => item.setAttribute("aria-pressed", String(item.dataset.travelFilter === "all")));
-      drawMap();
-      updateDetail(button.dataset.travelPlace);
-      root.querySelector(".travel-map-shell").scrollIntoView({ behavior: "smooth", block: "center" });
     });
   });
 

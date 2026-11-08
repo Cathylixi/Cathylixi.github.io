@@ -1,0 +1,119 @@
+---
+layout: default
+---
+
+<article class="trip-detail-page">
+  <a class="life-section__back trip-detail__back" href="{{ '/life/travel/#travel-archive' | relative_url }}" target="_self"><span aria-hidden="true">←</span> Journey archive</a>
+
+  <header class="trip-ledger trip-ledger--hero">
+    <div class="trip-ledger__hero-main">
+      <div>
+        <p class="trip-ledger__label">Trip detail · {{ page.season | default: page.year }}</p>
+        <h1>{{ page.title | escape }}</h1>
+        <p class="trip-ledger__intro">{{ page.summary | escape }}</p>
+      </div>
+
+      <ol class="trip-route" aria-label="Trip route">
+        {% for stop in page.route %}
+          <li>{{ stop | escape }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+
+    <aside class="trip-ledger__hero-side">
+      <span class="trip-ledger__status">{{ page.status | default: "Finished" | escape }}</span>
+      <div>
+        <p class="trip-ledger__label">Travel dates</p>
+        <p class="trip-ledger__date">{{ page.date_label | escape }}</p>
+      </div>
+      <dl class="trip-ledger__facts">
+        <div><dt>{{ page.days }}</dt><dd>Days</dd></div>
+        <div><dt>{{ page.route.size }}</dt><dd>Stops</dd></div>
+      </dl>
+    </aside>
+  </header>
+
+  <div class="trip-ledger__body">
+    <section class="trip-ledger trip-flights" aria-labelledby="trip-flights-title">
+      <header class="trip-ledger__section-head">
+        <div>
+          <p class="trip-ledger__label">Transport</p>
+          <h2 id="trip-flights-title">Flights</h2>
+        </div>
+        {% if page.flights and page.flights.size > 0 %}<span>{{ page.flights.size }} recorded segment{% if page.flights.size != 1 %}s{% endif %}</span>{% endif %}
+      </header>
+
+      {% if page.flights and page.flights.size > 0 %}
+        <div class="trip-flights__list">
+          {% for flight in page.flights %}
+            <article class="trip-flight">
+              <time>{{ flight.date | escape }}</time>
+              <div class="trip-flight__route">
+                <span class="trip-flight__airport">
+                  <strong>{{ flight.from_code | escape }}</strong>
+                  <small>{{ flight.from_time | default: flight.from_city | escape }}</small>
+                </span>
+                <i aria-hidden="true"></i>
+                <span class="trip-flight__airport">
+                  <strong>{{ flight.to_code | escape }}</strong>
+                  <small>{{ flight.to_time | default: flight.to_city | escape }}</small>
+                </span>
+              </div>
+              <div class="trip-flight__meta">
+                <strong>{{ flight.carrier | default: "Carrier not recorded" | escape }}</strong>
+                <small>{% if flight.flight_number %}{{ flight.flight_number | escape }}{% else %}Flight number pending{% endif %}{% if flight.note %} · {{ flight.note | escape }}{% endif %}</small>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="trip-ledger__empty">
+          <strong>Flight details have not been recorded yet.</strong>
+          <p>Airline, flight number, departure time and arrival time can be added from a ticket screenshot later.</p>
+        </div>
+      {% endif %}
+    </section>
+
+    <section class="trip-ledger trip-itinerary" aria-labelledby="trip-itinerary-title">
+      <header class="trip-ledger__section-head">
+        <div>
+          <p class="trip-ledger__label">Day by day</p>
+          <h2 id="trip-itinerary-title">Trip detail</h2>
+        </div>
+      </header>
+
+      <div class="trip-itinerary__list">
+        {% for item in page.itinerary %}
+          <article class="trip-day">
+            <time>{{ item.date | escape }}</time>
+            <div>
+              <strong>{{ item.title | escape }}</strong>
+              <p>{{ item.detail | escape }}</p>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+
+  <details class="trip-ledger trip-plan">
+    <summary>
+      <span><b class="trip-ledger__label">From Notion</b><strong>Original plan</strong></span>
+      <span>View saved notes <i aria-hidden="true">↓</i></span>
+    </summary>
+    <div class="trip-plan__content">
+      {% if page.original_plan and page.original_plan.size > 0 %}
+        <ul>
+          {% for item in page.original_plan %}<li>{{ item | escape }}</li>{% endfor %}
+        </ul>
+      {% else %}
+        <p>No detailed plan was saved for this trip. The page is ready for notes whenever you want to add them.</p>
+      {% endif %}
+      {% if page.notion_url %}<a href="{{ page.notion_url }}" target="_self" rel="nofollow">Open the source record →</a>{% endif %}
+    </div>
+  </details>
+
+  <nav class="trip-detail__footer" aria-label="Travel navigation">
+    <a href="{{ '/life/travel/#travel-archive' | relative_url }}" target="_self">← View all previous trips</a>
+  </nav>
+</article>

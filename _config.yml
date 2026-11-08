@@ -120,6 +120,11 @@ kramdown:
   enable_coderay: false
 
 # Defaults
+collections:
+  trips:
+    output: true
+    permalink: /life/travel/:name/
+
 defaults:
   # _pages
   - scope:
@@ -134,6 +139,13 @@ defaults:
       type: posts
     values:
       layout: post
+      author_profile: false
+  # _trips
+  - scope:
+      path: ""
+      type: trips
+    values:
+      layout: trip
       author_profile: false
 
 
