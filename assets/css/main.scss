@@ -110,3 +110,38 @@ h1:before, .anchor:before {
     background-color: #00369f;
     font-size: .8em;
 }
+
+/*
+ * Site-wide typography lock.
+ * Every visible text element uses the same Georgia face as the My Life cards.
+ * Code and icon glyphs keep their technical font families so they still render.
+ */
+body,
+body *:not(.fa):not(.fas):not(.far):not(.fal):not(.fab):not(.ai) {
+    font-family: Georgia, "Times New Roman", Times, serif !important;
+}
+
+body tt,
+body code,
+body code *,
+body kbd,
+body samp,
+body pre,
+body pre * {
+    font-family: $monospace !important;
+}
+
+body .fa,
+body .fas,
+body .far,
+body .fal {
+    font-family: "Font Awesome 5 Free" !important;
+}
+
+body .fab {
+    font-family: "Font Awesome 5 Brands" !important;
+}
+
+body .ai {
+    font-family: Academicons !important;
+}
