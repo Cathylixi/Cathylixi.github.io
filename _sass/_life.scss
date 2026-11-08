@@ -8,6 +8,7 @@
   margin: 0 auto;
   padding: clamp(2rem, 5vw, 4.1rem) 0 8rem;
   color: #343b40;
+  background: #fff;
 }
 
 .life-atlas__hero {
@@ -32,7 +33,7 @@
 
 .page__content .life-atlas__eyebrow {
   margin: 0;
-  color: $link-color;
+  color: #214f54;
   font-size: 0.72rem;
   font-weight: bold;
   letter-spacing: 0.18em;
@@ -122,7 +123,7 @@
   width: 44px;
   height: 44px;
   place-items: center;
-  color: $link-color;
+  color: #214f54;
   background: #fff;
   border-radius: 50%;
   font-size: 0.95rem;
@@ -153,14 +154,32 @@
 }
 
 .life-atlas-reading {
-  background: linear-gradient(135deg, #f7f9fb 0%, #edf3f8 100%);
+  background: #c8f0ef;
+
+  &:before {
+    content: "";
+    position: absolute;
+    right: clamp(1.6rem, 4vw, 2.8rem);
+    bottom: 2rem;
+    width: clamp(130px, 17vw, 190px);
+    height: clamp(92px, 12vw, 132px);
+    background:
+      linear-gradient(#f177be, #f177be) 12% 88% / 82% 18% no-repeat,
+      linear-gradient(#f5d74f, #f5d74f) 2% 61% / 73% 18% no-repeat,
+      linear-gradient(#7361dc, #7361dc) 24% 34% / 67% 18% no-repeat,
+      radial-gradient(circle, #fff 0 50%, transparent 52%) 54% 0 / 29% 38% no-repeat;
+    filter: drop-shadow(6px 7px 0 rgba(33, 79, 84, 0.09));
+    opacity: 0.95;
+    pointer-events: none;
+    transform: rotate(-3deg);
+  }
 
   &:after {
     content: attr(data-count);
     position: absolute;
     right: -0.8rem;
     bottom: -2.7rem;
-    color: rgba(40, 91, 154, 0.07);
+    color: rgba(33, 79, 84, 0.08);
     font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(8rem, 17vw, 12rem);
     line-height: 1;
@@ -204,7 +223,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  color: $link-color;
+  color: #214f54;
   font-size: 0.76rem;
   font-weight: bold;
   text-decoration: none;
@@ -220,7 +239,7 @@
   width: 34px;
   height: 34px;
   place-items: center;
-  color: $link-color;
+  color: #214f54;
   background: rgba(255, 255, 255, 0.78);
   border-radius: 50%;
   font-size: 0.72rem;
@@ -228,31 +247,33 @@
 }
 
 .life-atlas-travel {
-  color: #fff;
+  color: #343b40;
   background:
-    radial-gradient(circle at 105% 105%, rgba(255, 255, 255, 0.08) 0 34%, transparent 34.4%),
-    #304c67;
+    radial-gradient(circle at 75% 28%, #ff796f 0 11%, transparent 11.3%),
+    radial-gradient(ellipse at 110% 118%, #f1a8d5 0 39%, transparent 39.4%),
+    radial-gradient(ellipse at -5% 123%, #4bc9bd 0 45%, transparent 45.4%),
+    #fff3ad;
 
   .life-atlas-card__icon {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.13);
+    color: #214f54;
+    background: rgba(255, 255, 255, 0.78);
   }
 
   .life-atlas-card__body h2 {
-    color: #fff;
+    color: #343b40;
   }
 
   .life-atlas-card__body > p {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(52, 59, 64, 0.72);
   }
 
   .life-atlas__link {
-    color: #fff;
+    color: #214f54;
   }
 
   .life-atlas-card__arrow {
-    color: #fff;
-    background: rgba(255, 255, 255, 0.13);
+    color: #214f54;
+    background: rgba(255, 255, 255, 0.78);
   }
 }
 
@@ -262,7 +283,7 @@
   right: clamp(1.7rem, 4vw, 2.5rem);
   display: flex;
   align-items: center;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(52, 59, 64, 0.72);
   font-family: Georgia, "Times New Roman", serif;
   font-size: 0.65rem;
 
@@ -271,7 +292,7 @@
     content: "";
     width: 6px;
     height: 6px;
-    background: #fff;
+    background: #343b40;
     border-radius: 50%;
   }
 
@@ -279,7 +300,7 @@
     width: clamp(24px, 4vw, 54px);
     height: 1px;
     margin: 0 0.55rem;
-    background: rgba(255, 255, 255, 0.38);
+    background: rgba(52, 59, 64, 0.35);
   }
 }
 
@@ -300,7 +321,7 @@
   min-height: 190px;
   padding: clamp(1.35rem, 3vw, 1.8rem);
   background: #fff;
-  border: 1px solid #e1e6e9;
+  border: 1px solid #dce7e7;
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 
   &:hover,
@@ -312,13 +333,13 @@
 
     .life-atlas-mini__arrow {
       color: #fff;
-      background: $link-color;
+      background: #214f54;
       transform: translateX(3px);
     }
   }
 
   > i {
-    color: $link-color;
+    color: #214f54;
     font-size: 1.05rem;
   }
 
@@ -345,11 +366,56 @@
     width: 30px;
     height: 30px;
     place-items: center;
-    color: $link-color;
-    background: #edf3f8;
+    color: #214f54;
+    background: rgba(255, 255, 255, 0.78);
     border-radius: 50%;
     font-size: 0.66rem;
     transition: color 180ms ease, background 180ms ease, transform 180ms ease;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -2.8rem;
+    right: -2.6rem;
+    width: 9rem;
+    height: 9rem;
+    background:
+      repeating-linear-gradient(135deg, transparent 0 9px, rgba(255, 255, 255, 0.34) 9px 11px),
+      #d55bb2;
+    border-radius: 50%;
+    opacity: 0.34;
+    pointer-events: none;
+  }
+
+  &:nth-child(1) {
+    background: #f7d8f1;
+
+    &:before {
+      background:
+        repeating-linear-gradient(135deg, transparent 0 9px, rgba(255, 255, 255, 0.34) 9px 11px),
+        #d55bb2;
+    }
+  }
+
+  &:nth-child(2) {
+    background: #d7f6de;
+
+    &:before {
+      background:
+        repeating-linear-gradient(135deg, transparent 0 9px, rgba(255, 255, 255, 0.34) 9px 11px),
+        #62c584;
+    }
+  }
+
+  &:nth-child(3) {
+    background: #d9e7ff;
+
+    &:before {
+      background:
+        repeating-linear-gradient(135deg, transparent 0 9px, rgba(255, 255, 255, 0.34) 9px 11px),
+        #6e8fd7;
+    }
   }
 }
 
@@ -398,6 +464,14 @@
 
   .life-atlas-card {
     min-height: 290px;
+  }
+
+  .life-atlas-reading:before {
+    right: 1rem;
+    bottom: 1.2rem;
+    width: 118px;
+    height: 84px;
+    opacity: 0.72;
   }
 
   .life-atlas-mini {
