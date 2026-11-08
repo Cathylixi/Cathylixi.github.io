@@ -29,7 +29,11 @@ redirect_from:
         {% if item.status == "Reading" or item.status == "Watching" %}
           <article class="reading-now__item" data-type="{{ item.category | escape }}" data-index="{{ forloop.index0 }}" tabindex="0" aria-haspopup="dialog">
             <div class="reading-now__cover reading-type--{{ item.category | downcase | escape }}" aria-hidden="true">
-              {% case item.category %}{% when "Book" %}B{% when "Film" %}F{% when "Anime" %}A{% else %}{{ item.category | escape }}{% endcase %}
+              {% case item.category %}
+                {% when "Film" %}<i class="fas fa-film"></i>
+                {% when "Anime" %}<i class="fas fa-star"></i>
+                {% else %}<i class="fas fa-book-open"></i>
+              {% endcase %}
             </div>
             <div class="reading-now__copy">
               <p>{{ item.status | escape }}</p>
@@ -290,7 +294,8 @@ redirect_from:
     function renderNow() {
       var shown = 0;
       nowItems.forEach(function (item) {
-        item.hidden = type.value !== 'all' && item.dataset.type !== type.value;
+        var matchesType = type.value === 'all' || item.dataset.type === type.value;
+        item.hidden = !matchesType || shown >= 4;
         if (!item.hidden) shown += 1;
       });
       document.getElementById('reading-now-empty').hidden = shown !== 0;
