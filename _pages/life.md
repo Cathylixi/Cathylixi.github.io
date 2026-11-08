@@ -1,113 +1,74 @@
 ---
 permalink: /life/
 title: "My Life"
-excerpt: "Reading, travel, moments, and the years that shape a life."
+excerpt: "A living atlas of what I read, where I go, and the small moments I want to keep."
 author_profile: false
 ---
 
 {% assign life_items = site.data.reading_items %}
+{% assign latest_finished = life_items | where: "status", "Finished" %}
 
-<div class="life-home">
-  <header class="life-hero">
-    <div class="life-hero__copy">
-      <p class="life-eyebrow">An evolving collection</p>
-      <h1>The Life Cabinet</h1>
-      <p>Open a drawer. Find a book, a place, a photograph, or a version of me from another year.</p>
+<div class="life-atlas">
+  <header class="life-atlas__hero">
+    <div>
+      <p class="life-atlas__eyebrow">Personal archive</p>
+      <h1>My Life</h1>
+      <p class="life-atlas__intro">A living atlas of what I read, where I go, and the small moments I want to keep.</p>
     </div>
-    <div class="life-hero__chapter" aria-label="Current chapter: 2026">
+    <div class="life-atlas__chapter">
       <span>Current chapter</span>
-      <strong>2026</strong>
+      <strong>Boston → Singapore</strong>
+      <small>Learning, moving, becoming.</small>
     </div>
   </header>
 
-  <div class="life-cabinet">
-    <main class="life-shelves" aria-label="Life collections">
-      <a class="life-drawer life-drawer--open" href="{{ '/reading/' | relative_url }}">
-        <span class="life-drawer__number" aria-hidden="true">01</span>
-        <span class="life-drawer__copy">
-          <small>Books · Films · Anime</small>
-          <strong>Reading &amp; Watching</strong>
-          <span>The library, with ratings and personal notes.</span>
-        </span>
-        <span class="life-drawer__meta">
-          <strong>{{ life_items.size }}</strong>
-          <small>entries</small>
-        </span>
-        <span class="life-drawer__arrow" aria-hidden="true">→</span>
-      </a>
+  <main class="life-atlas__grid" aria-label="Life collections">
+    <article class="life-atlas-card life-atlas-reading" data-count="{{ life_items.size }}">
+      <span class="life-atlas-card__icon" aria-hidden="true"><i class="fas fa-book-open"></i></span>
+      <div class="life-atlas-reading__latest">
+        <span>Latest finished</span>
+        <strong>{% for item in latest_finished limit: 2 %}{{ item.title | escape }}{% unless forloop.last %} · {% endunless %}{% endfor %}</strong>
+      </div>
+      <div class="life-atlas-card__body">
+        <h2>Reading &amp; Watching</h2>
+        <p>Books, films, and anime that have passed through my life—and sometimes stayed.</p>
+        <a class="life-atlas__link" href="{{ '/reading/' | relative_url }}">Enter the library <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+      </div>
+    </article>
 
-      <section class="life-drawer" aria-labelledby="life-travel-title">
-        <span class="life-drawer__number" aria-hidden="true">02</span>
-        <span class="life-drawer__copy">
-          <small>Places · Routes · Postcards</small>
-          <strong id="life-travel-title">My Travel</strong>
-          <span>A map of places I have lived in, passed through, and want to remember.</span>
-        </span>
-        <span class="life-drawer__meta life-drawer__meta--soon">
-          <strong>Next</strong>
-          <small>Boston → Singapore</small>
-        </span>
-      </section>
+    <article class="life-atlas-card life-atlas-travel">
+      <span class="life-atlas-card__icon" aria-hidden="true"><i class="fas fa-map"></i></span>
+      <div class="life-atlas-travel__route" aria-label="Boston to Singapore">
+        <span>Boston</span><i aria-hidden="true"></i><span>Singapore</span>
+      </div>
+      <div class="life-atlas-card__body">
+        <h2>My Travel</h2>
+        <p>A map made from cities, train windows, borrowed rooms, and details I almost forgot.</p>
+        <span class="life-atlas__link life-atlas__link--soon">Travel journal · coming next</span>
+      </div>
+    </article>
 
-      <section class="life-drawer" aria-labelledby="life-moments-title">
-        <span class="life-drawer__number" aria-hidden="true">03</span>
-        <span class="life-drawer__copy">
-          <small>Photographs · Fragments</small>
-          <strong id="life-moments-title">Moments</strong>
-          <span>Small scenes, ordinary days, and things too lovely to lose.</span>
-        </span>
-        <span class="life-drawer__meta life-drawer__meta--quiet">
-          <strong>Soon</strong>
-          <small>A visual journal</small>
-        </span>
-      </section>
+    <div class="life-atlas__bottom">
+      <article class="life-atlas-mini">
+        <i class="fas fa-camera" aria-hidden="true"></i>
+        <h3>Small Moments</h3>
+        <p>Photographs, fragments, and ordinary days worth remembering.</p>
+        <span>Future collection</span>
+      </article>
 
-      <section class="life-drawer" aria-labelledby="life-yearbook-title">
-        <span class="life-drawer__number" aria-hidden="true">04</span>
-        <span class="life-drawer__copy">
-          <small>Chapters · Seasons · Changes</small>
-          <strong id="life-yearbook-title">Yearbook</strong>
-          <span>One page for every year, with the people and changes that shaped it.</span>
-        </span>
-        <span class="life-drawer__meta life-drawer__meta--quiet">
-          <strong>Later</strong>
-          <small>Stories by year</small>
-        </span>
-      </section>
-    </main>
+      <article class="life-atlas-mini">
+        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+        <h3>Places</h3>
+        <p>A personal index of cafés, streets, museums, and quiet corners.</p>
+        <span>Future collection</span>
+      </article>
 
-    <aside class="life-side" aria-label="Recently filed">
-      <section class="life-recent">
-        <p class="life-side__eyebrow">Recently filed</p>
-        <h2>New in the cabinet</h2>
-        <ol>
-          {% for item in life_items limit: 2 %}
-            <li>
-              <a href="{{ '/reading/' | relative_url }}">
-                <span class="life-recent__mark" aria-hidden="true">R</span>
-                <span>
-                  <small>{{ item.category | escape }} · {{ item.year | escape }}</small>
-                  <strong>{{ item.title | escape }}</strong>
-                  <em>{{ item.rating | default: item.status | escape }}</em>
-                </span>
-              </a>
-            </li>
-          {% endfor %}
-          <li class="life-recent__future">
-            <span class="life-recent__mark" aria-hidden="true">✦</span>
-            <span>
-              <small>New chapter · 2027</small>
-              <strong>Singapore</strong>
-              <em>What comes next</em>
-            </span>
-          </li>
-        </ol>
-      </section>
-
-      <blockquote class="life-note">
-        <p>A personal website can be more than a record of work. It can also remember a life.</p>
-        <span>— a note to my future self</span>
-      </blockquote>
-    </aside>
-  </div>
+      <article class="life-atlas-mini">
+        <i class="fas fa-clock" aria-hidden="true"></i>
+        <h3>Yearbook</h3>
+        <p>One page for every year—what changed, what lasted, what began.</p>
+        <span>Future collection</span>
+      </article>
+    </div>
+  </main>
 </div>
