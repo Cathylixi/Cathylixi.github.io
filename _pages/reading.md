@@ -25,7 +25,7 @@ redirect_from:
     <div class="reading-now__items" id="reading-now-items">
       {% for item in library_items %}
         {% if item.status == "Reading" or item.status == "Watching" %}
-          <article class="reading-now__item" data-type="{{ item.category | escape }}">
+          <article class="reading-now__item" data-type="{{ item.category | escape }}" data-index="{{ forloop.index0 }}" tabindex="0" aria-haspopup="dialog">
             <div class="reading-now__cover reading-type--{{ item.category | downcase | escape }}" aria-hidden="true">
               {% case item.category %}{% when "Book" %}B{% when "Film" %}F{% when "Anime" %}A{% else %}{{ item.category | escape }}{% endcase %}
             </div>
@@ -99,6 +99,7 @@ redirect_from:
         <button class="reading-reset" id="reading-reset" type="button">Reset</button>
       </div>
     </div>
+    <p class="reading-library-hint">Click any record to open its notes.</p>
 
     <div class="reading-table-wrap">
       <table class="reading-table">
@@ -156,11 +157,15 @@ redirect_from:
         <tbody id="reading-table-body">
           {% for item in library_items %}
             <tr class="reading-row"
+                data-index="{{ forloop.index0 }}"
                 data-search="{{ item.title | append: ' ' | append: item.creator | downcase | escape }}"
                 data-type="{{ item.category | escape }}"
                 data-status="{% if item.status %}{{ item.status | escape }}{% else %}Unspecified{% endif %}"
                 data-year="{% if item.year %}{{ item.year | escape }}{% else %}Unspecified{% endif %}"
-                data-rating="{% if item.rating %}{{ item.rating | escape }}{% else %}Unspecified{% endif %}">
+                data-rating="{% if item.rating %}{{ item.rating | escape }}{% else %}Unspecified{% endif %}"
+                tabindex="0"
+                aria-haspopup="dialog"
+                aria-label="Open notes for {{ item.title | escape }}">
               <td class="reading-table__title" data-label="Title">
                 <strong>{{ item.title | escape }}</strong>
                 {% if item.creator %}<span class="reading-table__creator">{{ item.creator | escape }}</span>{% endif %}
@@ -197,6 +202,25 @@ redirect_from:
     </div>
     <button class="reading-more" id="reading-more" type="button">Show more</button>
   </main>
+
+  <dialog class="reading-note" id="reading-note" aria-labelledby="reading-note-title">
+    <button class="reading-note__close" id="reading-note-close" type="button" aria-label="Close notes">&times;</button>
+    <div class="reading-note__header">
+      <span class="reading-note__type" id="reading-note-type">Book</span>
+      <p>Library note</p>
+      <h2 id="reading-note-title"></h2>
+      <span class="reading-note__creator" id="reading-note-creator"></span>
+    </div>
+    <dl class="reading-note__meta">
+      <div><dt>Status</dt><dd id="reading-note-status">—</dd></div>
+      <div><dt>Year</dt><dd id="reading-note-year">—</dd></div>
+      <div><dt>Rating</dt><dd id="reading-note-rating">—</dd></div>
+    </dl>
+    <section class="reading-note__body" aria-labelledby="reading-note-body-title">
+      <p id="reading-note-body-title">Notes</p>
+      <div id="reading-note-copy"></div>
+    </section>
+  </dialog>
 </div>
 
 <script type="application/json" id="reading-data">{{ library_items | jsonify }}</script>
@@ -215,6 +239,8 @@ redirect_from:
     var empty = document.getElementById('reading-empty');
     var count = document.getElementById('reading-result-count');
     var recentList = document.getElementById('reading-recent-list');
+    var note = document.getElementById('reading-note');
+    var noteClose = document.getElementById('reading-note-close');
     var pageSize = 30;
     var visibleLimit = pageSize;
 
@@ -293,14 +319,14 @@ redirect_from:
     }
 
     function renderRecent() {
-      var recent = selectedTypeItems().map(function (item, index) { return {item: item, index: index}; })
+      var recent = selectedTypeItems().map(function (item) { return {item: item, index: items.indexOf(item)}; })
         .filter(function (entry) { return entry.item.status === 'Finished' && entry.item.year !== null && entry.item.year !== ''; })
         .sort(function (a, b) { return yearRank(b.item.year) - yearRank(a.item.year) || a.index - b.index; })
         .slice(0, 6);
       recentList.innerHTML = recent.map(function (entry) {
         var item = entry.item;
         var creator = item.creator ? '<span>' + escapeHtml(item.creator) + '</span>' : '<span>' + escapeHtml(item.category) + '</span>';
-        return '<li><time>' + escapeHtml(item.year) + '</time><div><small>' + escapeHtml(item.category) + '</small><strong>' + escapeHtml(item.title) + '</strong>' + creator + '</div></li>';
+        return '<li data-index="' + entry.index + '" tabindex="0" aria-haspopup="dialog"><time>' + escapeHtml(item.year) + '</time><div><small>' + escapeHtml(item.category) + '</small><strong>' + escapeHtml(item.title) + '</strong>' + creator + '</div></li>';
       }).join('');
       if (!recent.length) recentList.innerHTML = '<li class="reading-recent__empty">No finished items with a recorded year.</li>';
     }
@@ -318,6 +344,40 @@ redirect_from:
       renderRecent();
     }
 
+    function displayValue(value) {
+      return value === null || value === '' || typeof value === 'undefined' ? '—' : String(value);
+    }
+
+    function openNote(index) {
+      var item = items[Number(index)];
+      if (!item) return;
+      document.getElementById('reading-note-title').textContent = item.title;
+      document.getElementById('reading-note-creator').textContent = displayValue(item.creator);
+      document.getElementById('reading-note-status').textContent = displayValue(item.status);
+      document.getElementById('reading-note-year').textContent = displayValue(item.year);
+      document.getElementById('reading-note-rating').textContent = item.rating === 'soso' ? 'So-so' : displayValue(item.rating);
+      var noteType = document.getElementById('reading-note-type');
+      noteType.textContent = item.category;
+      noteType.className = 'reading-note__type reading-type--' + item.category.toLowerCase();
+      var noteCopy = document.getElementById('reading-note-copy');
+      noteCopy.textContent = item.notes || 'No notes yet.';
+      noteCopy.classList.toggle('reading-note__empty', !item.notes);
+      note.showModal();
+    }
+
+    function openFromTarget(target) {
+      var entry = target.closest('[data-index]');
+      if (entry) openNote(entry.dataset.index);
+    }
+
+    function openFromKeyboard(event) {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      var entry = event.target.closest('[data-index]');
+      if (!entry) return;
+      event.preventDefault();
+      openNote(entry.dataset.index);
+    }
+
     [search, type, status, year, rating].forEach(function (control) {
       control.addEventListener(control === search ? 'input' : 'change', function () { update(true); });
     });
@@ -333,6 +393,16 @@ redirect_from:
     });
 
     more.addEventListener('click', function () { visibleLimit += pageSize; update(false); });
+    document.getElementById('reading-table-body').addEventListener('click', function (event) { openFromTarget(event.target); });
+    document.getElementById('reading-table-body').addEventListener('keydown', openFromKeyboard);
+    document.getElementById('reading-now-items').addEventListener('click', function (event) { openFromTarget(event.target); });
+    document.getElementById('reading-now-items').addEventListener('keydown', openFromKeyboard);
+    recentList.addEventListener('click', function (event) { openFromTarget(event.target); });
+    recentList.addEventListener('keydown', openFromKeyboard);
+    noteClose.addEventListener('click', function () { note.close(); });
+    note.addEventListener('click', function (event) {
+      if (event.target === note) note.close();
+    });
     populateYears();
     update(true);
   }());
