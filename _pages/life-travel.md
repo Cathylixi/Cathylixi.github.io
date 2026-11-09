@@ -281,12 +281,15 @@ author_profile: false
       .attr("class", (route) => `travel-map__route travel-map__route--${route.mode}`)
       .attr("data-key", (route) => route.key)
       .attr("d", (route) => path(route.geometry))
-      .on("click", (event, route) => {
-        event.stopPropagation();
-        showRouteDetail(route);
-      })
       .append("title")
       .text((route) => `${modeNames[route.mode]} · ${route.from} → ${route.to} · ${route.segments.length} recorded`);
+
+    root.querySelectorAll(".travel-map__route").forEach((routePath) => {
+      routePath.addEventListener("click", (event) => {
+        event.stopPropagation();
+        showRouteDetail(routePath.__data__);
+      });
+    });
 
     const hubMarkers = viewport.append("g").attr("class", "travel-hub-markers")
       .selectAll("g.travel-hub-marker")
@@ -317,12 +320,14 @@ author_profile: false
     markers.append("circle").attr("class", "travel-marker__hit").attr("r", 19);
     markers.append("circle").attr("class", "travel-marker__ring").attr("r", 10);
     markers.append("circle").attr("class", "travel-marker__core").attr("r", 5);
-    markers.on("click", (_, place) => updateDetail(place.id));
-    markers.on("keydown", (event, place) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault();
-        updateDetail(place.id);
-      }
+    root.querySelectorAll(".travel-marker").forEach((marker) => {
+      marker.addEventListener("click", () => updateDetail(marker.__data__.id));
+      marker.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          updateDetail(marker.__data__.id);
+        }
+      });
     });
     mapStatus.hidden = true;
   }
