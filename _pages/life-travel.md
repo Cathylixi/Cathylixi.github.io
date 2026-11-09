@@ -382,7 +382,7 @@ author_profile: false
       const samePlace = (endpoint) => normaliseCityName(endpoint.city) === nameKey && Math.hypot(endpoint.coord[0] - city.coord[0], endpoint.coord[1] - city.coord[1]) < 4;
       const routeEndpoint = endpointNames.has(nameKey) && endpoints.some(samePlace);
       const selectedEndpoint = selectedNames.has(nameKey) && selectedEndpoints.some(samePlace);
-      if (livedNames.has(nameKey) || (!routeEndpoint && city.rank > tier.rank)) return [];
+      if (livedNames.has(nameKey) || (!selectedEndpoint && city.rank > tier.rank)) return [];
       const projected = currentProjection(city.coord);
       if (!projected) return [];
       const point = currentTransform.apply(projected);
