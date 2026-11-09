@@ -958,6 +958,8 @@ body.travel-map-open { overflow: hidden; }
     color: #737e83;
     font-size: 0.7rem;
   }
+
+  &[hidden] { display: none; }
 }
 
 .trip-flight__route {
@@ -991,6 +993,7 @@ body.travel-map-open { overflow: hidden; }
 
   strong,
   .trip-flight__city,
+  .trip-flight__location-name,
   small { display: block; }
 
   strong {
@@ -1008,6 +1011,16 @@ body.travel-map-open { overflow: hidden; }
     color: #245a9b;
     font-size: 0.69rem;
     line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .trip-flight__location-name {
+    overflow: hidden;
+    margin-top: 0.12rem;
+    color: #7a8388;
+    font-size: 0.56rem;
+    line-height: 1.25;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -1239,6 +1252,15 @@ body.travel-map-open { overflow: hidden; }
   }
 
   span { font-size: 0.75rem; }
+
+  &[hidden] { display: none; }
+}
+
+.trip-search-highlight {
+  padding: 0 0.03em;
+  color: inherit;
+  background: linear-gradient(to bottom, transparent 52%, #fff0a8 52%, #fff0a8 92%, transparent 92%);
+  border-radius: 2px;
 }
 
 .trip-mode {

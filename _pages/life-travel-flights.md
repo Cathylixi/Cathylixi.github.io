@@ -53,12 +53,13 @@ author_profile: false
           {% assign to_location = site.data.travel_airport_details[flight.to_code] %}
           {% assign from_city = flight.from_city | default: from_location.city | default: flight.from_code %}
           {% assign to_city = flight.to_city | default: to_location.city | default: flight.to_code %}
-          <article class="trip-flight" data-mode="flight" data-sort-date="{{ flight.sort_date | escape }}" data-search="{{ flight.from_code | escape }} {{ from_city | escape }} {{ from_location.name | escape }} {{ flight.to_code | escape }} {{ to_city | escape }} {{ to_location.name | escape }} {{ flight.carrier | escape }} {{ flight.flight_number | escape }}">
+          <article class="trip-flight" data-mode="flight" data-sort-date="{{ flight.sort_date | escape }}" data-search="{{ flight.from_code | escape }} {{ from_city | escape }} {{ from_location.name | escape }} {{ flight.to_code | escape }} {{ to_city | escape }} {{ to_location.name | escape }}">
             <time datetime="{{ flight.sort_date | escape }}">{{ flight.date | escape }}</time>
             <div class="trip-flight__route">
               <span class="trip-flight__airport" title="{{ from_location.name | escape }}">
                 <strong>{{ flight.from_code | escape }}</strong>
                 <span class="trip-flight__city">{{ from_city | escape }}</span>
+                <span class="trip-flight__location-name">{{ from_location.name | escape }}</span>
                 {% if flight.from_time %}<small>{{ flight.from_time | escape }}</small>{% endif %}
               </span>
               <i aria-hidden="true">
@@ -67,6 +68,7 @@ author_profile: false
               <span class="trip-flight__airport" title="{{ to_location.name | escape }}">
                 <strong>{{ flight.to_code | escape }}</strong>
                 <span class="trip-flight__city">{{ to_city | escape }}</span>
+                <span class="trip-flight__location-name">{{ to_location.name | escape }}</span>
                 {% if flight.to_time %}<small>{{ flight.to_time | escape }}</small>{% endif %}
               </span>
             </div>
@@ -87,12 +89,13 @@ author_profile: false
         {% for segment in ground_journeys %}
           {% assign from_location = site.data.travel_ground_locations[segment.from_id] %}
           {% assign to_location = site.data.travel_ground_locations[segment.to_id] %}
-          <article class="trip-flight" data-mode="{{ segment.mode | escape }}" data-sort-date="{{ segment.sort_date | escape }}" data-search="{{ segment.from_code | escape }} {{ from_location.city | escape }} {{ from_location.name | escape }} {{ segment.to_code | escape }} {{ to_location.city | escape }} {{ to_location.name | escape }} {{ segment.operator | escape }} {{ segment.service | escape }}">
+          <article class="trip-flight" data-mode="{{ segment.mode | escape }}" data-sort-date="{{ segment.sort_date | escape }}" data-search="{{ segment.from_code | escape }} {{ from_location.city | escape }} {{ from_location.name | escape }} {{ segment.to_code | escape }} {{ to_location.city | escape }} {{ to_location.name | escape }}">
             <time datetime="{{ segment.sort_date | escape }}">{{ segment.date | escape }}</time>
             <div class="trip-flight__route">
               <span class="trip-flight__airport" title="{{ from_location.name | escape }}">
                 <strong>{{ segment.from_code | escape }}</strong>
                 <span class="trip-flight__city">{{ from_location.city | default: segment.from_code | escape }}</span>
+                <span class="trip-flight__location-name">{{ from_location.name | escape }}</span>
                 <small>{{ segment.from_time | escape }}</small>
               </span>
               <i aria-hidden="true">
@@ -101,6 +104,7 @@ author_profile: false
               <span class="trip-flight__airport" title="{{ to_location.name | escape }}">
                 <strong>{{ segment.to_code | escape }}</strong>
                 <span class="trip-flight__city">{{ to_location.city | default: segment.to_code | escape }}</span>
+                <span class="trip-flight__location-name">{{ to_location.name | escape }}</span>
                 {% if segment.to_time %}<small>{{ segment.to_time | escape }}</small>{% endif %}
               </span>
             </div>
@@ -158,6 +162,30 @@ author_profile: false
         const matchesQuery = !query || normalize(item.dataset.search || item.textContent).includes(query);
         item.hidden = !(matchesMode && matchesQuery);
         if (!item.hidden) visible += 1;
+      });
+      page.querySelectorAll('.trip-flight__airport strong, .trip-flight__city, .trip-flight__location-name').forEach((element) => {
+        const original = element.dataset.originalText || element.textContent;
+        element.dataset.originalText = original;
+        element.replaceChildren(document.createTextNode(original));
+        if (!query) return;
+        const originalLower = original.toLocaleLowerCase();
+        const queryLower = (search?.value || '').toLocaleLowerCase().trim();
+        if (!queryLower) return;
+        let cursor = 0;
+        let matchIndex = originalLower.indexOf(queryLower, cursor);
+        if (matchIndex < 0) return;
+        const fragment = document.createDocumentFragment();
+        while (matchIndex >= 0) {
+          if (matchIndex > cursor) fragment.append(document.createTextNode(original.slice(cursor, matchIndex)));
+          const mark = document.createElement('mark');
+          mark.className = 'trip-search-highlight';
+          mark.textContent = original.slice(matchIndex, matchIndex + queryLower.length);
+          fragment.append(mark);
+          cursor = matchIndex + queryLower.length;
+          matchIndex = originalLower.indexOf(queryLower, cursor);
+        }
+        if (cursor < original.length) fragment.append(document.createTextNode(original.slice(cursor)));
+        element.replaceChildren(fragment);
       });
       if (empty) empty.hidden = visible !== 0;
       if (status) status.textContent = query ? `${visible} matching route${visible === 1 ? '' : 's'}` : '';
