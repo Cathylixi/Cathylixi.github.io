@@ -967,9 +967,22 @@ body.travel-map-open { overflow: hidden; }
   align-items: center;
 
   > i {
+    position: relative;
     display: block;
     height: 1px;
     background: rgba(38, 54, 61, 0.38);
+
+    > span {
+      position: absolute;
+      bottom: 0.38rem;
+      left: 50%;
+      color: #7a8388;
+      font-size: 0.58rem;
+      font-style: normal;
+      line-height: 1;
+      white-space: nowrap;
+      transform: translateX(-50%);
+    }
   }
 }
 

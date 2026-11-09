@@ -48,7 +48,9 @@ author_profile: false
                 <strong>{{ flight.from_code | escape }}</strong>
                 <small>{{ flight.from_time | default: flight.from_city | escape }}</small>
               </span>
-              <i aria-hidden="true"></i>
+              <i aria-hidden="true">
+                {% if flight.duration %}<span>{{ flight.duration | escape }}</span>{% endif %}
+              </i>
               <span class="trip-flight__airport">
                 <strong>{{ flight.to_code | escape }}</strong>
                 <small>{{ flight.to_time | default: flight.to_city | escape }}</small>
@@ -59,7 +61,6 @@ author_profile: false
               <strong>{{ flight.carrier | escape }}</strong>
               <small>
                 {{ flight.flight_number | escape }}
-                {% if flight.duration %} · {{ flight.duration | escape }}{% endif %}
                 {% if flight.cabin %} · {{ flight.cabin | escape }}{% endif %}
                 {% if flight.seat %} · Seat {{ flight.seat | escape }}{% endif %}
                 {% if flight.note %} · {{ flight.note | escape }}{% endif %}
@@ -75,7 +76,9 @@ author_profile: false
                 <strong>{{ segment.from_code | escape }}</strong>
                 <small>{{ segment.from_time | escape }}</small>
               </span>
-              <i aria-hidden="true"></i>
+              <i aria-hidden="true">
+                {% if segment.duration %}<span>{{ segment.duration | escape }}</span>{% endif %}
+              </i>
               <span class="trip-flight__airport">
                 <strong>{{ segment.to_code | escape }}</strong>
                 <small>{{ segment.to_time | escape }}</small>

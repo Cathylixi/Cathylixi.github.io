@@ -14,6 +14,7 @@
   to_time: "11:50"
   carrier: "Southwest Airlines"
   flight_number: "WN1195"
+  duration: "3h 25m"
 
 - sort_date: 2026-11-08
   date: "8 Nov 2026"
@@ -23,6 +24,7 @@
   to_time: "16:10"
   carrier: "Southwest Airlines"
   flight_number: "WN2900"
+  duration: "2h 06m"
 
 - sort_date: 2026-11-05
   date: "5 Nov 2026"
@@ -32,6 +34,7 @@
   to_time: "14:55"
   carrier: "Southwest Airlines"
   flight_number: "WN958"
+  duration: "3h 00m"
 
 - sort_date: 2026-11-05
   date: "5 Nov 2026"
@@ -41,6 +44,7 @@
   to_time: "17:35"
   carrier: "Southwest Airlines"
   flight_number: "WN879"
+  duration: "3h 33m"
 
 - sort_date: 2026-10-05
   date: "5 Oct 2026"
@@ -82,6 +86,7 @@
   to_time: "13:58"
   carrier: "Delta Air Lines"
   flight_number: "DL3736"
+  duration: "2h 18m"
 
 - sort_date: 2026-03-08
   date: "8 Mar 2026"
@@ -91,6 +96,7 @@
   to_time: "23:59"
   carrier: "Delta Air Lines"
   flight_number: "DL474"
+  duration: "5h 14m"
 
 - sort_date: 2025-06-23
   date: "23 Jun 2025"
@@ -100,6 +106,7 @@
   to_time: "06:00 +1"
   carrier: "Hawaiian Airlines"
   flight_number: "HA90"
+  duration: "9h 45m"
 
 - sort_date: 2025-06-21
   date: "21 Jun 2025"
@@ -188,6 +195,7 @@
   to_city: "Boston"
   carrier: "American Airlines"
   flight_number: "AA1410"
+  duration: "3h 28m"
   cabin: "Economy"
 
 - sort_date: 2025-05-18
@@ -199,6 +207,7 @@
   to_city: "Miami"
   carrier: "American Airlines"
   flight_number: "AA1259"
+  duration: "3h 31m"
   cabin: "Economy"
 
 - sort_date: 2025-03-25
@@ -233,6 +242,7 @@
   to_city: "Boston"
   carrier: "JetBlue"
   flight_number: "B6688"
+  duration: "5h 25m"
   cabin: "Economy"
 
 - sort_date: 2025-02-02
@@ -281,6 +291,7 @@
   to_city: "Chengdu"
   carrier: "Sichuan Airlines"
   flight_number: "3U3828"
+  duration: "8h 45m"
   cabin: "Economy"
 
 - sort_date: 2024-12-16
@@ -292,6 +303,7 @@
   to_city: "Istanbul"
   carrier: "Turkish Airlines"
   flight_number: "TK82"
+  duration: "9h 20m"
   cabin: "Economy"
 
 - sort_date: 2024-10-20
@@ -304,6 +316,7 @@
   to_city: "Boston"
   carrier: "Porter Airlines"
   flight_number: "PD2949"
+  duration: "1h 37m"
   cabin: "Economy"
 
 - sort_date: 2024-10-18
@@ -316,6 +329,7 @@
   to_city: "Toronto"
   carrier: "Porter Airlines"
   flight_number: "PD2938"
+  duration: "1h 53m"
   cabin: "Economy"
 
 - sort_date: 2024-08-22
@@ -328,6 +342,7 @@
   to_city: "Tokyo"
   carrier: "XiamenAir"
   flight_number: "MF815"
+  duration: "4h 15m"
   cabin: "Economy"
 
 - sort_date: 2024-08-22
@@ -339,6 +354,7 @@
   to_city: "Newark"
   carrier: "United Airlines"
   flight_number: "UA78"
+  duration: "12h 45m"
   cabin: "Premium Economy"
 
 - sort_date: 2024-06-30
@@ -351,6 +367,7 @@
   to_city: "Xiamen"
   carrier: "China Eastern Airlines"
   flight_number: "MU2889"
+  duration: "1h 44m"
 
 - sort_date: 2024-06-29
   date: "29 Jun 2024"
@@ -362,6 +379,7 @@
   to_city: "Nanjing"
   carrier: "XiamenAir"
   flight_number: "MF8529"
+  duration: "1h 45m"
 
 - sort_date: 2024-06-01
   date: "1 Jun 2024"
@@ -373,6 +391,7 @@
   to_city: "Xiamen"
   carrier: "XiamenAir"
   flight_number: "MF840"
+  duration: "3h 25m"
   cabin: "Economy"
 
 - sort_date: 2024-05-31
@@ -403,6 +422,7 @@
   to_city: "Florence"
   carrier: "ITA Airways"
   flight_number: "AZ1675"
+  duration: "0h 55m"
   cabin: "Economy"
 
 - sort_date: 2024-05-19
@@ -414,6 +434,7 @@
   to_city: "Rome"
   carrier: "ITA Airways"
   flight_number: "AZ615"
+  duration: "8h 00m"
   cabin: "Economy"
 
 - sort_date: 2024-03-14
@@ -451,6 +472,7 @@
   to_time: "07:20 +1"
   carrier: "JetBlue"
   flight_number: "B6988"
+  duration: "5h 31m"
 
 - sort_date: 2024-01-01
   date: "2024"
@@ -472,6 +494,7 @@
   to_city: "Beijing"
   carrier: "Air China"
   flight_number: "CA170"
+  duration: "4h 30m"
 
 - sort_date: 2023-12-30
   date: "30 Dec 2023"
@@ -483,6 +506,7 @@
   to_city: "Xiamen"
   carrier: "Air China"
   flight_number: "CA1801"
+  duration: "3h 00m"
 
 - sort_date: 2023-12-26
   date: "26 Dec 2023"
@@ -513,6 +537,7 @@
   to_time: "17:05"
   carrier: "SAS"
   flight_number: "SK4113"
+  duration: "1h 30m"
   cabin: "Premium Economy"
 
 - sort_date: 2023-12-21
@@ -535,6 +560,7 @@
   to_time: "11:20"
   carrier: "Widerøe"
   flight_number: "WF1325"
+  duration: "1h 00m"
   cabin: "Economy"
 
 - sort_date: 2023-12-15
@@ -545,6 +571,7 @@
   to_time: "20:55"
   carrier: "SAS"
   flight_number: "SK4434"
+  duration: "2h 00m"
   cabin: "Premium Economy"
 
 - sort_date: 2023-12-14
@@ -555,6 +582,7 @@
   to_time: "09:30 +1"
   carrier: "Delta Air Lines"
   flight_number: "DL224"
+  duration: "7h 00m"
   note: "connection to Oslo at 14:05"
 
 - sort_date: 2023-10-01
@@ -575,6 +603,7 @@
   to_time: "22:20"
   carrier: "Cathay Pacific"
   flight_number: "CX812"
+  duration: "15h 55m"
 
 - sort_date: 2023-08-19
   date: "19 Aug 2023"
@@ -584,6 +613,7 @@
   to_time: "11:50"
   carrier: "XiamenAir"
   flight_number: "MF381"
+  duration: "1h 15m"
 
 - sort_date: 2023-07-01
   date: "1 Jul 2023"
@@ -595,6 +625,7 @@
   to_city: "Xiamen"
   carrier: "XiamenAir"
   flight_number: "MF8546"
+  duration: "1h 55m"
 
 - sort_date: 2023-06-28
   date: "28 Jun 2023"
@@ -606,6 +637,7 @@
   to_city: "Shanghai"
   carrier: "Shanghai Airlines"
   flight_number: "FM9536"
+  duration: "1h 45m"
 
 - sort_date: 2023-05-22
   date: "22 May 2023"
@@ -615,6 +647,7 @@
   to_time: "00:32 +1"
   carrier: "JetBlue"
   flight_number: "B61387"
+  duration: "6h 37m"
 
 - sort_date: 2023-03-25
   date: "2023"
@@ -664,6 +697,7 @@
   to_time: "15:44"
   carrier: "Delta Air Lines"
   flight_number: "DL454"
+  duration: "5h 34m"
 
 - sort_date: 2022-01-15
   date: "15 Jan 2022"
@@ -673,6 +707,7 @@
   to_time: "11:32"
   carrier: "JetBlue"
   flight_number: "B61236"
+  duration: "2h 47m"
 
 - sort_date: 2022-01-07
   date: "7 Jan 2022"
@@ -682,6 +717,7 @@
   to_time: "19:40"
   carrier: "Delta Air Lines"
   flight_number: "DL690"
+  duration: "2h 45m"
 
 - sort_date: 2021-12-21
   date: "21 Dec 2021"
@@ -691,6 +727,7 @@
   to_time: "23:00"
   carrier: "United Airlines"
   flight_number: "UA768"
+  duration: "1h 20m"
   note: "New York airport not specified in source"
 
 - sort_date: 2021-12-21
@@ -701,6 +738,7 @@
   to_time: "19:29"
   carrier: "United Airlines"
   flight_number: "UA591"
+  duration: "5h 18m"
   note: "New York airport not specified in source"
 
 - sort_date: 2021-12-16
@@ -711,6 +749,7 @@
   to_time: "19:50"
   carrier: "United Airlines"
   flight_number: "UA749"
+  duration: "6h 15m"
   note: "New York airport not specified in source"
 
 - sort_date: 2021-12-16
@@ -721,6 +760,7 @@
   to_time: "15:00"
   carrier: "United Airlines"
   flight_number: "UA2248"
+  duration: "1h 29m"
   note: "New York airport not specified in source"
 
 - sort_date: 2021-11-28
@@ -731,6 +771,7 @@
   to_time: "00:51 +1"
   carrier: "JetBlue"
   flight_number: "B61318"
+  duration: "1h 06m"
   note: "New York airport not specified in source"
 
 - sort_date: 2021-11-24
@@ -741,6 +782,7 @@
   to_time: "19:25"
   carrier: "American Airlines"
   flight_number: "AA2172"
+  duration: "1h 25m"
   note: "New York airport not specified in source"
 
 - sort_date: 2021-05-24
@@ -751,6 +793,7 @@
   to_time: "18:05"
   carrier: "Sichuan Airlines"
   flight_number: "3U8210"
+  duration: "1h 30m"
 
 - sort_date: 2021-05-20
   date: "20 May 2021"
@@ -760,6 +803,7 @@
   to_time: "11:40"
   carrier: "Shandong Airlines"
   flight_number: "SC8731"
+  duration: "4h 55m"
 
 - sort_date: 2021-03-19
   date: "19 Mar 2021"
@@ -769,6 +813,7 @@
   to_time: "19:50"
   carrier: "XiamenAir"
   flight_number: "MF8514"
+  duration: "1h 50m"
 
 - sort_date: 2021-03-19
   date: "19 Mar 2021"
@@ -778,6 +823,7 @@
   to_time: "17:50"
   carrier: "Shandong Airlines"
   flight_number: "SC8414"
+  duration: "1h 55m"
   note: "Source order marked partially refunded"
 
 - sort_date: 2021-03-18
@@ -788,6 +834,7 @@
   to_time: "12:45"
   carrier: "China Eastern Airlines"
   flight_number: "MU2871"
+  duration: "1h 55m"
 
 - sort_date: 2020-10-28
   date: "28 Oct 2020"
@@ -797,6 +844,7 @@
   to_time: "08:50"
   carrier: "XiamenAir"
   flight_number: "MF8532"
+  duration: "1h 50m"
 
 - sort_date: 2020-10-27
   date: "27 Oct 2020"
@@ -806,6 +854,7 @@
   to_time: "15:50"
   carrier: "Shandong Airlines"
   flight_number: "SC1173"
+  duration: "1h 35m"
 
 - sort_date: 2020-08-17
   date: "17 Aug 2020"
@@ -815,6 +864,7 @@
   to_time: "17:40"
   carrier: "Shandong Airlines"
   flight_number: "SC4812"
+  duration: "1h 40m"
 
 - sort_date: 2019-08-27
   date: "27 Aug 2019"
@@ -824,6 +874,7 @@
   to_time: "22:20"
   carrier: "Cathay Pacific"
   flight_number: "CX812"
+  duration: "16h 05m"
 
 - sort_date: 2019-08-27
   date: "27 Aug 2019"
@@ -833,3 +884,4 @@
   to_time: "13:50"
   carrier: "Cathay Dragon"
   flight_number: "KA609"
+  duration: "1h 35m"
