@@ -33,7 +33,10 @@ layout: default
     </aside>
   </header>
 
-  {% assign verified_flights = page.flights | where_exp: "flight", "flight.flight_number" | sort: "sort_date" %}
+  {% assign verified_flights = "" | split: "" %}
+  {% if page.flights %}
+    {% assign verified_flights = page.flights | where_exp: "flight", "flight.flight_number" | sort: "sort_date" %}
+  {% endif %}
   <div class="trip-ledger__body{% if verified_flights.size == 0 %} trip-ledger__body--single{% endif %}">
     {% if verified_flights.size > 0 %}
     <section class="trip-ledger trip-flights" aria-labelledby="trip-flights-title">

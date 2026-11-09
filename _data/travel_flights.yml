@@ -91,6 +91,26 @@
   carrier: "Hawaiian Airlines"
   flight_number: "HA90"
 
+- sort_date: 2025-06-20
+  date: "2025"
+  from_code: "LAS"
+  from_city: "Las Vegas"
+  to_code: "SFO"
+  to_city: "San Francisco"
+  carrier: "United Airlines"
+  flight_number: "UA594"
+  note: "Wallet archive: 20 Jun · exact travel date to confirm"
+
+- sort_date: 2025-06-20
+  date: "2025"
+  from_code: "SFO"
+  from_city: "San Francisco"
+  to_code: "KOA"
+  to_city: "Kona"
+  carrier: "United Airlines"
+  flight_number: "UA1723"
+  note: "Wallet archive: 20 Jun · exact travel date to confirm"
+
 - sort_date: 2025-06-21
   date: "21 Jun 2025"
   from_code: "ITO"
@@ -398,6 +418,26 @@
   carrier: "Widerøe"
   flight_number: "WF1325"
 
+- sort_date: 2023-12-14
+  date: "14 Dec 2023"
+  from_code: "BOS"
+  from_time: "20:30"
+  to_code: "CDG"
+  to_time: "09:30 +1"
+  carrier: "Delta Air Lines"
+  flight_number: "DL224"
+  note: "connection to Oslo at 14:05"
+
+- sort_date: 2023-10-01
+  date: "2023"
+  from_code: "BOS"
+  from_city: "Boston"
+  to_code: "PHL"
+  to_city: "Philadelphia"
+  carrier: "American Airlines"
+  flight_number: "AA185"
+  note: "Wallet archive: 1 Oct · exact travel date to confirm"
+
 - sort_date: 2023-07-01
   date: "1 Jul 2023"
   from_code: "SHA"
@@ -424,3 +464,43 @@
   to_time: "00:32 +1"
   carrier: "JetBlue"
   flight_number: "B61387"
+
+- sort_date: 2023-03-25
+  date: "2023"
+  from_code: "BOS"
+  from_city: "Boston"
+  to_code: "EWR"
+  to_city: "Newark"
+  carrier: "United Airlines"
+  flight_number: "UA570"
+  note: "Wallet archive: 25 Mar · exact travel date to confirm"
+
+- sort_date: 2023-03-25
+  date: "2023"
+  from_code: "EWR"
+  from_city: "Newark"
+  to_code: "NRT"
+  to_city: "Tokyo"
+  carrier: "United Airlines"
+  flight_number: "UA79"
+  note: "Wallet archive: 25 Mar · exact travel date to confirm"
+
+- sort_date: 2023-03-21
+  date: "2023"
+  from_code: "LAX"
+  from_city: "Los Angeles"
+  to_code: "BOS"
+  to_city: "Boston"
+  carrier: "United Airlines"
+  flight_number: "UA2424"
+  note: "Wallet archive: 21 Mar · exact travel date to confirm"
+
+- sort_date: 2023-03-20
+  date: "2023"
+  from_code: "PHX"
+  from_city: "Phoenix"
+  to_code: "LAX"
+  to_city: "Los Angeles"
+  carrier: "United Airlines"
+  flight_number: "UA1892"
+  note: "Wallet archive: 20 Mar · exact travel date to confirm"
