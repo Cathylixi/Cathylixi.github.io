@@ -33,19 +33,20 @@ layout: default
     </aside>
   </header>
 
-  <div class="trip-ledger__body">
+  {% assign verified_flights = page.flights | where_exp: "flight", "flight.flight_number" | sort: "sort_date" %}
+  <div class="trip-ledger__body{% if verified_flights.size == 0 %} trip-ledger__body--single{% endif %}">
+    {% if verified_flights.size > 0 %}
     <section class="trip-ledger trip-flights" aria-labelledby="trip-flights-title">
       <header class="trip-ledger__section-head">
         <div>
           <p class="trip-ledger__label">Transport</p>
           <h2 id="trip-flights-title">Flights</h2>
         </div>
-        {% if page.flights and page.flights.size > 0 %}<span>{{ page.flights.size }} recorded segment{% if page.flights.size != 1 %}s{% endif %}</span>{% endif %}
+        <span>{{ verified_flights.size }} recorded segment{% if verified_flights.size != 1 %}s{% endif %}</span>
       </header>
 
-      {% if page.flights and page.flights.size > 0 %}
-        <div class="trip-flights__list">
-          {% for flight in page.flights %}
+      <div class="trip-flights__list">
+          {% for flight in verified_flights %}
             <article class="trip-flight">
               <time>{{ flight.date | escape }}</time>
               <div class="trip-flight__route">
@@ -60,19 +61,14 @@ layout: default
                 </span>
               </div>
               <div class="trip-flight__meta">
-                <strong>{{ flight.carrier | default: "Carrier not recorded" | escape }}</strong>
-                <small>{% if flight.flight_number %}{{ flight.flight_number | escape }}{% else %}Flight number pending{% endif %}{% if flight.note %} · {{ flight.note | escape }}{% endif %}</small>
+                <strong>{{ flight.carrier | escape }}</strong>
+                <small>{{ flight.flight_number | escape }}{% if flight.note %} · {{ flight.note | escape }}{% endif %}</small>
               </div>
             </article>
           {% endfor %}
-        </div>
-      {% else %}
-        <div class="trip-ledger__empty">
-          <strong>Flight details have not been recorded yet.</strong>
-          <p>Airline, flight number, departure time and arrival time can be added from a ticket screenshot later.</p>
-        </div>
-      {% endif %}
+      </div>
     </section>
+    {% endif %}
 
     <section class="trip-ledger trip-itinerary" aria-labelledby="trip-itinerary-title">
       <header class="trip-ledger__section-head">
