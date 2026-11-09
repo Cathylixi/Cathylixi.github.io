@@ -133,6 +133,13 @@
 .travel-legend__dot--lived { background: #4f8577; }
 .travel-legend__dot--visited { background: #d46798; }
 
+.travel-legend__route {
+  width: 1.35rem;
+  height: 0;
+  border-top: 2px solid #d46798;
+  border-radius: 999px;
+}
+
 .travel-map-shell {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
@@ -214,6 +221,19 @@
   stroke: rgba(38, 54, 61, 0.1);
   stroke-width: 0.7;
   pointer-events: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.travel-map__routes {
+  pointer-events: none;
+}
+
+.travel-map__route {
+  fill: none;
+  stroke: #d46798;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  opacity: 0.58;
   vector-effect: non-scaling-stroke;
 }
 

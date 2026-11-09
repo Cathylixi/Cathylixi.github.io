@@ -36,6 +36,7 @@ author_profile: false
     <div class="travel-legend" aria-label="Map legend">
       <span><i class="travel-legend__dot travel-legend__dot--lived" aria-hidden="true"></i>Lived</span>
       <span><i class="travel-legend__dot travel-legend__dot--visited" aria-hidden="true"></i>Visited</span>
+      <span><i class="travel-legend__route" aria-hidden="true"></i>Flights</span>
     </div>
   </div>
 
@@ -50,7 +51,7 @@ author_profile: false
       </header>
       <svg class="travel-map" id="travel-map" role="img" aria-labelledby="travel-map-title travel-map-description">
         <title id="travel-map-title">World map of travel places</title>
-        <desc id="travel-map-description">Select a colored location marker to read the place and its travel note.</desc>
+        <desc id="travel-map-description">Recorded flight routes connect airports across the world. Select a colored location marker to read the place and its travel note.</desc>
       </svg>
       <p class="travel-map__status" id="travel-map-status" aria-live="polite">Loading map…</p>
     </div>
@@ -111,6 +112,8 @@ author_profile: false
 </article>
 
 <script type="application/json" id="travel-place-data">{{ travel_places | jsonify }}</script>
+<script type="application/json" id="travel-flight-data">{{ site.data.travel_flights | jsonify }}</script>
+<script type="application/json" id="travel-airport-data">{{ site.data.travel_airports | jsonify }}</script>
 <script type="module">
   import { geoNaturalEarth1, geoPath, geoGraticule10 } from "https://esm.sh/d3-geo@3.1.1";
   import { select } from "https://esm.sh/d3-selection@3.0.0";
@@ -119,12 +122,31 @@ author_profile: false
 
   const root = document.querySelector(".travel-page");
   const places = JSON.parse(document.getElementById("travel-place-data").textContent);
+  const flights = JSON.parse(document.getElementById("travel-flight-data").textContent);
+  const airports = JSON.parse(document.getElementById("travel-airport-data").textContent);
   const svgElement = document.getElementById("travel-map");
   const mapWrap = root.querySelector(".travel-map-wrap");
   const mapStatus = document.getElementById("travel-map-status");
   let selectedId = places.length ? places[0].id : null;
   let activeFilter = "all";
   let mapFeatures = [];
+
+  const recordedRoutes = Array.from(flights.reduce((routes, flight) => {
+    const from = airports[flight.from_code];
+    const to = airports[flight.to_code];
+    if (!from || !to) return routes;
+
+    const key = [flight.from_code, flight.to_code].sort().join("-");
+    if (!routes.has(key)) {
+      routes.set(key, {
+        key,
+        from: flight.from_code,
+        to: flight.to_code,
+        geometry: { type: "LineString", coordinates: [from, to] }
+      });
+    }
+    return routes;
+  }, new Map()).values());
 
   function visiblePlaces() {
     return activeFilter === "all" ? places : places.filter((place) => place.kind === activeFilter);
@@ -155,6 +177,15 @@ author_profile: false
     const layer = svg.append("g").attr("class", "travel-map__rendered");
     layer.append("path").datum(geoGraticule10()).attr("class", "travel-map__graticule").attr("d", path);
     layer.selectAll("path.travel-map__country").data(mapFeatures).join("path").attr("class", "travel-map__country").attr("d", path);
+
+    const routes = layer.append("g").attr("class", "travel-map__routes");
+    routes.selectAll("path.travel-map__route")
+      .data(recordedRoutes, (route) => route.key)
+      .join("path")
+      .attr("class", "travel-map__route")
+      .attr("d", (route) => path(route.geometry))
+      .append("title")
+      .text((route) => `${route.from} → ${route.to}`);
 
     const markers = layer.selectAll("g.travel-marker").data(visiblePlaces(), (place) => place.id).join("g")
       .attr("class", "travel-marker")
