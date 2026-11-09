@@ -924,6 +924,22 @@
   flight_number: "SC8731"
   duration: "4h 55m"
 
+- sort_date: 2021-04-01
+  date: "Apr 2021 (approx.)"
+  from_code: "XMN"
+  from_city: "Xiamen"
+  to_code: "HGH"
+  to_city: "Hangzhou"
+  note: "Reconstructed from memory · Jiangnan trip through Hangzhou, Yangzhou and Nanjing · exact date, airline and flight number pending"
+
+- sort_date: 2021-04-01
+  date: "Apr 2021 (approx.)"
+  from_code: "NKG"
+  from_city: "Nanjing"
+  to_code: "XMN"
+  to_city: "Xiamen"
+  note: "Reconstructed from memory · return flight after Hangzhou, Yangzhou and Nanjing · exact date, airline and flight number pending"
+
 - sort_date: 2021-03-19
   date: "19 Mar 2021"
   from_code: "NKG"
@@ -1013,6 +1029,22 @@
   flight_number: "KA609"
   duration: "1h 35m"
 
+- sort_date: 2019-01-01
+  date: "Jan 2019 (approx.)"
+  from_code: "XMN"
+  from_city: "Xiamen"
+  to_code: "CGQ"
+  to_city: "Changchun"
+  note: "Reconstructed from memory · exact date, airline and flight number pending"
+
+- sort_date: 2019-01-01
+  date: "Jan 2019 (approx.)"
+  from_code: "CGQ"
+  from_city: "Changchun"
+  to_code: "XMN"
+  to_city: "Xiamen"
+  note: "Reconstructed from memory · exact date, airline and flight number pending"
+
 - sort_date: 2014-07-01
   date: "Summer 2014 (approx.)"
   from_code: "XMN"
@@ -1076,3 +1108,51 @@
   to_code: "CTS"
   to_city: "Hokkaido"
   note: "Reconstructed from memory · Hokkaido airport represented by Sapporo/New Chitose · exact details pending"
+
+- sort_date: 2011-07-01
+  date: "Jul 2011 (approx.)"
+  from_code: "XMN"
+  from_city: "Xiamen / Dadeng"
+  to_code: "TPE"
+  to_city: "Taipei"
+  note: "Reconstructed from childhood memory · outbound route may have passed through Dadeng · exact air segment, airport and travel mode pending"
+
+- sort_date: 2011-07-01
+  date: "Jul 2011 (approx.)"
+  from_code: "TPE"
+  from_city: "Taipei"
+  to_code: "XMN"
+  to_city: "Xiamen"
+  note: "Reconstructed from childhood memory · return flight remembered but exact airport, date and flight details pending"
+
+- sort_date: 2010-07-01
+  date: "Jul 2010 (approx.)"
+  from_code: "XMN"
+  from_city: "Xiamen"
+  to_code: "PEK"
+  to_city: "Beijing"
+  note: "Reconstructed from third-grade memory · July assumed · exact date, airline and flight number pending"
+
+- sort_date: 2010-07-01
+  date: "Jul 2010 (approx.)"
+  from_code: "PEK"
+  from_city: "Beijing"
+  to_code: "XMN"
+  to_city: "Xiamen"
+  note: "Reconstructed from third-grade memory · July assumed · exact date, airline and flight number pending"
+
+- sort_date: 2009-07-01
+  date: "Jul 2009 (approx.)"
+  from_code: "XMN"
+  from_city: "Xiamen"
+  to_code: "HLD"
+  to_city: "Hailar"
+  note: "Reconstructed from second-grade memory · Inner Mongolia summer trip · July assumed · exact date, airline and flight number pending"
+
+- sort_date: 2009-07-01
+  date: "Jul 2009 (approx.)"
+  from_code: "HLD"
+  from_city: "Hailar"
+  to_code: "XMN"
+  to_city: "Xiamen"
+  note: "Reconstructed from second-grade memory · Inner Mongolia summer trip · July assumed · exact date, airline and flight number pending"

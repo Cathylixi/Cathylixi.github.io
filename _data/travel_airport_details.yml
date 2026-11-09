@@ -16,6 +16,9 @@ BOS:
 CDG:
   city: Paris
   name: Paris Charles de Gaulle Airport
+CGQ:
+  city: Changchun
+  name: Changchun Longjia International Airport
 CTS:
   city: Sapporo
   name: New Chitose Airport
@@ -52,6 +55,9 @@ HGH:
 HKG:
   city: Hong Kong
   name: Hong Kong International Airport
+HLD:
+  city: Hailar
+  name: Hulunbuir Hailar Airport
 HND:
   city: Tokyo
   name: Haneda Airport
@@ -154,6 +160,9 @@ TFU:
 TOS:
   city: Tromsø
   name: Tromsø Airport
+TPE:
+  city: Taipei
+  name: Taipei airport not confirmed
 TYO:
   city: Tokyo
   name: Airport not confirmed
