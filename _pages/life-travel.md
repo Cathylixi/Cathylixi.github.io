@@ -308,12 +308,12 @@ author_profile: false
   }
 
   function cityLabelTier(scale) {
-    if (scale < 1.5) return { rank: 0, limit: 10 };
-    if (scale < 2.3) return { rank: 1, limit: 14 };
-    if (scale < 3.5) return { rank: 1, limit: 18 };
-    if (scale < 5) return { rank: 2, limit: 22 };
-    if (scale < 7) return { rank: 3, limit: 28 };
-    return { rank: 4, limit: 36 };
+    if (scale < 1.5) return { rank: 0, population: 7000000, limit: 8 };
+    if (scale < 2.3) return { rank: 1, population: 5000000, limit: 10 };
+    if (scale < 3.5) return { rank: 1, population: 4000000, limit: 12 };
+    if (scale < 5) return { rank: 2, population: 3500000, limit: 14 };
+    if (scale < 7) return { rank: 2, population: 3000000, limit: 16 };
+    return { rank: 2, population: 2500000, limit: 18 };
   }
 
   function labelBox(point, width, height, anchor) {
@@ -382,7 +382,7 @@ author_profile: false
       const samePlace = (endpoint) => normaliseCityName(endpoint.city) === nameKey && Math.hypot(endpoint.coord[0] - city.coord[0], endpoint.coord[1] - city.coord[1]) < 4;
       const routeEndpoint = endpointNames.has(nameKey) && endpoints.some(samePlace);
       const selectedEndpoint = selectedNames.has(nameKey) && selectedEndpoints.some(samePlace);
-      if (livedNames.has(nameKey) || (!selectedEndpoint && city.rank > tier.rank)) return [];
+      if (livedNames.has(nameKey) || (!selectedEndpoint && (city.rank > tier.rank || city.population < tier.population))) return [];
       const projected = currentProjection(city.coord);
       if (!projected) return [];
       const point = currentTransform.apply(projected);
@@ -391,7 +391,7 @@ author_profile: false
       return [{ ...city, point, routeEndpoint, selectedEndpoint, priority }];
     }).sort((a, b) => b.priority - a.priority || a.name.localeCompare(b.name));
 
-    const grid = collisionGrid();
+    const grid = collisionGrid(64);
     const placed = [];
     cityLabelContext.font = "600 11px Georgia, serif";
 
