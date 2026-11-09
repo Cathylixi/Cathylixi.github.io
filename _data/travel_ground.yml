@@ -13,7 +13,6 @@
   from_time: "17:05"
   to_id: BOS-BBY
   to_code: BBY
-  note: "Arrival time is not visible in the saved pass."
 
 - id: amtrak-2026-09-02
   sort_date: 2026-09-02

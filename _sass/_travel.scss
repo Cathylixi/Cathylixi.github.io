@@ -964,8 +964,8 @@ body.travel-map-open { overflow: hidden; }
 
 .trip-flight__route {
   display: grid;
-  grid-template-columns: minmax(52px, auto) minmax(34px, 1fr) minmax(52px, auto);
-  gap: 0.55rem;
+  grid-template-columns: minmax(0, 1fr) minmax(140px, 0.85fr) minmax(0, 1fr);
+  gap: 0.75rem;
   align-items: center;
 
   > i {
@@ -1774,6 +1774,7 @@ body.travel-map-open { overflow: hidden; }
   .trip-archive-card > i { grid-column: 3; grid-row: 1 / span 2; }
   .flight-archive-ledger__columns,
   .flight-archive-ledger__body .trip-flight { grid-template-columns: 68px minmax(0, 1fr) 120px; }
+  .trip-flight__route { grid-template-columns: minmax(0, 1fr) minmax(96px, 0.72fr) minmax(0, 1fr); }
   .trip-detail-toolbar { align-items: stretch; flex-direction: column; }
   .trip-detail-search { width: 100%; }
   .page__content .trip-detail-search-status { text-align: left; }
