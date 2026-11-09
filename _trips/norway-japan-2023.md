@@ -50,6 +50,9 @@ flights:
     to_time: "23:15"
     carrier: "Finnair"
     flight_number: "AY918"
+    duration: "1h 25m"
+    cabin: "Economy (M)"
+    note: "16h 55m connection in Helsinki"
   - date: "22–23 Dec"
     sort_date: 2023-12-22
     from_code: "HEL"
@@ -58,7 +61,9 @@ flights:
     to_time: "11:55 +1"
     carrier: "Finnair"
     flight_number: "AY67"
-    note: "overnight"
+    duration: "12h 45m"
+    cabin: "Economy (M)"
+    note: "overnight · 1d 7h 5m total from Oslo"
   - date: "26 Dec"
     sort_date: 2023-12-26
     from_code: "KIX"

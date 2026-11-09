@@ -57,7 +57,13 @@ author_profile: false
             <div class="trip-flight__meta">
               <span class="trip-mode trip-mode--flight">Flight</span>
               <strong>{{ flight.carrier | escape }}</strong>
-              <small>{{ flight.flight_number | escape }}{% if flight.note %} · {{ flight.note | escape }}{% endif %}</small>
+              <small>
+                {{ flight.flight_number | escape }}
+                {% if flight.duration %} · {{ flight.duration | escape }}{% endif %}
+                {% if flight.cabin %} · {{ flight.cabin | escape }}{% endif %}
+                {% if flight.seat %} · Seat {{ flight.seat | escape }}{% endif %}
+                {% if flight.note %} · {{ flight.note | escape }}{% endif %}
+              </small>
             </div>
           </article>
         {% endfor %}

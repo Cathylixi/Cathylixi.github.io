@@ -45,11 +45,16 @@
 - sort_date: 2026-10-05
   date: "5 Oct 2026"
   from_code: "ATL"
+  from_time: "19:01"
   from_city: "Atlanta"
   to_code: "EWR"
+  to_time: "21:24"
   to_city: "Newark"
   carrier: "Frontier Airlines"
   flight_number: "F91158"
+  duration: "2h 23m"
+  cabin: "Economy (E)"
+  seat: "37D"
 
 - sort_date: 2026-10-02
   date: "2 Oct 2026"
@@ -96,26 +101,6 @@
   carrier: "Hawaiian Airlines"
   flight_number: "HA90"
 
-- sort_date: 2025-06-20
-  date: "2025"
-  from_code: "LAS"
-  from_city: "Las Vegas"
-  to_code: "SFO"
-  to_city: "San Francisco"
-  carrier: "United Airlines"
-  flight_number: "UA594"
-  note: "year confirmed from Wallet archive · exact travel date pending"
-
-- sort_date: 2025-06-20
-  date: "2025"
-  from_code: "SFO"
-  from_city: "San Francisco"
-  to_code: "KOA"
-  to_city: "Kona"
-  carrier: "United Airlines"
-  flight_number: "UA1723"
-  note: "year confirmed from Wallet archive · exact travel date pending"
-
 - sort_date: 2025-06-21
   date: "21 Jun 2025"
   from_code: "ITO"
@@ -125,6 +110,34 @@
   carrier: "Southwest Airlines"
   flight_number: "WN1185"
 
+- sort_date: 2025-06-17
+  date: "17 Jun 2025"
+  from_code: "LAS"
+  from_time: "13:20"
+  from_city: "Las Vegas"
+  to_code: "SFO"
+  to_time: "15:01"
+  to_city: "San Francisco"
+  carrier: "United Airlines"
+  flight_number: "UA594"
+  duration: "1h 41m"
+  cabin: "Economy (N)"
+  note: "connection in San Francisco · 1h 54m layover"
+
+- sort_date: 2025-06-17
+  date: "17 Jun 2025"
+  from_code: "SFO"
+  from_time: "16:55"
+  from_city: "San Francisco"
+  to_code: "KOA"
+  to_time: "19:21"
+  to_city: "Kona"
+  carrier: "United Airlines"
+  flight_number: "UA1723"
+  duration: "5h 26m"
+  cabin: "Economy (N)"
+  note: "Las Vegas to Kona journey · 9h 1m total"
+
 - sort_date: 2025-06-09
   date: "9 Jun 2025"
   from_code: "SLC"
@@ -133,6 +146,38 @@
   to_time: "13:36"
   carrier: "United Airlines"
   flight_number: "UA5584"
+  duration: "2h 21m"
+  cabin: "Economy (U)"
+
+- sort_date: 2025-06-03
+  date: "3 Jun 2025"
+  from_code: "LGA"
+  from_time: "16:55"
+  from_city: "New York"
+  to_code: "DEN"
+  to_time: "19:31"
+  to_city: "Denver"
+  carrier: "United Airlines"
+  flight_number: "UA1412"
+  duration: "4h 36m"
+  cabin: "Economy (Q)"
+  seat: "39A / 39B"
+  note: "connection in Denver · 1h 34m layover"
+
+- sort_date: 2025-06-03
+  date: "3 Jun 2025"
+  from_code: "DEN"
+  from_time: "21:05"
+  from_city: "Denver"
+  to_code: "SLC"
+  to_time: "22:45"
+  to_city: "Salt Lake City"
+  carrier: "United Airlines"
+  flight_number: "UA5280"
+  duration: "1h 40m"
+  cabin: "Economy (Q)"
+  seat: "15A / 15B"
+  note: "New York to Salt Lake City journey · 7h 50m total"
 
 - sort_date: 2025-05-24
   date: "24 May 2025"
@@ -160,15 +205,20 @@
   to_time: "06:20 +1"
   carrier: "Delta Air Lines"
   flight_number: "DL1616"
+  duration: "5h 16m"
+  cabin: "Economy (E)"
 
 - sort_date: 2025-03-22
   date: "22 Mar 2025"
   from_code: "BOS"
   from_time: "06:00"
   to_code: "SAN"
+  to_time: "09:34"
   to_city: "San Diego"
   carrier: "JetBlue"
   flight_number: "B6619"
+  duration: "6h 34m"
+  cabin: "Economy (L)"
 
 - sort_date: 2025-02-07
   date: "7 Feb 2025"
@@ -181,12 +231,30 @@
 
 - sort_date: 2025-02-02
   date: "2 Feb 2025"
+  from_code: "XMN"
+  from_time: "12:15"
+  from_city: "Xiamen"
+  to_code: "HKG"
+  to_time: "14:00"
+  to_city: "Hong Kong"
+  carrier: "Cathay Pacific"
+  flight_number: "CX977"
+  duration: "1h 45m"
+  cabin: "Economy (H)"
+  note: "connection in Hong Kong · 2h 40m layover"
+
+- sort_date: 2025-02-02
+  date: "2 Feb 2025"
   from_code: "HKG"
   from_time: "16:40"
   to_code: "LAX"
+  to_time: "13:20"
   to_city: "Los Angeles"
   carrier: "Cathay Pacific"
   flight_number: "CX882"
+  duration: "12h 40m"
+  cabin: "Premium Economy (E)"
+  note: "Xiamen to Los Angeles journey · 17h 5m total"
 
 - sort_date: 2024-12-23
   date: "23 Dec 2024"
@@ -395,6 +463,9 @@
   to_time: "11:55 +1"
   carrier: "Finnair"
   flight_number: "AY67"
+  duration: "12h 45m"
+  cabin: "Economy (M)"
+  note: "Oslo to Osaka journey · 1d 7h 5m total"
 
 - sort_date: 2023-12-21
   date: "21 Dec 2023"
@@ -413,6 +484,9 @@
   to_time: "23:15"
   carrier: "Finnair"
   flight_number: "AY918"
+  duration: "1h 25m"
+  cabin: "Economy (M)"
+  note: "connection in Helsinki · 16h 55m layover"
 
 - sort_date: 2023-12-18
   date: "18 Dec 2023"
