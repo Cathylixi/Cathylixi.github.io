@@ -285,9 +285,23 @@ author_profile: false
       .text((route) => `${modeNames[route.mode]} · ${route.from} → ${route.to} · ${route.segments.length} recorded`);
 
     root.querySelectorAll(".travel-map__route").forEach((routePath) => {
-      routePath.addEventListener("click", (event) => {
+      const hitPath = routePath.cloneNode(false);
+      const route = routePath.__data__;
+      hitPath.__data__ = route;
+      hitPath.setAttribute("class", "travel-map__route-hit");
+      hitPath.setAttribute("tabindex", "0");
+      hitPath.setAttribute("role", "button");
+      hitPath.setAttribute("aria-label", `${modeNames[route.mode]} · ${route.from} to ${route.to} · ${route.segments.length} recorded`);
+      routePath.parentNode.insertBefore(hitPath, routePath);
+      hitPath.addEventListener("click", (event) => {
         event.stopPropagation();
-        showRouteDetail(routePath.__data__);
+        showRouteDetail(route);
+      });
+      hitPath.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          showRouteDetail(route);
+        }
       });
     });
 

@@ -283,15 +283,33 @@
   stroke-width: 1.45;
   stroke-linecap: round;
   opacity: 0.52;
-  cursor: pointer;
-  pointer-events: stroke;
+  pointer-events: none;
   vector-effect: non-scaling-stroke;
 
-  &:hover,
   &.is-selected {
     stroke-width: 3.2;
     opacity: 0.95;
   }
+}
+
+.travel-map__route-hit {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.001);
+  stroke-width: 14px;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+  pointer-events: stroke;
+}
+
+.travel-map__route-hit:focus-visible {
+  stroke: rgba($travel-ink, 0.2);
+  outline: none;
+}
+
+.travel-map__route-hit:hover + .travel-map__route,
+.travel-map__route-hit:focus-visible + .travel-map__route {
+  stroke-width: 3.2;
+  opacity: 0.95;
 }
 
 .travel-map__route--flight { stroke: #d45e98; }
