@@ -586,14 +586,32 @@
   note: "connection to Oslo at 14:05"
 
 - sort_date: 2023-10-01
-  date: "2023"
+  date: "1 Oct 2023"
+  from_code: "PIT"
+  from_time: "20:19"
+  to_code: "BOS"
+  to_time: "21:56"
+  duration: "1h 37m"
+
+- sort_date: 2023-09-30
+  date: "30 Sep 2023"
   from_code: "BOS"
+  from_time: "07:55"
   from_city: "Boston"
   to_code: "PHL"
+  to_time: "09:28"
   to_city: "Philadelphia"
   carrier: "American Airlines"
   flight_number: "AA185"
-  note: "year confirmed from Wallet archive · exact travel date pending"
+  duration: "1h 33m"
+
+- sort_date: 2023-09-03
+  date: "3 Sep 2023"
+  from_code: "JFK"
+  from_time: "22:00"
+  to_code: "BOS"
+  to_time: "23:21"
+  duration: "1h 21m"
 
 - sort_date: 2023-08-20
   date: "20 Aug 2023"
@@ -649,15 +667,13 @@
   flight_number: "B61387"
   duration: "6h 37m"
 
-- sort_date: 2023-03-25
-  date: "2023"
-  from_code: "BOS"
-  from_city: "Boston"
-  to_code: "EWR"
-  to_city: "Newark"
-  carrier: "United Airlines"
-  flight_number: "UA570"
-  note: "year confirmed from Wallet archive · exact travel date pending"
+- sort_date: 2023-04-23
+  date: "23 Apr 2023"
+  from_code: "LAX"
+  from_time: "21:57"
+  to_code: "BOS"
+  to_time: "09:01 +1"
+  duration: "8h 04m"
 
 - sort_date: 2023-03-25
   date: "2023"
@@ -680,6 +696,18 @@
   note: "year confirmed from Wallet archive · exact travel date pending"
 
 - sort_date: 2023-03-20
+  date: "20 Mar 2023"
+  from_code: "BOS"
+  from_time: "07:30"
+  from_city: "Boston"
+  to_code: "EWR"
+  to_time: "08:58"
+  to_city: "Newark"
+  carrier: "United Airlines"
+  flight_number: "UA570"
+  duration: "1h 28m"
+
+- sort_date: 2023-03-20
   date: "2023"
   from_code: "PHX"
   from_city: "Phoenix"
@@ -688,6 +716,62 @@
   carrier: "United Airlines"
   flight_number: "UA1892"
   note: "year confirmed from Wallet archive · exact travel date pending"
+
+- sort_date: 2023-02-28
+  date: "28 Feb 2023"
+  from_code: "NCE"
+  from_time: "13:45"
+  to_code: "ORY"
+  to_time: "15:10"
+  duration: "1h 25m"
+
+- sort_date: 2023-02-26
+  date: "26 Feb 2023"
+  from_code: "BOS"
+  from_time: "18:19"
+  to_code: "NCE"
+  to_time: "11:52 +1"
+  duration: "11h 33m"
+
+- sort_date: 2023-02-19
+  date: "19 Feb 2023"
+  from_code: "MSP"
+  from_time: "13:15"
+  to_code: "BOS"
+  to_time: "16:58"
+  duration: "2h 43m"
+
+- sort_date: 2023-02-08
+  date: "8 Feb 2023"
+  from_code: "BOS"
+  from_time: "17:20"
+  to_code: "MSP"
+  to_time: "19:50"
+  duration: "3h 30m"
+
+- sort_date: 2022-12-29
+  date: "29 Dec 2022"
+  from_code: "BOS"
+  from_time: "09:00"
+  to_code: "HND"
+  to_time: "17:10 +1"
+  duration: "18h 10m"
+
+- sort_date: 2022-11-20
+  date: "20 Nov 2022"
+  from_code: "JFK"
+  from_time: "22:00"
+  to_code: "BOS"
+  to_time: "23:18"
+  duration: "1h 18m"
+
+- sort_date: 2022-10-20
+  date: "20 Oct 2022"
+  from_code: "BOS"
+  from_time: "12:00"
+  to_code: "LGA"
+  to_time: "13:18"
+  duration: "1h 18m"
 
 - sort_date: 2022-09-02
   date: "2 Sep 2022"
@@ -698,6 +782,14 @@
   carrier: "Delta Air Lines"
   flight_number: "DL454"
   duration: "5h 34m"
+
+- sort_date: 2022-05-16
+  date: "16 May 2022"
+  from_code: "BOS"
+  from_time: "11:00"
+  to_code: "SEA"
+  to_time: "14:16"
+  duration: "6h 16m"
 
 - sort_date: 2022-01-15
   date: "15 Jan 2022"

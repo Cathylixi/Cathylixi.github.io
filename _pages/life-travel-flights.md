@@ -6,7 +6,7 @@ excerpt: "Flights, trains, and buses in one chronological route ledger."
 author_profile: false
 ---
 
-{% assign verified_flights = site.data.travel_flights | where_exp: "flight", "flight.flight_number" %}
+{% assign verified_flights = site.data.travel_flights %}
 {% assign ground_journeys = site.data.travel_ground %}
 {% assign segment_count = verified_flights.size | plus: ground_journeys.size %}
 
@@ -58,13 +58,15 @@ author_profile: false
             </div>
             <div class="trip-flight__meta">
               <span class="trip-mode trip-mode--flight">Flight</span>
-              <strong>{{ flight.carrier | escape }}</strong>
+              <strong>{{ flight.carrier | default: "Airline not listed" | escape }}</strong>
+              {% if flight.flight_number or flight.cabin or flight.seat or flight.note %}
               <small>
-                {{ flight.flight_number | escape }}
+                {% if flight.flight_number %}{{ flight.flight_number | escape }}{% endif %}
                 {% if flight.cabin %} · {{ flight.cabin | escape }}{% endif %}
                 {% if flight.seat %} · Seat {{ flight.seat | escape }}{% endif %}
                 {% if flight.note %} · {{ flight.note | escape }}{% endif %}
               </small>
+              {% endif %}
             </div>
           </article>
         {% endfor %}
