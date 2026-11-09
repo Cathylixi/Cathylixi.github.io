@@ -136,7 +136,7 @@
 
 - sort_date: 2025-06-17
   date: "17 Jun 2025"
-  from_code: "BAY"
+  from_code: "SFO"
   from_time: "16:55"
   from_city: "San Francisco"
   to_code: "KOA"
@@ -1023,7 +1023,7 @@
 
 - sort_date: 2014-07-01
   date: "Summer 2014 (approx.)"
-  from_code: "SFO"
+  from_code: "BAY"
   from_city: "Bay Area"
   to_code: "BOS"
   to_city: "Boston"
