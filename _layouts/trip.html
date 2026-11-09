@@ -27,7 +27,7 @@ layout: default
         <p class="trip-ledger__date">{{ page.date_label | escape }}</p>
       </div>
       <dl class="trip-ledger__facts">
-        <div><dt>{{ page.days }}</dt><dd>Days</dd></div>
+        <div><dt>{{ page.days | default: "—" }}</dt><dd>Days</dd></div>
         <div><dt>{{ page.route.size }}</dt><dd>Stops</dd></div>
       </dl>
     </aside>
@@ -97,7 +97,7 @@ layout: default
 
   <details class="trip-ledger trip-plan">
     <summary>
-      <span><b class="trip-ledger__label">From Notion</b><strong>Original plan</strong></span>
+      <span><b class="trip-ledger__label">From {{ page.source_label | default: "Notion" | escape }}</b><strong>Original plan</strong></span>
       <span>View saved notes <i aria-hidden="true">↓</i></span>
     </summary>
     <div class="trip-plan__content">

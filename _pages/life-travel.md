@@ -112,7 +112,7 @@ author_profile: false
             <span class="travel-archive__icon" aria-hidden="true">{{ forloop.index }}</span>
             <span class="travel-archive__copy">
               <strong>{{ trip.title | escape }}</strong>
-              <small>{{ trip.date_label | escape }} · {{ trip.days }} days</small>
+              <small>{{ trip.date_label | escape }}{% if trip.days %} · {{ trip.days }} days{% endif %}</small>
             </span>
             <span class="travel-archive__arrow" aria-hidden="true">→</span>
           </a>
@@ -195,9 +195,12 @@ author_profile: false
   const modeNames = { flight: "Flight", train: "Train", bus: "Bus" };
   const airportMeta = {
     ATL: ["Atlanta", "Hartsfield–Jackson Atlanta International Airport"],
+    BAY: ["Bay Area", "Departure airport not confirmed"],
+    BEL: ["Belfast", "Belfast airport not confirmed"],
     BOO: ["Bodø", "Bodø Airport"], BOS: ["Boston", "Boston Logan International Airport"],
     CDG: ["Paris", "Paris Charles de Gaulle Airport"], CTS: ["Sapporo", "New Chitose Airport"],
     DCA: ["Washington, D.C.", "Reagan National Airport"], DEN: ["Denver", "Denver International Airport"],
+    DUB: ["Dublin", "Dublin Airport"], EDI: ["Edinburgh", "Edinburgh Airport"],
     EWR: ["Newark", "Newark Liberty International Airport"],
     FCO: ["Rome", "Rome Fiumicino Airport"], FLR: ["Florence", "Florence Airport"],
     HEL: ["Helsinki", "Helsinki Airport"], HKG: ["Hong Kong", "Hong Kong International Airport"],
@@ -205,6 +208,7 @@ author_profile: false
     ITO: ["Hilo", "Hilo International Airport"], KIX: ["Osaka", "Kansai International Airport"],
     KOA: ["Kona", "Kona International Airport"], LAS: ["Las Vegas", "Harry Reid International Airport"],
     LAX: ["Los Angeles", "Los Angeles International Airport"], LGA: ["New York", "LaGuardia Airport"],
+    LON: ["London", "London airport not confirmed"],
     MDW: ["Chicago", "Chicago Midway International Airport"],
     MIA: ["Miami", "Miami International Airport"], NKG: ["Nanjing", "Nanjing Lukou International Airport"],
     NRT: ["Tokyo", "Narita International Airport"], OSL: ["Oslo", "Oslo Airport"],
@@ -214,7 +218,9 @@ author_profile: false
     SHA: ["Shanghai", "Shanghai Hongqiao International Airport"], SJC: ["San Jose", "San José Mineta International Airport"],
     SLC: ["Salt Lake City", "Salt Lake City International Airport"], STL: ["St. Louis", "St. Louis Lambert International Airport"],
     TFU: ["Chengdu", "Chengdu Tianfu International Airport"], TOS: ["Tromsø", "Tromsø Airport"],
-    XMN: ["Xiamen", "Xiamen Gaoqi International Airport"], YTZ: ["Toronto", "Billy Bishop Toronto City Airport"]
+    TYO: ["Tokyo", "Tokyo airport not confirmed"], URC: ["Urumqi", "Ürümqi Diwopu International Airport"],
+    XIY: ["Xi’an", "Xi’an Xianyang International Airport"], XMN: ["Xiamen", "Xiamen Gaoqi International Airport"],
+    YTZ: ["Toronto", "Billy Bishop Toronto City Airport"]
   };
 
   const flightSegments = flights.flatMap((flight, index) => {

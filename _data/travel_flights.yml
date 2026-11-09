@@ -5,6 +5,9 @@
 # route. Its displayed month/day can be later than the actual flight, so
 # year-only records must stay year-only until the detailed pass confirms the
 # travel date. Duplicate Wallet cards (for example SLC -> LAX) count once.
+#
+# Reconstructed records are explicitly marked as approximate. Their synthetic
+# sort_date is only for chronology; it is not presented as a confirmed date.
 
 - sort_date: 2026-11-08
   date: "8 Nov 2026"
@@ -133,7 +136,7 @@
 
 - sort_date: 2025-06-17
   date: "17 Jun 2025"
-  from_code: "SFO"
+  from_code: "BAY"
   from_time: "16:55"
   from_city: "San Francisco"
   to_code: "KOA"
@@ -877,6 +880,30 @@
   duration: "1h 25m"
   note: "New York airport not specified in source"
 
+- sort_date: 2021-08-01
+  date: "1 Aug 2021"
+  from_code: "URC"
+  from_time: "09:35"
+  to_code: "XMN"
+  to_time: "16:25"
+  carrier: "XiamenAir"
+  flight_number: "MF1865"
+  duration: "6h 50m"
+  cabin: "Economy"
+  note: "Xinjiang itinerary"
+
+- sort_date: 2021-07-24
+  date: "24 Jul 2021"
+  from_code: "XMN"
+  from_time: "08:15"
+  to_code: "URC"
+  to_time: "16:10"
+  carrier: "XiamenAir"
+  flight_number: "MF8275"
+  duration: "7h 55m"
+  cabin: "Economy"
+  note: "Xinjiang itinerary"
+
 - sort_date: 2021-05-24
   date: "24 May 2021"
   from_code: "DNH"
@@ -958,6 +985,14 @@
   flight_number: "SC4812"
   duration: "1h 40m"
 
+- sort_date: 2020-07-01
+  date: "Summer 2020 (approx.)"
+  from_code: "XMN"
+  from_city: "Xiamen"
+  to_code: "XIY"
+  to_city: "Xi’an"
+  note: "Reconstructed from memory · direct flight · exact date, airline and flight number pending"
+
 - sort_date: 2019-08-27
   date: "27 Aug 2019"
   from_code: "HKG"
@@ -977,3 +1012,67 @@
   carrier: "Cathay Dragon"
   flight_number: "KA609"
   duration: "1h 35m"
+
+- sort_date: 2014-07-01
+  date: "Summer 2014 (approx.)"
+  from_code: "XMN"
+  from_city: "Xiamen"
+  to_code: "LAX"
+  to_city: "Los Angeles"
+  note: "Reconstructed from memory · study tour · exact date, airline and flight number pending"
+
+- sort_date: 2014-07-01
+  date: "Summer 2014 (approx.)"
+  from_code: "SFO"
+  from_city: "Bay Area"
+  to_code: "BOS"
+  to_city: "Boston"
+  note: "Reconstructed from memory · Bay Area departure airport not confirmed · exact date and flight details pending"
+
+- sort_date: 2013-07-01
+  date: "2013 (approx.)"
+  from_code: "XMN"
+  from_city: "Xiamen"
+  to_code: "LON"
+  to_city: "London"
+  note: "Reconstructed from memory · exact date, airports and flight details pending"
+
+- sort_date: 2013-07-01
+  date: "2013 (approx.)"
+  from_code: "LON"
+  from_city: "London"
+  to_code: "EDI"
+  to_city: "Edinburgh"
+  note: "Reconstructed from memory · exact date, airports and flight details pending"
+
+- sort_date: 2013-07-01
+  date: "2013 (approx.)"
+  from_code: "EDI"
+  from_city: "Edinburgh"
+  to_code: "BEL"
+  to_city: "Belfast"
+  note: "Reconstructed from memory · exact date, airports and flight details pending"
+
+- sort_date: 2013-07-01
+  date: "2013 (approx.)"
+  from_code: "BEL"
+  from_city: "Belfast"
+  to_code: "DUB"
+  to_city: "Dublin"
+  note: "Reconstructed from memory · exact date, airports and flight details pending"
+
+- sort_date: 2012-07-01
+  date: "Summer 2012 (approx.)"
+  from_code: "XMN"
+  from_city: "Xiamen"
+  to_code: "TYO"
+  to_city: "Tokyo"
+  note: "Reconstructed from memory · exact date, airports and flight details pending"
+
+- sort_date: 2012-07-01
+  date: "Summer 2012 (approx.)"
+  from_code: "TYO"
+  from_city: "Tokyo"
+  to_code: "CTS"
+  to_city: "Hokkaido"
+  note: "Reconstructed from memory · Hokkaido airport represented by Sapporo/New Chitose · exact details pending"

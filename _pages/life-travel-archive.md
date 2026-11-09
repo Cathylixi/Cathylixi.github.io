@@ -15,7 +15,7 @@ author_profile: false
     <div>
       <p>Completed journeys</p>
       <h1>Journey Archive</h1>
-      <span>Seven trips, arranged from the most recent journey backward.</span>
+      <span>Journeys arranged from the most recent record backward.</span>
     </div>
     <strong>{{ travel_trips.size }}</strong>
   </header>
@@ -31,7 +31,7 @@ author_profile: false
         </span>
         <span class="trip-archive-card__meta">
           <b>{{ trip.date_label | escape }}</b>
-          <small>{{ trip.days }} days · {{ trip.route.size }} stops</small>
+          <small>{% if trip.days %}{{ trip.days }} days · {% endif %}{{ trip.route.size }} stops</small>
         </span>
         <i aria-hidden="true">→</i>
       </a>
