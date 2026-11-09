@@ -72,9 +72,10 @@ author_profile: false
           <p>Completed journeys</p>
           <h2 id="travel-archive-title">Journey archive</h2>
         </div>
+        <a href="{{ '/life/travel/archive/' | relative_url }}" target="_self">View all <span aria-hidden="true">→</span></a>
       </header>
       <div class="travel-archive__list">
-        {% for trip in travel_trips %}
+        {% for trip in travel_trips limit: 3 %}
           <a class="travel-archive__item" href="{{ trip.url | relative_url }}" target="_self">
             <span class="travel-archive__icon" aria-hidden="true">{{ forloop.index }}</span>
             <span class="travel-archive__copy">
