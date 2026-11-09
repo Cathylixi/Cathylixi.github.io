@@ -333,6 +333,23 @@ author_profile: false
   });
   select(svgElement).call(zoomBehavior).on("dblclick.zoom", null);
 
+  function zoomFromCenter(multiplier) {
+    const height = Number(svgElement.getAttribute("height")) || 420;
+    const center = [mapWrap.clientWidth / 2, height / 2];
+    const nextScale = Math.max(1, Math.min(9, currentTransform.k * multiplier));
+    const ratio = nextScale / currentTransform.k;
+    const nextTransform = zoomIdentity
+      .translate(
+        center[0] - (center[0] - currentTransform.x) * ratio,
+        center[1] - (center[1] - currentTransform.y) * ratio
+      )
+      .scale(nextScale);
+
+    currentTransform = nextTransform;
+    svgElement.__zoom = nextTransform;
+    if (viewport) viewport.attr("transform", nextTransform);
+  }
+
   root.querySelectorAll("[data-travel-filter]").forEach((button) => {
     button.addEventListener("click", () => {
       activeFilter = button.dataset.travelFilter;
@@ -365,9 +382,13 @@ author_profile: false
     button.addEventListener("click", () => {
       const svg = select(svgElement);
       const action = button.dataset.mapAction;
-      if (action === "zoom-in") svg.call(zoomBehavior.scaleBy, 1.45);
-      if (action === "zoom-out") svg.call(zoomBehavior.scaleBy, 1 / 1.45);
-      if (action === "reset") svg.call(zoomBehavior.transform, zoomIdentity);
+      if (action === "zoom-in") zoomFromCenter(1.45);
+      if (action === "zoom-out") zoomFromCenter(1 / 1.45);
+      if (action === "reset") {
+        currentTransform = zoomIdentity;
+        svgElement.__zoom = zoomIdentity;
+        if (viewport) viewport.attr("transform", zoomIdentity);
+      }
       if (action === "expand") {
         const expanded = mapShell.classList.toggle("is-expanded");
         document.body.classList.toggle("travel-map-open", expanded);
