@@ -54,11 +54,16 @@ itinerary:
   - date: "13–14 Jan"
     title: "Seoul"
     detail: "Seongsu, Apgujeong, Hannam-dong, the Han River and neighbourhood shopping."
-original_plan:
-  - "Tokyo New Year and Asakusa midnight bell"
-  - "Mount Fuji and Lake Kawaguchi"
-  - "Kyoto temples, markets and winter lights"
-  - "Hakodate, Otaru and Sapporo"
-  - "Seoul neighbourhoods, cafés, music agencies and the Han River"
+notion_notes:
+  - heading: "Tokyo New Year · 30 Dec–2 Jan"
+    detail: "Ginza, Shinjuku, Shibuya Sky, Asakusa's midnight bell, Ueno Park, Tokyo Skytree and a Disney day."
+  - heading: "Mount Fuji · 3–4 Jan"
+    detail: "Train to Lake Kawaguchi, the lake and ropeway, Arakurayama Sengen Park and the five-storey pagoda before continuing to Kyoto."
+  - heading: "Kyoto · 5–7 Jan"
+    detail: "Kiyomizu-dera, Ninenzaka and Sannenzaka, Gion, Fushimi Inari, Nishiki Market and optional winter illumination at Kifune Shrine."
+  - heading: "Hokkaido · 8–12 Jan"
+    detail: "Hakodate night views and morning market, then Otaru and Sapporo before flying from New Chitose to Korea."
+  - heading: "Seoul & Busan ideas"
+    detail: "Seongsu, Apgujeong, Hannam-dong, Hongdae, cafés and music agencies, the Han River, plus a possible Busan side trip for Haeundae and the capsule train."
 notion_url: "https://app.notion.com/p/270ba7ea55c580dc8fbec2c2915fc5af"
 ---

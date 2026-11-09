@@ -110,11 +110,12 @@ itinerary:
   - date: "27–30 Dec"
     title: "Hokkaido"
     detail: "Otaru, Biei, Furano, Lake Tōya and Noboribetsu before departure."
-original_plan:
-  - "Norway and Japan SIM cards"
-  - "Snow boots, snow chains and winter clothing"
-  - "Whale watching, aurora chasing and Lofoten road trip"
-  - "Hokkaido food list: crab hot pot, soup curry, sushi, seafood breakfast and ice cream"
-  - "Ticket screenshots and the original schedule are saved in Notion"
+notion_notes:
+  - heading: "Winter preparation"
+    detail: "Norway and Japan SIM cards, snow boots and snow chains were checked off; a CCD camera and snow trousers remained on the list."
+  - heading: "Norway route"
+    detail: "Whale watching, aurora chasing and the Lofoten road trip were the core ideas, with Eliassen Rorbuer saved as the Lofoten base."
+  - heading: "Hokkaido food list"
+    detail: "Crab hot pot, soup curry, sushi and sashimi, a seafood-don breakfast and plenty of ice cream."
 notion_url: "https://app.notion.com/p/dbbc07d059b54b1e8b4052aa58f5578a"
 ---

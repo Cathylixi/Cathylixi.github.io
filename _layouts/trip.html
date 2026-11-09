@@ -13,7 +13,7 @@ layout: default
         <p class="trip-ledger__intro">{{ page.summary | escape }}</p>
       </div>
 
-      <ol class="trip-route" aria-label="Trip route">
+      <ol class="trip-route" aria-label="Trip route" style="--trip-stop-count: {{ page.route.size }};">
         {% for stop in page.route %}
           <li>{{ stop | escape }}</li>
         {% endfor %}
@@ -95,22 +95,34 @@ layout: default
     </section>
   </div>
 
+  {% if page.notion_notes and page.notion_notes.size > 0 %}
   <details class="trip-ledger trip-plan">
     <summary>
-      <span><b class="trip-ledger__label">From {{ page.source_label | default: "Notion" | escape }}</b><strong>Original plan</strong></span>
-      <span>View saved notes <i aria-hidden="true">↓</i></span>
+      <span><b class="trip-ledger__label">From Notion</b><strong>Extracted notes</strong></span>
+      <span>View trip notes <i aria-hidden="true">↓</i></span>
     </summary>
-    <div class="trip-plan__content">
-      {% if page.original_plan and page.original_plan.size > 0 %}
-        <ul>
-          {% for item in page.original_plan %}<li>{{ item | escape }}</li>{% endfor %}
-        </ul>
-      {% else %}
-        <p>No detailed plan was saved for this trip. The page is ready for notes whenever you want to add them.</p>
-      {% endif %}
-      {% if page.notion_url %}<a href="{{ page.notion_url }}" target="_self" rel="nofollow">Open the source record →</a>{% endif %}
+    <div class="trip-plan__content trip-plan__content--cards">
+      {% for note in page.notion_notes %}
+        <article class="trip-plan__note">
+          <strong>{{ note.heading | escape }}</strong>
+          <p>{{ note.detail | escape }}</p>
+        </article>
+      {% endfor %}
     </div>
   </details>
+  {% elsif page.original_plan and page.original_plan.size > 0 %}
+  <details class="trip-ledger trip-plan">
+    <summary>
+      <span><b class="trip-ledger__label">From {{ page.source_label | default: "saved notes" | escape }}</b><strong>Original plan</strong></span>
+      <span>View trip notes <i aria-hidden="true">↓</i></span>
+    </summary>
+    <div class="trip-plan__content">
+      <ul>
+        {% for item in page.original_plan %}<li>{{ item | escape }}</li>{% endfor %}
+      </ul>
+    </div>
+  </details>
+  {% endif %}
 
   <nav class="trip-detail__footer" aria-label="Travel navigation">
     <a href="{{ '/life/travel/#travel-archive' | relative_url }}" target="_self">← View all previous trips</a>

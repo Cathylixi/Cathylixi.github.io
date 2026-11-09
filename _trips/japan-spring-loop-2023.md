@@ -35,10 +35,14 @@ itinerary:
   - date: "Tohoku"
     title: "Sendai & Aomori"
     detail: "Shiroishi River, Funaoka Castle Park and the northern end of the spring route."
-original_plan:
-  - "Follow Japan's cherry-blossom forecast from south to north"
-  - "Tokyo night views, anime events and jazz bars"
-  - "Kansai temples, night blossoms and scenic trains"
-  - "Continue north through Nagano, Sendai and Aomori"
+notion_notes:
+  - heading: "Follow the blossom front"
+    detail: "The notes were built around Japan's cherry-blossom forecast, moving from Kyushu and Kansai through Tokyo and then north toward Tohoku."
+  - heading: "Kyushu ideas"
+    detail: "Fukuoka's Maizuru and Nishi parks, Kumamoto Castle and Isshingyo cherry tree, plus Omura Park in Nagasaki and a scenic rail option."
+  - heading: "Tokyo list"
+    detail: "Meguro River, Chidorigafuchi, Ueno Park, Shinjuku Gyoen, Tokyo Tower viewpoints, TeamLab and seasonal anime events, with a Ginza jazz-bar evening."
+  - heading: "Kansai to Tohoku"
+    detail: "Kansai temples and night blossoms followed by Nagano, Sendai and Aomori as the bloom moved north."
 notion_url: "https://app.notion.com/p/270ba7ea55c580dbb93afa3ab3b87037"
 ---

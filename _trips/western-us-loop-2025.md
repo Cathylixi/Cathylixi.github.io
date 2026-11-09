@@ -27,9 +27,5 @@ itinerary:
   - date: "Later days"
     title: "Return through the desert"
     detail: "The remaining daily details have not yet been recorded."
-original_plan:
-  - "Las Vegas to Zion National Park"
-  - "Bryce Canyon, Monument Valley and Page"
-  - "Horseshoe Bend, Antelope Canyon, Lake Powell and the Grand Canyon"
 notion_url: "https://app.notion.com/p/26fba7ea55c5805a8bbee548e352c82d"
 ---

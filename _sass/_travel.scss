@@ -726,6 +726,17 @@ body.travel-map-open { overflow: hidden; }
   }
 }
 
+/* The global content-link rule underlines anchors at a higher specificity.
+   Archive rows are card controls, so keep every child (including the arrow)
+   free of inherited link decoration. */
+.page__content a.travel-archive__item,
+.page__content a.trip-archive-card {
+  text-decoration: none;
+
+  &:hover,
+  &:focus { text-decoration: none; }
+}
+
 .travel-archive__icon {
   display: grid;
   place-items: center;
@@ -858,10 +869,13 @@ body.travel-map-open { overflow: hidden; }
 
 .trip-route {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  grid-template-columns: repeat(var(--trip-stop-count, 1), minmax(72px, 1fr));
   gap: 0;
   margin: 0;
   padding: 0;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
   list-style: none;
 
   li {
@@ -894,9 +908,13 @@ body.travel-map-open { overflow: hidden; }
       top: 0.37rem;
       left: calc(50% + 0.3rem);
       width: calc(100% - 0.6rem);
-      height: 1px;
+      height: 2px;
       content: "";
-      background: rgba(38, 54, 61, 0.38);
+      background: repeating-linear-gradient(
+        90deg,
+        rgba(38, 54, 61, 0.52) 0 4px,
+        transparent 4px 9px
+      );
     }
   }
 }
@@ -1493,6 +1511,29 @@ body.travel-map-open { overflow: hidden; }
   }
 }
 
+.trip-plan__content--cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  padding-top: 1rem;
+}
+
+.trip-plan__note {
+  padding: 0.9rem 1rem;
+  background: rgba(255, 255, 255, 0.52);
+  border: 1px solid rgba(38, 54, 61, 0.14);
+  border-radius: 12px;
+
+  strong {
+    font-size: 0.88rem;
+  }
+
+  p {
+    margin: 0.35rem 0 0;
+    font-size: 0.76rem;
+  }
+}
+
 .trip-detail__footer {
   margin-top: 4.5rem;
   padding: 1.6rem 0 2rem;
@@ -1794,12 +1835,15 @@ body.travel-map-open { overflow: hidden; }
   .travel-archive__item { grid-template-columns: 58px minmax(0, 1fr) auto; }
   .trip-detail-page { padding-top: 0.75rem; padding-bottom: 5rem; }
   .trip-ledger { border-radius: 14px; }
-  .trip-route { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 0; }
-  .trip-route li::after { display: none; }
+  .trip-route {
+    grid-template-columns: repeat(var(--trip-stop-count, 1), minmax(94px, 1fr));
+    -webkit-overflow-scrolling: touch;
+  }
   .trip-flight { grid-template-columns: 1fr; gap: 0.45rem; }
   .trip-flight__meta { text-align: left; }
   .trip-plan summary { align-items: flex-start; flex-direction: column; }
-  .trip-plan__content ul { grid-template-columns: 1fr; }
+  .trip-plan__content ul,
+  .trip-plan__content--cards { grid-template-columns: 1fr; }
   .trip-archive-page { padding-top: 0.75rem; padding-bottom: 5rem; }
   .trip-archive-page__hero { align-items: flex-start; flex-direction: column; }
   .trip-archive-page__hero > strong { align-self: flex-end; }
