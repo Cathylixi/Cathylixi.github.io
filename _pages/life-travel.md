@@ -46,7 +46,7 @@ author_profile: false
           <p>Places &amp; routes</p>
           <h2>Travel atlas</h2>
         </div>
-        <a href="#travel-archive">View all previous trips <span aria-hidden="true">→</span></a>
+        <a href="{{ '/life/travel/flights/' | relative_url }}" target="_self">View all previous flights <span aria-hidden="true">→</span></a>
       </header>
       <svg class="travel-map" id="travel-map" role="img" aria-labelledby="travel-map-title travel-map-description">
         <title id="travel-map-title">World map of travel places</title>
