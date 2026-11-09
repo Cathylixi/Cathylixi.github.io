@@ -990,6 +990,7 @@ body.travel-map-open { overflow: hidden; }
   min-width: 0;
 
   strong,
+  .trip-flight__city,
   small { display: block; }
 
   strong {
@@ -997,6 +998,16 @@ body.travel-map-open { overflow: hidden; }
     color: #343b40;
     font-size: 1.08rem;
     font-weight: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .trip-flight__city {
+    overflow: hidden;
+    margin-top: 0.08rem;
+    color: #245a9b;
+    font-size: 0.69rem;
+    line-height: 1.2;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -1135,11 +1146,20 @@ body.travel-map-open { overflow: hidden; }
   }
 }
 
+.trip-detail-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1.2rem;
+  margin: 0 0 1rem;
+}
+
 .trip-detail-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
-  margin: 0 0 1rem;
+  margin: 0;
 
   button {
     padding: 0.52rem 1rem;
@@ -1152,6 +1172,73 @@ body.travel-map-open { overflow: hidden; }
 
     &[aria-pressed="true"] { color: #fff; background: #26363d; }
   }
+}
+
+.trip-detail-search {
+  display: flex;
+  align-items: center;
+  width: min(360px, 100%);
+  min-height: 42px;
+  padding: 0 0.8rem;
+  background: #fff;
+  border: 1.5px solid #26363d;
+  border-radius: 999px;
+  transition: box-shadow 160ms ease, border-color 160ms ease;
+
+  &:focus-within {
+    border-color: #245a9b;
+    box-shadow: 0 0 0 3px rgba(36, 90, 155, 0.14);
+  }
+
+  svg {
+    flex: 0 0 auto;
+    width: 17px;
+    height: 17px;
+    margin-right: 0.55rem;
+    fill: none;
+    stroke: #68757b;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+  }
+
+  input {
+    width: 100%;
+    min-width: 0;
+    padding: 0.55rem 0;
+    color: #343b40;
+    font: inherit;
+    font-size: 0.82rem;
+    background: transparent;
+    border: 0;
+    outline: 0;
+
+    &::placeholder { color: #879096; }
+    &::-webkit-search-cancel-button { cursor: pointer; }
+  }
+}
+
+.page__content .trip-detail-search-status {
+  min-height: 1rem;
+  margin: -0.55rem 0 0.55rem;
+  color: #68757b;
+  font-size: 0.68rem;
+  text-align: right;
+}
+
+.trip-detail-search-empty {
+  display: grid;
+  gap: 0.35rem;
+  padding: 2.5rem 1.5rem;
+  color: #68757b;
+  text-align: center;
+
+  strong {
+    color: #343b40;
+    font-size: 1.05rem;
+    font-weight: normal;
+  }
+
+  span { font-size: 0.75rem; }
 }
 
 .trip-mode {
@@ -1609,6 +1696,9 @@ body.travel-map-open { overflow: hidden; }
   .trip-archive-card > i { grid-column: 3; grid-row: 1 / span 2; }
   .flight-archive-ledger__columns,
   .flight-archive-ledger__body .trip-flight { grid-template-columns: 68px minmax(0, 1fr) 120px; }
+  .trip-detail-toolbar { align-items: stretch; flex-direction: column; }
+  .trip-detail-search { width: 100%; }
+  .page__content .trip-detail-search-status { text-align: left; }
 }
 
 @media (max-width: 500px) {

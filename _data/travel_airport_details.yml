@@ -1,0 +1,174 @@
+ATL:
+  city: Atlanta
+  name: Hartsfield–Jackson Atlanta International Airport
+BAY:
+  city: Bay Area
+  name: Departure airport not confirmed
+BEL:
+  city: Belfast
+  name: Airport not confirmed
+BOO:
+  city: Bodø
+  name: Bodø Airport
+BOS:
+  city: Boston
+  name: Boston Logan International Airport
+CDG:
+  city: Paris
+  name: Paris Charles de Gaulle Airport
+CTS:
+  city: Sapporo
+  name: New Chitose Airport
+DCA:
+  city: Washington, D.C.
+  name: Ronald Reagan Washington National Airport
+DEN:
+  city: Denver
+  name: Denver International Airport
+DNH:
+  city: Dunhuang
+  name: Dunhuang Mogao International Airport
+DUB:
+  city: Dublin
+  name: Dublin Airport
+EDI:
+  city: Edinburgh
+  name: Edinburgh Airport
+EWR:
+  city: Newark
+  name: Newark Liberty International Airport
+FCO:
+  city: Rome
+  name: Rome Fiumicino Airport
+FLR:
+  city: Florence
+  name: Florence Airport
+HEL:
+  city: Helsinki
+  name: Helsinki Airport
+HGH:
+  city: Hangzhou
+  name: Hangzhou Xiaoshan International Airport
+HKG:
+  city: Hong Kong
+  name: Hong Kong International Airport
+HND:
+  city: Tokyo
+  name: Haneda Airport
+HNL:
+  city: Honolulu
+  name: Daniel K. Inouye International Airport
+IST:
+  city: Istanbul
+  name: Istanbul Airport
+ITO:
+  city: Hilo
+  name: Hilo International Airport
+JFK:
+  city: New York
+  name: John F. Kennedy International Airport
+KIX:
+  city: Osaka
+  name: Kansai International Airport
+KOA:
+  city: Kona
+  name: Kona International Airport
+LAS:
+  city: Las Vegas
+  name: Harry Reid International Airport
+LAX:
+  city: Los Angeles
+  name: Los Angeles International Airport
+LGA:
+  city: New York
+  name: LaGuardia Airport
+LHW:
+  city: Lanzhou
+  name: Lanzhou Zhongchuan International Airport
+LON:
+  city: London
+  name: Airport not confirmed
+MDW:
+  city: Chicago
+  name: Chicago Midway International Airport
+MIA:
+  city: Miami
+  name: Miami International Airport
+MSP:
+  city: Minneapolis–Saint Paul
+  name: Minneapolis–Saint Paul International Airport
+NCE:
+  city: Nice
+  name: Nice Côte d’Azur Airport
+NKG:
+  city: Nanjing
+  name: Nanjing Lukou International Airport
+NRT:
+  city: Tokyo
+  name: Narita International Airport
+NYC:
+  city: New York
+  name: Airport not specified
+ORY:
+  city: Paris
+  name: Paris Orly Airport
+OSL:
+  city: Oslo
+  name: Oslo Airport
+PEK:
+  city: Beijing
+  name: Beijing Capital International Airport
+PHL:
+  city: Philadelphia
+  name: Philadelphia International Airport
+PHX:
+  city: Phoenix
+  name: Phoenix Sky Harbor International Airport
+PIT:
+  city: Pittsburgh
+  name: Pittsburgh International Airport
+SAN:
+  city: San Diego
+  name: San Diego International Airport
+SEA:
+  city: Seattle
+  name: Seattle–Tacoma International Airport
+SFO:
+  city: San Francisco
+  name: San Francisco International Airport
+SHA:
+  city: Shanghai
+  name: Shanghai Hongqiao International Airport
+SJC:
+  city: San Jose
+  name: San José Mineta International Airport
+SLC:
+  city: Salt Lake City
+  name: Salt Lake City International Airport
+STL:
+  city: St. Louis
+  name: St. Louis Lambert International Airport
+TFU:
+  city: Chengdu
+  name: Chengdu Tianfu International Airport
+TOS:
+  city: Tromsø
+  name: Tromsø Airport
+TYO:
+  city: Tokyo
+  name: Airport not confirmed
+URC:
+  city: Urumqi
+  name: Ürümqi Diwopu International Airport
+XIY:
+  city: Xi’an
+  name: Xi’an Xianyang International Airport
+XMN:
+  city: Xiamen
+  name: Xiamen Gaoqi International Airport
+XNN:
+  city: Xining
+  name: Xining Caojiabao International Airport
+YTZ:
+  city: Toronto
+  name: Billy Bishop Toronto City Airport

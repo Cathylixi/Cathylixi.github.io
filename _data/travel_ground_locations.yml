@@ -1,0 +1,18 @@
+BOS-BBY:
+  city: Boston
+  name: Back Bay Station
+BOS-SS:
+  city: Boston
+  name: South Station
+EWR-NWK:
+  city: Newark
+  name: Newark Penn Station
+NYC-HY:
+  city: New York
+  name: Hudson Yards stop
+NYC-NYP:
+  city: New York
+  name: New York Penn Station / Moynihan Train Hall
+WAS-UNI:
+  city: Washington, D.C.
+  name: Union Station

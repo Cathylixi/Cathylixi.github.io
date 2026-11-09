@@ -25,12 +25,20 @@ author_profile: false
     </div>
   </header>
 
-  <nav class="trip-detail-filters" aria-label="Filter trip details">
-    <button type="button" data-trip-mode="all" aria-pressed="true">All</button>
-    <button type="button" data-trip-mode="flight" aria-pressed="false">Flights</button>
-    <button type="button" data-trip-mode="train" aria-pressed="false">Trains</button>
-    <button type="button" data-trip-mode="bus" aria-pressed="false">Buses</button>
-  </nav>
+  <div class="trip-detail-toolbar">
+    <nav class="trip-detail-filters" aria-label="Filter trip details">
+      <button type="button" data-trip-mode="all" aria-pressed="true" aria-controls="trip-detail-list">All</button>
+      <button type="button" data-trip-mode="flight" aria-pressed="false" aria-controls="trip-detail-list">Flights</button>
+      <button type="button" data-trip-mode="train" aria-pressed="false" aria-controls="trip-detail-list">Trains</button>
+      <button type="button" data-trip-mode="bus" aria-pressed="false" aria-controls="trip-detail-list">Buses</button>
+    </nav>
+    <label class="trip-detail-search" for="trip-detail-search">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+      <span class="screen-reader-text">Search by city, station or airport</span>
+      <input id="trip-detail-search" type="search" placeholder="Search city, station, or airport" autocomplete="off" aria-controls="trip-detail-list" aria-describedby="trip-detail-search-status">
+    </label>
+  </div>
+  <p class="trip-detail-search-status" id="trip-detail-search-status" aria-live="polite"></p>
 
   <section class="flight-archive-ledger" aria-label="All recorded transport, newest first">
     {% if segment_count > 0 %}
@@ -41,19 +49,25 @@ author_profile: false
       </header>
       <div class="flight-archive-ledger__body" id="trip-detail-list">
         {% for flight in verified_flights %}
-          <article class="trip-flight" data-mode="flight" data-sort-date="{{ flight.sort_date | escape }}">
+          {% assign from_location = site.data.travel_airport_details[flight.from_code] %}
+          {% assign to_location = site.data.travel_airport_details[flight.to_code] %}
+          {% assign from_city = flight.from_city | default: from_location.city | default: flight.from_code %}
+          {% assign to_city = flight.to_city | default: to_location.city | default: flight.to_code %}
+          <article class="trip-flight" data-mode="flight" data-sort-date="{{ flight.sort_date | escape }}" data-search="{{ flight.from_code | escape }} {{ from_city | escape }} {{ from_location.name | escape }} {{ flight.to_code | escape }} {{ to_city | escape }} {{ to_location.name | escape }} {{ flight.carrier | escape }} {{ flight.flight_number | escape }}">
             <time datetime="{{ flight.sort_date | escape }}">{{ flight.date | escape }}</time>
             <div class="trip-flight__route">
-              <span class="trip-flight__airport">
+              <span class="trip-flight__airport" title="{{ from_location.name | escape }}">
                 <strong>{{ flight.from_code | escape }}</strong>
-                <small>{{ flight.from_time | default: flight.from_city | escape }}</small>
+                <span class="trip-flight__city">{{ from_city | escape }}</span>
+                {% if flight.from_time %}<small>{{ flight.from_time | escape }}</small>{% endif %}
               </span>
               <i aria-hidden="true">
                 {% if flight.duration %}<span>{{ flight.duration | escape }}</span>{% endif %}
               </i>
-              <span class="trip-flight__airport">
+              <span class="trip-flight__airport" title="{{ to_location.name | escape }}">
                 <strong>{{ flight.to_code | escape }}</strong>
-                <small>{{ flight.to_time | default: flight.to_city | escape }}</small>
+                <span class="trip-flight__city">{{ to_city | escape }}</span>
+                {% if flight.to_time %}<small>{{ flight.to_time | escape }}</small>{% endif %}
               </span>
             </div>
             <div class="trip-flight__meta">
@@ -71,19 +85,23 @@ author_profile: false
           </article>
         {% endfor %}
         {% for segment in ground_journeys %}
-          <article class="trip-flight" data-mode="{{ segment.mode | escape }}" data-sort-date="{{ segment.sort_date | escape }}">
+          {% assign from_location = site.data.travel_ground_locations[segment.from_id] %}
+          {% assign to_location = site.data.travel_ground_locations[segment.to_id] %}
+          <article class="trip-flight" data-mode="{{ segment.mode | escape }}" data-sort-date="{{ segment.sort_date | escape }}" data-search="{{ segment.from_code | escape }} {{ from_location.city | escape }} {{ from_location.name | escape }} {{ segment.to_code | escape }} {{ to_location.city | escape }} {{ to_location.name | escape }} {{ segment.operator | escape }} {{ segment.service | escape }}">
             <time datetime="{{ segment.sort_date | escape }}">{{ segment.date | escape }}</time>
             <div class="trip-flight__route">
-              <span class="trip-flight__airport">
+              <span class="trip-flight__airport" title="{{ from_location.name | escape }}">
                 <strong>{{ segment.from_code | escape }}</strong>
+                <span class="trip-flight__city">{{ from_location.city | default: segment.from_code | escape }}</span>
                 <small>{{ segment.from_time | escape }}</small>
               </span>
               <i aria-hidden="true">
                 {% if segment.duration %}<span>{{ segment.duration | escape }}</span>{% endif %}
               </i>
-              <span class="trip-flight__airport">
+              <span class="trip-flight__airport" title="{{ to_location.name | escape }}">
                 <strong>{{ segment.to_code | escape }}</strong>
-                <small>{{ segment.to_time | escape }}</small>
+                <span class="trip-flight__city">{{ to_location.city | default: segment.to_code | escape }}</span>
+                {% if segment.to_time %}<small>{{ segment.to_time | escape }}</small>{% endif %}
               </span>
             </div>
             <div class="trip-flight__meta">
@@ -93,6 +111,10 @@ author_profile: false
             </div>
           </article>
         {% endfor %}
+      </div>
+      <div class="trip-detail-search-empty" id="trip-detail-search-empty" hidden>
+        <strong>No matching routes</strong>
+        <span>Try a city, airport code, airport name, station code, or station name.</span>
       </div>
     {% else %}
       <div class="flight-archive-ledger__empty">
@@ -112,17 +134,44 @@ author_profile: false
   (() => {
     const page = document.querySelector('.flight-archive-page');
     const list = document.getElementById('trip-detail-list');
+    const search = document.getElementById('trip-detail-search');
+    const status = document.getElementById('trip-detail-search-status');
+    const empty = document.getElementById('trip-detail-search-empty');
     if (!page || !list) return;
-    [...list.children]
+    const routes = [...list.querySelectorAll('.trip-flight')];
+    routes
       .sort((a, b) => b.dataset.sortDate.localeCompare(a.dataset.sortDate))
       .forEach((item) => list.appendChild(item));
 
+    let activeMode = 'all';
+    const normalize = (value) => value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLocaleLowerCase()
+      .trim();
+
+    const applyFilters = () => {
+      const query = normalize(search?.value || '');
+      let visible = 0;
+      routes.forEach((item) => {
+        const matchesMode = activeMode === 'all' || item.dataset.mode === activeMode;
+        const matchesQuery = !query || normalize(item.dataset.search || item.textContent).includes(query);
+        item.hidden = !(matchesMode && matchesQuery);
+        if (!item.hidden) visible += 1;
+      });
+      if (empty) empty.hidden = visible !== 0;
+      if (status) status.textContent = query ? `${visible} matching route${visible === 1 ? '' : 's'}` : '';
+    };
+
     page.querySelectorAll('[data-trip-mode]').forEach((button) => {
       button.addEventListener('click', () => {
-        const mode = button.dataset.tripMode;
+        activeMode = button.dataset.tripMode;
         page.querySelectorAll('[data-trip-mode]').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
-        [...list.children].forEach((item) => { item.hidden = mode !== 'all' && item.dataset.mode !== mode; });
+        applyFilters();
       });
     });
+
+    search?.addEventListener('input', applyFilters);
+    applyFilters();
   })();
 </script>
