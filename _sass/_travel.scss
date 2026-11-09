@@ -331,6 +331,23 @@
   }
 }
 
+.travel-hub-label,
+.travel-marker__label {
+  fill: #26363d;
+  stroke: rgba(255, 255, 255, 0.96);
+  stroke-width: 3px;
+  paint-order: stroke fill;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.travel-hub-label {
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+}
+
 .travel-connection {
   position: absolute;
   right: 1.2rem;

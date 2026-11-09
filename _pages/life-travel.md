@@ -248,6 +248,28 @@ author_profile: false
     root.querySelectorAll(".travel-map__route").forEach((path) => path.classList.toggle("is-selected", path.dataset.key === route.key));
   }
 
+  function updateSemanticZoom() {
+    const scale = Math.max(1, currentTransform.k || 1);
+    const showHubLabels = scale >= 2.15;
+
+    root.querySelectorAll(".travel-hub-marker circle").forEach((circle) => circle.setAttribute("r", String(2.8 / scale)));
+    root.querySelectorAll(".travel-hub-label").forEach((label) => {
+      label.style.display = showHubLabels ? "block" : "none";
+      label.setAttribute("x", String(6 / scale));
+      label.setAttribute("y", String(-5 / scale));
+      label.setAttribute("font-size", String(10 / scale));
+    });
+
+    root.querySelectorAll(".travel-marker__hit").forEach((circle) => circle.setAttribute("r", String(19 / scale)));
+    root.querySelectorAll(".travel-marker__ring").forEach((circle) => circle.setAttribute("r", String(10 / scale)));
+    root.querySelectorAll(".travel-marker__core").forEach((circle) => circle.setAttribute("r", String(5 / scale)));
+    root.querySelectorAll(".travel-marker__label").forEach((label) => {
+      label.setAttribute("x", String(13 / scale));
+      label.setAttribute("y", String(4 / scale));
+      label.setAttribute("font-size", String(11 / scale));
+    });
+  }
+
   function updateDetail(id) {
     const place = places.find((entry) => entry.id === id);
     if (!place) return;
@@ -316,6 +338,7 @@ author_profile: false
         return `translate(${point[0]},${point[1]})`;
       });
     hubMarkers.append("circle").attr("r", 2.6);
+    hubMarkers.append("text").attr("class", "travel-hub-label").text((location) => location.code);
     hubMarkers.append("title").text((location) => `${location.code} · ${location.modes.map((mode) => modeNames[mode]).join(", ")}`);
 
     const markers = viewport.selectAll("g.travel-marker").data(visiblePlaces(), (place) => place.id).join("g")
@@ -334,6 +357,7 @@ author_profile: false
     markers.append("circle").attr("class", "travel-marker__hit").attr("r", 19);
     markers.append("circle").attr("class", "travel-marker__ring").attr("r", 10);
     markers.append("circle").attr("class", "travel-marker__core").attr("r", 5);
+    markers.append("text").attr("class", "travel-marker__label").text((place) => place.city);
     root.querySelectorAll(".travel-marker").forEach((marker) => {
       marker.addEventListener("click", () => updateDetail(marker.__data__.id));
       marker.addEventListener("keydown", (event) => {
@@ -343,12 +367,14 @@ author_profile: false
         }
       });
     });
+    updateSemanticZoom();
     mapStatus.hidden = true;
   }
 
   const zoomBehavior = zoom().scaleExtent([1, 9]).on("zoom", (event) => {
     currentTransform = event.transform;
     if (viewport) viewport.attr("transform", currentTransform);
+    updateSemanticZoom();
   });
   select(svgElement).call(zoomBehavior).on("dblclick.zoom", null);
 
@@ -367,6 +393,7 @@ author_profile: false
     currentTransform = nextTransform;
     svgElement.__zoom = nextTransform;
     if (viewport) viewport.attr("transform", nextTransform);
+    updateSemanticZoom();
   }
 
   root.querySelectorAll("[data-travel-filter]").forEach((button) => {
@@ -407,6 +434,7 @@ author_profile: false
         currentTransform = zoomIdentity;
         svgElement.__zoom = zoomIdentity;
         if (viewport) viewport.attr("transform", zoomIdentity);
+        updateSemanticZoom();
       }
       if (action === "expand") {
         const expanded = mapShell.classList.toggle("is-expanded");
