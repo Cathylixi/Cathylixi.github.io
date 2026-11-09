@@ -184,18 +184,22 @@
   from_code: "MIA"
   from_time: "12:34"
   to_code: "BOS"
+  to_time: "16:02"
   to_city: "Boston"
   carrier: "American Airlines"
   flight_number: "AA1410"
+  cabin: "Economy"
 
 - sort_date: 2025-05-18
   date: "18 May 2025"
   from_code: "BOS"
   from_time: "07:40"
   to_code: "MIA"
+  to_time: "11:11"
   to_city: "Miami"
   carrier: "American Airlines"
-  flight_number: "AA4259"
+  flight_number: "AA1259"
+  cabin: "Economy"
 
 - sort_date: 2025-03-25
   date: "25 Mar 2025"
@@ -223,11 +227,13 @@
 - sort_date: 2025-02-07
   date: "7 Feb 2025"
   from_code: "LAX"
-  from_time: "15:45"
+  from_time: "16:54"
   to_code: "BOS"
+  to_time: "01:19 +1"
   to_city: "Boston"
   carrier: "JetBlue"
   flight_number: "B6688"
+  cabin: "Economy"
 
 - sort_date: 2025-02-02
   date: "2 Feb 2025"
@@ -262,68 +268,86 @@
   from_city: "Chengdu"
   to_code: "XMN"
   to_city: "Xiamen"
-  carrier: "Shanghai Airlines"
+  carrier: "China Eastern Airlines"
   flight_number: "MU5239"
 
 - sort_date: 2024-12-22
   date: "22 Dec 2024"
   from_code: "IST"
+  from_time: "15:30"
   from_city: "Istanbul"
   to_code: "TFU"
+  to_time: "05:15 +1"
   to_city: "Chengdu"
-  carrier: "Hainan Airlines"
-  flight_number: "HU3828"
+  carrier: "Sichuan Airlines"
+  flight_number: "3U3828"
+  cabin: "Economy"
 
 - sort_date: 2024-12-16
   date: "16 Dec 2024"
   from_code: "BOS"
   from_time: "20:00"
   to_code: "IST"
+  to_time: "13:20 +1"
   to_city: "Istanbul"
   carrier: "Turkish Airlines"
   flight_number: "TK82"
+  cabin: "Economy"
 
 - sort_date: 2024-10-20
   date: "20 Oct 2024"
   from_code: "YTZ"
+  from_time: "19:40"
   from_city: "Toronto"
   to_code: "BOS"
+  to_time: "21:17"
   to_city: "Boston"
   carrier: "Porter Airlines"
   flight_number: "PD2949"
+  cabin: "Economy"
 
 - sort_date: 2024-10-18
   date: "18 Oct 2024"
   from_code: "BOS"
+  from_time: "08:15"
   from_city: "Boston"
   to_code: "YTZ"
+  to_time: "10:08"
   to_city: "Toronto"
   carrier: "Porter Airlines"
   flight_number: "PD2938"
+  cabin: "Economy"
 
 - sort_date: 2024-08-22
   date: "22 Aug 2024"
   from_code: "XMN"
+  from_time: "08:30"
   from_city: "Xiamen"
   to_code: "NRT"
+  to_time: "13:45"
   to_city: "Tokyo"
   carrier: "XiamenAir"
   flight_number: "MF815"
+  cabin: "Economy"
 
 - sort_date: 2024-08-22
   date: "22 Aug 2024"
   from_code: "NRT"
-  from_time: "16:25"
+  from_time: "17:15"
   to_code: "EWR"
+  to_time: "17:00"
   to_city: "Newark"
   carrier: "United Airlines"
   flight_number: "UA78"
+  cabin: "Premium Economy"
 
 - sort_date: 2024-06-30
   date: "30 Jun 2024"
   from_code: "NKG"
+  from_time: "14:30"
   from_city: "Nanjing"
   to_code: "XMN"
+  to_time: "16:14"
   to_city: "Xiamen"
   carrier: "China Eastern Airlines"
   flight_number: "MU2889"
@@ -331,8 +355,10 @@
 - sort_date: 2024-06-29
   date: "29 Jun 2024"
   from_code: "XMN"
+  from_time: "07:30"
   from_city: "Xiamen"
   to_code: "NKG"
+  to_time: "09:15"
   to_city: "Nanjing"
   carrier: "XiamenAir"
   flight_number: "MF8529"
@@ -340,11 +366,14 @@
 - sort_date: 2024-06-01
   date: "1 Jun 2024"
   from_code: "KIX"
+  from_time: "18:55"
   from_city: "Osaka"
   to_code: "XMN"
+  to_time: "21:20"
   to_city: "Xiamen"
   carrier: "XiamenAir"
   flight_number: "MF840"
+  cabin: "Economy"
 
 - sort_date: 2024-05-31
   date: "31 May 2024"
@@ -367,20 +396,25 @@
 - sort_date: 2024-05-20
   date: "20 May 2024"
   from_code: "FCO"
+  from_time: "10:00"
   from_city: "Rome"
   to_code: "FLR"
+  to_time: "10:55"
   to_city: "Florence"
   carrier: "ITA Airways"
   flight_number: "AZ1675"
+  cabin: "Economy"
 
 - sort_date: 2024-05-19
   date: "19 May 2024"
   from_code: "BOS"
   from_time: "17:05"
   to_code: "FCO"
+  to_time: "07:05 +1"
   to_city: "Rome"
   carrier: "ITA Airways"
   flight_number: "AZ615"
+  cabin: "Economy"
 
 - sort_date: 2024-03-14
   date: "14 Mar 2024"
@@ -431,8 +465,10 @@
 - sort_date: 2023-12-30
   date: "30 Dec 2023"
   from_code: "CTS"
+  from_time: "13:50"
   from_city: "Sapporo"
   to_code: "PEK"
+  to_time: "17:20"
   to_city: "Beijing"
   carrier: "Air China"
   flight_number: "CA170"
@@ -440,8 +476,10 @@
 - sort_date: 2023-12-30
   date: "30 Dec 2023"
   from_code: "PEK"
+  from_time: "20:00"
   from_city: "Beijing"
   to_code: "XMN"
+  to_time: "23:00"
   to_city: "Xiamen"
   carrier: "Air China"
   flight_number: "CA1801"
@@ -470,11 +508,12 @@
 - sort_date: 2023-12-21
   date: "21 Dec 2023"
   from_code: "BOO"
-  from_time: "14:45"
+  from_time: "15:35"
   to_code: "OSL"
-  to_time: "16:15"
+  to_time: "17:05"
   carrier: "SAS"
   flight_number: "SK4113"
+  cabin: "Premium Economy"
 
 - sort_date: 2023-12-21
   date: "21 Dec 2023"
@@ -496,6 +535,17 @@
   to_time: "11:20"
   carrier: "Widerøe"
   flight_number: "WF1325"
+  cabin: "Economy"
+
+- sort_date: 2023-12-15
+  date: "15 Dec 2023"
+  from_code: "OSL"
+  from_time: "18:55"
+  to_code: "TOS"
+  to_time: "20:55"
+  carrier: "SAS"
+  flight_number: "SK4434"
+  cabin: "Premium Economy"
 
 - sort_date: 2023-12-14
   date: "14 Dec 2023"
@@ -517,11 +567,31 @@
   flight_number: "AA185"
   note: "year confirmed from Wallet archive · exact travel date pending"
 
+- sort_date: 2023-08-20
+  date: "20 Aug 2023"
+  from_code: "HKG"
+  from_time: "18:25"
+  to_code: "BOS"
+  to_time: "22:20"
+  carrier: "Cathay Pacific"
+  flight_number: "CX812"
+
+- sort_date: 2023-08-19
+  date: "19 Aug 2023"
+  from_code: "XMN"
+  from_time: "10:35"
+  to_code: "HKG"
+  to_time: "11:50"
+  carrier: "XiamenAir"
+  flight_number: "MF381"
+
 - sort_date: 2023-07-01
   date: "1 Jul 2023"
   from_code: "SHA"
+  from_time: "21:55"
   from_city: "Shanghai"
   to_code: "XMN"
+  to_time: "23:50"
   to_city: "Xiamen"
   carrier: "XiamenAir"
   flight_number: "MF8546"
@@ -529,8 +599,10 @@
 - sort_date: 2023-06-28
   date: "28 Jun 2023"
   from_code: "XMN"
+  from_time: "10:55"
   from_city: "Xiamen"
   to_code: "SHA"
+  to_time: "12:40"
   to_city: "Shanghai"
   carrier: "Shanghai Airlines"
   flight_number: "FM9536"
@@ -583,3 +655,181 @@
   carrier: "United Airlines"
   flight_number: "UA1892"
   note: "year confirmed from Wallet archive · exact travel date pending"
+
+- sort_date: 2022-09-02
+  date: "2 Sep 2022"
+  from_code: "LAX"
+  from_time: "07:10"
+  to_code: "BOS"
+  to_time: "15:44"
+  carrier: "Delta Air Lines"
+  flight_number: "DL454"
+
+- sort_date: 2022-01-15
+  date: "15 Jan 2022"
+  from_code: "MSP"
+  from_time: "07:45"
+  to_code: "BOS"
+  to_time: "11:32"
+  carrier: "JetBlue"
+  flight_number: "B61236"
+
+- sort_date: 2022-01-07
+  date: "7 Jan 2022"
+  from_code: "BOS"
+  from_time: "17:55"
+  to_code: "MSP"
+  to_time: "19:40"
+  carrier: "Delta Air Lines"
+  flight_number: "DL690"
+
+- sort_date: 2021-12-21
+  date: "21 Dec 2021"
+  from_code: "NYC"
+  from_time: "21:40"
+  to_code: "BOS"
+  to_time: "23:00"
+  carrier: "United Airlines"
+  flight_number: "UA768"
+  note: "New York airport not specified in source"
+
+- sort_date: 2021-12-21
+  date: "21 Dec 2021"
+  from_code: "SEA"
+  from_time: "11:11"
+  to_code: "NYC"
+  to_time: "19:29"
+  carrier: "United Airlines"
+  flight_number: "UA591"
+  note: "New York airport not specified in source"
+
+- sort_date: 2021-12-16
+  date: "16 Dec 2021"
+  from_code: "NYC"
+  from_time: "16:35"
+  to_code: "SEA"
+  to_time: "19:50"
+  carrier: "United Airlines"
+  flight_number: "UA749"
+  note: "New York airport not specified in source"
+
+- sort_date: 2021-12-16
+  date: "16 Dec 2021"
+  from_code: "BOS"
+  from_time: "13:31"
+  to_code: "NYC"
+  to_time: "15:00"
+  carrier: "United Airlines"
+  flight_number: "UA2248"
+  note: "New York airport not specified in source"
+
+- sort_date: 2021-11-28
+  date: "28 Nov 2021"
+  from_code: "NYC"
+  from_time: "23:45"
+  to_code: "BOS"
+  to_time: "00:51 +1"
+  carrier: "JetBlue"
+  flight_number: "B61318"
+  note: "New York airport not specified in source"
+
+- sort_date: 2021-11-24
+  date: "24 Nov 2021"
+  from_code: "BOS"
+  from_time: "18:00"
+  to_code: "NYC"
+  to_time: "19:25"
+  carrier: "American Airlines"
+  flight_number: "AA2172"
+  note: "New York airport not specified in source"
+
+- sort_date: 2021-05-24
+  date: "24 May 2021"
+  from_code: "DNH"
+  from_time: "16:35"
+  to_code: "XNN"
+  to_time: "18:05"
+  carrier: "Sichuan Airlines"
+  flight_number: "3U8210"
+
+- sort_date: 2021-05-20
+  date: "20 May 2021"
+  from_code: "XMN"
+  from_time: "06:45"
+  to_code: "LHW"
+  to_time: "11:40"
+  carrier: "Shandong Airlines"
+  flight_number: "SC8731"
+
+- sort_date: 2021-03-19
+  date: "19 Mar 2021"
+  from_code: "NKG"
+  from_time: "18:00"
+  to_code: "XMN"
+  to_time: "19:50"
+  carrier: "XiamenAir"
+  flight_number: "MF8514"
+
+- sort_date: 2021-03-19
+  date: "19 Mar 2021"
+  from_code: "NKG"
+  from_time: "15:55"
+  to_code: "XMN"
+  to_time: "17:50"
+  carrier: "Shandong Airlines"
+  flight_number: "SC8414"
+  note: "Source order marked partially refunded"
+
+- sort_date: 2021-03-18
+  date: "18 Mar 2021"
+  from_code: "XMN"
+  from_time: "10:50"
+  to_code: "NKG"
+  to_time: "12:45"
+  carrier: "China Eastern Airlines"
+  flight_number: "MU2871"
+
+- sort_date: 2020-10-28
+  date: "28 Oct 2020"
+  from_code: "HGH"
+  from_time: "07:00"
+  to_code: "XMN"
+  to_time: "08:50"
+  carrier: "XiamenAir"
+  flight_number: "MF8532"
+
+- sort_date: 2020-10-27
+  date: "27 Oct 2020"
+  from_code: "XMN"
+  from_time: "14:15"
+  to_code: "HGH"
+  to_time: "15:50"
+  carrier: "Shandong Airlines"
+  flight_number: "SC1173"
+
+- sort_date: 2020-08-17
+  date: "17 Aug 2020"
+  from_code: "HGH"
+  from_time: "16:00"
+  to_code: "XMN"
+  to_time: "17:40"
+  carrier: "Shandong Airlines"
+  flight_number: "SC4812"
+
+- sort_date: 2019-08-27
+  date: "27 Aug 2019"
+  from_code: "HKG"
+  from_time: "18:15"
+  to_code: "BOS"
+  to_time: "22:20"
+  carrier: "Cathay Pacific"
+  flight_number: "CX812"
+
+- sort_date: 2019-08-27
+  date: "27 Aug 2019"
+  from_code: "XMN"
+  from_time: "12:15"
+  to_code: "HKG"
+  to_time: "13:50"
+  carrier: "Cathay Dragon"
+  flight_number: "KA609"
