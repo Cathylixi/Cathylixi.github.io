@@ -1,0 +1,426 @@
+# Verified flight records. Keep this list newest first in source for readability;
+# the page also sorts by sort_date before rendering.
+
+- sort_date: 2026-11-08
+  date: "8 Nov 2026"
+  from_code: "LAS"
+  from_time: "06:25"
+  to_code: "MDW"
+  to_time: "11:50"
+  carrier: "Southwest Airlines"
+  flight_number: "WN1195"
+
+- sort_date: 2026-11-08
+  date: "8 Nov 2026"
+  from_code: "MDW"
+  from_time: "13:04"
+  to_code: "BOS"
+  to_time: "16:10"
+  carrier: "Southwest Airlines"
+  flight_number: "WN2900"
+
+- sort_date: 2026-11-05
+  date: "5 Nov 2026"
+  from_code: "BOS"
+  from_time: "12:55"
+  to_code: "STL"
+  to_time: "14:55"
+  carrier: "Southwest Airlines"
+  flight_number: "WN958"
+
+- sort_date: 2026-11-05
+  date: "5 Nov 2026"
+  from_code: "STL"
+  from_time: "16:02"
+  to_code: "LAS"
+  to_time: "17:35"
+  carrier: "Southwest Airlines"
+  flight_number: "WN879"
+
+- sort_date: 2026-10-05
+  date: "5 Oct 2026"
+  from_code: "ATL"
+  from_city: "Atlanta"
+  to_code: "EWR"
+  to_city: "Newark"
+  carrier: "Frontier Airlines"
+  flight_number: "F91158"
+
+- sort_date: 2026-10-02
+  date: "2 Oct 2026"
+  from_code: "BOS"
+  from_time: "21:10"
+  to_code: "ATL"
+  to_city: "Atlanta"
+  carrier: "JetBlue"
+  flight_number: "B61897"
+
+- sort_date: 2026-03-15
+  date: "15 Mar 2026"
+  from_code: "BOS"
+  from_time: "07:35"
+  to_code: "DCA"
+  to_city: "Washington, D.C."
+  carrier: "Delta Air Lines"
+  flight_number: "DL5692"
+
+- sort_date: 2026-03-08
+  date: "8 Mar 2026"
+  from_code: "SJC"
+  from_time: "11:40"
+  to_code: "SEA"
+  to_time: "13:58"
+  carrier: "Delta Air Lines"
+  flight_number: "DL3736"
+
+- sort_date: 2026-03-08
+  date: "8 Mar 2026"
+  from_code: "SEA"
+  from_time: "15:45"
+  to_code: "BOS"
+  to_time: "23:59"
+  carrier: "Delta Air Lines"
+  flight_number: "DL474"
+
+- sort_date: 2025-06-23
+  date: "23 Jun 2025"
+  from_code: "HNL"
+  from_time: "14:15"
+  to_code: "BOS"
+  to_time: "06:00 +1"
+  carrier: "Hawaiian Airlines"
+  flight_number: "HA90"
+
+- sort_date: 2025-06-21
+  date: "21 Jun 2025"
+  from_code: "ITO"
+  from_time: "11:45"
+  to_code: "HNL"
+  to_city: "Honolulu"
+  carrier: "Southwest Airlines"
+  flight_number: "WN1185"
+
+- sort_date: 2025-06-09
+  date: "9 Jun 2025"
+  from_code: "SLC"
+  from_time: "12:15"
+  to_code: "LAX"
+  to_time: "13:36"
+  carrier: "United Airlines"
+  flight_number: "UA5584"
+
+- sort_date: 2025-05-24
+  date: "24 May 2025"
+  from_code: "MIA"
+  from_time: "12:34"
+  to_code: "BOS"
+  to_city: "Boston"
+  carrier: "American Airlines"
+  flight_number: "AA1410"
+
+- sort_date: 2025-05-18
+  date: "18 May 2025"
+  from_code: "BOS"
+  from_time: "07:40"
+  to_code: "MIA"
+  to_city: "Miami"
+  carrier: "American Airlines"
+  flight_number: "AA4259"
+
+- sort_date: 2025-03-25
+  date: "25 Mar 2025"
+  from_code: "SAN"
+  from_time: "22:04"
+  to_code: "BOS"
+  to_time: "06:20 +1"
+  carrier: "Delta Air Lines"
+  flight_number: "DL1616"
+
+- sort_date: 2025-03-22
+  date: "22 Mar 2025"
+  from_code: "BOS"
+  from_time: "06:00"
+  to_code: "SAN"
+  to_city: "San Diego"
+  carrier: "JetBlue"
+  flight_number: "B6619"
+
+- sort_date: 2025-02-07
+  date: "7 Feb 2025"
+  from_code: "LAX"
+  from_time: "15:45"
+  to_code: "BOS"
+  to_city: "Boston"
+  carrier: "JetBlue"
+  flight_number: "B6688"
+
+- sort_date: 2025-02-02
+  date: "2 Feb 2025"
+  from_code: "HKG"
+  from_time: "16:40"
+  to_code: "LAX"
+  to_city: "Los Angeles"
+  carrier: "Cathay Pacific"
+  flight_number: "CX882"
+
+- sort_date: 2024-12-23
+  date: "23 Dec 2024"
+  from_code: "TFU"
+  from_city: "Chengdu"
+  to_code: "XMN"
+  to_city: "Xiamen"
+  carrier: "Shanghai Airlines"
+  flight_number: "MU5239"
+
+- sort_date: 2024-12-22
+  date: "22 Dec 2024"
+  from_code: "IST"
+  from_city: "Istanbul"
+  to_code: "TFU"
+  to_city: "Chengdu"
+  carrier: "Hainan Airlines"
+  flight_number: "HU3828"
+
+- sort_date: 2024-12-16
+  date: "16 Dec 2024"
+  from_code: "BOS"
+  from_time: "20:00"
+  to_code: "IST"
+  to_city: "Istanbul"
+  carrier: "Turkish Airlines"
+  flight_number: "TK82"
+
+- sort_date: 2024-10-20
+  date: "20 Oct 2024"
+  from_code: "YTZ"
+  from_city: "Toronto"
+  to_code: "BOS"
+  to_city: "Boston"
+  carrier: "Porter Airlines"
+  flight_number: "PD2949"
+
+- sort_date: 2024-10-18
+  date: "18 Oct 2024"
+  from_code: "BOS"
+  from_city: "Boston"
+  to_code: "YTZ"
+  to_city: "Toronto"
+  carrier: "Porter Airlines"
+  flight_number: "PD2938"
+
+- sort_date: 2024-08-22
+  date: "22 Aug 2024"
+  from_code: "XMN"
+  from_city: "Xiamen"
+  to_code: "NRT"
+  to_city: "Tokyo"
+  carrier: "XiamenAir"
+  flight_number: "MF815"
+
+- sort_date: 2024-08-22
+  date: "22 Aug 2024"
+  from_code: "NRT"
+  from_time: "16:25"
+  to_code: "EWR"
+  to_city: "Newark"
+  carrier: "United Airlines"
+  flight_number: "UA78"
+
+- sort_date: 2024-06-30
+  date: "30 Jun 2024"
+  from_code: "NKG"
+  from_city: "Nanjing"
+  to_code: "XMN"
+  to_city: "Xiamen"
+  carrier: "China Eastern Airlines"
+  flight_number: "MU2889"
+
+- sort_date: 2024-06-29
+  date: "29 Jun 2024"
+  from_code: "XMN"
+  from_city: "Xiamen"
+  to_code: "NKG"
+  to_city: "Nanjing"
+  carrier: "XiamenAir"
+  flight_number: "MF8529"
+
+- sort_date: 2024-06-01
+  date: "1 Jun 2024"
+  from_code: "KIX"
+  from_city: "Osaka"
+  to_code: "XMN"
+  to_city: "Xiamen"
+  carrier: "XiamenAir"
+  flight_number: "MF840"
+
+- sort_date: 2024-05-31
+  date: "31 May 2024"
+  from_code: "FCO"
+  from_city: "Rome"
+  to_code: "CDG"
+  to_city: "Paris"
+  carrier: "Air France"
+  flight_number: "AF1005"
+
+- sort_date: 2024-05-31
+  date: "31 May 2024"
+  from_code: "CDG"
+  from_city: "Paris"
+  to_code: "NRT"
+  to_city: "Tokyo"
+  carrier: "Air France"
+  flight_number: "AF246"
+
+- sort_date: 2024-05-20
+  date: "20 May 2024"
+  from_code: "FCO"
+  from_city: "Rome"
+  to_code: "FLR"
+  to_city: "Florence"
+  carrier: "ITA Airways"
+  flight_number: "AZ1675"
+
+- sort_date: 2024-05-19
+  date: "19 May 2024"
+  from_code: "BOS"
+  from_time: "17:05"
+  to_code: "FCO"
+  to_city: "Rome"
+  carrier: "ITA Airways"
+  flight_number: "AZ615"
+
+- sort_date: 2024-03-14
+  date: "14 Mar 2024"
+  from_code: "MIA"
+  from_time: "11:16 boarding"
+  to_code: "BOS"
+  to_city: "Boston"
+  carrier: "Delta Air Lines"
+  flight_number: "DL1399"
+
+- sort_date: 2024-03-10
+  date: "10 Mar 2024"
+  from_code: "BOS"
+  from_time: "14:30"
+  to_code: "MIA"
+  to_city: "Miami"
+  carrier: "American Airlines"
+  flight_number: "AA2340"
+
+- sort_date: 2024-01-18
+  date: "18 Jan 2024"
+  from_code: "XMN"
+  from_city: "Xiamen"
+  to_code: "LAX"
+  to_city: "Los Angeles"
+  carrier: "XiamenAir"
+  flight_number: "MF829"
+
+- sort_date: 2024-01-18
+  date: "18 Jan 2024"
+  from_code: "LAX"
+  from_time: "22:49"
+  to_code: "BOS"
+  to_time: "07:20 +1"
+  carrier: "JetBlue"
+  flight_number: "B6988"
+
+- sort_date: 2024-01-01
+  date: "2024"
+  from_code: "HKG"
+  from_city: "Hong Kong"
+  to_code: "BOS"
+  to_city: "Boston"
+  carrier: "Cathay Pacific"
+  flight_number: "CX812"
+  note: "exact date to confirm"
+
+- sort_date: 2023-12-30
+  date: "30 Dec 2023"
+  from_code: "CTS"
+  from_city: "Sapporo"
+  to_code: "PEK"
+  to_city: "Beijing"
+  carrier: "Air China"
+  flight_number: "CA170"
+
+- sort_date: 2023-12-30
+  date: "30 Dec 2023"
+  from_code: "PEK"
+  from_city: "Beijing"
+  to_code: "XMN"
+  to_city: "Xiamen"
+  carrier: "Air China"
+  flight_number: "CA1801"
+
+- sort_date: 2023-12-26
+  date: "26 Dec 2023"
+  from_code: "KIX"
+  from_city: "Osaka"
+  to_code: "CTS"
+  to_city: "Sapporo"
+  carrier: "ANA"
+  flight_number: "NH1719"
+
+- sort_date: 2023-12-22
+  date: "22 Dec 2023"
+  from_code: "HEL"
+  from_time: "16:10"
+  to_code: "KIX"
+  to_time: "11:55 +1"
+  carrier: "Finnair"
+  flight_number: "AY67"
+
+- sort_date: 2023-12-21
+  date: "21 Dec 2023"
+  from_code: "BOO"
+  from_time: "14:45"
+  to_code: "OSL"
+  to_time: "16:15"
+  carrier: "SAS"
+  flight_number: "SK4113"
+
+- sort_date: 2023-12-21
+  date: "21 Dec 2023"
+  from_code: "OSL"
+  from_time: "20:50"
+  to_code: "HEL"
+  to_time: "23:15"
+  carrier: "Finnair"
+  flight_number: "AY918"
+
+- sort_date: 2023-12-18
+  date: "18 Dec 2023"
+  from_code: "TOS"
+  from_time: "10:20"
+  to_code: "BOO"
+  to_time: "11:20"
+  carrier: "Widerøe"
+  flight_number: "WF1325"
+
+- sort_date: 2023-07-01
+  date: "1 Jul 2023"
+  from_code: "SHA"
+  from_city: "Shanghai"
+  to_code: "XMN"
+  to_city: "Xiamen"
+  carrier: "XiamenAir"
+  flight_number: "MF8546"
+
+- sort_date: 2023-06-28
+  date: "28 Jun 2023"
+  from_code: "XMN"
+  from_city: "Xiamen"
+  to_code: "SHA"
+  to_city: "Shanghai"
+  carrier: "Shanghai Airlines"
+  flight_number: "FM9536"
+
+- sort_date: 2023-05-22
+  date: "22 May 2023"
+  from_code: "BOS"
+  from_time: "20:55"
+  to_code: "LAX"
+  to_time: "00:32 +1"
+  carrier: "JetBlue"
+  flight_number: "B61387"

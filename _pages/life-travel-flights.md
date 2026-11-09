@@ -6,14 +6,7 @@ excerpt: "Verified flights, arranged from the most recent journey backward."
 author_profile: false
 ---
 
-{% assign travel_trips = site.trips | sort: "start_date" | reverse %}
-{% assign all_flights = "" | split: "" %}
-{% for trip in travel_trips %}
-  {% if trip.flights %}
-    {% assign all_flights = all_flights | concat: trip.flights %}
-  {% endif %}
-{% endfor %}
-{% assign verified_flights = all_flights | where_exp: "flight", "flight.flight_number" | sort: "sort_date" | reverse %}
+{% assign verified_flights = site.data.travel_flights | where_exp: "flight", "flight.flight_number" | sort: "sort_date" | reverse %}
 
 <article class="flight-archive-page">
   <a class="life-section__back" href="{{ '/life/travel/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> My Travel</a>
