@@ -54,16 +54,6 @@ author_profile: false
         </select>
       </label>
     </div>
-    <details class="travel-legend-menu">
-      <summary>Legend</summary>
-      <div class="travel-legend" aria-label="Map legend">
-        <span><i class="travel-legend__dot travel-legend__dot--lived" aria-hidden="true"></i>Lived</span>
-        <span><i class="travel-legend__dot travel-legend__dot--visited" aria-hidden="true"></i>Visited</span>
-        <span><i class="travel-legend__route travel-legend__route--flight" aria-hidden="true"></i>Flight</span>
-        <span><i class="travel-legend__route travel-legend__route--train" aria-hidden="true"></i>Train</span>
-        <span><i class="travel-legend__route travel-legend__route--bus" aria-hidden="true"></i>Bus</span>
-      </div>
-    </details>
   </div>
 
   <section class="travel-map-shell" aria-label="Interactive world travel map">
@@ -170,6 +160,7 @@ author_profile: false
   const airports = JSON.parse(document.getElementById("travel-airport-data").textContent);
   const ground = JSON.parse(document.getElementById("travel-ground-data").textContent);
   const hubs = JSON.parse(document.getElementById("travel-hub-data").textContent);
+  const cities = await fetch("{{ '/assets/data/travel-cities.json' | relative_url }}").then((response) => response.ok ? response.json() : []);
   const svgElement = document.getElementById("travel-map");
   const mapWrap = root.querySelector(".travel-map-wrap");
   const mapShell = root.querySelector(".travel-map-shell");
@@ -186,6 +177,20 @@ author_profile: false
   let viewport;
   let currentProjection;
   let endpointLayer;
+  let cityLabelLayer;
+  let selectedRouteKey = null;
+  let cityLabelFrame = 0;
+  const previousCityAnchors = new Map();
+  const cityLabelCanvas = document.createElement("canvas");
+  const cityLabelContext = cityLabelCanvas.getContext("2d");
+  const cityRecords = cities.map((city) => ({
+    key: `${String(city.n || "").toLowerCase().replace(/[^a-z0-9]+/g, "")}-${city.x}-${city.y}`,
+    name: city.n,
+    coord: [city.x, city.y],
+    rank: Number(city.r),
+    population: Number(city.p) || 0,
+    capital: Boolean(city.c)
+  }));
 
   const modeNames = { flight: "Flight", train: "Train", bus: "Bus" };
   const airportMeta = {
@@ -298,6 +303,154 @@ author_profile: false
     });
   }
 
+  function normaliseCityName(value) {
+    return String(value || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+  }
+
+  function cityLabelTier(scale) {
+    if (scale < 1.35) return { rank: 1, limit: 24 };
+    if (scale < 2) return { rank: 2, limit: 34 };
+    if (scale < 3.2) return { rank: 3, limit: 46 };
+    if (scale < 4.8) return { rank: 4, limit: 60 };
+    if (scale < 6.5) return { rank: 5, limit: 76 };
+    return { rank: 6, limit: 96 };
+  }
+
+  function labelBox(point, width, height, anchor) {
+    const gap = 7;
+    const placements = [
+      [point[0] + gap, point[1] - height / 2],
+      [point[0] - gap - width, point[1] - height / 2],
+      [point[0] - width / 2, point[1] - gap - height],
+      [point[0] - width / 2, point[1] + gap],
+      [point[0] + gap, point[1] - gap - height],
+      [point[0] - gap - width, point[1] - gap - height],
+      [point[0] + gap, point[1] + gap],
+      [point[0] - gap - width, point[1] + gap]
+    ];
+    const [x, y] = placements[anchor] || placements[0];
+    return { x1: x - 2, y1: y - 2, x2: x + width + 2, y2: y + height + 2, textX: x, textY: y + height * 0.78 };
+  }
+
+  function collisionGrid(cellSize = 44) {
+    const cells = new Map();
+    const cellKeys = (box) => {
+      const keys = [];
+      for (let x = Math.floor(box.x1 / cellSize); x <= Math.floor(box.x2 / cellSize); x += 1) {
+        for (let y = Math.floor(box.y1 / cellSize); y <= Math.floor(box.y2 / cellSize); y += 1) keys.push(`${x}:${y}`);
+      }
+      return keys;
+    };
+    return {
+      collides(box) {
+        return cellKeys(box).some((key) => (cells.get(key) || []).some((other) => !(box.x2 < other.x1 || box.x1 > other.x2 || box.y2 < other.y1 || box.y1 > other.y2)));
+      },
+      add(box) {
+        cellKeys(box).forEach((key) => {
+          if (!cells.has(key)) cells.set(key, []);
+          cells.get(key).push(box);
+        });
+      }
+    };
+  }
+
+  function renderCityLabels() {
+    if (!cityLabelLayer || !currentProjection) return;
+    const width = Math.max(320, mapWrap.clientWidth);
+    const height = Number(svgElement.getAttribute("height")) || 420;
+    const scale = Math.max(1, currentTransform.k || 1);
+    const tier = cityLabelTier(scale);
+    const endpoints = endpointLocationsFor(visibleRoutes());
+    const endpointNames = new Set(endpoints.map((endpoint) => normaliseCityName(endpoint.city)));
+    const selectedRoute = visibleRoutes().find((route) => route.key === selectedRouteKey);
+    const selectedEndpoints = selectedRoute ? selectedRoute.segments.flatMap((segment) => [
+      { city: segment.from_city, coord: segment.from_coord },
+      { city: segment.to_city, coord: segment.to_coord }
+    ]) : [];
+    const selectedNames = new Set(selectedEndpoints.map((endpoint) => normaliseCityName(endpoint.city)));
+    const livedNames = new Set(places.filter((place) => place.kind === "lived").map((place) => normaliseCityName(place.city)));
+    const source = cityRecords.slice();
+
+    endpoints.forEach((endpoint) => {
+      if (!source.some((city) => normaliseCityName(city.name) === normaliseCityName(endpoint.city) && Math.hypot(endpoint.coord[0] - city.coord[0], endpoint.coord[1] - city.coord[1]) < 4)) {
+        source.push({ key: `route-${endpoint.key}`, name: endpoint.city, coord: endpoint.coord, rank: 9, population: 0, capital: false });
+      }
+    });
+
+    const candidates = source.flatMap((city) => {
+      const nameKey = normaliseCityName(city.name);
+      const samePlace = (endpoint) => normaliseCityName(endpoint.city) === nameKey && Math.hypot(endpoint.coord[0] - city.coord[0], endpoint.coord[1] - city.coord[1]) < 4;
+      const routeEndpoint = endpointNames.has(nameKey) && endpoints.some(samePlace);
+      const selectedEndpoint = selectedNames.has(nameKey) && selectedEndpoints.some(samePlace);
+      if (livedNames.has(nameKey) || (!routeEndpoint && city.rank > tier.rank)) return [];
+      const projected = currentProjection(city.coord);
+      if (!projected) return [];
+      const point = currentTransform.apply(projected);
+      if (point[0] < -40 || point[0] > width + 40 || point[1] < -30 || point[1] > height + 30) return [];
+      const priority = (selectedEndpoint ? 1000000 : 0) + (routeEndpoint ? 200000 : 0) + (city.capital ? 50000 : 0) + ((10 - city.rank) * 5000) + Math.log10(Math.max(10, city.population)) * 100;
+      return [{ ...city, point, routeEndpoint, selectedEndpoint, priority }];
+    }).sort((a, b) => b.priority - a.priority || a.name.localeCompare(b.name));
+
+    const grid = collisionGrid();
+    const placed = [];
+    cityLabelContext.font = "600 11px Georgia, serif";
+
+    places.filter((place) => place.kind === "lived").forEach((place) => {
+      const projected = currentProjection([Number(place.longitude), Number(place.latitude)]);
+      if (!projected) return;
+      const point = currentTransform.apply(projected);
+      const textWidth = cityLabelContext.measureText(place.city).width + 16;
+      grid.add(labelBox(point, textWidth, 14, 0));
+    });
+    grid.add({ x1: 0, y1: height - 58, x2: 135, y2: height });
+    grid.add({ x1: width - 170, y1: height - 58, x2: width, y2: height });
+
+    candidates.some((city) => {
+      const fontSize = city.selectedEndpoint || city.rank <= 1 ? 12 : city.routeEndpoint || city.rank <= 3 ? 11 : 10;
+      cityLabelContext.font = `${city.rank <= 1 ? 700 : 600} ${fontSize}px Georgia, serif`;
+      const textWidth = Math.ceil(cityLabelContext.measureText(city.name).width);
+      const textHeight = fontSize + 2;
+      const previous = previousCityAnchors.get(city.key);
+      const anchors = previous == null ? [0, 1, 2, 3, 4, 5, 6, 7] : [previous, ...[0, 1, 2, 3, 4, 5, 6, 7].filter((anchor) => anchor !== previous)];
+      let placement = null;
+      let chosenAnchor = anchors[0];
+      for (const anchor of anchors) {
+        const box = labelBox(city.point, textWidth, textHeight, anchor);
+        if (!grid.collides(box)) {
+          placement = box;
+          chosenAnchor = anchor;
+          break;
+        }
+      }
+      if (!placement && city.selectedEndpoint) placement = labelBox(city.point, textWidth, textHeight, chosenAnchor);
+      if (placement) {
+        grid.add(placement);
+        previousCityAnchors.set(city.key, chosenAnchor);
+        placed.push({ ...city, ...placement, fontSize });
+      }
+      return placed.length >= tier.limit;
+    });
+
+    cityLabelLayer.selectAll("text.travel-city-label")
+      .data(placed, (city) => city.key)
+      .join(
+        (enter) => enter.append("text").attr("class", "travel-city-label").attr("opacity", 0),
+        (update) => update,
+        (exit) => exit.remove()
+      )
+      .attr("class", (city) => `travel-city-label${city.rank <= 1 ? " travel-city-label--major" : ""}${city.routeEndpoint ? " travel-city-label--route" : ""}`)
+      .attr("x", (city) => city.textX)
+      .attr("y", (city) => city.textY)
+      .attr("font-size", (city) => city.fontSize)
+      .attr("opacity", 1)
+      .text((city) => city.name);
+  }
+
+  function scheduleCityLabels() {
+    cancelAnimationFrame(cityLabelFrame);
+    cityLabelFrame = requestAnimationFrame(renderCityLabels);
+  }
+
   function showTooltip(html, event) {
     mapTooltip.innerHTML = html;
     mapTooltip.hidden = false;
@@ -392,7 +545,6 @@ author_profile: false
       .text((cluster) => {
         if (cluster.members.length > 1 && scale < 2.7) return cluster.members.length;
         if (scale >= 3.1) return cluster.members[0].code;
-        if (scale >= 1.55) return cluster.members[0].city;
         return "";
       });
 
@@ -420,6 +572,7 @@ author_profile: false
   }
 
   function showRouteDetail(route) {
+    selectedRouteKey = route.key;
     const records = [...route.segments].sort((a, b) => String(b.sort_date).localeCompare(String(a.sort_date)));
     document.getElementById("travel-connection-mode").textContent = `${modeNames[route.mode]} route · ${records.length} recorded ${records.length === 1 ? "journey" : "journeys"}`;
     document.getElementById("travel-connection-title").textContent = `${route.from} → ${route.to}`;
@@ -434,11 +587,13 @@ author_profile: false
       path.classList.toggle("is-dimmed", path.dataset.key !== route.key);
     });
     focusRoute(route);
+    scheduleCityLabels();
   }
 
   function updateSemanticZoom() {
     const scale = Math.max(1, currentTransform.k || 1);
     renderEndpointMarkers();
+    scheduleCityLabels();
 
     root.querySelectorAll(".travel-marker__hit").forEach((circle) => circle.setAttribute("r", String(19 / scale)));
     root.querySelectorAll(".travel-marker__ring").forEach((circle) => circle.setAttribute("r", String(10 / scale)));
@@ -518,6 +673,7 @@ author_profile: false
     });
 
     endpointLayer = viewport.append("g").attr("class", "travel-hub-markers");
+    cityLabelLayer = svg.append("g").attr("class", "travel-map__rendered travel-city-labels");
 
     const markers = viewport.selectAll("g.travel-marker").data(visiblePlaces(), (place) => place.id).join("g")
       .attr("class", "travel-marker")
@@ -587,6 +743,7 @@ author_profile: false
 
   document.getElementById("travel-route-filter").addEventListener("change", (event) => {
     activeRouteFilter = event.target.value;
+    selectedRouteKey = null;
     connectionPanel.hidden = true;
     hideTooltip();
     drawMap();
@@ -594,6 +751,7 @@ author_profile: false
 
   yearFilter.addEventListener("change", (event) => {
     activeYear = event.target.value;
+    selectedRouteKey = null;
     connectionPanel.hidden = true;
     hideTooltip();
     drawMap();
@@ -605,7 +763,9 @@ author_profile: false
 
   root.querySelector(".travel-connection__close").addEventListener("click", () => {
     connectionPanel.hidden = true;
+    selectedRouteKey = null;
     root.querySelectorAll(".travel-map__route").forEach((path) => path.classList.remove("is-selected", "is-dimmed"));
+    scheduleCityLabels();
   });
 
   root.querySelectorAll("[data-map-action]").forEach((button) => {
