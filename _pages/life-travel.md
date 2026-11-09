@@ -308,12 +308,12 @@ author_profile: false
   }
 
   function cityLabelTier(scale) {
-    if (scale < 1.35) return { rank: 1, limit: 24 };
-    if (scale < 2) return { rank: 2, limit: 34 };
-    if (scale < 3.2) return { rank: 3, limit: 46 };
-    if (scale < 4.8) return { rank: 4, limit: 60 };
-    if (scale < 6.5) return { rank: 5, limit: 76 };
-    return { rank: 6, limit: 96 };
+    if (scale < 1.5) return { rank: 0, limit: 10 };
+    if (scale < 2.3) return { rank: 1, limit: 14 };
+    if (scale < 3.5) return { rank: 1, limit: 18 };
+    if (scale < 5) return { rank: 2, limit: 22 };
+    if (scale < 7) return { rank: 3, limit: 28 };
+    return { rank: 4, limit: 36 };
   }
 
   function labelBox(point, width, height, anchor) {
@@ -332,7 +332,7 @@ author_profile: false
     return { x1: x - 2, y1: y - 2, x2: x + width + 2, y2: y + height + 2, textX: x, textY: y + height * 0.78 };
   }
 
-  function collisionGrid(cellSize = 44) {
+  function collisionGrid(cellSize = 56) {
     const cells = new Map();
     const cellKeys = (box) => {
       const keys = [];
