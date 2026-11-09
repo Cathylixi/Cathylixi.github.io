@@ -29,26 +29,41 @@ author_profile: false
   </header>
 
   <div class="travel-toolbar">
-    <div class="travel-filter-stack">
-      <div class="travel-filters" role="group" aria-label="Filter places">
-        <button type="button" data-travel-filter="all" aria-pressed="true">All places</button>
-        <button type="button" data-travel-filter="lived" aria-pressed="false">Lived</button>
-        <button type="button" data-travel-filter="visited" aria-pressed="false">Visited</button>
-      </div>
-      <div class="travel-filters travel-filters--modes" role="group" aria-label="Filter transport routes">
-        <button type="button" data-route-filter="all" aria-pressed="true">All routes</button>
-        <button type="button" data-route-filter="flight" aria-pressed="false">Flights</button>
-        <button type="button" data-route-filter="train" aria-pressed="false">Trains</button>
-        <button type="button" data-route-filter="bus" aria-pressed="false">Buses</button>
-      </div>
+    <div class="travel-selectors" aria-label="Map filters">
+      <label class="travel-selector">
+        <span>Places</span>
+        <select id="travel-place-filter" aria-label="Filter places">
+          <option value="all">All places</option>
+          <option value="lived">Lived</option>
+          <option value="visited">Visited</option>
+        </select>
+      </label>
+      <label class="travel-selector">
+        <span>Routes</span>
+        <select id="travel-route-filter" aria-label="Filter transport routes">
+          <option value="all">All routes</option>
+          <option value="flight">Flights</option>
+          <option value="train">Trains</option>
+          <option value="bus">Buses</option>
+        </select>
+      </label>
+      <label class="travel-selector">
+        <span>Year</span>
+        <select id="travel-year-filter" aria-label="Filter routes by year">
+          <option value="all">All years</option>
+        </select>
+      </label>
     </div>
-    <div class="travel-legend" aria-label="Map legend">
-      <span><i class="travel-legend__dot travel-legend__dot--lived" aria-hidden="true"></i>Lived</span>
-      <span><i class="travel-legend__dot travel-legend__dot--visited" aria-hidden="true"></i>Visited</span>
-      <span><i class="travel-legend__route travel-legend__route--flight" aria-hidden="true"></i>Flight</span>
-      <span><i class="travel-legend__route travel-legend__route--train" aria-hidden="true"></i>Train</span>
-      <span><i class="travel-legend__route travel-legend__route--bus" aria-hidden="true"></i>Bus</span>
-    </div>
+    <details class="travel-legend-menu">
+      <summary>Legend</summary>
+      <div class="travel-legend" aria-label="Map legend">
+        <span><i class="travel-legend__dot travel-legend__dot--lived" aria-hidden="true"></i>Lived</span>
+        <span><i class="travel-legend__dot travel-legend__dot--visited" aria-hidden="true"></i>Visited</span>
+        <span><i class="travel-legend__route travel-legend__route--flight" aria-hidden="true"></i>Flight</span>
+        <span><i class="travel-legend__route travel-legend__route--train" aria-hidden="true"></i>Train</span>
+        <span><i class="travel-legend__route travel-legend__route--bus" aria-hidden="true"></i>Bus</span>
+      </div>
+    </details>
   </div>
 
   <section class="travel-map-shell" aria-label="Interactive world travel map">
@@ -63,8 +78,8 @@ author_profile: false
       <div class="travel-map-controls" aria-label="Map controls">
         <button type="button" data-map-action="zoom-in" aria-label="Zoom in">+</button>
         <button type="button" data-map-action="zoom-out" aria-label="Zoom out">−</button>
-        <button type="button" data-map-action="reset" aria-label="Reset map">⌂</button>
-        <button type="button" data-map-action="expand" aria-label="Expand map" aria-pressed="false">↗</button>
+        <button type="button" data-map-action="reset" aria-label="Reset map">⌖</button>
+        <button type="button" data-map-action="expand" aria-label="Expand map" aria-pressed="false">⛶</button>
       </div>
       <svg class="travel-map" id="travel-map" role="img" aria-labelledby="travel-map-title travel-map-description">
         <title id="travel-map-title">World map of travel places</title>
@@ -77,6 +92,8 @@ author_profile: false
         <div id="travel-connection-list"></div>
         <a href="{{ '/life/travel/flights/' | relative_url }}" target="_self">View all trip details →</a>
       </aside>
+      <div class="travel-map-tooltip" id="travel-map-tooltip" role="status" hidden></div>
+      <div class="travel-map-scale" id="travel-map-scale" aria-hidden="true"><span></span><strong>2,000 km</strong></div>
       <p class="travel-map__status" id="travel-map-status" aria-live="polite">Loading map…</p>
     </div>
 
@@ -158,14 +175,40 @@ author_profile: false
   const mapShell = root.querySelector(".travel-map-shell");
   const mapStatus = document.getElementById("travel-map-status");
   const connectionPanel = document.getElementById("travel-connection");
+  const mapTooltip = document.getElementById("travel-map-tooltip");
+  const scaleBar = document.getElementById("travel-map-scale");
   let selectedId = places.length ? places[0].id : null;
   let activeFilter = "all";
   let activeRouteFilter = "all";
+  let activeYear = "all";
   let mapFeatures = [];
   let currentTransform = zoomIdentity;
   let viewport;
+  let currentProjection;
+  let endpointLayer;
 
   const modeNames = { flight: "Flight", train: "Train", bus: "Bus" };
+  const airportMeta = {
+    ATL: ["Atlanta", "Hartsfield–Jackson Atlanta International Airport"],
+    BOO: ["Bodø", "Bodø Airport"], BOS: ["Boston", "Boston Logan International Airport"],
+    CDG: ["Paris", "Paris Charles de Gaulle Airport"], CTS: ["Sapporo", "New Chitose Airport"],
+    DCA: ["Washington, D.C.", "Reagan National Airport"], EWR: ["Newark", "Newark Liberty International Airport"],
+    FCO: ["Rome", "Rome Fiumicino Airport"], FLR: ["Florence", "Florence Airport"],
+    HEL: ["Helsinki", "Helsinki Airport"], HKG: ["Hong Kong", "Hong Kong International Airport"],
+    HNL: ["Honolulu", "Daniel K. Inouye International Airport"], IST: ["Istanbul", "Istanbul Airport"],
+    ITO: ["Hilo", "Hilo International Airport"], KIX: ["Osaka", "Kansai International Airport"],
+    KOA: ["Kona", "Kona International Airport"], LAS: ["Las Vegas", "Harry Reid International Airport"],
+    LAX: ["Los Angeles", "Los Angeles International Airport"], MDW: ["Chicago", "Chicago Midway International Airport"],
+    MIA: ["Miami", "Miami International Airport"], NKG: ["Nanjing", "Nanjing Lukou International Airport"],
+    NRT: ["Tokyo", "Narita International Airport"], OSL: ["Oslo", "Oslo Airport"],
+    PEK: ["Beijing", "Beijing Capital International Airport"], PHL: ["Philadelphia", "Philadelphia International Airport"],
+    PHX: ["Phoenix", "Phoenix Sky Harbor International Airport"], SAN: ["San Diego", "San Diego International Airport"],
+    SEA: ["Seattle", "Seattle–Tacoma International Airport"], SFO: ["San Francisco", "San Francisco International Airport"],
+    SHA: ["Shanghai", "Shanghai Hongqiao International Airport"], SJC: ["San Jose", "San José Mineta International Airport"],
+    SLC: ["Salt Lake City", "Salt Lake City International Airport"], STL: ["St. Louis", "St. Louis Lambert International Airport"],
+    TFU: ["Chengdu", "Chengdu Tianfu International Airport"], TOS: ["Tromsø", "Tromsø Airport"],
+    XMN: ["Xiamen", "Xiamen Gaoqi International Airport"], YTZ: ["Toronto", "Billy Bishop Toronto City Airport"]
+  };
 
   const flightSegments = flights.flatMap((flight, index) => {
     const from = airports[flight.from_code];
@@ -177,6 +220,10 @@ author_profile: false
       mode: "flight",
       operator: flight.carrier,
       service: flight.flight_number,
+      from_name: airportMeta[flight.from_code]?.[1] || `${flight.from_code} Airport`,
+      to_name: airportMeta[flight.to_code]?.[1] || `${flight.to_code} Airport`,
+      from_city: flight.from_city || airportMeta[flight.from_code]?.[0] || flight.from_code,
+      to_city: flight.to_city || airportMeta[flight.to_code]?.[0] || flight.to_code,
       from_key: `airport-${flight.from_code}`,
       to_key: `airport-${flight.to_code}`,
       from_coord: from,
@@ -190,6 +237,10 @@ author_profile: false
     if (!from || !to) return [];
     return [{
       ...segment,
+      from_name: from.name,
+      to_name: to.name,
+      from_city: from.city,
+      to_city: to.city,
       from_key: `hub-${segment.from_id}`,
       to_key: `hub-${segment.to_id}`,
       from_coord: [Number(from.longitude), Number(from.latitude)],
@@ -198,6 +249,10 @@ author_profile: false
   });
 
   const allSegments = [...flightSegments, ...groundSegments];
+  const yearFilter = document.getElementById("travel-year-filter");
+  Array.from(new Set(allSegments.map((segment) => String(segment.sort_date || "").slice(0, 4)).filter(Boolean)))
+    .sort((a, b) => b.localeCompare(a))
+    .forEach((year) => yearFilter.add(new Option(year, year)));
 
   const routeGroups = Array.from(allSegments.reduce((groups, segment) => {
     const endpoints = [segment.from_key, segment.to_key].sort();
@@ -216,23 +271,152 @@ author_profile: false
     return groups;
   }, new Map()).values());
 
-  const endpointLocations = Array.from(allSegments.reduce((locations, segment) => {
+  function endpointLocationsFor(routes) {
+    return Array.from(routes.flatMap((route) => route.segments).reduce((locations, segment) => {
     [
-      { key: segment.from_key, code: segment.from_code, coord: segment.from_coord, mode: segment.mode },
-      { key: segment.to_key, code: segment.to_code, coord: segment.to_coord, mode: segment.mode }
+      { key: segment.from_key, code: segment.from_code, coord: segment.from_coord, mode: segment.mode, city: segment.from_city, name: segment.from_name },
+      { key: segment.to_key, code: segment.to_code, coord: segment.to_coord, mode: segment.mode, city: segment.to_city, name: segment.to_name }
     ].forEach((point) => {
       if (!locations.has(point.key)) locations.set(point.key, { ...point, modes: new Set() });
       locations.get(point.key).modes.add(segment.mode);
     });
-    return locations;
-  }, new Map()).values()).map((location) => ({ ...location, modes: [...location.modes] }));
+      return locations;
+    }, new Map()).values()).map((location) => ({ ...location, modes: [...location.modes] }));
+  }
 
   function visiblePlaces() {
     return activeFilter === "all" ? places : places.filter((place) => place.kind === activeFilter);
   }
 
   function visibleRoutes() {
-    return activeRouteFilter === "all" ? routeGroups : routeGroups.filter((route) => route.mode === activeRouteFilter);
+    return routeGroups.flatMap((route) => {
+      if (activeRouteFilter !== "all" && route.mode !== activeRouteFilter) return [];
+      const segments = activeYear === "all"
+        ? route.segments
+        : route.segments.filter((segment) => String(segment.sort_date || "").startsWith(activeYear));
+      return segments.length ? [{ ...route, segments }] : [];
+    });
+  }
+
+  function showTooltip(html, event) {
+    mapTooltip.innerHTML = html;
+    mapTooltip.hidden = false;
+    if (event) {
+      const bounds = mapWrap.getBoundingClientRect();
+      const left = Math.min(bounds.width - 190, Math.max(12, event.clientX - bounds.left + 14));
+      const top = Math.min(bounds.height - 92, Math.max(76, event.clientY - bounds.top + 14));
+      mapTooltip.style.left = `${left}px`;
+      mapTooltip.style.top = `${top}px`;
+    }
+  }
+
+  function hideTooltip() {
+    mapTooltip.hidden = true;
+  }
+
+  function updateScaleBar() {
+    if (!scaleBar) return;
+    const width = Math.max(320, mapWrap.clientWidth);
+    const kilometresPerPixel = 40075 / (width * Math.max(1, currentTransform.k));
+    const candidates = [20, 50, 100, 200, 500, 1000, 2000, 5000, 10000];
+    const distance = candidates.reduce((best, value) => Math.abs(value / kilometresPerPixel - 76) < Math.abs(best / kilometresPerPixel - 76) ? value : best, candidates[0]);
+    const barWidth = Math.max(34, Math.min(96, distance / kilometresPerPixel));
+    scaleBar.querySelector("span").style.width = `${barWidth}px`;
+    scaleBar.querySelector("strong").textContent = `${distance.toLocaleString()} km`;
+  }
+
+  function focusRoute(route) {
+    if (!currentProjection) return;
+    const first = currentProjection(route.geometry.coordinates[0]);
+    const last = currentProjection(route.geometry.coordinates[1]);
+    if (!first || !last) return;
+    const width = Math.max(320, mapWrap.clientWidth);
+    const height = Number(svgElement.getAttribute("height")) || 420;
+    const dx = Math.max(24, Math.abs(last[0] - first[0]));
+    const dy = Math.max(24, Math.abs(last[1] - first[1]));
+    const scale = Math.max(1.55, Math.min(7, 0.72 / Math.max(dx / width, dy / height)));
+    const centerX = (first[0] + last[0]) / 2;
+    const centerY = (first[1] + last[1]) / 2;
+    const nextTransform = zoomIdentity.translate(width / 2 - scale * centerX, height / 2 - scale * centerY).scale(scale);
+    select(svgElement).call(zoomBehavior.transform, nextTransform);
+  }
+
+  function clusterEndpoints(locations) {
+    if (!currentProjection) return [];
+    const scale = Math.max(1, currentTransform.k || 1);
+    const threshold = scale < 1.5 ? 20 / scale : scale < 2.7 ? 10 / scale : 0;
+    const clusters = [];
+    locations.forEach((location) => {
+      const point = currentProjection(location.coord);
+      if (!point) return;
+      const nearby = threshold && clusters.find((cluster) => Math.hypot(cluster.point[0] - point[0], cluster.point[1] - point[1]) <= threshold);
+      if (nearby) {
+        nearby.members.push(location);
+        nearby.point = [
+          nearby.members.reduce((sum, member) => sum + currentProjection(member.coord)[0], 0) / nearby.members.length,
+          nearby.members.reduce((sum, member) => sum + currentProjection(member.coord)[1], 0) / nearby.members.length
+        ];
+      } else {
+        clusters.push({ key: location.key, point, members: [location] });
+      }
+    });
+    return clusters;
+  }
+
+  function renderEndpointMarkers() {
+    if (!endpointLayer || !currentProjection) return;
+    const scale = Math.max(1, currentTransform.k || 1);
+    const clusters = clusterEndpoints(endpointLocationsFor(visibleRoutes()));
+    const markers = endpointLayer.selectAll("g.travel-hub-marker")
+      .data(clusters, (cluster) => cluster.members.map((member) => member.key).join("-"))
+      .join((enter) => {
+        const marker = enter.append("g").attr("class", "travel-hub-marker").attr("tabindex", "0").attr("role", "button");
+        marker.append("circle");
+        marker.append("text").attr("class", "travel-hub-label");
+        return marker;
+      })
+      .attr("data-mode", (cluster) => cluster.members[0].modes[0])
+      .attr("aria-label", (cluster) => cluster.members.length > 1
+        ? `${cluster.members.length} travel stops near ${cluster.members[0].city}`
+        : `${cluster.members[0].city}, ${cluster.members[0].name}`)
+      .attr("transform", (cluster) => `translate(${cluster.point[0]},${cluster.point[1]})`);
+
+    markers.select("circle")
+      .attr("class", (cluster) => cluster.members.length > 1 ? "travel-hub-marker__cluster" : "")
+      .attr("r", (cluster) => `${(cluster.members.length > 1 ? 5.2 : 3.2) / scale}`);
+
+    markers.select("text")
+      .attr("x", `${7 / scale}`)
+      .attr("y", `${-5 / scale}`)
+      .attr("font-size", `${10 / scale}`)
+      .text((cluster) => {
+        if (cluster.members.length > 1 && scale < 2.7) return cluster.members.length;
+        if (scale >= 3.1) return cluster.members[0].code;
+        if (scale >= 1.55) return cluster.members[0].city;
+        return "";
+      });
+
+    markers
+      .on("mouseenter", (event, cluster) => {
+        const member = cluster.members[0];
+        const title = cluster.members.length > 1 ? `${member.city} area` : member.city;
+        const detail = cluster.members.length > 1
+          ? `${cluster.members.length} airports or stations`
+          : `${member.code} · ${member.name}`;
+        showTooltip(`<strong>${title}</strong><span>${detail}</span>`, event);
+      })
+      .on("mousemove", (event, cluster) => {
+        const member = cluster.members[0];
+        const title = cluster.members.length > 1 ? `${member.city} area` : member.city;
+        const detail = cluster.members.length > 1 ? `${cluster.members.length} airports or stations` : `${member.code} · ${member.name}`;
+        showTooltip(`<strong>${title}</strong><span>${detail}</span>`, event);
+      })
+      .on("mouseleave", hideTooltip)
+      .on("focus", (event, cluster) => {
+        const member = cluster.members[0];
+        showTooltip(`<strong>${member.city}</strong><span>${member.code} · ${member.name}</span>`);
+      })
+      .on("blur", hideTooltip);
   }
 
   function showRouteDetail(route) {
@@ -245,20 +429,16 @@ author_profile: false
       return `<p><strong>${record.date || record.sort_date}</strong><span>${service}${times ? ` · ${times}` : ""}</span></p>`;
     }).join("");
     connectionPanel.hidden = false;
-    root.querySelectorAll(".travel-map__route").forEach((path) => path.classList.toggle("is-selected", path.dataset.key === route.key));
+    root.querySelectorAll(".travel-map__route").forEach((path) => {
+      path.classList.toggle("is-selected", path.dataset.key === route.key);
+      path.classList.toggle("is-dimmed", path.dataset.key !== route.key);
+    });
+    focusRoute(route);
   }
 
   function updateSemanticZoom() {
     const scale = Math.max(1, currentTransform.k || 1);
-    const showHubLabels = scale >= 2.15;
-
-    root.querySelectorAll(".travel-hub-marker circle").forEach((circle) => circle.setAttribute("r", String(2.8 / scale)));
-    root.querySelectorAll(".travel-hub-label").forEach((label) => {
-      label.style.display = showHubLabels ? "block" : "none";
-      label.setAttribute("x", String(6 / scale));
-      label.setAttribute("y", String(-5 / scale));
-      label.setAttribute("font-size", String(10 / scale));
-    });
+    renderEndpointMarkers();
 
     root.querySelectorAll(".travel-marker__hit").forEach((circle) => circle.setAttribute("r", String(19 / scale)));
     root.querySelectorAll(".travel-marker__ring").forEach((circle) => circle.setAttribute("r", String(10 / scale)));
@@ -268,6 +448,7 @@ author_profile: false
       label.setAttribute("y", String(4 / scale));
       label.setAttribute("font-size", String(11 / scale));
     });
+    updateScaleBar();
   }
 
   function updateDetail(id) {
@@ -291,6 +472,7 @@ author_profile: false
     svg.selectAll("g.travel-map__rendered").remove();
 
     const projection = geoNaturalEarth1().fitExtent([[20, 22], [width - 20, height - 22]], { type: "Sphere" });
+    currentProjection = projection;
     const path = geoPath(projection);
     viewport = svg.append("g").attr("class", "travel-map__rendered").attr("transform", currentTransform);
     viewport.append("path").datum(geoGraticule10()).attr("class", "travel-map__graticule").attr("d", path);
@@ -317,8 +499,16 @@ author_profile: false
       routePath.parentNode.insertBefore(hitPath, routePath);
       hitPath.addEventListener("click", (event) => {
         event.stopPropagation();
+        hideTooltip();
         showRouteDetail(route);
       });
+      hitPath.addEventListener("mouseenter", (event) => {
+        showTooltip(`<strong>${route.from} → ${route.to}</strong><span>${modeNames[route.mode]} · ${route.segments.length} recorded</span>`, event);
+      });
+      hitPath.addEventListener("mousemove", (event) => {
+        showTooltip(`<strong>${route.from} → ${route.to}</strong><span>${modeNames[route.mode]} · ${route.segments.length} recorded</span>`, event);
+      });
+      hitPath.addEventListener("mouseleave", hideTooltip);
       hitPath.addEventListener("keydown", (event) => {
         if (event.key === "Enter" || event.key === " ") {
           event.preventDefault();
@@ -327,19 +517,7 @@ author_profile: false
       });
     });
 
-    const hubMarkers = viewport.append("g").attr("class", "travel-hub-markers")
-      .selectAll("g.travel-hub-marker")
-      .data(endpointLocations.filter((location) => activeRouteFilter === "all" || location.modes.includes(activeRouteFilter)), (location) => location.key)
-      .join("g")
-      .attr("class", "travel-hub-marker")
-      .attr("data-mode", (location) => location.modes[0])
-      .attr("transform", (location) => {
-        const point = projection(location.coord);
-        return `translate(${point[0]},${point[1]})`;
-      });
-    hubMarkers.append("circle").attr("r", 2.6);
-    hubMarkers.append("text").attr("class", "travel-hub-label").text((location) => location.code);
-    hubMarkers.append("title").text((location) => `${location.code} · ${location.modes.map((mode) => modeNames[mode]).join(", ")}`);
+    endpointLayer = viewport.append("g").attr("class", "travel-hub-markers");
 
     const markers = viewport.selectAll("g.travel-marker").data(visiblePlaces(), (place) => place.id).join("g")
       .attr("class", "travel-marker")
@@ -396,32 +574,38 @@ author_profile: false
     updateSemanticZoom();
   }
 
-  root.querySelectorAll("[data-travel-filter]").forEach((button) => {
-    button.addEventListener("click", () => {
-      activeFilter = button.dataset.travelFilter;
-      root.querySelectorAll("[data-travel-filter]").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-      const filtered = visiblePlaces();
-      if (filtered.length && !filtered.some((place) => place.id === selectedId)) updateDetail(filtered[0].id);
-      drawMap();
-      if (!filtered.length) {
-        mapStatus.textContent = "No places in this category yet.";
-        mapStatus.hidden = false;
-      }
-    });
+  document.getElementById("travel-place-filter").addEventListener("change", (event) => {
+    activeFilter = event.target.value;
+    const filtered = visiblePlaces();
+    if (filtered.length && !filtered.some((place) => place.id === selectedId)) updateDetail(filtered[0].id);
+    drawMap();
+    if (!filtered.length) {
+      mapStatus.textContent = "No places in this category yet.";
+      mapStatus.hidden = false;
+    }
   });
 
-  root.querySelectorAll("[data-route-filter]").forEach((button) => {
-    button.addEventListener("click", () => {
-      activeRouteFilter = button.dataset.routeFilter;
-      root.querySelectorAll("[data-route-filter]").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
-      connectionPanel.hidden = true;
-      drawMap();
-    });
+  document.getElementById("travel-route-filter").addEventListener("change", (event) => {
+    activeRouteFilter = event.target.value;
+    connectionPanel.hidden = true;
+    hideTooltip();
+    drawMap();
+  });
+
+  yearFilter.addEventListener("change", (event) => {
+    activeYear = event.target.value;
+    connectionPanel.hidden = true;
+    hideTooltip();
+    drawMap();
+    if (!visibleRoutes().length) {
+      mapStatus.textContent = "No routes recorded for this year.";
+      mapStatus.hidden = false;
+    }
   });
 
   root.querySelector(".travel-connection__close").addEventListener("click", () => {
     connectionPanel.hidden = true;
-    root.querySelectorAll(".travel-map__route").forEach((path) => path.classList.remove("is-selected"));
+    root.querySelectorAll(".travel-map__route").forEach((path) => path.classList.remove("is-selected", "is-dimmed"));
   });
 
   root.querySelectorAll("[data-map-action]").forEach((button) => {
@@ -440,7 +624,7 @@ author_profile: false
         const expanded = mapShell.classList.toggle("is-expanded");
         document.body.classList.toggle("travel-map-open", expanded);
         button.setAttribute("aria-pressed", String(expanded));
-        button.textContent = expanded ? "×" : "↗";
+        button.textContent = expanded ? "×" : "⛶";
         setTimeout(drawMap, 50);
       }
     });
@@ -452,7 +636,7 @@ author_profile: false
       mapShell.classList.remove("is-expanded");
       document.body.classList.remove("travel-map-open");
       button.setAttribute("aria-pressed", "false");
-      button.textContent = "↗";
+      button.textContent = "⛶";
       setTimeout(drawMap, 50);
     }
   });
