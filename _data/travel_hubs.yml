@@ -1,0 +1,41 @@
+BOS-SS:
+  name: Boston South Station
+  city: Boston
+  country: United States
+  latitude: 42.3523
+  longitude: -71.0552
+
+BOS-BBY:
+  name: Boston Back Bay
+  city: Boston
+  country: United States
+  latitude: 42.3473
+  longitude: -71.0757
+
+NYC-NYP:
+  name: New York Penn / Moynihan
+  city: New York
+  country: United States
+  latitude: 40.7506
+  longitude: -73.9935
+
+NYC-HY:
+  name: New York Hudson Yards
+  city: New York
+  country: United States
+  latitude: 40.7553
+  longitude: -74.0018
+
+EWR-NWK:
+  name: Newark Penn Station
+  city: Newark
+  country: United States
+  latitude: 40.7346
+  longitude: -74.1641
+
+WAS-UNI:
+  name: Washington Union Station
+  city: Washington, D.C.
+  country: United States
+  latitude: 38.8971
+  longitude: -77.0064

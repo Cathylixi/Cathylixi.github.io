@@ -1,0 +1,292 @@
+# Ground journeys transcribed from the saved Apple Wallet passes. Repeated
+# passes for the same departure are represented once and annotated with the
+# number of saved passes so the trip atlas does not double count them.
+
+- id: amtrak-2026-10-07
+  sort_date: 2026-10-07
+  date: "7 Oct 2026"
+  mode: train
+  operator: Amtrak
+  service: Northeast Regional
+  from_id: EWR-NWK
+  from_code: NWK
+  from_time: "17:05"
+  to_id: BOS-BBY
+  to_code: BBY
+  note: "Arrival time is not visible in the saved pass."
+
+- id: amtrak-2026-09-02
+  sort_date: 2026-09-02
+  date: "2 Sep 2026"
+  mode: train
+  operator: Amtrak
+  service: Northeast Regional
+  from_id: EWR-NWK
+  from_code: NWK
+  from_time: "17:05"
+  to_id: BOS-SS
+  to_code: BOS
+  to_time: "22:06"
+
+- id: amtrak-2026-08-28
+  sort_date: 2026-08-28
+  date: "28 Aug 2026"
+  mode: train
+  operator: Amtrak
+  service: Northeast Regional
+  from_id: BOS-SS
+  from_code: BOS
+  from_time: "15:15"
+  to_id: EWR-NWK
+  to_code: NWK
+  to_time: "20:08"
+
+- id: flixbus-2026-06-11
+  sort_date: 2026-06-11
+  date: "11 Jun 2026"
+  mode: bus
+  operator: FlixBus
+  from_id: NYC-NYP
+  from_code: NYC
+  from_time: "12:00"
+  to_id: BOS-SS
+  to_code: BOS
+  to_time: "16:15"
+
+- id: amtrak-2026-06-04
+  sort_date: 2026-06-04
+  date: "4 Jun 2026"
+  mode: train
+  operator: Amtrak
+  service: Northeast Regional
+  from_id: BOS-BBY
+  from_code: BBY
+  from_time: "10:26"
+  to_id: NYC-NYP
+  to_code: NYP
+  to_time: "14:29"
+
+- id: amtrak-2026-05-15
+  sort_date: 2026-05-15
+  date: "15 May 2026"
+  mode: train
+  operator: Amtrak
+  service: Northeast Regional
+  from_id: NYC-NYP
+  from_code: NYP
+  from_time: "19:12"
+  to_id: BOS-BBY
+  to_code: BBY
+  to_time: "23:43"
+
+- id: flixbus-2026-04-30
+  sort_date: 2026-04-30
+  date: "30 Apr 2026"
+  mode: bus
+  operator: FlixBus
+  from_id: BOS-SS
+  from_code: BOS
+  from_time: "13:15"
+  to_id: NYC-NYP
+  to_code: NYC
+  to_time: "17:45"
+
+- id: amtrak-2026-03-18
+  sort_date: 2026-03-18
+  date: "18 Mar 2026"
+  mode: train
+  operator: Amtrak
+  service: Northeast Regional
+  from_id: WAS-UNI
+  from_code: WAS
+  from_time: "15:30"
+  to_id: NYC-NYP
+  to_code: NYP
+  to_time: "18:58"
+
+- id: amtrak-2026-01-03
+  sort_date: 2026-01-03
+  date: "3 Jan 2026"
+  mode: train
+  operator: Amtrak
+  service: Northeast Regional
+  from_id: NYC-NYP
+  from_code: NYP
+  from_time: "11:58"
+  to_id: BOS-BBY
+  to_code: BBY
+  to_time: "15:41"
+
+- id: flixbus-2025-12-21
+  sort_date: 2025-12-21
+  date: "21 Dec 2025"
+  mode: bus
+  operator: FlixBus
+  from_id: BOS-SS
+  from_code: BOS
+  from_time: "10:15"
+  to_id: NYC-NYP
+  to_code: NYC
+  to_time: "14:40"
+
+- id: flixbus-2025-11-29
+  sort_date: 2025-11-29
+  date: "29 Nov 2025"
+  mode: bus
+  operator: FlixBus
+  from_id: NYC-NYP
+  from_code: NYC
+  from_time: "19:00"
+  to_id: BOS-SS
+  to_code: BOS
+  to_time: "23:48"
+
+- id: flixbus-2025-11-26
+  sort_date: 2025-11-26
+  date: "26 Nov 2025"
+  mode: bus
+  operator: FlixBus
+  from_id: BOS-SS
+  from_code: BOS
+  from_time: "07:15"
+  to_id: NYC-NYP
+  to_code: NYC
+  to_time: "12:00"
+  note: "Two saved passes; counted as one journey."
+
+- id: amtrak-2025-10-27
+  sort_date: 2025-10-27
+  date: "27 Oct 2025"
+  mode: train
+  operator: Amtrak
+  service: Northeast Regional
+  from_id: NYC-NYP
+  from_code: NYP
+  from_time: "19:50"
+  to_id: BOS-SS
+  to_code: BOS
+  to_time: "00:15 +1"
+
+- id: flixbus-2025-10-24-hudson
+  sort_date: 2025-10-24
+  date: "24 Oct 2025"
+  mode: bus
+  operator: FlixBus
+  from_id: BOS-SS
+  from_code: BOS
+  from_time: "19:00"
+  to_id: NYC-HY
+  to_code: NYC
+  to_time: "23:35"
+
+- id: flixbus-2025-10-24-midtown
+  sort_date: 2025-10-24
+  date: "24 Oct 2025"
+  mode: bus
+  operator: FlixBus
+  from_id: BOS-SS
+  from_code: BOS
+  from_time: "18:15"
+  to_id: NYC-NYP
+  to_code: NYC
+  to_time: "22:30"
+
+- id: flixbus-2025-05-31
+  sort_date: 2025-05-31
+  date: "31 May 2025"
+  mode: bus
+  operator: FlixBus
+  from_id: BOS-SS
+  from_code: BOS
+  from_time: "11:45"
+  to_id: NYC-NYP
+  to_code: NYC
+  to_time: "16:10"
+  note: "Three saved passes; counted as one journey."
+
+- id: flixbus-2025-03-15
+  sort_date: 2025-03-15
+  date: "15 Mar 2025"
+  mode: bus
+  operator: FlixBus
+  from_id: NYC-NYP
+  from_code: NYC
+  from_time: "06:30"
+  to_id: BOS-SS
+  to_code: BOS
+  to_time: "10:55"
+
+- id: flixbus-2025-03-13
+  sort_date: 2025-03-13
+  date: "13 Mar 2025"
+  mode: bus
+  operator: FlixBus
+  from_id: BOS-SS
+  from_code: BOS
+  from_time: "08:00"
+  to_id: NYC-NYP
+  to_code: NYC
+  to_time: "12:15"
+
+- id: amtrak-2025-02-26
+  sort_date: 2025-02-26
+  date: "26 Feb 2025"
+  mode: train
+  operator: Amtrak
+  service: Northeast Regional
+  from_id: NYC-NYP
+  from_code: NYP
+  from_time: "17:07"
+  to_id: BOS-BBY
+  to_code: BBY
+  to_time: "21:37"
+
+- id: flixbus-2025-02-21
+  sort_date: 2025-02-21
+  date: "21 Feb 2025"
+  mode: bus
+  operator: FlixBus
+  from_id: BOS-SS
+  from_code: BOS
+  from_time: "12:45"
+  to_id: NYC-NYP
+  to_code: NYC
+  to_time: "17:20"
+
+- id: flixbus-2024-05-12
+  sort_date: 2024-05-12
+  date: "12 May 2024"
+  mode: bus
+  operator: FlixBus
+  from_id: BOS-SS
+  from_code: BOS
+  from_time: "12:15"
+  to_id: NYC-NYP
+  to_code: NYC
+  to_time: "16:35"
+
+- id: amtrak-2023-11-12
+  sort_date: 2023-11-12
+  date: "12 Nov 2023"
+  mode: train
+  operator: Amtrak
+  service: Northeast Regional
+  from_id: BOS-BBY
+  from_code: BBY
+  from_time: "06:40"
+  to_id: NYC-NYP
+  to_code: NYP
+  to_time: "10:51"
+
+- id: amtrak-2023-11-11
+  sort_date: 2023-11-11
+  date: "11 Nov 2023"
+  mode: train
+  operator: Amtrak
+  service: Northeast Regional
+  from_id: BOS-BBY
+  from_code: BBY
+  from_time: "13:45"
+  to_id: NYC-NYP
+  to_code: NYP
+  to_time: "17:57"

@@ -17,3 +17,13 @@
   years: "2027–Present"
   note: "A new chapter, tropical rain, and a city that still feels full of possibility."
   memory: "The next chapter"
+
+- id: xiamen
+  city: Xiamen
+  country: China
+  latitude: 24.4798
+  longitude: 118.0894
+  kind: lived
+  years: "Home"
+  note: "Sea wind, familiar streets, and the city that has always meant home."
+  memory: "Where home began"

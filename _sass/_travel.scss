@@ -92,6 +92,11 @@
   gap: 0.55rem;
 }
 
+.travel-filter-stack {
+  display: grid;
+  gap: 0.55rem;
+}
+
 .travel-filters button {
   padding: 0.48rem 0.95rem;
   color: #343b40;
@@ -109,6 +114,16 @@
   &:focus-visible {
     outline: 3px solid rgba($link-color, 0.25);
     outline-offset: 2px;
+  }
+}
+
+.travel-filters--modes button {
+  border-color: #9ca9ae;
+
+  &[aria-pressed="true"] {
+    color: #26363d;
+    background: #fff0a8;
+    border-color: #26363d;
   }
 }
 
@@ -136,9 +151,13 @@
 .travel-legend__route {
   width: 1.35rem;
   height: 0;
-  border-top: 2px solid #d46798;
+  border-top: 2px solid;
   border-radius: 999px;
 }
+
+.travel-legend__route--flight { color: #d45e98; }
+.travel-legend__route--train { color: #2f7f70; border-top-style: dashed; }
+.travel-legend__route--bus { color: #4f73c8; border-top-style: dotted; }
 
 .travel-map-shell {
   display: grid;
@@ -154,6 +173,37 @@
 .travel-map-wrap {
   position: relative;
   min-width: 0;
+}
+
+.travel-map-controls {
+  position: absolute;
+  top: 5.7rem;
+  right: 1.2rem;
+  z-index: 8;
+  display: grid;
+  grid-template-columns: repeat(2, 2.15rem);
+  gap: 0.35rem;
+
+  button {
+    display: grid;
+    place-items: center;
+    width: 2.15rem;
+    height: 2.15rem;
+    padding: 0;
+    color: #26363d;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1.5px solid #26363d;
+    border-radius: 50%;
+    box-shadow: 2px 3px 0 rgba(38, 54, 61, 0.11);
+    cursor: pointer;
+
+    &:hover { background: #fff0a8; }
+    &:focus-visible { outline: 3px solid rgba($link-color, 0.25); outline-offset: 2px; }
+  }
 }
 
 .travel-map-head {
@@ -198,6 +248,10 @@
   display: block;
   width: 100%;
   min-height: 430px;
+  cursor: grab;
+  touch-action: none;
+
+  &:active { cursor: grabbing; }
 }
 
 .page__content .travel-map__status {
@@ -224,17 +278,125 @@
   vector-effect: non-scaling-stroke;
 }
 
-.travel-map__routes {
-  pointer-events: none;
-}
-
 .travel-map__route {
   fill: none;
-  stroke: #d46798;
-  stroke-width: 1.35;
+  stroke-width: 1.45;
   stroke-linecap: round;
-  opacity: 0.58;
+  opacity: 0.52;
+  cursor: pointer;
+  pointer-events: stroke;
   vector-effect: non-scaling-stroke;
+
+  &:hover,
+  &.is-selected {
+    stroke-width: 3.2;
+    opacity: 0.95;
+  }
+}
+
+.travel-map__route--flight { stroke: #d45e98; }
+.travel-map__route--train { stroke: #2f7f70; stroke-dasharray: 6 3; }
+.travel-map__route--bus { stroke: #4f73c8; stroke-dasharray: 1 4; }
+
+.travel-hub-marker {
+  color: #d45e98;
+  pointer-events: none;
+
+  &[data-mode="train"] { color: #2f7f70; }
+  &[data-mode="bus"] { color: #4f73c8; }
+
+  circle {
+    fill: #fff;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    vector-effect: non-scaling-stroke;
+  }
+}
+
+.travel-connection {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 9;
+  width: min(330px, calc(100% - 2.4rem));
+  max-height: 260px;
+  overflow: auto;
+  padding: 1rem 1.1rem;
+  color: #343b40;
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid #26363d;
+  border-radius: 14px;
+  box-shadow: 6px 7px 0 rgba(38, 54, 61, 0.13);
+
+  &[hidden] { display: none; }
+
+  > p {
+    margin: 0;
+    color: #2f6292;
+    font-size: 0.62rem;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    margin: 0.25rem 2rem 0.65rem 0;
+    color: #343b40;
+    font-size: 1.35rem;
+    font-weight: normal;
+  }
+
+  div p {
+    display: grid;
+    grid-template-columns: 78px minmax(0, 1fr);
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0.48rem 0;
+    color: #66747a;
+    font-size: 0.65rem;
+    border-top: 1px solid #e0e5e7;
+  }
+
+  div strong { color: #343b40; font-weight: normal; }
+
+  > a {
+    display: inline-block;
+    margin-top: 0.65rem;
+    color: #245a9b;
+    font-size: 0.68rem;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+.travel-connection__close {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.7rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  color: #26363d;
+  font: inherit;
+  background: #fff0a8;
+  border: 1.5px solid #26363d;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+body.travel-map-open { overflow: hidden; }
+
+.travel-map-shell.is-expanded {
+  position: fixed;
+  inset: 0.75rem;
+  z-index: 10000;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 22vw);
+  min-height: 0;
+  border-radius: 20px;
+  box-shadow: 0 20px 70px rgba(15, 28, 34, 0.32);
+
+  .travel-map-wrap { min-height: calc(100vh - 1.5rem); }
+  .travel-map { min-height: calc(100vh - 8rem); }
 }
 
 .travel-marker {
@@ -808,6 +970,43 @@
   }
 }
 
+.trip-detail-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+
+  button {
+    padding: 0.52rem 1rem;
+    color: #343b40;
+    font: inherit;
+    background: #fff;
+    border: 1.5px solid #26363d;
+    border-radius: 999px;
+    cursor: pointer;
+
+    &[aria-pressed="true"] { color: #fff; background: #26363d; }
+  }
+}
+
+.trip-mode {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-end;
+  margin-bottom: 0.3rem;
+  padding: 0.18rem 0.48rem;
+  color: #26363d;
+  font-size: 0.56rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #f3d7e8;
+  border-radius: 999px;
+}
+
+.trip-mode--train { background: #d9efe8; }
+.trip-mode--bus { background: #e5edff; }
+
 .flight-archive-ledger__empty {
   min-height: 260px;
   padding: clamp(2rem, 6vw, 4rem);
@@ -1228,6 +1427,7 @@
   .travel-hero { grid-template-columns: 1fr; }
   .travel-toolbar { align-items: flex-start; flex-direction: column; }
   .travel-map-shell { grid-template-columns: 1fr; }
+  .travel-map-shell.is-expanded { inset: 0; grid-template-columns: 1fr; overflow: auto; border-radius: 0; }
   .travel-map { min-height: 330px; }
   .travel-place { border-top: 2px solid #26363d; border-left: 0; }
   .travel-bottom-grid { grid-template-columns: 1fr; }
@@ -1249,6 +1449,7 @@
   .travel-stats { flex-wrap: wrap; }
   .travel-map-shell { border-radius: 14px; }
   .travel-map-head { align-items: flex-start; flex-direction: column; }
+  .travel-map-controls { top: 8.6rem; right: 0.75rem; }
   .travel-archive { padding: 1.35rem; }
   .travel-archive__item { grid-template-columns: 58px minmax(0, 1fr) auto; }
   .trip-detail-page { padding-top: 0.75rem; padding-bottom: 5rem; }
