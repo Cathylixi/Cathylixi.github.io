@@ -1,5 +1,10 @@
 # Verified flight records. Keep this list newest first in source for readability;
 # the page also sorts by sort_date before rendering.
+#
+# Apple Wallet's Expired list is used only to confirm the year of a matching
+# route. Its displayed month/day can be later than the actual flight, so
+# year-only records must stay year-only until the detailed pass confirms the
+# travel date. Duplicate Wallet cards (for example SLC -> LAX) count once.
 
 - sort_date: 2026-11-08
   date: "8 Nov 2026"
@@ -99,7 +104,7 @@
   to_city: "San Francisco"
   carrier: "United Airlines"
   flight_number: "UA594"
-  note: "Wallet archive: 20 Jun · exact travel date to confirm"
+  note: "year confirmed from Wallet archive · exact travel date pending"
 
 - sort_date: 2025-06-20
   date: "2025"
@@ -109,7 +114,7 @@
   to_city: "Kona"
   carrier: "United Airlines"
   flight_number: "UA1723"
-  note: "Wallet archive: 20 Jun · exact travel date to confirm"
+  note: "year confirmed from Wallet archive · exact travel date pending"
 
 - sort_date: 2025-06-21
   date: "21 Jun 2025"
@@ -436,7 +441,7 @@
   to_city: "Philadelphia"
   carrier: "American Airlines"
   flight_number: "AA185"
-  note: "Wallet archive: 1 Oct · exact travel date to confirm"
+  note: "year confirmed from Wallet archive · exact travel date pending"
 
 - sort_date: 2023-07-01
   date: "1 Jul 2023"
@@ -473,7 +478,7 @@
   to_city: "Newark"
   carrier: "United Airlines"
   flight_number: "UA570"
-  note: "Wallet archive: 25 Mar · exact travel date to confirm"
+  note: "year confirmed from Wallet archive · exact travel date pending"
 
 - sort_date: 2023-03-25
   date: "2023"
@@ -483,7 +488,7 @@
   to_city: "Tokyo"
   carrier: "United Airlines"
   flight_number: "UA79"
-  note: "Wallet archive: 25 Mar · exact travel date to confirm"
+  note: "year confirmed from Wallet archive · exact travel date pending"
 
 - sort_date: 2023-03-21
   date: "2023"
@@ -493,7 +498,7 @@
   to_city: "Boston"
   carrier: "United Airlines"
   flight_number: "UA2424"
-  note: "Wallet archive: 21 Mar · exact travel date to confirm"
+  note: "year confirmed from Wallet archive · exact travel date pending"
 
 - sort_date: 2023-03-20
   date: "2023"
@@ -503,4 +508,4 @@
   to_city: "Los Angeles"
   carrier: "United Airlines"
   flight_number: "UA1892"
-  note: "Wallet archive: 20 Mar · exact travel date to confirm"
+  note: "year confirmed from Wallet archive · exact travel date pending"
