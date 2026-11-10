@@ -206,42 +206,97 @@
   border: 0;
 }
 
-.yearbook-glance__header > strong {
+.yearbook-glance__total {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.yearbook-glance__total strong,
+.yearbook-glance__total span {
+  display: block;
+}
+
+.yearbook-glance__total strong {
   color: var(--yearbook-teal);
   font-size: clamp(2.2rem, 4vw, 3.15rem);
   line-height: 0.85;
 }
 
-.yearbook-glance__stats {
+.yearbook-glance__total span {
+  margin-top: 0.42rem;
+  color: rgba(38, 54, 61, 0.62);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.yearbook-glance__categories {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.55rem;
-  margin: 1.35rem 0 1rem;
-  padding: 1rem 0;
-  border-top: 1px solid rgba(38, 54, 61, 0.12);
-  border-bottom: 1px solid rgba(38, 54, 61, 0.12);
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(38, 54, 61, 0.14);
 }
 
-.yearbook-glance__stats strong,
-.yearbook-glance__stats span { display: block; }
-.yearbook-glance__stats strong { font-size: 1.12rem; }
-.yearbook-glance__stats span { margin-top: 0.08rem; color: #788487; font-size: 0.62rem; }
-
-.yearbook-glance__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.42rem;
+.yearbook-category {
+  --category-color: #718fd2;
+  display: grid;
+  min-width: 0;
+  min-height: 76px;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: start;
+  padding: 0.65rem 0.55rem;
+  background: rgba(255, 255, 255, 0.68);
+  border-top: 3px solid var(--category-color);
+  border-radius: 9px;
 }
 
-.yearbook-glance__tags span {
-  padding: 0.28rem 0.5rem;
+.yearbook-category__icon {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  color: #fff;
+  background: var(--category-color);
+  border-radius: 50%;
+  font-size: 0.62rem;
+}
+
+.yearbook-category strong,
+.yearbook-category div > span {
+  display: block;
+}
+
+.yearbook-category strong {
+  color: #354448;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.yearbook-category div > span {
+  margin-top: 0.28rem;
   color: #627073;
-  font-size: 0.61rem;
-  background: rgba(255, 255, 255, 0.72);
-  border-radius: 999px;
+  font-size: 0.56rem;
+  font-weight: 800;
+  line-height: 1.25;
 }
 
-.yearbook-glance__tags b { color: #354448; }
+.yearbook-category--wellbeing { --category-color: #62c584; }
+.yearbook-category--culture { --category-color: #d55bb2; }
+.yearbook-category--travel { --category-color: #6e8fd7; }
+.yearbook-category--career { --category-color: #c3a63d; }
+.yearbook-category--education { --category-color: #7361dc; }
+.yearbook-category--milestone { --category-color: #ff796f; }
+
+.yearbook-row--wellbeing { --row-accent: #62c584; }
+.yearbook-row--culture { --row-accent: #d55bb2; }
+.yearbook-row--travel { --row-accent: #6e8fd7; }
+.yearbook-row--career { --row-accent: #c3a63d; }
+.yearbook-row--education { --row-accent: #7361dc; }
+.yearbook-row--milestone { --row-accent: #ff796f; }
 
 .yearbook-wishlist {
   height: auto;

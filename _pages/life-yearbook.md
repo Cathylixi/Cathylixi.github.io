@@ -21,18 +21,28 @@ author_profile: false
   {% assign group_count = group.items | size %}
   {% assign future_count = future_count | plus: group_count %}
 {% endfor %}
-{% assign sport_count = 0 %}
-{% assign experience_count = 0 %}
-{% assign other_count = 0 %}
+{% assign wellbeing_count = 0 %}
+{% assign culture_count = 0 %}
+{% assign travel_count = 0 %}
+{% assign career_count = 0 %}
+{% assign education_count = 0 %}
+{% assign milestone_count = 0 %}
 {% for chapter in sorted_chapters %}
   {% for item in chapter.items %}
-    {% if item.kind == "sports" %}
-      {% assign sport_count = sport_count | plus: 1 %}
-    {% elsif item.kind == "activity" %}
-      {% assign experience_count = experience_count | plus: 1 %}
-    {% else %}
-      {% assign other_count = other_count | plus: 1 %}
-    {% endif %}
+    {% case item.kind %}
+    {% when "wellbeing" %}
+      {% assign wellbeing_count = wellbeing_count | plus: 1 %}
+    {% when "culture" %}
+      {% assign culture_count = culture_count | plus: 1 %}
+    {% when "travel" %}
+      {% assign travel_count = travel_count | plus: 1 %}
+    {% when "career" %}
+      {% assign career_count = career_count | plus: 1 %}
+    {% when "education" %}
+      {% assign education_count = education_count | plus: 1 %}
+    {% when "milestone" %}
+      {% assign milestone_count = milestone_count | plus: 1 %}
+    {% endcase %}
   {% endfor %}
 {% endfor %}
 
@@ -79,7 +89,7 @@ author_profile: false
                 </time>
                 <span class="yearbook-row__marker" aria-hidden="true"><i class="fas {{ item.icon }}"></i></span>
                 <div class="yearbook-row__title">
-                  <p>{% case item.kind %}{% when 'sports' %}Sport{% when 'travel' %}Travel{% when 'activity' %}Experience{% when 'view' %}Scenery{% when 'startup' %}Created{% else %}{{ item.kind }}{% endcase %}</p>
+                  <p>{% case item.kind %}{% when 'wellbeing' %}Sports &amp; Wellbeing{% when 'culture' %}Culture &amp; Experiences{% when 'travel' %}Travel{% when 'career' %}Career &amp; Creation{% when 'education' %}Learning &amp; Education{% when 'milestone' %}Life Milestone{% else %}{{ item.kind }}{% endcase %}</p>
                   <h3>{{ item.title }}</h3>
                   {% if item.subtitle %}<span>{{ item.subtitle }}</span>{% endif %}
                 </div>
@@ -111,17 +121,36 @@ author_profile: false
           <p>Archive</p>
           <h2 id="yearbook-glance-title">At a glance</h2>
         </div>
-        <strong>{{ lived_count }}</strong>
+        <div class="yearbook-glance__total">
+          <strong>{{ lived_count }}</strong>
+          <span>Life moments</span>
+        </div>
       </header>
-      <div class="yearbook-glance__stats">
-        <div><strong>{{ lived_count }}</strong><span>Lived</span></div>
-        <div><strong>{{ future_count }}</strong><span>Waiting</span></div>
-        <div><strong>{{ sorted_chapters.size }}</strong><span>Years</span></div>
-      </div>
-      <div class="yearbook-glance__tags" aria-label="Entries by type">
-        <span><b>{{ sport_count }}</b> Sport</span>
-        <span><b>{{ experience_count }}</b> Experience</span>
-        <span><b>{{ other_count }}</b> Other</span>
+      <div class="yearbook-glance__categories" aria-label="Life moments by category">
+        <div class="yearbook-category yearbook-category--wellbeing">
+          <span class="yearbook-category__icon" aria-hidden="true"><i class="fas fa-heartbeat"></i></span>
+          <div><strong>{{ wellbeing_count }}</strong><span>Sports &amp; Wellbeing</span></div>
+        </div>
+        <div class="yearbook-category yearbook-category--culture">
+          <span class="yearbook-category__icon" aria-hidden="true"><i class="fas fa-ticket-alt"></i></span>
+          <div><strong>{{ culture_count }}</strong><span>Culture &amp; Experiences</span></div>
+        </div>
+        <div class="yearbook-category yearbook-category--travel">
+          <span class="yearbook-category__icon" aria-hidden="true"><i class="fas fa-plane"></i></span>
+          <div><strong>{{ travel_count }}</strong><span>Travel</span></div>
+        </div>
+        <div class="yearbook-category yearbook-category--career">
+          <span class="yearbook-category__icon" aria-hidden="true"><i class="fas fa-seedling"></i></span>
+          <div><strong>{{ career_count }}</strong><span>Career &amp; Creation</span></div>
+        </div>
+        <div class="yearbook-category yearbook-category--education">
+          <span class="yearbook-category__icon" aria-hidden="true"><i class="fas fa-graduation-cap"></i></span>
+          <div><strong>{{ education_count }}</strong><span>Learning &amp; Education</span></div>
+        </div>
+        <div class="yearbook-category yearbook-category--milestone">
+          <span class="yearbook-category__icon" aria-hidden="true"><i class="fas fa-flag"></i></span>
+          <div><strong>{{ milestone_count }}</strong><span>Life Milestones</span></div>
+        </div>
       </div>
     </section>
 
