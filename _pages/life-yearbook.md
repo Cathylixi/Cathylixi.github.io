@@ -89,7 +89,6 @@ author_profile: false
                 </time>
                 <span class="yearbook-row__marker" aria-hidden="true"><i class="fas {{ item.icon }}"></i></span>
                 <div class="yearbook-row__title">
-                  <p>{% case item.kind %}{% when 'wellbeing' %}Sports &amp; Wellbeing{% when 'culture' %}Culture &amp; Experiences{% when 'travel' %}Travel{% when 'career' %}Career &amp; Creation{% when 'education' %}Learning &amp; Education{% when 'milestone' %}Life Milestone{% else %}{{ item.kind }}{% endcase %}</p>
                   <h3>{{ item.title }}</h3>
                   {% if item.subtitle %}<span>{{ item.subtitle }}</span>{% endif %}
                 </div>
