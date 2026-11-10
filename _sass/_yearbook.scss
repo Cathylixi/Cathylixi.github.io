@@ -57,7 +57,7 @@
 }
 
 .yearbook-dense {
-  --yearbook-blue: #d9e7ff;
+  --yearbook-blue: #e2f4e8;
   --yearbook-yellow: #fff3ad;
   --yearbook-pink: #f7d8f1;
   --yearbook-ink: #26363d;
@@ -102,7 +102,7 @@
   z-index: 3;
   margin: 0 calc(0px - var(--yearbook-panel-pad)) 1.35rem;
   padding: var(--yearbook-panel-pad);
-  background: rgba(217, 231, 255, 0.97);
+  background: rgba(226, 244, 232, 0.97);
   border: 0;
   border-bottom: 1px solid rgba(38, 54, 61, 0.2);
   border-radius: 0;
@@ -141,6 +141,7 @@
 }
 
 .yearbook-archive-pane .yearbook-row {
+  grid-template-columns: 76px 34px minmax(180px, 1.45fr) minmax(105px, 0.75fr) minmax(105px, 0.75fr);
   padding-right: var(--yearbook-panel-pad);
   padding-left: var(--yearbook-panel-pad);
   background: #fff;
@@ -148,7 +149,7 @@
 }
 
 .yearbook-archive-pane .yearbook-row:hover {
-  background: rgba(217, 231, 255, 0.52);
+  background: rgba(226, 244, 232, 0.58);
 }
 
 .yearbook-archive-pane .yearbook-dense__closing {
@@ -393,7 +394,7 @@
   }
 
   .yearbook-row {
-    grid-template-columns: 68px 30px minmax(150px, 1.35fr) minmax(90px, 0.7fr) 62px;
+    grid-template-columns: 68px 30px minmax(150px, 1.35fr) minmax(90px, 0.7fr);
   }
 
   .yearbook-row__detail + .yearbook-row__detail {
@@ -457,7 +458,7 @@
   }
 
   .yearbook-row {
-    grid-template-columns: 56px 26px minmax(0, 1fr) auto;
+    grid-template-columns: 56px 26px minmax(0, 1fr);
     gap: 0.55rem;
     padding: 0.65rem 0.65rem 0.65rem 0.55rem;
   }
@@ -470,14 +471,6 @@
     width: 24px;
     height: 24px;
     font-size: 0.54rem;
-  }
-
-  .yearbook-row__status {
-    font-size: 0;
-  }
-
-  .yearbook-row__status i {
-    margin: 0;
   }
 
   .yearbook-wish:nth-last-child(2) {

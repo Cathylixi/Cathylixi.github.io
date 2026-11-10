@@ -78,16 +78,24 @@ author_profile: false
 
           <div class="yearbook-ledger">
             {% for item in chapter.items %}
+              {% assign category_icon = "fa-circle" %}
+              {% case item.kind %}
+                {% when "wellbeing" %}{% assign category_icon = "fa-heartbeat" %}
+                {% when "culture" %}{% assign category_icon = "fa-ticket-alt" %}
+                {% when "travel" %}{% assign category_icon = "fa-plane" %}
+                {% when "career" %}{% assign category_icon = "fa-seedling" %}
+                {% when "education" %}{% assign category_icon = "fa-graduation-cap" %}
+                {% when "milestone" %}{% assign category_icon = "fa-flag" %}
+              {% endcase %}
               <article class="yearbook-row yearbook-row--{{ item.kind }}"
                        data-yearbook-card
-                       data-status="lived"
                        data-year="{{ chapter.year }}"
                        data-kind="{{ item.kind }}">
                 <time class="yearbook-row__date">
                   <strong>{{ item.date }}</strong>
                   <span>{{ chapter.year }}</span>
                 </time>
-                <span class="yearbook-row__marker" aria-hidden="true"><i class="fas {{ item.icon }}"></i></span>
+                <span class="yearbook-row__marker" aria-hidden="true"><i class="fas {{ category_icon }}"></i></span>
                 <div class="yearbook-row__title">
                   <h3>{{ item.title }}</h3>
                   {% if item.subtitle %}<span>{{ item.subtitle }}</span>{% endif %}
@@ -100,7 +108,6 @@ author_profile: false
                   <span>With</span>
                   <strong>{{ item.company }}</strong>
                 </div>
-                <span class="yearbook-row__status"><i aria-hidden="true">✓</i> Lived</span>
               </article>
             {% endfor %}
           </div>
@@ -109,7 +116,7 @@ author_profile: false
     </div>
 
     <footer class="yearbook-dense__closing">
-      <span>{{ lived_count }} lived</span><i aria-hidden="true"></i><strong>To be continued.</strong>
+      <span>{{ lived_count }} moments</span><i aria-hidden="true"></i><strong>To be continued.</strong>
     </footer>
   </section>
 
