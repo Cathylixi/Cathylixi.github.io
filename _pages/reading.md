@@ -47,7 +47,8 @@ redirect_from:
     </div>
   </section>
 
-  <div class="reading-overview">
+  <div class="reading-workspace">
+  <aside class="reading-overview" aria-label="Reading archive overview">
     <section class="reading-archive" aria-labelledby="reading-archive-title">
       <div class="reading-panel-heading">
         <div>
@@ -76,7 +77,7 @@ redirect_from:
       </div>
       <ol class="reading-recent__grid" id="reading-recent-list"></ol>
     </section>
-  </div>
+  </aside>
 
   <main class="reading-library" aria-labelledby="reading-library-title">
     <div class="reading-section-heading">
@@ -192,6 +193,7 @@ redirect_from:
     </div>
     <button class="reading-more" id="reading-more" type="button">Show more</button>
   </main>
+  </div>
 
   <footer class="reading-home__footer">
     <a class="life-section__back" href="{{ '/life/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> Back to My Life</a>
