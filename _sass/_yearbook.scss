@@ -1,5 +1,5 @@
 /* ==========================================================================
-   YEARBOOK — full-width split workspace
+   YEARBOOK — editorial split workspace, aligned with Reading & Watching
    ========================================================================== */
 
 .life-section.life-section--yearbook {
@@ -10,114 +10,81 @@
 
 .life-section--yearbook .life-section__header {
   position: relative;
-  min-height: 285px;
-  margin-top: 2rem;
-  padding: clamp(2.3rem, 5vw, 4.2rem) clamp(2rem, 5vw, 4.5rem);
-  padding-right: clamp(15rem, 31vw, 24rem);
-  overflow: hidden;
-  color: #fffdf4;
-  background:
-    linear-gradient(112deg, transparent 0 69%, rgba(255, 255, 255, 0.1) 69.2% 69.55%, transparent 69.75%),
-    linear-gradient(112deg, #173f45 0 72%, #f1d46e 72.15% 100%);
-  border: 2px solid #253b40;
-  border-radius: 22px;
-  box-shadow: 8px 10px 0 rgba(37, 59, 64, 0.12);
-}
-
-.life-section--yearbook .life-section__header:before {
-  content: "2024 — 2026";
-  position: absolute;
-  top: 2.2rem;
-  right: clamp(2rem, 5vw, 4rem);
-  z-index: 1;
-  color: rgba(37, 59, 64, 0.76);
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.life-section--yearbook .life-section__header:after {
-  content: "∞";
-  position: absolute;
-  right: clamp(2rem, 5vw, 4.25rem);
-  bottom: -0.18em;
-  width: auto;
-  height: auto;
-  color: rgba(37, 59, 64, 0.78);
+  max-width: 780px;
+  min-height: 0;
+  margin: 2.25rem 0 3rem;
+  padding: 0;
+  overflow: visible;
+  color: #2f3b3f;
   background: transparent;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(7.5rem, 15vw, 11.5rem);
-  line-height: 0.86;
+  border: 0;
   border-radius: 0;
+  box-shadow: none;
 }
 
+.life-section--yearbook .life-section__header:before,
+.life-section--yearbook .life-section__header:after,
 .life-section--yearbook .life-section__header .life-section__icon {
-  width: 42px;
-  height: 42px;
-  color: #173f45;
-  background: #f1d46e;
-  font-size: 0.86rem;
-  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.08);
+  display: none;
 }
 
 .life-section--yearbook .life-section__header > p {
-  margin-top: 1.2rem;
-  color: #f1d46e;
-  font-size: 0.7rem;
+  margin: 0 0 0.75rem;
+  color: #3f7d70;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
 }
 
 .life-section--yearbook .life-section__header h1 {
-  color: #fffdf4;
-  font-size: clamp(3.4rem, 7vw, 5.65rem);
-  letter-spacing: -0.055em;
+  margin: 0;
+  color: #2f3b3f;
+  font-size: clamp(2.5rem, 5.6vw, 3.85rem);
+  letter-spacing: -0.045em;
 }
 
 .page__content .life-section--yearbook .life-section__intro {
-  max-width: 520px;
+  max-width: 620px;
   margin-top: 0.8rem;
-  color: rgba(255, 255, 255, 0.68);
-  font-size: 1.04rem;
+  color: #69777b;
+  font-size: 1.12rem;
+  line-height: 1.55;
 }
 
 .life-section--yearbook .life-section__body {
-  padding: clamp(2rem, 4vw, 3rem) 0 4rem;
+  padding: 0 0 4rem;
 }
 
 .yearbook-dense {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(285px, 0.36fr);
-  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1.8fr) minmax(280px, 0.72fr);
+  gap: clamp(1rem, 2.2vw, 1.6rem);
   align-items: start;
   color: #334146;
 }
 
-.yearbook-archive-pane,
-.yearbook-wishlist {
-  height: clamp(620px, 72vh, 820px);
-  border: 2px solid #26363d;
-  border-radius: 18px;
-  box-shadow: 6px 7px 0 rgba(38, 54, 61, 0.1);
-}
-
+/* The archive is the only independently scrolling region on desktop. */
 .yearbook-archive-pane {
-  padding: 0 0.95rem 1rem;
+  height: clamp(620px, 72vh, 820px);
+  padding: 0 0.55rem 0 0;
   overflow-x: hidden;
   overflow-y: auto;
-  background: #f8faf9;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
   scrollbar-color: #9cafad transparent;
   scrollbar-width: thin;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
 
-.yearbook-archive-pane::-webkit-scrollbar,
-.yearbook-wishlist__list::-webkit-scrollbar {
+.yearbook-archive-pane::-webkit-scrollbar {
   width: 8px;
 }
 
-.yearbook-archive-pane::-webkit-scrollbar-thumb,
-.yearbook-wishlist__list::-webkit-scrollbar-thumb {
+.yearbook-archive-pane::-webkit-scrollbar-thumb {
   background: #9cafad;
   border: 2px solid transparent;
   border-radius: 999px;
@@ -126,13 +93,15 @@
 
 .yearbook-archive-pane .yearbook-year-picker {
   top: 0;
-  margin: 0 -0.95rem 1.2rem;
-  padding: 0.75rem 0.95rem;
-  background: rgba(248, 250, 249, 0.96);
+  z-index: 3;
+  margin: 0 0 1.35rem;
+  padding: 0 0 0.9rem;
+  background: rgba(255, 255, 255, 0.96);
   border: 0;
   border-bottom: 1px solid #d7dfdd;
-  border-radius: 16px 16px 0 0;
+  border-radius: 0;
   box-shadow: none;
+  backdrop-filter: blur(8px);
 }
 
 .yearbook-archive-pane .yearbook-results {
@@ -176,35 +145,37 @@
   padding-bottom: 0.2rem;
 }
 
+/* The to-do list is a natural-height sidebar, not another scroll box. */
 .yearbook-wishlist {
   position: sticky;
   top: 1rem;
-  display: flex;
   align-self: start;
-  flex-direction: column;
-  overflow: hidden;
-  background: #fff7cf;
-  border-color: #26363d;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .yearbook-wishlist__header {
   display: flex;
-  min-height: 126px;
-  align-items: flex-end;
+  align-items: end;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1.35rem 1.35rem 1.15rem;
+  min-height: 0;
+  padding: 0 0 0.9rem;
   color: #26363d;
-  background:
-    radial-gradient(circle at 92% 12%, rgba(255, 255, 255, 0.6) 0 7%, transparent 7.5%),
-    linear-gradient(135deg, #f3d66d, #fae898);
-  border-bottom: 2px solid #26363d;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #d7dfdd;
 }
 
 .page__content .yearbook-wishlist__header p {
-  margin: 0 0 0.35rem;
-  color: rgba(38, 54, 61, 0.66);
-  font-size: 0.57rem;
+  margin: 0 0 0.28rem;
+  color: #3f7d70;
+  font-size: 0.64rem;
   font-weight: 900;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -215,41 +186,40 @@
   padding: 0;
   color: #26363d;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 2rem;
+  font-size: clamp(1.75rem, 3vw, 2.15rem);
   font-weight: normal;
   letter-spacing: -0.04em;
   border: 0;
 }
 
 .yearbook-wishlist__header > span {
-  display: grid;
-  width: 40px;
-  height: 40px;
+  display: block;
+  width: auto;
+  height: auto;
   flex: 0 0 auto;
-  place-items: center;
-  color: #fffdf4;
-  background: #26363d;
-  border-radius: 50%;
-  font-size: 0.82rem;
+  color: #3f7d70;
+  background: transparent;
+  border-radius: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  line-height: 1;
 }
 
 .yearbook-wishlist__list {
   min-height: 0;
-  padding: 0.45rem 0.85rem 0.8rem;
-  overflow-y: auto;
-  scrollbar-color: #b8a85d transparent;
-  scrollbar-width: thin;
-  -webkit-overflow-scrolling: touch;
+  padding: 0;
+  overflow: visible;
 }
 
 .yearbook-wish {
   display: grid;
-  min-height: 58px;
-  grid-template-columns: 38px minmax(0, 1fr);
-  gap: 0.75rem;
+  min-height: 62px;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 0.65rem;
   align-items: center;
-  padding: 0.65rem 0.35rem;
-  border-bottom: 1px solid rgba(67, 71, 53, 0.16);
+  padding: 0.75rem 0;
+  background: transparent;
+  border-bottom: 1px solid rgba(67, 71, 53, 0.14);
 }
 
 .yearbook-wish:last-child {
@@ -257,24 +227,24 @@
 }
 
 .yearbook-wish__infinity {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  color: #26363d;
-  background: rgba(255, 255, 255, 0.68);
-  border: 1px solid rgba(38, 54, 61, 0.24);
-  border-radius: 50%;
+  display: block;
+  width: auto;
+  height: auto;
+  color: #3f7d70;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.15rem;
+  font-size: 1.45rem;
   line-height: 1;
+  text-align: center;
 }
 
 .yearbook-wish small {
   display: block;
   margin-bottom: 0.08rem;
-  color: #8b792e;
-  font-size: 0.5rem;
+  color: #7c8b8e;
+  font-size: 0.55rem;
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -285,9 +255,9 @@
   overflow: hidden;
   color: #354448;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.92rem;
+  font-size: 1rem;
   font-weight: normal;
-  line-height: 1.2;
+  line-height: 1.25;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -307,34 +277,13 @@
 }
 
 @media (max-width: 860px) {
-  .life-section--yearbook .life-section__header {
-    min-height: 255px;
-    padding-right: 12rem;
-    background:
-      linear-gradient(112deg, transparent 0 75%, rgba(255, 255, 255, 0.1) 75.2% 75.55%, transparent 75.75%),
-      linear-gradient(112deg, #173f45 0 78%, #f1d46e 78.15% 100%);
-  }
-
-  .life-section--yearbook .life-section__header:before {
-    right: 1.4rem;
-  }
-
-  .life-section--yearbook .life-section__header:after {
-    right: 1.35rem;
-    font-size: 7rem;
-  }
-
   .yearbook-dense {
     grid-template-columns: 1fr;
   }
 
-  .yearbook-archive-pane,
-  .yearbook-wishlist {
-    height: auto;
-    max-height: none;
-  }
-
   .yearbook-archive-pane {
+    height: auto;
+    padding-right: 0;
     overflow: visible;
   }
 
@@ -346,7 +295,7 @@
   .yearbook-wishlist__list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    overflow: visible;
+    column-gap: 1.25rem;
   }
 
   .yearbook-wish:nth-last-child(2) {
@@ -361,30 +310,11 @@
   }
 
   .life-section--yearbook .life-section__header {
-    min-height: 235px;
-    margin-right: -1rem;
-    margin-left: -1rem;
-    padding: 2rem 1.25rem 2.4rem;
-    background: #173f45;
-    border-right: 0;
-    border-left: 0;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .life-section--yearbook .life-section__header:before {
-    top: auto;
-    right: 1.2rem;
-    bottom: 1rem;
-    color: rgba(241, 212, 110, 0.82);
-  }
-
-  .life-section--yearbook .life-section__header:after {
-    display: none;
+    margin: 1.5rem 0 2.25rem;
   }
 
   .life-section--yearbook .life-section__header h1 {
-    font-size: clamp(3rem, 16vw, 4.2rem);
+    font-size: clamp(2.65rem, 14vw, 3.7rem);
   }
 
   .life-section--yearbook .life-section__body {
@@ -421,15 +351,7 @@
   }
 
   .yearbook-wish:nth-last-child(2) {
-    border-bottom: 1px solid rgba(67, 71, 53, 0.16);
-  }
-
-  .yearbook-archive-pane,
-  .yearbook-wishlist {
-    border-right-width: 1px;
-    border-left-width: 1px;
-    border-radius: 14px;
-    box-shadow: 4px 5px 0 rgba(38, 54, 61, 0.08);
+    border-bottom: 1px solid rgba(67, 71, 53, 0.14);
   }
 
   .yearbook-year-picker__title p {
