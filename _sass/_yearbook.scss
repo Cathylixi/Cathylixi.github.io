@@ -57,7 +57,7 @@
 }
 
 .yearbook-dense {
-  --yearbook-aqua: #c8f0ef;
+  --yearbook-blue: #d9e7ff;
   --yearbook-yellow: #fff3ad;
   --yearbook-pink: #f7d8f1;
   --yearbook-ink: #26363d;
@@ -69,14 +69,14 @@
   color: #343b40;
 }
 
-/* The archive is one continuous panel: heading, controls, and records. */
+/* Match Reading: a colored control band above a white archive. */
 .yearbook-archive-pane {
   --yearbook-panel-pad: clamp(1.15rem, 2.2vw, 1.55rem);
   height: var(--yearbook-workspace-height, auto);
-  padding: var(--yearbook-panel-pad);
+  padding: 0 var(--yearbook-panel-pad) var(--yearbook-panel-pad);
   overflow-x: hidden;
   overflow-y: auto;
-  background: var(--yearbook-aqua);
+  background: #fff;
   border: 2px solid var(--yearbook-ink);
   border-radius: 16px;
   box-shadow: 6px 7px 0 rgba(38, 54, 61, 0.1);
@@ -100,11 +100,11 @@
 .yearbook-archive-pane .yearbook-year-picker {
   top: 0;
   z-index: 3;
-  margin: 0 0 1.35rem;
-  padding: 0 0 1rem;
-  background: rgba(200, 240, 239, 0.96);
+  margin: 0 calc(0px - var(--yearbook-panel-pad)) 1.35rem;
+  padding: var(--yearbook-panel-pad);
+  background: rgba(217, 231, 255, 0.97);
   border: 0;
-  border-bottom: 1px solid #d7dfdd;
+  border-bottom: 1px solid rgba(38, 54, 61, 0.2);
   border-radius: 0;
   box-shadow: none;
   backdrop-filter: blur(8px);
@@ -143,12 +143,12 @@
 .yearbook-archive-pane .yearbook-row {
   padding-right: var(--yearbook-panel-pad);
   padding-left: var(--yearbook-panel-pad);
-  background: transparent;
+  background: #fff;
   border-left: 0;
 }
 
 .yearbook-archive-pane .yearbook-row:hover {
-  background: rgba(255, 255, 255, 0.42);
+  background: rgba(217, 231, 255, 0.52);
 }
 
 .yearbook-archive-pane .yearbook-dense__closing {
@@ -353,7 +353,7 @@
 
   .yearbook-archive-pane {
     height: auto;
-    padding-right: 0;
+    padding: 0 var(--yearbook-panel-pad) var(--yearbook-panel-pad);
     overflow: visible;
   }
 
