@@ -21,6 +21,20 @@ author_profile: false
   {% assign group_count = group.items | size %}
   {% assign future_count = future_count | plus: group_count %}
 {% endfor %}
+{% assign sport_count = 0 %}
+{% assign experience_count = 0 %}
+{% assign other_count = 0 %}
+{% for chapter in sorted_chapters %}
+  {% for item in chapter.items %}
+    {% if item.kind == "sports" %}
+      {% assign sport_count = sport_count | plus: 1 %}
+    {% elsif item.kind == "activity" %}
+      {% assign experience_count = experience_count | plus: 1 %}
+    {% else %}
+      {% assign other_count = other_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
 
 <div class="yearbook-dense" data-yearbook>
   <section class="yearbook-archive-pane" aria-label="Yearbook archive">
@@ -90,28 +104,50 @@ author_profile: false
     </footer>
   </section>
 
-  <aside class="yearbook-wishlist" aria-labelledby="yearbook-wishlist-title">
-    <header class="yearbook-wishlist__header">
-      <div>
-        <p>Always in view</p>
-        <h2 id="yearbook-wishlist-title">To-do list</h2>
+  <aside class="yearbook-overview" aria-label="Yearbook overview">
+    <section class="yearbook-glance" aria-labelledby="yearbook-glance-title">
+      <header class="yearbook-glance__header">
+        <div>
+          <p>Archive</p>
+          <h2 id="yearbook-glance-title">At a glance</h2>
+        </div>
+        <strong>{{ lived_count }}</strong>
+      </header>
+      <div class="yearbook-glance__stats">
+        <div><strong>{{ lived_count }}</strong><span>Lived</span></div>
+        <div><strong>{{ future_count }}</strong><span>Waiting</span></div>
+        <div><strong>{{ sorted_chapters.size }}</strong><span>Years</span></div>
       </div>
-      <span>{{ future_count }}</span>
-    </header>
+      <div class="yearbook-glance__tags" aria-label="Entries by type">
+        <span><b>{{ sport_count }}</b> Sport</span>
+        <span><b>{{ experience_count }}</b> Experience</span>
+        <span><b>{{ other_count }}</b> Other</span>
+      </div>
+    </section>
 
-    <div class="yearbook-wishlist__list">
-      {% for group in yearbook.future %}
-        {% for item in group.items %}
-          <article class="yearbook-wish">
-            <span class="yearbook-wish__infinity" aria-hidden="true">∞</span>
-            <div>
-              <small>Someday</small>
-              <h3>{{ item }}</h3>
-            </div>
-          </article>
+    <section class="yearbook-wishlist" aria-labelledby="yearbook-wishlist-title">
+      <header class="yearbook-wishlist__header">
+        <div>
+          <p>Someday</p>
+          <h2 id="yearbook-wishlist-title">To-do list</h2>
+        </div>
+        <span>{{ future_count }}</span>
+      </header>
+
+      <div class="yearbook-wishlist__list">
+        {% for group in yearbook.future %}
+          {% for item in group.items %}
+            <article class="yearbook-wish">
+              <span class="yearbook-wish__infinity" aria-hidden="true">∞</span>
+              <div>
+                <small>Someday</small>
+                <h3>{{ item }}</h3>
+              </div>
+            </article>
+          {% endfor %}
         {% endfor %}
-      {% endfor %}
-    </div>
+      </div>
+    </section>
   </aside>
 </div>
 

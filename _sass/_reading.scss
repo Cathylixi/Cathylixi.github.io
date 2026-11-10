@@ -398,8 +398,15 @@
 }
 
 .reading-library {
+  --reading-panel-pad: clamp(1.15rem, 2.2vw, 1.55rem);
   grid-area: library;
   min-width: 0;
+  padding: var(--reading-panel-pad);
+  overflow: hidden;
+  background: #e2f4e8;
+  border: 2px solid #26363d;
+  border-radius: 16px;
+  box-shadow: 6px 7px 0 rgba(38, 54, 61, 0.1);
 }
 
 .reading-section-heading {
@@ -438,9 +445,11 @@
 }
 
 .page__content .reading-library-hint {
-  margin: -0.65rem 0 0.85rem;
+  margin: -0.65rem calc(0px - var(--reading-panel-pad)) 0;
+  padding: 0 var(--reading-panel-pad) 1rem;
   color: #92989c;
   font-size: 0.64rem;
+  border-bottom: 1px solid rgba(38, 54, 61, 0.2);
 }
 
 .reading-result-count {
@@ -473,9 +482,11 @@
 
 .reading-table-wrap {
   overflow-x: auto;
-  border: 2px solid #26363d;
-  border-radius: 16px;
-  box-shadow: 6px 7px 0 rgba(38, 54, 61, 0.1);
+  margin: 0 calc(0px - var(--reading-panel-pad)) calc(0px - var(--reading-panel-pad));
+  background: #fff;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .page__content .reading-table {
@@ -486,6 +497,14 @@
   table-layout: fixed;
   border-collapse: collapse;
 
+  thead {
+    background: #e2f4e8;
+  }
+
+  tbody {
+    background: #fff;
+  }
+
   th,
   td {
     padding: 0.68rem 0.5rem;
@@ -494,7 +513,7 @@
   }
 
   th {
-    padding: 0.62rem 0.28rem;
+    padding: 0.75rem 0.28rem;
     text-align: left;
     background: #e2f4e8;
   }
@@ -524,6 +543,8 @@
   th:nth-child(4), td:nth-child(4) { width: 14%; }
   th:nth-child(5), td:nth-child(5) { width: 18%; }
   th:nth-child(n+2), td:nth-child(n+2) { white-space: nowrap; }
+  th:first-child, td:first-child { padding-left: var(--reading-panel-pad); }
+  th:last-child, td:last-child { padding-right: var(--reading-panel-pad); }
 }
 
 .reading-table-filter {
@@ -887,6 +908,14 @@
       padding: 0;
       border: 0;
       white-space: normal !important;
+    }
+
+    th:first-child,
+    th:last-child,
+    td:first-child,
+    td:last-child {
+      padding-right: 0;
+      padding-left: 0;
     }
 
     td:not(.reading-table__title):before {

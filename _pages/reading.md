@@ -309,7 +309,7 @@ redirect_from:
       var recent = selectedTypeItems().map(function (item) { return {item: item, index: items.indexOf(item)}; })
         .filter(function (entry) { return entry.item.status === 'Finished' && entry.item.year !== null && entry.item.year !== ''; })
         .sort(function (a, b) { return yearRank(b.item.year) - yearRank(a.item.year) || a.index - b.index; })
-        .slice(0, 4);
+        .slice(0, 6);
       recentList.innerHTML = recent.map(function (entry) {
         var item = entry.item;
         var creator = item.creator ? '<span>' + escapeHtml(item.creator) + '</span>' : '<span>' + escapeHtml(item.category) + '</span>';
