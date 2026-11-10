@@ -664,6 +664,99 @@
   display: none;
 }
 
+.yearbook-wishlist {
+  margin-bottom: 1.8rem;
+  overflow: hidden;
+  background: #fff8d4;
+  border: 1px solid #d9cf94;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(83, 74, 31, 0.08);
+
+  > summary {
+    display: grid;
+    min-height: 72px;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 0.85rem;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    color: #334146;
+    cursor: pointer;
+    list-style: none;
+
+    &::-webkit-details-marker { display: none; }
+
+    &:focus-visible {
+      outline: 3px solid rgba(42, 93, 91, 0.3);
+      outline-offset: -3px;
+    }
+  }
+
+  &[open] {
+    > summary { border-bottom: 1px solid #ded6a6; }
+    .yearbook-wishlist__chevron { transform: rotate(180deg); }
+  }
+}
+
+.yearbook-wishlist__identity {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.75rem;
+
+  > span:last-child {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+  }
+
+  small {
+    color: #8a7725;
+    font-size: 0.54rem;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+  }
+
+  strong {
+    margin-top: 0.12rem;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.15rem;
+    font-weight: normal;
+  }
+}
+
+.yearbook-wishlist__icon {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  place-items: center;
+  color: #fff;
+  background: #b79a2f;
+  border-radius: 50%;
+  font-size: 0.68rem;
+}
+
+.yearbook-wishlist__count {
+  color: #746927;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.yearbook-wishlist__chevron {
+  color: #746927;
+  font-size: 0.62rem;
+  transition: transform 160ms ease;
+}
+
+.yearbook-wishlist__body {
+  padding: 0.85rem;
+
+  .yearbook-ledger { border-color: #ded6a6; }
+}
+
 .yearbook-ledger {
   overflow: hidden;
   background: #fff;
@@ -866,6 +959,15 @@
 
   .yearbook-row--future .yearbook-row__status {
     font-size: 0.5rem;
+  }
+
+  .yearbook-wishlist > summary {
+    min-height: 64px;
+    padding: 0.7rem 0.8rem;
+  }
+
+  .yearbook-wishlist__count {
+    font-size: 0.58rem;
   }
 
 }
