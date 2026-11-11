@@ -1,11 +1,13 @@
 (function () {
   var historyButtons = document.querySelectorAll('[data-blog-history]');
   var formatButtons = document.querySelectorAll('[data-blog-filter]');
+  var topicButtons = document.querySelectorAll('[data-blog-topic-filter]');
   var seriesButtons = document.querySelectorAll('[data-blog-series-filter]');
   var cards = document.querySelectorAll('[data-blog-format]');
   var count = document.querySelector('[data-blog-count]');
   var empty = document.querySelector('[data-blog-empty]');
   var activeFormat = 'all';
+  var activeTopic = 'all';
   var activeSeries = 'all';
 
   historyButtons.forEach(function (button) {
@@ -29,8 +31,10 @@
 
     cards.forEach(function (card) {
       var matchesFormat = activeFormat === 'all' || card.getAttribute('data-blog-format') === activeFormat;
+      var cardTopics = (card.getAttribute('data-blog-topics') || '').split(/\s+/);
+      var matchesTopic = activeTopic === 'all' || cardTopics.indexOf(activeTopic) !== -1;
       var matchesSeries = activeSeries === 'all' || card.getAttribute('data-blog-series') === activeSeries;
-      var show = matchesFormat && matchesSeries;
+      var show = matchesFormat && matchesTopic && matchesSeries;
       card.hidden = !show;
       if (show) visible += 1;
     });
@@ -53,13 +57,26 @@
     });
   });
 
+  topicButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      activeTopic = button.getAttribute('data-blog-topic-filter');
+
+      topicButtons.forEach(function (item) {
+        var active = item === button;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      updateArchive();
+    });
+  });
+
   seriesButtons.forEach(function (button) {
     button.addEventListener('click', function () {
-      var selectedSeries = button.getAttribute('data-blog-series-filter');
-      activeSeries = activeSeries === selectedSeries ? 'all' : selectedSeries;
+      activeSeries = button.getAttribute('data-blog-series-filter');
 
       seriesButtons.forEach(function (item) {
-        var active = item.getAttribute('data-blog-series-filter') === activeSeries;
+        var active = item === button;
         item.classList.toggle('is-active', active);
         item.setAttribute('aria-pressed', active ? 'true' : 'false');
       });

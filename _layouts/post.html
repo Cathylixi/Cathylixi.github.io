@@ -49,7 +49,7 @@ author_profile: false
   </div>
 
   <footer class="longform-post__footer">
-    <a class="longform-post__back longform-post__back--bottom" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> Back to all writing</a>
+    <a class="longform-post__back longform-post__back--bottom" href="{{ '/blog/writing/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> Back to all writing</a>
     {% if page.next or page.previous %}<nav class="post-pagination" aria-label="More writing">
       {% if page.next %}<a class="post-pagination__item post-pagination__item--newer" href="{{ page.next.url | relative_url }}" target="_self"><span>Newer</span><strong>{{ page.next.title }}</strong></a>{% endif %}
       {% if page.previous %}<a class="post-pagination__item post-pagination__item--older" href="{{ page.previous.url | relative_url }}" target="_self"><span>Older</span><strong>{{ page.previous.title }}</strong></a>{% endif %}

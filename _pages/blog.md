@@ -31,33 +31,26 @@ author_profile: false
       {% for series in site.data.blog_series %}
         {% assign series_count = 0 %}
         {% for post in site.posts %}{% if post.series_slug == series.slug %}{% assign series_count = series_count | plus: 1 %}{% endif %}{% endfor %}
-        <button class="blog-series-card blog-tone--{{ series.tone }}" type="button" data-blog-series-filter="{{ series.slug }}" aria-pressed="false">
+        <a class="blog-series-card blog-tone--{{ series.tone }}" href="{{ series.url | relative_url }}" target="_self">
           <span>{{ series_count | prepend: "0" | slice: -2, 2 }} {% if series_count == 1 %}note{% else %}notes{% endif %}</span>
           <h3>{{ series.title }}</h3><p>{{ series.description }}</p>
-        </button>
+          <strong class="blog-series-card__action">Open series <span aria-hidden="true">→</span></strong>
+        </a>
       {% endfor %}
     </div>
   </section>
 
   <section class="blog-section blog-library" aria-labelledby="latest-writing-title">
-    <header class="blog-section__heading blog-section__heading--filters">
+    <header class="blog-section__heading">
       <div>
-        <p class="blog-eyebrow">Formats</p><h2 id="latest-writing-title">Latest writing</h2>
-        <div class="blog-filters" aria-label="Filter writing by format">
-          <button class="is-active" type="button" data-blog-filter="all" aria-pressed="true">All</button>
-          <button type="button" data-blog-filter="essay" aria-pressed="false">Essay</button>
-          <button type="button" data-blog-filter="review" aria-pressed="false">Review</button>
-          <button type="button" data-blog-filter="research-note" aria-pressed="false">Research Note</button>
-          <button type="button" data-blog-filter="field-note" aria-pressed="false">Field Note</button>
-        </div>
+        <p class="blog-eyebrow">Recently published</p><h2 id="latest-writing-title">Latest writing</h2>
       </div>
-      <span data-blog-count>{{ site.posts.size }} {% if site.posts.size == 1 %}entry{% else %}entries{% endif %}</span>
+      <a class="blog-section__link" href="{{ '/blog/writing/' | relative_url }}" target="_self">View all <span aria-hidden="true">→</span></a>
     </header>
 
     <div class="blog-archive" id="blog-archive">
-      {% for post in site.posts %}{% assign tone = forloop.index0 | modulo: 4 %}{% include blog/post-card.html post=post tone=tone %}{% endfor %}
+      {% for post in site.posts limit: 3 %}{% assign tone = forloop.index0 | modulo: 4 %}{% include blog/post-card.html post=post tone=tone %}{% endfor %}
     </div>
-    <p class="blog-empty-state" data-blog-empty hidden>No writing matches these filters yet.</p>
   </section>
 
   <section class="blog-section">
@@ -65,5 +58,3 @@ author_profile: false
     <div class="blog-topic-chips">{% for topic in site.data.blog_topics %}<a href="{{ topic.url | relative_url }}" title="{{ topic.description }}">{{ topic.title }}</a>{% endfor %}</div>
   </section>
 </div>
-
-<script src="{{ '/assets/js/blog.js' | relative_url }}" defer></script>
