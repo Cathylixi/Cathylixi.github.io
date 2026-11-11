@@ -1,0 +1,85 @@
+---
+layout: default
+author_profile: false
+---
+
+{% assign words = content | strip_html | number_of_words %}
+{% assign calculated_minutes = words | divided_by: 180 | plus: 1 %}
+{% assign minutes = page.reading_time | default: calculated_minutes %}
+{% assign series_record = site.data.blog_series | where: "slug", page.series_slug | first %}
+
+<article class="academic-post">
+  {% if series_record %}<a class="longform-post__back" href="{{ series_record.url | relative_url }}" target="_self"><span aria-hidden="true">←</span> {{ series_record.title }}</a>{% else %}<a class="longform-post__back" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> My Blog</a>{% endif %}
+
+  <header class="academic-post__hero">
+    <p class="blog-eyebrow">{{ page.format | default: "Academic Web Essay" }} · {{ page.paper_status | default: "Working draft" }} · {{ page.date | date: "%b %-d, %Y" }}</p>
+    <h1>{{ page.paper_title | default: page.title }}</h1>
+    {% if page.paper_subtitle %}<p class="academic-post__deck">{{ page.paper_subtitle }}</p>{% endif %}
+    {% if page.subtitle %}<p class="academic-post__lede">{{ page.subtitle }}</p>{% endif %}
+  </header>
+
+  <section class="academic-post__abstract" id="abstract" aria-labelledby="abstract-title">
+    <p class="academic-post__label" id="abstract-title">Abstract</p>
+    <p>{{ page.abstract }}</p>
+  </section>
+
+  {% if page.keywords %}
+    <section class="academic-post__keywords" id="keywords" aria-labelledby="keywords-title">
+      <p class="academic-post__label" id="keywords-title">Keywords</p>
+      <p>{{ page.keywords | join: " · " }}</p>
+    </section>
+  {% endif %}
+
+  <div class="academic-post__layout">
+    <aside class="academic-post__sidebar" aria-label="Essay navigation">
+      <div class="academic-post__sidebar-inner">
+        <div class="academic-post__toc-heading">
+          <div>
+            <span class="academic-post__toc-kicker">On this page</span>
+            <strong>Contents</strong>
+          </div>
+          <button class="academic-post__toc-mobile-toggle" type="button" aria-expanded="false" aria-controls="academic-toc-panel">Show</button>
+        </div>
+        <div class="academic-post__toc-panel" id="academic-toc-panel">
+          <nav class="academic-post__preface-nav" aria-label="Front matter">
+            <a href="#abstract">Abstract</a>
+            {% if page.keywords %}<a href="#keywords">Keywords</a>{% endif %}
+            {% if page.visualization %}<a href="#argument-map">Interactive Argument Map</a>{% endif %}
+          </nav>
+          <div class="academic-post__toc-actions" aria-label="Table of contents controls">
+            <button type="button" data-toc-action="expand">Expand all</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" data-toc-action="collapse">Collapse</button>
+          </div>
+          <nav id="academic-toc" class="academic-post__toc" aria-label="Table of contents"></nav>
+        </div>
+      </div>
+    </aside>
+
+    <main class="academic-post__main">
+      {% if page.visualization %}
+        <section class="academic-post__argument-map" id="argument-map" aria-labelledby="argument-map-title">
+          <div class="academic-post__section-heading">
+            <p class="academic-post__label" id="argument-map-title">Interactive Argument Map</p>
+            <p>人物、物件与历史压力之间的关系图。</p>
+          </div>
+          <figure class="longform-post__visualization">
+            <iframe
+              src="{{ page.visualization | relative_url }}"
+              title="{{ page.visualization_title | default: page.title | escape }}"
+              loading="eager"
+            ></iframe>
+          </figure>
+        </section>
+      {% endif %}
+
+      <div class="academic-post__body" id="academic-essay-body">{{ content }}</div>
+    </main>
+  </div>
+
+  <footer class="longform-post__footer academic-post__footer">
+    {% if series_record %}<a class="longform-post__back longform-post__back--bottom" href="{{ series_record.url | relative_url }}" target="_self"><span aria-hidden="true">←</span> Back to {{ series_record.title }}</a>{% else %}<a class="longform-post__back longform-post__back--bottom" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> Back to My Blog</a>{% endif %}
+  </footer>
+</article>
+
+<script src="{{ '/assets/js/academic-post.js' | relative_url }}" defer></script>
