@@ -1,4 +1,5 @@
 (function () {
+  var historyButtons = document.querySelectorAll('[data-blog-history]');
   var formatButtons = document.querySelectorAll('[data-blog-filter]');
   var seriesButtons = document.querySelectorAll('[data-blog-series-filter]');
   var cards = document.querySelectorAll('[data-blog-format]');
@@ -6,6 +7,20 @@
   var empty = document.querySelector('[data-blog-empty]');
   var activeFormat = 'all';
   var activeSeries = 'all';
+
+  historyButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      if (button.getAttribute('data-blog-history') === 'back') {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.assign(button.ownerDocument.documentElement.getAttribute('data-baseurl') || '/blog/');
+        }
+      } else {
+        window.history.forward();
+      }
+    });
+  });
 
   if (!cards.length) return;
 

@@ -9,8 +9,10 @@ author_profile: false
 {% for post in site.posts %}{% if post.series_slug == page.series_slug %}{% assign series_count = series_count | plus: 1 %}{% unless first_post %}{% assign first_post = post %}{% endunless %}{% endif %}{% endfor %}
 
 <div class="blog-collection blog-collection--series">
+  {% include blog/collection-nav.html %}
+
   <nav class="blog-breadcrumbs" aria-label="Breadcrumb">
-    <a href="{{ '/blog/' | relative_url }}">My Blog</a><span aria-hidden="true">→</span><a href="{{ series_record.topic_slug | prepend: '/blog/topics/' | append: '/' | relative_url }}">{{ series_record.topic_title }}</a><span aria-hidden="true">→</span><strong>{{ series_record.title }}</strong>
+    <span>Topic</span><span aria-hidden="true">→</span><a href="{{ series_record.topic_slug | prepend: '/blog/topics/' | append: '/' | relative_url }}">{{ series_record.topic_title }}</a><span aria-hidden="true">→</span><strong>{{ series_record.title }}</strong>
   </nav>
 
   <header class="blog-series-hero blog-tone--{{ series_record.tone }}">
@@ -48,3 +50,5 @@ author_profile: false
 
   {% if series_record.shelf %}<section class="blog-section"><header class="blog-section__heading"><div><p class="blog-eyebrow">Open shelf</p><h2>Watchlist & bibliography</h2></div></header><div class="blog-topic-chips">{% for item in series_record.shelf %}<span>{{ item }}</span>{% endfor %}</div></section>{% endif %}
 </div>
+
+<script src="{{ '/assets/js/blog.js' | relative_url }}" defer></script>
