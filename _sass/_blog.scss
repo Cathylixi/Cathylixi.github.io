@@ -148,6 +148,7 @@
     font-weight: normal;
     letter-spacing: -0.025em;
     line-height: 1.28;
+    text-wrap: pretty;
     transition: color 160ms ease;
   }
 
@@ -198,7 +199,7 @@
     padding: 0;
     color: #2f3b40;
     font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-size: clamp(1.75rem, 3vw, 2.2rem);
     font-weight: normal;
     letter-spacing: -0.035em;
     line-height: 1.05;
