@@ -11,7 +11,8 @@
 </script>
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.github.build_revision | default: 'local' }}">
+{% assign stylesheet_version = site.time | date: '%Y%m%d%H%M%S' %}
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ stylesheet_version }}">
 
 <meta http-equiv="cleartype" content="on">
 <head>
