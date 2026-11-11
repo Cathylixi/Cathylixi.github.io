@@ -1,5 +1,5 @@
 ---
-title: "黑球：La bola negra 影评"
+title: "La bola negra"
 subtitle: "被抹去的历史不会自动消失。它会变成愤怒、归属的渴望，以及一代又一代人身体里没有名字的回声。"
 summary: "从西班牙内战与 queer 历史的缺席出发，谈《La bola negra》里的共同愤怒、群体归属与代际创伤。"
 cover_text: "LA BOLA NEGRA"

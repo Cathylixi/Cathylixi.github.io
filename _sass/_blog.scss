@@ -255,8 +255,11 @@
   .blog-empty__title { color: #303b40; font-size: 1.25rem; }
 }
 
-/* Long-form post pages */
-.longform-post { max-width: 760px; margin-top: 1.25rem; }
+/* Long-form post pages — share the same responsive canvas as the blog index. */
+.longform-post {
+  max-width: 1120px;
+  margin-top: 1.25rem;
+}
 
 .page__content .longform-post__back {
   display: inline-flex;
@@ -277,7 +280,7 @@
   border-bottom: 1px solid #e7e9ea;
 
   h1 {
-    max-width: 720px;
+    max-width: none;
     margin: 0;
     padding: 0;
     color: #30363a;
@@ -302,7 +305,7 @@
 }
 
 .page__content .longform-post__subtitle {
-  max-width: 680px;
+  max-width: none;
   margin: 1rem 0 0;
   color: #626a70;
   font-size: 1.15rem;
@@ -325,7 +328,7 @@
 }
 
 .longform-post__body {
-  max-width: 720px;
+  max-width: none;
   color: #34383b;
   font-family: $global-font-family;
 
