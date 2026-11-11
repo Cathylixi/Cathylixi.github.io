@@ -53,8 +53,4 @@ author_profile: false
     </div>
   </section>
 
-  <section class="blog-section">
-    <header class="blog-section__heading"><div><p class="blog-eyebrow">Research map</p><h2>Explore by topic</h2></div></header>
-    <div class="blog-topic-chips">{% for topic in site.data.blog_topics %}<a href="{{ topic.url | relative_url }}" title="{{ topic.description }}">{{ topic.title }}</a>{% endfor %}</div>
-  </section>
 </div>
