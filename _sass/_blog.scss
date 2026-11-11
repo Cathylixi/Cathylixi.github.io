@@ -359,10 +359,10 @@ $blog-paper: #fbfbfa;
 /* Article pages */
 .page__content .longform-post__back { display: inline-flex; align-items: center; gap: 0.4rem; color: #647176; font-size: 0.75rem; font-weight: bold; text-decoration: none; }
 .page__content .longform-post__back:hover { color: $blog-green-strong; text-decoration: none; }
-.longform-post__layout { margin-top: 2rem; }
+.longform-post__layout { margin-top: clamp(1.75rem, 3vw, 2.75rem); }
 .longform-post__main { width: 100%; }
-.longform-post__header { padding-bottom: 2rem; border-bottom: 1px solid $blog-line; }
-.longform-post__header h1 { margin-top: 0.85rem; font-size: clamp(3.2rem, 7vw, 5.5rem); }
+.longform-post__header { padding-bottom: clamp(1.6rem, 3vw, 2.6rem); border-bottom: 1px solid $blog-line; }
+.longform-post__header h1 { margin-top: 0.85rem; font-size: clamp(2.35rem, 3.8vw, 3.8rem); }
 .longform-post__visualization {
   position: relative;
   width: 100%;
@@ -382,13 +382,13 @@ $blog-paper: #fbfbfa;
   aspect-ratio: 25 / 18;
   border: 0;
 }
-.page__content .longform-post__subtitle { max-width: 760px; margin: 1.25rem 0 0; color: #626d72; font-size: 1.12rem; line-height: 1.65; }
+.page__content .longform-post__subtitle { max-width: 760px; margin: 1.25rem 0 0; color: #626d72; font-size: 1rem; line-height: 1.68; }
 .longform-post__body { width: 100%; max-width: none; color: #3e474b; }
 .longform-post__body p,
-.longform-post__body li { font-size: 1.06rem; line-height: 1.86; }
+.longform-post__body li { font-size: 1rem; line-height: 1.82; }
 .longform-post__body h2,
 .longform-post__body h3 { color: $blog-ink; }
-.longform-post__body h2 { margin-top: 2.6rem; padding-bottom: 0.6rem; font-size: 1.62rem; border-bottom: 1px solid $blog-line; }
+.longform-post__body h2 { margin-top: 2.4rem; padding-bottom: 0.6rem; font-size: 1.5rem; border-bottom: 1px solid $blog-line; }
 .longform-post__body blockquote { margin: 2rem 0; padding-left: 1.2rem; color: #596166; border-left-color: #9fb0c9; }
 .longform-post__body img { max-width: 100%; height: auto; }
 .longform-post__footer { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid $blog-line; }
@@ -422,7 +422,7 @@ $blog-paper: #fbfbfa;
   .blog-series-row { grid-template-columns: 42px minmax(0, 1fr) !important; }
   .blog-series-row > strong { grid-column: 2; text-align: left; }
   .blog-filter-group { grid-template-columns: 1fr; gap: 0.35rem; }
-  .longform-post__header h1 { font-size: 2.8rem; }
+  .longform-post__header h1 { font-size: clamp(2rem, 8.5vw, 3rem); }
   .longform-post__visualization {
     margin-top: 1.25rem;
     border-radius: 0;
