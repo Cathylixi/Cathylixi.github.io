@@ -1,5 +1,4 @@
 (function () {
-  var historyButtons = document.querySelectorAll('[data-blog-history]');
   var formatButtons = document.querySelectorAll('[data-blog-filter]');
   var topicButtons = document.querySelectorAll('[data-blog-topic-filter]');
   var seriesButtons = document.querySelectorAll('[data-blog-series-filter]');
@@ -9,20 +8,6 @@
   var activeFormat = 'all';
   var activeTopic = 'all';
   var activeSeries = 'all';
-
-  historyButtons.forEach(function (button) {
-    button.addEventListener('click', function () {
-      if (button.getAttribute('data-blog-history') === 'back') {
-        if (window.history.length > 1) {
-          window.history.back();
-        } else {
-          window.location.assign(button.ownerDocument.documentElement.getAttribute('data-baseurl') || '/blog/');
-        }
-      } else {
-        window.history.forward();
-      }
-    });
-  });
 
   if (!cards.length) return;
 
