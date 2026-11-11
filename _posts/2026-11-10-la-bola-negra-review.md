@@ -21,6 +21,7 @@ tags:
 format: "Academic Web Essay"
 series: "Queer Cinema"
 series_slug: queer-cinema
+series_start: true
 topics:
   - "Queer Studies"
   - "Film & Visual Culture"

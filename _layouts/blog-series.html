@@ -6,7 +6,9 @@ author_profile: false
 {% assign series_record = site.data.blog_series | where: "slug", page.series_slug | first %}
 {% assign series_count = 0 %}
 {% assign first_post = nil %}
-{% for post in site.posts %}{% if post.series_slug == page.series_slug %}{% assign series_count = series_count | plus: 1 %}{% unless first_post %}{% assign first_post = post %}{% endunless %}{% endif %}{% endfor %}
+{% assign latest_post = nil %}
+{% for post in site.posts %}{% if post.series_slug == page.series_slug %}{% assign series_count = series_count | plus: 1 %}{% unless latest_post %}{% assign latest_post = post %}{% endunless %}{% if post.series_start %}{% assign first_post = post %}{% endif %}{% endif %}{% endfor %}
+{% unless first_post %}{% assign first_post = latest_post %}{% endunless %}
 
 <div class="blog-collection blog-collection--series">
   {% include blog/collection-nav.html %}
@@ -24,7 +26,7 @@ author_profile: false
     <dl class="blog-series-hero__stats">
       <div><dt>Entries</dt><dd>{{ series_count | prepend: "0" | slice: -2, 2 }}</dd></div>
       <div><dt>Formats</dt><dd>Essays + Notes</dd></div>
-      <div><dt>Updated</dt><dd>{% if first_post %}{{ first_post.date | date: "%b %Y" }}{% else %}Planning{% endif %}</dd></div>
+      <div><dt>Updated</dt><dd>{% if latest_post %}{{ latest_post.date | date: "%b %Y" }}{% else %}Planning{% endif %}</dd></div>
     </dl>
   </header>
 
