@@ -1,0 +1,38 @@
+- slug: queer-cinema
+  title: "Queer Cinema"
+  description: "影像如何记录欲望、身份与被抹去的历史。"
+  introduction: "从电影出发，观察 queer 生命如何被观看、被记录、被审查，又如何重新取得叙事权。"
+  topic_slug: queer-studies
+  topic_title: "Queer Studies"
+  url: /blog/series/queer-cinema/
+  tone: pink
+  status: Ongoing
+  questions:
+    - "谁拥有讲述 queer 历史的权力？"
+    - "群体记忆如何进入私人关系？"
+    - "酷儿电影是否必须承担政治表达？"
+  shelf:
+    - "The History of Sexuality"
+    - "Gay Politics / Gay Community"
+    - "Happy Together"
+    - "Portrait of a Lady on Fire"
+    - "Federico García Lorca"
+
+- slug: ai-human-agency
+  title: "AI & Human Agency"
+  description: "当系统越来越善于判断，理解、拒绝和纠正的能力仍属于谁？"
+  introduction: "追踪 AI 如何进入选择、判断与日常生活，并保留人在技术系统中的实际控制能力。"
+  topic_slug: ai-technology
+  topic_title: "AI & Technology"
+  url: /blog/series/ai-human-agency/
+  tone: blue
+  status: Ongoing
+  questions:
+    - "便利在什么时候开始替代自主判断？"
+    - "怎样的拒绝权才是真正可用的？"
+    - "制度如何让自动化决定可以被纠正？"
+  shelf:
+    - "Human agency"
+    - "Algorithmic accountability"
+    - "Automation and judgment"
+    - "The politics of recommendation"

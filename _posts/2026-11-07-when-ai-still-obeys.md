@@ -6,6 +6,15 @@ cover_text: "AI × HUMAN"
 tags:
   - AI
   - Society
+format: Essay
+series: "AI & Human Agency"
+series_slug: ai-human-agency
+topics:
+  - "AI & Technology"
+  - "Society & Politics"
+topic_slugs:
+  - ai-technology
+  - society-politics
 reading_time: 7
 lang: zh-CN
 ---

@@ -6,8 +6,21 @@ cover_text: "LA BOLA NEGRA"
 tags:
   - Film
   - Queer History
+format: Review
+series: "Queer Cinema"
+series_slug: queer-cinema
+topics:
+  - "Queer Studies"
+  - "Film & Visual Culture"
+  - "Memory & History"
+topic_slugs:
+  - queer-studies
+  - film-visual-culture
+  - memory-history
 reading_time: 7
 lang: zh-CN
+visualization: "/assets/blog/la-bola-negra-constellation.html"
+visualization_title: "《黑球》动态关系星图"
 ---
 
 《La bola negra》最让我在意的，并不是一个秘密如何被揭开，而是一段历史如何被共同遗忘。西班牙内战留下的创伤、被压低声音的 queer 群体，以及那些从未得到正式承认的生命，在影片里并不是已经结束的过去。它们更像埋在地下的黑球：看不见，却始终有重量。

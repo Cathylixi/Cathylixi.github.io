@@ -1,89 +1,69 @@
 ---
 permalink: /blog/
 title: "My Blog"
-excerpt: "Long-form notes, essays, and ideas."
+excerpt: "Essays, reviews, and research notes."
 author_profile: false
 ---
-
-{% assign latest_post = site.posts | first %}
 
 <div class="blog-home">
   <header class="blog-home__intro">
     <div class="blog-home__title">
-      <p class="blog-home__eyebrow">Field notes · {{ site.time | date: "%Y" }}</p>
+      <p class="blog-eyebrow">Field notes · {{ site.time | date: "%Y" }}</p>
       <h1>My Blog</h1>
-      <p class="blog-home__description">Long-form thoughts on research, technology, learning, and whatever else feels worth thinking through.</p>
+      <p class="blog-home__description">Essays, reviews, and research notes on AI, gender, queer culture, film, and the questions that connect them.</p>
     </div>
-
-    {% if site.posts.size > 0 %}
-      <aside class="blog-home__glance" aria-label="Notebook index">
-        <p class="blog-home__glance-label">At a glance</p>
-        <dl>
-          <div><dt>Essays</dt><dd>{{ site.posts.size | prepend: "0" | slice: -2, 2 }}</dd></div>
-          <div><dt>Topics</dt><dd>{{ site.tags.size | prepend: "0" | slice: -2, 2 }}</dd></div>
-          {% if latest_post %}<div><dt>Latest</dt><dd>{{ latest_post.date | date: "%b %-d" }}</dd></div>{% endif %}
-        </dl>
-      </aside>
-    {% endif %}
+    <aside class="blog-glance" aria-label="Notebook index">
+      <p>At a glance</p>
+      <dl>
+        <div><dt>Notes</dt><dd>{{ site.posts.size | prepend: "0" | slice: -2, 2 }}</dd></div>
+        <div><dt>Topics</dt><dd>{{ site.data.blog_topics.size | prepend: "0" | slice: -2, 2 }}</dd></div>
+        <div><dt>Series</dt><dd>{{ site.data.blog_series.size | prepend: "0" | slice: -2, 2 }}</dd></div>
+      </dl>
+    </aside>
   </header>
 
-  {% if site.posts.size > 0 %}
-    <section class="blog-library" aria-labelledby="essay-archive-title">
-      <header class="blog-library__heading">
-        <div>
-          <p>Browse the notebook</p>
-          <h2 id="essay-archive-title">Essay archive</h2>
-        </div>
-        <span>{{ site.posts.size | prepend: "0" | slice: -2, 2 }} {% if site.posts.size == 1 %}essay{% else %}essays{% endif %}</span>
-      </header>
-
-      <div class="blog-archive" id="blog-archive">
-        {% for post in site.posts %}
-          {% assign words = post.content | strip_html | number_of_words %}
-          {% assign calculated_minutes = words | divided_by: 180 | plus: 1 %}
-          {% assign minutes = post.reading_time | default: calculated_minutes %}
-          {% assign tone = forloop.index0 | modulo: 4 %}
-          <article class="blog-card blog-card--tone-{{ tone }}">
-            <a class="blog-card__link" href="{{ post.url | relative_url }}" target="_self">
-              <div class="blog-card__cover">
-                <div class="blog-card__issue">
-                  <span>Field note</span>
-                  <span>{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span>
-                </div>
-                <p class="blog-card__cover-title">{{ post.cover_text | default: post.title }}</p>
-                <div class="blog-card__cover-footer">
-                  <span>{{ post.date | date: "%Y" }}</span>
-                  {% if post.tags.size > 0 %}<span>{{ post.tags | first }}</span>{% endif %}
-                </div>
-              </div>
-
-              <div class="blog-card__content">
-                <div class="blog-card__meta">
-                  <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
-                  <span>{{ minutes }} min read</span>
-                </div>
-                <h3>{{ post.title }}</h3>
-                {% if post.summary %}
-                  <p>{{ post.summary }}</p>
-                {% elsif post.subtitle %}
-                  <p>{{ post.subtitle }}</p>
-                {% else %}
-                  <p>{{ post.excerpt | strip_html | strip_newlines | truncate: 155 }}</p>
-                {% endif %}
-                <div class="blog-card__action">
-                  {% if post.tags.size > 0 %}<span>{{ post.tags | join: " · " }}</span>{% endif %}
-                  <strong>Read essay <span aria-hidden="true">→</span></strong>
-                </div>
-              </div>
-            </a>
-          </article>
-        {% endfor %}
-      </div>
-    </section>
-  {% else %}
-    <div class="blog-empty">
-      <p class="blog-empty__title">The first essay is on its way.</p>
-      <p>Long-form notes and ideas will appear here, one piece at a time.</p>
+  <section class="blog-section">
+    <header class="blog-section__heading">
+      <div><p class="blog-eyebrow">Ongoing inquiries</p><h2>Featured series</h2></div>
+      <span>Research that grows over time</span>
+    </header>
+    <div class="blog-series-grid">
+      {% for series in site.data.blog_series %}
+        {% assign series_count = 0 %}
+        {% for post in site.posts %}{% if post.series_slug == series.slug %}{% assign series_count = series_count | plus: 1 %}{% endif %}{% endfor %}
+        <a class="blog-series-card blog-tone--{{ series.tone }}" href="{{ series.url | relative_url }}">
+          <span>{{ series_count | prepend: "0" | slice: -2, 2 }} {% if series_count == 1 %}note{% else %}notes{% endif %}</span>
+          <h3>{{ series.title }}</h3><p>{{ series.description }}</p>
+        </a>
+      {% endfor %}
     </div>
-  {% endif %}
+  </section>
+
+  <section class="blog-section blog-library" aria-labelledby="latest-writing-title">
+    <header class="blog-section__heading blog-section__heading--filters">
+      <div>
+        <p class="blog-eyebrow">Formats</p><h2 id="latest-writing-title">Latest writing</h2>
+        <div class="blog-filters" aria-label="Filter writing by format">
+          <button class="is-active" type="button" data-blog-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-blog-filter="essay" aria-pressed="false">Essay</button>
+          <button type="button" data-blog-filter="review" aria-pressed="false">Review</button>
+          <button type="button" data-blog-filter="research-note" aria-pressed="false">Research Note</button>
+          <button type="button" data-blog-filter="field-note" aria-pressed="false">Field Note</button>
+        </div>
+      </div>
+      <span data-blog-count>{{ site.posts.size }} {% if site.posts.size == 1 %}entry{% else %}entries{% endif %}</span>
+    </header>
+
+    <div class="blog-archive" id="blog-archive">
+      {% for post in site.posts %}{% assign tone = forloop.index0 | modulo: 4 %}{% include blog/post-card.html post=post tone=tone %}{% endfor %}
+    </div>
+    <p class="blog-empty-state" data-blog-empty hidden>This format does not have a note yet.</p>
+  </section>
+
+  <section class="blog-section">
+    <header class="blog-section__heading"><div><p class="blog-eyebrow">Research map</p><h2>Explore by topic</h2></div></header>
+    <div class="blog-topic-chips">{% for topic in site.data.blog_topics %}<a href="{{ topic.url | relative_url }}" title="{{ topic.description }}">{{ topic.title }}</a>{% endfor %}</div>
+  </section>
 </div>
+
+<script src="{{ '/assets/js/blog.js' | relative_url }}" defer></script>

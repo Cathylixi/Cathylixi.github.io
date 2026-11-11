@@ -1,0 +1,64 @@
+---
+layout: default
+author_profile: false
+---
+
+{% assign topic_count = 0 %}
+{% for post in site.posts %}{% if post.topic_slugs contains page.topic_slug %}{% assign topic_count = topic_count | plus: 1 %}{% endif %}{% endfor %}
+{% assign featured_series = false %}
+{% if page.featured_series_slug %}{% assign featured_series = site.data.blog_series | where: "slug", page.featured_series_slug | first %}{% endif %}
+
+<div class="blog-collection blog-collection--topic">
+  <nav class="blog-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/blog/' | relative_url }}">My Blog</a><span aria-hidden="true">→</span><span>Topics</span><span aria-hidden="true">→</span><strong>{{ page.topic }}</strong>
+  </nav>
+
+  <header class="blog-collection__header">
+    <div>
+      <p class="blog-eyebrow">Topic · {{ topic_count | prepend: "0" | slice: -2, 2 }} {% if topic_count == 1 %}entry{% else %}entries{% endif %}</p>
+      <h1>{{ page.topic }}</h1>
+    </div>
+    <p>{{ page.description }}</p>
+  </header>
+
+  {% if featured_series %}
+    <section class="blog-topic-feature blog-tone--{{ featured_series.tone }}">
+      <div class="blog-topic-feature__copy">
+        <p class="blog-eyebrow">Featured series</p>
+        <h2>{{ featured_series.title }}</h2>
+        <p>{{ featured_series.introduction }}</p>
+        <a href="{{ featured_series.url | relative_url }}">Open the series <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="blog-topic-feature__number">
+        {% assign series_count = 0 %}
+        {% for post in site.posts %}{% if post.series_slug == featured_series.slug %}{% assign series_count = series_count | plus: 1 %}{% endif %}{% endfor %}
+        <strong>{{ series_count | prepend: "0" | slice: -2, 2 }}</strong><span>connected {% if series_count == 1 %}note{% else %}notes{% endif %}</span>
+      </div>
+    </section>
+  {% endif %}
+
+  <section class="blog-section">
+    <header class="blog-section__heading">
+      <div><p class="blog-eyebrow">Topic archive</p><h2>All {{ page.topic }} notes</h2></div>
+      <span>Newest first</span>
+    </header>
+    <div class="blog-archive">
+      {% assign rendered = 0 %}
+      {% for post in site.posts %}
+        {% if post.topic_slugs contains page.topic_slug %}
+          {% assign tone = rendered | modulo: 4 %}
+          {% include blog/post-card.html post=post tone=tone %}
+          {% assign rendered = rendered | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% if topic_count == 0 %}<p class="blog-empty-state">This topic is ready for its first note.</p>{% endif %}
+  </section>
+
+  <section class="blog-section blog-related-topics">
+    <header class="blog-section__heading"><div><p class="blog-eyebrow">Research map</p><h2>Explore other topics</h2></div></header>
+    <div class="blog-topic-chips">
+      {% for topic in site.data.blog_topics %}{% unless topic.slug == page.topic_slug %}<a href="{{ topic.url | relative_url }}">{{ topic.title }}</a>{% endunless %}{% endfor %}
+    </div>
+  </section>
+</div>

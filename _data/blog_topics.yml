@@ -1,0 +1,24 @@
+- slug: ai-technology
+  title: "AI & Technology"
+  description: "技术如何改变判断、劳动、权力与日常生活。"
+  url: /blog/topics/ai-technology/
+
+- slug: society-politics
+  title: "Society & Politics"
+  description: "制度、责任与公共生活中的权力关系。"
+  url: /blog/topics/society-politics/
+
+- slug: queer-studies
+  title: "Queer Studies"
+  description: "关于欲望、身份、群体、审查，以及谁的生命会被历史记住。"
+  url: /blog/topics/queer-studies/
+
+- slug: film-visual-culture
+  title: "Film & Visual Culture"
+  description: "电影、凝视与视觉叙事如何塑造记忆。"
+  url: /blog/topics/film-visual-culture/
+
+- slug: memory-history
+  title: "Memory & History"
+  description: "被保存、被省略与被重新讲述的过去。"
+  url: /blog/topics/memory-history/

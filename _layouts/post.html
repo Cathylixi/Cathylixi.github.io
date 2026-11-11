@@ -6,47 +6,53 @@ author_profile: false
 {% assign words = content | strip_html | number_of_words %}
 {% assign calculated_minutes = words | divided_by: 180 | plus: 1 %}
 {% assign minutes = page.reading_time | default: calculated_minutes %}
+{% assign series_record = site.data.blog_series | where: "slug", page.series_slug | first %}
 
 <article class="longform-post">
-  <a class="longform-post__back" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> My Blog</a>
+  {% if series_record %}<a class="longform-post__back" href="{{ series_record.url | relative_url }}" target="_self"><span aria-hidden="true">←</span> {{ series_record.title }}</a>{% else %}<a class="longform-post__back" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> My Blog</a>{% endif %}
 
-  <header class="longform-post__header">
-    <div class="longform-post__meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-      <span aria-hidden="true">·</span>
-      <span>{{ minutes }} min read</span>
+  <div class="longform-post__layout">
+    <div class="longform-post__main">
+      <header class="longform-post__header">
+        <p class="blog-eyebrow">{{ page.format | default: "Essay" }} · {{ page.date | date: "%b %-d, %Y" }} · {{ minutes }} min read</p>
+        <h1>{{ page.title }}</h1>
+        {% if page.visualization %}
+          <figure class="longform-post__visualization">
+            <iframe
+              src="{{ page.visualization | relative_url }}"
+              title="{{ page.visualization_title | default: page.title | escape }}"
+              loading="eager"
+            ></iframe>
+          </figure>
+        {% endif %}
+        {% if page.subtitle %}<p class="longform-post__subtitle">{{ page.subtitle }}</p>{% endif %}
+      </header>
+
+      <div class="longform-post__body">{{ content }}</div>
     </div>
-    <h1>{{ page.title }}</h1>
-    {% if page.subtitle %}<p class="longform-post__subtitle">{{ page.subtitle }}</p>{% endif %}
-    {% if page.tags.size > 0 %}
-      <div class="longform-post__tags" aria-label="Topics">
-        {% for tag in page.tags %}<span>{{ tag }}</span>{% endfor %}
-      </div>
-    {% endif %}
-  </header>
 
-  <div class="longform-post__body">
-    {{ content }}
+    <aside class="longform-post__aside" aria-label="Article context">
+      {% if series_record %}
+        <a class="blog-context-card blog-context-card--series blog-tone--{{ series_record.tone }}" href="{{ series_record.url | relative_url }}">
+          <p class="blog-eyebrow">Part of a series</p><h2>{{ series_record.title }}</h2><p>{{ series_record.description }}</p><strong>Open series <span aria-hidden="true">→</span></strong>
+        </a>
+      {% endif %}
+      {% if page.topic_slugs %}
+        <div class="blog-context-card blog-context-card--topics">
+          <p class="blog-eyebrow">Topics</p>
+          <div class="blog-context-card__topics">
+            {% for topic_slug in page.topic_slugs %}{% assign topic_record = site.data.blog_topics | where: "slug", topic_slug | first %}{% if topic_record %}<a href="{{ topic_record.url | relative_url }}">{{ topic_record.title }}</a>{% endif %}{% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </aside>
   </div>
 
   <footer class="longform-post__footer">
-    <a class="longform-post__back longform-post__back--bottom" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> Back to all essays</a>
-
-    {% if page.next or page.previous %}
-      <nav class="post-pagination" aria-label="More essays">
-        {% if page.next %}
-          <a class="post-pagination__item post-pagination__item--newer" href="{{ page.next.url | relative_url }}" target="_self">
-            <span>Newer essay</span>
-            <strong>{{ page.next.title }}</strong>
-          </a>
-        {% endif %}
-        {% if page.previous %}
-          <a class="post-pagination__item post-pagination__item--older" href="{{ page.previous.url | relative_url }}" target="_self">
-            <span>Older essay</span>
-            <strong>{{ page.previous.title }}</strong>
-          </a>
-        {% endif %}
-      </nav>
-    {% endif %}
+    <a class="longform-post__back longform-post__back--bottom" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> Back to all writing</a>
+    {% if page.next or page.previous %}<nav class="post-pagination" aria-label="More writing">
+      {% if page.next %}<a class="post-pagination__item post-pagination__item--newer" href="{{ page.next.url | relative_url }}" target="_self"><span>Newer</span><strong>{{ page.next.title }}</strong></a>{% endif %}
+      {% if page.previous %}<a class="post-pagination__item post-pagination__item--older" href="{{ page.previous.url | relative_url }}" target="_self"><span>Older</span><strong>{{ page.previous.title }}</strong></a>{% endif %}
+    </nav>{% endif %}
   </footer>
 </article>

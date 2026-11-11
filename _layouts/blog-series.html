@@ -1,0 +1,50 @@
+---
+layout: default
+author_profile: false
+---
+
+{% assign series_record = site.data.blog_series | where: "slug", page.series_slug | first %}
+{% assign series_count = 0 %}
+{% assign first_post = nil %}
+{% for post in site.posts %}{% if post.series_slug == page.series_slug %}{% assign series_count = series_count | plus: 1 %}{% unless first_post %}{% assign first_post = post %}{% endunless %}{% endif %}{% endfor %}
+
+<div class="blog-collection blog-collection--series">
+  <nav class="blog-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ '/blog/' | relative_url }}">My Blog</a><span aria-hidden="true">→</span><a href="{{ series_record.topic_slug | prepend: '/blog/topics/' | append: '/' | relative_url }}">{{ series_record.topic_title }}</a><span aria-hidden="true">→</span><strong>{{ series_record.title }}</strong>
+  </nav>
+
+  <header class="blog-series-hero blog-tone--{{ series_record.tone }}">
+    <div class="blog-series-hero__main">
+      <p class="blog-eyebrow">Research series · {{ series_record.status }}</p>
+      <h1>{{ series_record.title }}</h1>
+      <p>{{ series_record.introduction }}</p>
+    </div>
+    <dl class="blog-series-hero__stats">
+      <div><dt>Entries</dt><dd>{{ series_count | prepend: "0" | slice: -2, 2 }}</dd></div>
+      <div><dt>Formats</dt><dd>Essays + Notes</dd></div>
+      <div><dt>Updated</dt><dd>{% if first_post %}{{ first_post.date | date: "%b %Y" }}{% else %}Planning{% endif %}</dd></div>
+    </dl>
+  </header>
+
+  {% if first_post %}
+    <section class="blog-research-grid blog-section">
+      <a class="blog-start-card" href="{{ first_post.url | relative_url }}">
+        <p class="blog-eyebrow">Start here</p><h2>{{ first_post.title }}</h2><p>{{ first_post.summary }}</p><strong>Read the opening note <span aria-hidden="true">→</span></strong>
+      </a>
+      <aside class="blog-question-card"><p class="blog-eyebrow">Questions I’m following</p><h2>Research questions</h2><ul>{% for question in series_record.questions %}<li>{{ question }}</li>{% endfor %}</ul></aside>
+    </section>
+  {% endif %}
+
+  <section class="blog-section">
+    <header class="blog-section__heading"><div><p class="blog-eyebrow">Reading path</p><h2>Series index</h2></div><span>Newest first</span></header>
+    <div class="blog-series-list">
+      {% assign row = 0 %}
+      {% for post in site.posts %}{% if post.series_slug == page.series_slug %}{% assign row = row | plus: 1 %}
+        {% assign words = post.content | strip_html | number_of_words %}{% assign calculated_minutes = words | divided_by: 180 | plus: 1 %}{% assign minutes = post.reading_time | default: calculated_minutes %}
+        <a class="blog-series-row" href="{{ post.url | relative_url }}"><span>{{ row | prepend: "0" | slice: -2, 2 }}</span><div><h3>{{ post.title }}</h3><p>{{ post.summary }}</p></div><strong>{{ post.format | default: "Essay" }} · {{ minutes }} min</strong></a>
+      {% endif %}{% endfor %}
+    </div>
+  </section>
+
+  {% if series_record.shelf %}<section class="blog-section"><header class="blog-section__heading"><div><p class="blog-eyebrow">Open shelf</p><h2>Watchlist & bibliography</h2></div></header><div class="blog-topic-chips">{% for item in series_record.shelf %}<span>{{ item }}</span>{% endfor %}</div></section>{% endif %}
+</div>
