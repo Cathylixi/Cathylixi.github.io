@@ -1,30 +1,55 @@
 (function () {
-  var buttons = document.querySelectorAll('[data-blog-filter]');
+  var formatButtons = document.querySelectorAll('[data-blog-filter]');
+  var seriesButtons = document.querySelectorAll('[data-blog-series-filter]');
   var cards = document.querySelectorAll('[data-blog-format]');
   var count = document.querySelector('[data-blog-count]');
   var empty = document.querySelector('[data-blog-empty]');
+  var activeFormat = 'all';
+  var activeSeries = 'all';
 
-  if (!buttons.length || !cards.length) return;
+  if (!cards.length) return;
 
-  buttons.forEach(function (button) {
+  function updateArchive() {
+    var visible = 0;
+
+    cards.forEach(function (card) {
+      var matchesFormat = activeFormat === 'all' || card.getAttribute('data-blog-format') === activeFormat;
+      var matchesSeries = activeSeries === 'all' || card.getAttribute('data-blog-series') === activeSeries;
+      var show = matchesFormat && matchesSeries;
+      card.hidden = !show;
+      if (show) visible += 1;
+    });
+
+    if (count) count.textContent = visible + (visible === 1 ? ' entry' : ' entries');
+    if (empty) empty.hidden = visible !== 0;
+  }
+
+  formatButtons.forEach(function (button) {
     button.addEventListener('click', function () {
-      var filter = button.getAttribute('data-blog-filter');
-      var visible = 0;
+      activeFormat = button.getAttribute('data-blog-filter');
 
-      buttons.forEach(function (item) {
+      formatButtons.forEach(function (item) {
         var active = item === button;
         item.classList.toggle('is-active', active);
         item.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
 
-      cards.forEach(function (card) {
-        var show = filter === 'all' || card.getAttribute('data-blog-format') === filter;
-        card.hidden = !show;
-        if (show) visible += 1;
+      updateArchive();
+    });
+  });
+
+  seriesButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      var selectedSeries = button.getAttribute('data-blog-series-filter');
+      activeSeries = activeSeries === selectedSeries ? 'all' : selectedSeries;
+
+      seriesButtons.forEach(function (item) {
+        var active = item.getAttribute('data-blog-series-filter') === activeSeries;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-pressed', active ? 'true' : 'false');
       });
 
-      if (count) count.textContent = visible + (visible === 1 ? ' entry' : ' entries');
-      if (empty) empty.hidden = visible !== 0;
+      updateArchive();
     });
   });
 }());

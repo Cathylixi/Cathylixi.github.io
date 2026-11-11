@@ -127,17 +127,21 @@ $blog-paper: #fbfbfa;
   gap: clamp(1rem, 2vw, 1.4rem);
 }
 
-.page__content a.blog-series-card {
+.page__content .blog-series-card {
   position: relative;
   display: block;
+  width: 100%;
   min-height: 215px;
   overflow: hidden;
   padding: clamp(1.4rem, 3vw, 1.8rem);
   color: $blog-ink;
+  font: inherit;
+  text-align: left;
   text-decoration: none;
   border: 1px solid #cad3d5;
   border-radius: 16px;
   box-shadow: 0 8px 0 rgba($blog-ink, 0.07);
+  cursor: pointer;
   transition: box-shadow 180ms ease, transform 180ms ease;
 
   &::after {
@@ -154,6 +158,19 @@ $blog-paper: #fbfbfa;
 
   &:hover,
   &:focus { color: $blog-ink; text-decoration: none; box-shadow: 0 11px 0 rgba($blog-ink, 0.08); transform: translateY(-3px); }
+
+  &:focus-visible { outline: 3px solid rgba($blog-green-strong, 0.32); outline-offset: 4px; }
+
+  &.is-active {
+    border-color: $blog-green-strong;
+    box-shadow: 0 0 0 3px rgba($blog-green-strong, 0.17), 0 9px 0 rgba($blog-ink, 0.08);
+  }
+
+  &.is-active > span::after {
+    margin-left: 0.55rem;
+    content: "· showing below";
+    color: $blog-green-strong;
+  }
 }
 
 .blog-tone--pink { background: $blog-pink; }

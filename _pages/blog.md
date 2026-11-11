@@ -31,10 +31,10 @@ author_profile: false
       {% for series in site.data.blog_series %}
         {% assign series_count = 0 %}
         {% for post in site.posts %}{% if post.series_slug == series.slug %}{% assign series_count = series_count | plus: 1 %}{% endif %}{% endfor %}
-        <a class="blog-series-card blog-tone--{{ series.tone }}" href="{{ series.url | relative_url }}">
+        <button class="blog-series-card blog-tone--{{ series.tone }}" type="button" data-blog-series-filter="{{ series.slug }}" aria-pressed="false">
           <span>{{ series_count | prepend: "0" | slice: -2, 2 }} {% if series_count == 1 %}note{% else %}notes{% endif %}</span>
           <h3>{{ series.title }}</h3><p>{{ series.description }}</p>
-        </a>
+        </button>
       {% endfor %}
     </div>
   </section>
@@ -57,7 +57,7 @@ author_profile: false
     <div class="blog-archive" id="blog-archive">
       {% for post in site.posts %}{% assign tone = forloop.index0 | modulo: 4 %}{% include blog/post-card.html post=post tone=tone %}{% endfor %}
     </div>
-    <p class="blog-empty-state" data-blog-empty hidden>This format does not have a note yet.</p>
+    <p class="blog-empty-state" data-blog-empty hidden>No writing matches these filters yet.</p>
   </section>
 
   <section class="blog-section">
