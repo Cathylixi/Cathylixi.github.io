@@ -160,24 +160,6 @@ $academic-paper: #fbfbfa;
   scrollbar-width: thin;
 }
 
-.academic-post__preface-nav {
-  display: grid;
-  padding: 0.8rem 1.15rem;
-  border-bottom: 1px solid rgba($academic-green-strong, 0.16);
-}
-
-.page__content .academic-post__preface-nav a {
-  padding: 0.35rem 0;
-  color: #496064;
-  font-size: 0.7rem;
-  text-decoration: none;
-}
-
-.page__content .academic-post__preface-nav a:hover,
-.page__content .academic-post__preface-nav a:focus {
-  color: $academic-green-strong;
-}
-
 .academic-post__toc-actions {
   display: flex;
   gap: 0.35rem;
