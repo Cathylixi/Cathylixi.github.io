@@ -1,80 +1,140 @@
-const LA_BOLA_NEGRA_SYNC = Object.freeze({
-  documentId: '1ZmHusyTwdSitnl2HaLUqTQsEn716ooonFzdBeFNxafk',
+const BLOG_SYNC = Object.freeze({
+  folderName: 'my blog',
+  folderId: '1RgHOFjTeRDQyiMpZHkPNRjsUV9jFjp97',
   repositoryOwner: 'Cathylixi',
   repositoryName: 'Cathylixi.github.io',
   branch: 'main',
-  articlePath: '_posts/2026-11-10-la-bola-negra-review.md',
   tokenProperty: 'GITHUB_TOKEN',
+  documentIdsProperty: 'BLOG_SYNC_DOCUMENT_IDS',
   reverseTriggerFunction: 'syncGoogleDocToGitHub',
   legacyTriggerFunction: 'syncLaBolaNegra',
+  articles: Object.freeze([
+    Object.freeze({
+      key: 'when-ai-still-obeys',
+      documentTitle: '当 AI 仍然服从，我们还握着方向盘吗？',
+      articlePath: '_posts/2026-11-07-when-ai-still-obeys.md',
+      titleField: 'title',
+      subtitleField: 'subtitle',
+      bodyStartsAtFirstPlainParagraph: true,
+      outlineMode: 'none',
+    }),
+    Object.freeze({
+      key: 'la-bola-negra',
+      documentTitle: 'La Bola Negra',
+      documentId: '1ZmHusyTwdSitnl2HaLUqTQsEn716ooonFzdBeFNxafk',
+      articlePath: '_posts/2026-11-10-la-bola-negra-review.md',
+      titleField: 'paper_title',
+      subtitleField: 'paper_subtitle',
+      legacySubtitleFromPrelude: true,
+      outlineMode: 'from-heading',
+      outlineHeadingPattern: '^## 2\\.\\s',
+    }),
+    Object.freeze({
+      key: 'call-me-by-your-name',
+      documentTitle: 'Call Me by Your Name',
+      articlePath: '_posts/2026-11-11-call-me-by-your-name.md',
+      titleField: 'paper_title',
+      subtitleField: 'paper_subtitle',
+      outlineMode: 'all',
+    }),
+    Object.freeze({
+      key: 'when-the-state-refuses-to-remember',
+      documentTitle: '当国家拒绝记忆：〈黑球〉中的家庭档案与责任转嫁',
+      articlePath: '_posts/2026-11-11-when-the-state-refuses-to-remember.md',
+      titleField: 'title',
+      subtitleField: 'subtitle',
+      bodyStartsAtFirstPlainParagraph: true,
+      outlineMode: 'none',
+    }),
+  ]),
 });
 
 /**
- * Publishes the Google Doc to the canonical Markdown article on GitHub.
- *
- * The existing YAML front matter is retained. The editable title, subtitle,
- * abstract, keywords, and article body are rebuilt from the Google Doc. A new
- * GitHub commit is created only when the generated file is different.
+ * Publishes every registered Google document to its canonical Markdown article.
+ * The handler name is unchanged so existing time-based triggers keep working.
  */
 function syncGoogleDocToGitHub() {
   const lock = LockService.getScriptLock();
   lock.waitLock(30000);
 
   try {
-    const token = PropertiesService.getScriptProperties()
-      .getProperty(LA_BOLA_NEGRA_SYNC.tokenProperty);
-    if (!token) {
-      throw new Error(
-        'Missing GITHUB_TOKEN in Apps Script project properties.'
-      );
-    }
-
-    const current = getGitHubArticle_(token);
-    const parsed = splitPost_(current.content);
-    const documentData = readGoogleDoc_();
-    const frontMatter = updateFrontMatter_(parsed.frontMatter, documentData);
-    const nextContent = [
-      '---',
-      frontMatter.trim(),
-      '---',
-      '',
-      documentData.markdown.trim(),
-      '',
-    ].join('\n');
-
-    if (normalizeNewlines_(current.content) === normalizeNewlines_(nextContent)) {
-      console.log('No document changes to publish.');
-      return;
-    }
-
-    updateGitHubArticle_(token, current.sha, nextContent);
+    const token = getGitHubToken_();
+    const documentIds = getDocumentIds_();
+    BLOG_SYNC.articles.forEach(function (article) {
+      syncArticle_(token, article, resolveDocumentId_(article, documentIds));
+    });
   } finally {
     lock.releaseLock();
   }
 }
 
 /**
- * Runs the first reverse sync and installs one hourly Google Doc → GitHub
- * trigger. Run once after GITHUB_TOKEN has been added to Script Properties.
+ * Creates missing Google Docs from the current Markdown articles and moves
+ * every source document into My Drive/my blog. Safe to run repeatedly.
  */
+function bootstrapBlogDocuments() {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(30000);
+
+  try {
+    const token = getGitHubToken_();
+    const folder = getBlogFolder_();
+    const documentIds = getDocumentIds_();
+
+    BLOG_SYNC.articles.forEach(function (article) {
+      let documentId = resolveDocumentId_(article, documentIds, true);
+      if (!documentId) {
+        documentId = findDocumentInFolder_(folder, article.documentTitle);
+      }
+
+      if (!documentId) {
+        const current = getGitHubArticle_(token, article);
+        documentId = createGoogleDocFromPost_(article, current.content, folder);
+        console.log(
+          'Created Google Doc: ' + article.documentTitle +
+          ' (https://docs.google.com/document/d/' + documentId + '/edit)'
+        );
+      } else {
+        DriveApp.getFileById(documentId).moveTo(folder);
+        console.log('Moved/reused Google Doc: ' + article.documentTitle);
+      }
+
+      documentIds[article.articlePath] = documentId;
+    });
+
+    saveDocumentIds_(documentIds);
+    console.log('Blog document bootstrap complete.');
+  } finally {
+    lock.releaseLock();
+  }
+}
+
 function installHourlyReverseSync() {
   removeSyncTriggers_();
   syncGoogleDocToGitHub();
-  ScriptApp.newTrigger(LA_BOLA_NEGRA_SYNC.reverseTriggerFunction)
+  ScriptApp.newTrigger(BLOG_SYNC.reverseTriggerFunction)
     .timeBased()
     .everyHours(1)
     .create();
 }
 
-/** Removes both the former GitHub → Google Doc trigger and the reverse one. */
+function installThirtyMinuteReverseSync() {
+  removeSyncTriggers_();
+  syncGoogleDocToGitHub();
+  ScriptApp.newTrigger(BLOG_SYNC.reverseTriggerFunction)
+    .timeBased()
+    .everyMinutes(30)
+    .create();
+}
+
 function uninstallAllSyncTriggers() {
   removeSyncTriggers_();
 }
 
 function removeSyncTriggers_() {
   const handlers = [
-    LA_BOLA_NEGRA_SYNC.legacyTriggerFunction,
-    LA_BOLA_NEGRA_SYNC.reverseTriggerFunction,
+    BLOG_SYNC.legacyTriggerFunction,
+    BLOG_SYNC.reverseTriggerFunction,
   ];
 
   ScriptApp.getProjectTriggers().forEach(function (trigger) {
@@ -84,13 +144,182 @@ function removeSyncTriggers_() {
   });
 }
 
-function getGitHubArticle_(token) {
-  const response = UrlFetchApp.fetch(gitHubContentsUrl_(true), {
+function syncArticle_(token, article, documentId) {
+  const current = getGitHubArticle_(token, article);
+  const parsed = splitPost_(current.content);
+  const documentData = readGoogleDoc_(documentId, article);
+  const frontMatter = updateFrontMatter_(
+    parsed.frontMatter,
+    documentData,
+    article
+  );
+  const articleMarkdown = applyOutlineWrapper_(
+    documentData.markdown.trim(),
+    article
+  );
+  const nextContent = [
+    '---',
+    frontMatter.trim(),
+    '---',
+    '',
+    articleMarkdown,
+    '',
+  ].join('\n');
+
+  if (normalizeNewlines_(current.content) === normalizeNewlines_(nextContent)) {
+    console.log('No document changes: ' + article.documentTitle);
+    return;
+  }
+
+  updateGitHubArticle_(token, article, current.sha, nextContent);
+}
+
+function getGitHubToken_() {
+  const token = PropertiesService.getScriptProperties()
+    .getProperty(BLOG_SYNC.tokenProperty);
+  if (!token) {
+    throw new Error('Missing GITHUB_TOKEN in Apps Script project properties.');
+  }
+  return token;
+}
+
+function getDocumentIds_() {
+  const raw = PropertiesService.getScriptProperties()
+    .getProperty(BLOG_SYNC.documentIdsProperty);
+  if (!raw) return {};
+
+  try {
+    return JSON.parse(raw);
+  } catch (error) {
+    throw new Error('BLOG_SYNC_DOCUMENT_IDS is not valid JSON.');
+  }
+}
+
+function saveDocumentIds_(documentIds) {
+  PropertiesService.getScriptProperties().setProperty(
+    BLOG_SYNC.documentIdsProperty,
+    JSON.stringify(documentIds)
+  );
+}
+
+function resolveDocumentId_(article, documentIds, allowMissing) {
+  const documentId = article.documentId || documentIds[article.articlePath] || '';
+  if (!documentId && !allowMissing) {
+    throw new Error(
+      'No Google Doc is registered for ' + article.documentTitle +
+      '. Run bootstrapBlogDocuments once.'
+    );
+  }
+  return documentId;
+}
+
+function getBlogFolder_() {
+  return DriveApp.getFolderById(BLOG_SYNC.folderId);
+}
+
+function findDocumentInFolder_(folder, documentTitle) {
+  const files = folder.getFilesByName(documentTitle);
+  while (files.hasNext()) {
+    const file = files.next();
+    if (file.getMimeType() === MimeType.GOOGLE_DOCS) return file.getId();
+  }
+  return '';
+}
+
+function createGoogleDocFromPost_(article, source, folder) {
+  const parsed = splitPost_(source);
+  const document = DocumentApp.create(article.documentTitle);
+  populateGoogleDoc_(document, article, parsed.frontMatter, parsed.markdown);
+  document.saveAndClose();
+
+  const file = DriveApp.getFileById(document.getId());
+  file.setDescription('Blog sync target: ' + article.articlePath);
+  file.moveTo(folder);
+  return document.getId();
+}
+
+function populateGoogleDoc_(document, article, frontMatter, markdown) {
+  const body = document.getBody();
+  body.clear();
+
+  const primaryTitle = getYamlScalar_(frontMatter, article.titleField) ||
+    getYamlScalar_(frontMatter, 'title') || article.documentTitle;
+  body.appendParagraph(primaryTitle)
+    .setHeading(DocumentApp.ParagraphHeading.TITLE);
+
+  const primarySubtitle = getYamlScalar_(frontMatter, article.subtitleField) ||
+    getYamlScalar_(frontMatter, 'subtitle') ||
+    getYamlScalar_(frontMatter, 'summary');
+  if (primarySubtitle) {
+    body.appendParagraph(primarySubtitle)
+      .setHeading(DocumentApp.ParagraphHeading.SUBTITLE);
+  }
+
+  if (article.legacySubtitleFromPrelude) {
+    const pageSubtitle = getYamlScalar_(frontMatter, 'subtitle');
+    if (pageSubtitle && pageSubtitle !== primarySubtitle) {
+      body.appendParagraph(pageSubtitle);
+    }
+  }
+
+  const abstract = getYamlScalar_(frontMatter, 'abstract');
+  if (abstract) {
+    body.appendParagraph('Abstract')
+      .setHeading(DocumentApp.ParagraphHeading.HEADING1);
+    body.appendParagraph(abstract);
+  }
+
+  const keywords = getYamlList_(frontMatter, 'keywords');
+  if (keywords.length) {
+    body.appendParagraph('Keywords')
+      .setHeading(DocumentApp.ParagraphHeading.HEADING2);
+    body.appendParagraph(keywords.join(' · '));
+  }
+
+  body.appendHorizontalRule();
+  appendMarkdownToGoogleDoc_(body, stripOutlineWrapper_(markdown));
+}
+
+function appendMarkdownToGoogleDoc_(body, markdown) {
+  normalizeNewlines_(markdown).trim().split('\n').forEach(function (rawLine) {
+    const line = rawLine.trim();
+    if (!line) return;
+
+    let match = line.match(/^(#{2,4})\s+(.+)$/);
+    if (match) {
+      const headings = {
+        2: DocumentApp.ParagraphHeading.HEADING1,
+        3: DocumentApp.ParagraphHeading.HEADING2,
+        4: DocumentApp.ParagraphHeading.HEADING3,
+      };
+      body.appendParagraph(match[2]).setHeading(headings[match[1].length]);
+      return;
+    }
+
+    match = line.match(/^[-*]\s+(.+)$/);
+    if (match) {
+      body.appendListItem(match[1]).setGlyphType(DocumentApp.GlyphType.BULLET);
+      return;
+    }
+
+    match = line.match(/^>\s?(.*)$/);
+    if (match) {
+      const paragraph = body.appendParagraph(match[1]);
+      paragraph.editAsText().setItalic(true);
+      return;
+    }
+
+    body.appendParagraph(line);
+  });
+}
+
+function getGitHubArticle_(token, article) {
+  const response = UrlFetchApp.fetch(gitHubContentsUrl_(article, true), {
     method: 'get',
     headers: gitHubHeaders_(token),
     muteHttpExceptions: true,
   });
-  assertGitHubResponse_(response, [200], 'read the article');
+  assertGitHubResponse_(response, [200], 'read ' + article.documentTitle);
 
   const payload = JSON.parse(response.getContentText('UTF-8'));
   return {
@@ -101,32 +330,34 @@ function getGitHubArticle_(token) {
   };
 }
 
-function updateGitHubArticle_(token, sha, content) {
-  const response = UrlFetchApp.fetch(gitHubContentsUrl_(false), {
+function updateGitHubArticle_(token, article, sha, content) {
+  const response = UrlFetchApp.fetch(gitHubContentsUrl_(article, false), {
     method: 'put',
     contentType: 'application/json',
     headers: gitHubHeaders_(token),
     muteHttpExceptions: true,
     payload: JSON.stringify({
-      message: 'Publish La Bola Negra from Google Docs',
+      message: 'Publish ' + article.documentTitle + ' from Google Docs',
       content: Utilities.base64Encode(content, Utilities.Charset.UTF_8),
       sha: sha,
-      branch: LA_BOLA_NEGRA_SYNC.branch,
+      branch: BLOG_SYNC.branch,
     }),
   });
-  assertGitHubResponse_(response, [200, 201], 'update the article');
+  assertGitHubResponse_(response, [200, 201], 'update ' + article.documentTitle);
 
   const payload = JSON.parse(response.getContentText('UTF-8'));
-  console.log('Published commit: ' + payload.commit.sha);
+  console.log(
+    'Published commit: ' + payload.commit.sha + ' [' + article.documentTitle + ']'
+  );
 }
 
-function gitHubContentsUrl_(includeRef) {
+function gitHubContentsUrl_(article, includeRef) {
   const url = 'https://api.github.com/repos/' +
-    encodeURIComponent(LA_BOLA_NEGRA_SYNC.repositoryOwner) + '/' +
-    encodeURIComponent(LA_BOLA_NEGRA_SYNC.repositoryName) + '/contents/' +
-    LA_BOLA_NEGRA_SYNC.articlePath.split('/').map(encodeURIComponent).join('/');
+    encodeURIComponent(BLOG_SYNC.repositoryOwner) + '/' +
+    encodeURIComponent(BLOG_SYNC.repositoryName) + '/contents/' +
+    article.articlePath.split('/').map(encodeURIComponent).join('/');
   return includeRef
-    ? url + '?ref=' + encodeURIComponent(LA_BOLA_NEGRA_SYNC.branch)
+    ? url + '?ref=' + encodeURIComponent(BLOG_SYNC.branch)
     : url;
 }
 
@@ -151,27 +382,27 @@ function assertGitHubResponse_(response, expected, action) {
 function splitPost_(source) {
   const normalized = normalizeNewlines_(source);
   const match = normalized.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!match) {
-    throw new Error('Could not parse the article front matter.');
-  }
+  if (!match) throw new Error('Could not parse the article front matter.');
   return {frontMatter: match[1], markdown: match[2]};
 }
 
-function readGoogleDoc_() {
-  const body = DocumentApp.openById(LA_BOLA_NEGRA_SYNC.documentId).getBody();
+function readGoogleDoc_(documentId, article) {
+  const body = DocumentApp.openById(documentId).getBody();
   const metadata = {keywords: []};
   const markdown = [];
   let inArticle = false;
-  let outlineOpen = false;
   let captureAbstract = false;
   let captureKeywords = false;
-  let normalParagraphIndex = 0;
+  let preludeParagraphs = 0;
 
   for (let index = 0; index < body.getNumChildren(); index += 1) {
     const child = body.getChild(index);
     const type = child.getType();
 
     if (type === DocumentApp.ElementType.HORIZONTAL_RULE) {
+      inArticle = true;
+      captureAbstract = false;
+      captureKeywords = false;
       continue;
     }
     if (type !== DocumentApp.ElementType.PARAGRAPH &&
@@ -184,19 +415,16 @@ function readGoogleDoc_() {
       : child.asParagraph();
     const text = paragraph.getText().trim();
     if (!text) continue;
-
-    if (text.indexOf('Source: https://cathylixi.github.io/') === 0) {
-      break;
-    }
+    if (text.indexOf('Source: https://cathylixi.github.io/') === 0) break;
 
     const heading = paragraph.getHeading();
     if (!inArticle) {
       if (heading === DocumentApp.ParagraphHeading.TITLE) {
-        metadata.paperTitle = text;
+        metadata[article.titleField] = text;
         continue;
       }
       if (heading === DocumentApp.ParagraphHeading.SUBTITLE) {
-        metadata.paperSubtitle = text;
+        metadata[article.subtitleField] = text;
         continue;
       }
       if (heading === DocumentApp.ParagraphHeading.HEADING1 &&
@@ -211,30 +439,29 @@ function readGoogleDoc_() {
         captureAbstract = false;
         continue;
       }
-      if (heading === DocumentApp.ParagraphHeading.HEADING1 &&
-          /^1\.\s/.test(text)) {
-        inArticle = true;
-      } else if (captureAbstract) {
+      if (captureAbstract) {
         metadata.abstract = text;
         captureAbstract = false;
         continue;
-      } else if (captureKeywords) {
+      }
+      if (captureKeywords) {
         metadata.keywords = text.split(/\s*[·•]\s*/).filter(String);
         captureKeywords = false;
         continue;
-      } else if (text.indexOf('AUTO-SYNCED FROM MY BLOG') === 0) {
-        continue;
+      }
+      if (text.indexOf('AUTO-SYNCED FROM MY BLOG') === 0) continue;
+
+      if (heading === DocumentApp.ParagraphHeading.HEADING1) {
+        inArticle = true;
+      } else if (article.bodyStartsAtFirstPlainParagraph) {
+        inArticle = true;
       } else {
-        normalParagraphIndex += 1;
-        if (normalParagraphIndex === 1) metadata.subtitle = text;
+        preludeParagraphs += 1;
+        if (article.legacySubtitleFromPrelude && preludeParagraphs === 1) {
+          metadata.subtitle = text;
+        }
         continue;
       }
-    }
-
-    if (heading === DocumentApp.ParagraphHeading.HEADING1 &&
-        /^2\.\s/.test(text) && !outlineOpen) {
-      markdown.push('<div class="academic-outline" markdown="1">', '');
-      outlineOpen = true;
     }
 
     const line = elementToMarkdown_(paragraph, type);
@@ -242,18 +469,13 @@ function readGoogleDoc_() {
   }
 
   if (!inArticle) {
-    throw new Error('Could not find the Introduction heading in the Google Doc.');
+    throw new Error(
+      'Could not find the article body in Google Doc: ' + article.documentTitle
+    );
   }
-  if (outlineOpen) markdown.push('</div>', '');
 
-  return {
-    paperTitle: metadata.paperTitle || '',
-    paperSubtitle: metadata.paperSubtitle || '',
-    subtitle: metadata.subtitle || '',
-    abstract: metadata.abstract || '',
-    keywords: metadata.keywords,
-    markdown: markdown.join('\n').replace(/\n{3,}/g, '\n\n'),
-  };
+  metadata.markdown = markdown.join('\n').replace(/\n{3,}/g, '\n\n');
+  return metadata;
 }
 
 function elementToMarkdown_(paragraph, type) {
@@ -264,9 +486,7 @@ function elementToMarkdown_(paragraph, type) {
   headingPrefixes[DocumentApp.ParagraphHeading.HEADING2] = '### ';
   headingPrefixes[DocumentApp.ParagraphHeading.HEADING3] = '#### ';
 
-  if (headingPrefixes[heading]) {
-    return headingPrefixes[heading] + text;
-  }
+  if (headingPrefixes[heading]) return headingPrefixes[heading] + text;
   if (type === DocumentApp.ElementType.LIST_ITEM) {
     return '- ' + inlineMarkdown_(paragraph.editAsText());
   }
@@ -309,14 +529,22 @@ function isEntirelyItalic_(textElement) {
   });
 }
 
-function updateFrontMatter_(frontMatter, documentData) {
+function updateFrontMatter_(frontMatter, documentData, article) {
   let yaml = frontMatter;
-  yaml = replaceYamlScalar_(yaml, 'paper_title', documentData.paperTitle);
-  yaml = replaceYamlScalar_(yaml, 'paper_subtitle', documentData.paperSubtitle);
+  yaml = replaceYamlScalar_(
+    yaml,
+    article.titleField,
+    documentData[article.titleField]
+  );
+  yaml = replaceYamlScalar_(
+    yaml,
+    article.subtitleField,
+    documentData[article.subtitleField]
+  );
   yaml = replaceYamlScalar_(yaml, 'subtitle', documentData.subtitle);
   yaml = replaceYamlScalar_(yaml, 'abstract', documentData.abstract);
 
-  if (documentData.keywords.length) {
+  if (documentData.keywords && documentData.keywords.length) {
     const keywordYaml = 'keywords:\n' + documentData.keywords.map(function (item) {
       return '  - ' + JSON.stringify(item);
     }).join('\n');
@@ -325,11 +553,94 @@ function updateFrontMatter_(frontMatter, documentData) {
   return yaml;
 }
 
+function applyOutlineWrapper_(markdown, article) {
+  if (!markdown || article.outlineMode === 'none') return markdown;
+  if (article.outlineMode === 'all') {
+    return [
+      '<div class="academic-outline" markdown="1">',
+      '',
+      markdown,
+      '',
+      '</div>',
+    ].join('\n');
+  }
+
+  if (article.outlineMode === 'from-heading') {
+    const lines = markdown.split('\n');
+    const pattern = new RegExp(article.outlineHeadingPattern);
+    const start = lines.findIndex(function (line) { return pattern.test(line); });
+    if (start === -1) {
+      throw new Error(
+        'Could not find the academic outline start in ' + article.documentTitle
+      );
+    }
+    lines.splice(start, 0, '<div class="academic-outline" markdown="1">', '');
+    lines.push('', '</div>');
+    return lines.join('\n');
+  }
+
+  return markdown;
+}
+
+function stripOutlineWrapper_(markdown) {
+  return normalizeNewlines_(markdown)
+    .split('\n')
+    .filter(function (line) {
+      return line.trim() !== '<div class="academic-outline" markdown="1">' &&
+        line.trim() !== '</div>';
+    })
+    .join('\n')
+    .replace(/\n{3,}/g, '\n\n');
+}
+
+function getYamlScalar_(yaml, key) {
+  const pattern = new RegExp('^' + escapeRegExp_(key) + ':\\s*(.*)$', 'm');
+  const match = yaml.match(pattern);
+  if (!match) return '';
+  const raw = match[1].trim();
+  if (!raw) return '';
+
+  if ((raw[0] === '"' && raw[raw.length - 1] === '"') ||
+      (raw[0] === "'" && raw[raw.length - 1] === "'")) {
+    try {
+      return raw[0] === '"' ? JSON.parse(raw) : raw.slice(1, -1);
+    } catch (error) {
+      return raw.slice(1, -1);
+    }
+  }
+  return raw;
+}
+
+function getYamlList_(yaml, key) {
+  const lines = normalizeNewlines_(yaml).split('\n');
+  const start = lines.findIndex(function (line) {
+    return line.trim() === key + ':';
+  });
+  if (start === -1) return [];
+
+  const values = [];
+  for (let index = start + 1; index < lines.length; index += 1) {
+    const match = lines[index].match(/^\s+-\s+(.*)$/);
+    if (!match) break;
+    const raw = match[1].trim();
+    try {
+      values.push(raw[0] === '"' ? JSON.parse(raw) : raw.replace(/^'|'$/g, ''));
+    } catch (error) {
+      values.push(raw.replace(/^['"]|['"]$/g, ''));
+    }
+  }
+  return values;
+}
+
 function replaceYamlScalar_(yaml, key, value) {
   if (!value) return yaml;
-  const pattern = new RegExp('^' + key + ':.*$', 'm');
+  const pattern = new RegExp('^' + escapeRegExp_(key) + ':.*$', 'm');
   if (!pattern.test(yaml)) return yaml;
   return yaml.replace(pattern, key + ': ' + JSON.stringify(value));
+}
+
+function escapeRegExp_(value) {
+  return value.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 }
 
 function normalizeNewlines_(value) {
