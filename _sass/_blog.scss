@@ -231,6 +231,7 @@ $blog-paper: #fbfbfa;
 .blog-card--tone-3 .blog-card__cover { background: $blog-pink; }
 .blog-card__format { font-size: 0.64rem; font-weight: bold; letter-spacing: 0.13em; text-transform: uppercase; }
 .page__content .blog-card__cover-title { max-width: 92%; margin: auto 0; color: $blog-ink; font-size: clamp(1.55rem, 2.8vw, 2.2rem); font-weight: normal; letter-spacing: -0.045em; line-height: 0.98; }
+.page__content .blog-card__cover-title--long { font-size: clamp(1.18rem, 2vw, 1.55rem); letter-spacing: -0.025em; line-height: 1.14; text-wrap: pretty; }
 .blog-card__content { padding: 1.15rem; }
 .blog-card__meta,
 .blog-card__action { display: flex; gap: 0.8rem; align-items: center; justify-content: space-between; color: #7a8488; font-size: 0.7rem; }

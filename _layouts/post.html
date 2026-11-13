@@ -7,6 +7,7 @@ author_profile: false
 {% assign calculated_minutes = words | divided_by: 180 | plus: 1 %}
 {% assign minutes = page.reading_time | default: calculated_minutes %}
 {% assign series_record = site.data.blog_series | where: "slug", page.series_slug | first %}
+{% assign page_title = page.paper_title | default: page.title %}
 
 <article class="longform-post">
   {% if series_record %}<a class="longform-post__back" href="{{ series_record.url | relative_url }}" target="_self"><span aria-hidden="true">←</span> {{ series_record.title }}</a>{% else %}<a class="longform-post__back" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> My Blog</a>{% endif %}
@@ -15,12 +16,12 @@ author_profile: false
     <div class="longform-post__main">
       <header class="longform-post__header">
         <p class="blog-eyebrow">{{ page.format | default: "Essay" }} · {{ page.date | date: "%b %-d, %Y" }} · {{ minutes }} min read</p>
-        <h1>{{ page.title }}</h1>
+        <h1>{{ page_title }}</h1>
         {% if page.visualization %}
           <figure class="longform-post__visualization">
             <iframe
               src="{{ page.visualization | relative_url }}"
-              title="{{ page.visualization_title | default: page.title | escape }}"
+              title="{{ page.visualization_title | default: page_title | escape }}"
               loading="eager"
             ></iframe>
           </figure>
@@ -35,8 +36,8 @@ author_profile: false
   <footer class="longform-post__footer">
     {% if series_record %}<a class="longform-post__back longform-post__back--bottom" href="{{ series_record.url | relative_url }}" target="_self"><span aria-hidden="true">←</span> Back to {{ series_record.title }}</a>{% else %}<a class="longform-post__back longform-post__back--bottom" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> Back to My Blog</a>{% endif %}
     {% if page.next or page.previous %}<nav class="post-pagination" aria-label="More writing">
-      {% if page.next %}<a class="post-pagination__item post-pagination__item--newer" href="{{ page.next.url | relative_url }}" target="_self"><span>Newer</span><strong>{{ page.next.title }}</strong></a>{% endif %}
-      {% if page.previous %}<a class="post-pagination__item post-pagination__item--older" href="{{ page.previous.url | relative_url }}" target="_self"><span>Older</span><strong>{{ page.previous.title }}</strong></a>{% endif %}
+      {% if page.next %}{% assign next_title = page.next.paper_title | default: page.next.title %}<a class="post-pagination__item post-pagination__item--newer" href="{{ page.next.url | relative_url }}" target="_self"><span>Newer</span><strong>{{ next_title }}</strong></a>{% endif %}
+      {% if page.previous %}{% assign previous_title = page.previous.paper_title | default: page.previous.title %}<a class="post-pagination__item post-pagination__item--older" href="{{ page.previous.url | relative_url }}" target="_self"><span>Older</span><strong>{{ previous_title }}</strong></a>{% endif %}
     </nav>{% endif %}
   </footer>
 </article>

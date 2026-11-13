@@ -31,9 +31,10 @@ author_profile: false
   </header>
 
   {% if first_post %}
+    {% assign first_post_title = first_post.paper_title | default: first_post.title %}
     <section class="blog-research-grid blog-section">
       <a class="blog-start-card" href="{{ first_post.url | relative_url }}">
-        <p class="blog-eyebrow">Start here</p><h2>{{ first_post.title }}</h2><p>{{ first_post.summary }}</p><strong>Read the opening note <span aria-hidden="true">→</span></strong>
+        <p class="blog-eyebrow">Start here</p><h2>{{ first_post_title }}</h2><p>{{ first_post.summary }}</p><strong>Read the opening note <span aria-hidden="true">→</span></strong>
       </a>
       <aside class="blog-question-card"><p class="blog-eyebrow">Questions I’m following</p><h2>Research questions</h2><ul>{% for question in series_record.questions %}<li>{{ question }}</li>{% endfor %}</ul></aside>
     </section>
@@ -45,7 +46,8 @@ author_profile: false
       {% assign row = 0 %}
       {% for post in site.posts %}{% if post.series_slug == page.series_slug %}{% assign row = row | plus: 1 %}
         {% assign words = post.content | strip_html | number_of_words %}{% assign calculated_minutes = words | divided_by: 180 | plus: 1 %}{% assign minutes = post.reading_time | default: calculated_minutes %}
-        <a class="blog-series-row" href="{{ post.url | relative_url }}"><span>{{ row | prepend: "0" | slice: -2, 2 }}</span><div><h3>{{ post.title }}</h3><p>{{ post.summary }}</p></div><strong>{{ post.format | default: "Essay" }} · {{ minutes }} min</strong></a>
+        {% assign post_title = post.paper_title | default: post.title %}
+        <a class="blog-series-row" href="{{ post.url | relative_url }}"><span>{{ row | prepend: "0" | slice: -2, 2 }}</span><div><h3>{{ post_title }}</h3><p>{{ post.summary }}</p></div><strong>{{ post.format | default: "Essay" }} · {{ minutes }} min</strong></a>
       {% endif %}{% endfor %}
     </div>
   </section>

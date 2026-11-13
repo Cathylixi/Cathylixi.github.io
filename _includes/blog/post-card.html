@@ -1,18 +1,20 @@
 {% assign words = include.post.content | strip_html | number_of_words %}
 {% assign calculated_minutes = words | divided_by: 180 | plus: 1 %}
 {% assign minutes = include.post.reading_time | default: calculated_minutes %}
+{% assign post_title = include.post.paper_title | default: include.post.title %}
+{% assign post_title_length = post_title | size %}
 <article class="blog-card blog-card--tone-{{ include.tone | default: 0 }}" data-blog-format="{{ include.post.format | default: 'Essay' | slugify }}" data-blog-series="{{ include.post.series_slug | default: '' }}" data-blog-topics="{{ include.post.topic_slugs | join: ' ' }}">
   <a class="blog-card__link" href="{{ include.post.url | relative_url }}" target="_self">
     <div class="blog-card__cover">
       <span class="blog-card__format">{{ include.post.format | default: "Essay" }}</span>
-      <strong class="blog-card__cover-title">{{ include.post.cover_text | default: include.post.title }}</strong>
+      <strong class="blog-card__cover-title{% if post_title_length > 28 %} blog-card__cover-title--long{% endif %}">{{ post_title }}</strong>
     </div>
     <div class="blog-card__content">
       <div class="blog-card__meta">
         <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%b %-d, %Y" }}</time>
         <span>{{ minutes }} min</span>
       </div>
-      <h3>{{ include.post.title }}</h3>
+      <h3>{{ post_title }}</h3>
       <p>{{ include.post.summary | default: include.post.subtitle | default: include.post.excerpt | strip_html | strip_newlines | truncate: 155 }}</p>
       <div class="blog-card__action">
         <span>{{ include.post.series | default: include.post.tags.first }}</span>
