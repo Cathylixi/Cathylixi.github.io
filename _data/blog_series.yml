@@ -18,21 +18,21 @@
     - "Portrait of a Lady on Fire"
     - "Federico García Lorca"
 
-- slug: ai-human-agency
-  title: "AI & Human Agency"
-  description: "当系统越来越善于判断，理解、拒绝和纠正的能力仍属于谁？"
-  introduction: "追踪 AI 如何进入选择、判断与日常生活，并保留人在技术系统中的实际控制能力。"
-  topic_slug: ai-technology
-  topic_title: "AI & Technology"
-  url: /blog/series/ai-human-agency/
+- slug: critical-thinking
+  title: "Critical Thinking"
+  description: "从技术、哲学与社会制度出发，追问那些看似理所当然的判断。"
+  introduction: "把熟悉的概念重新拆开：自由是否需要脱离因果，技术何时开始替我们判断，责任又该由谁承担。"
+  topic_slug: philosophy-ideas
+  topic_title: "Philosophy & Ideas"
+  url: /blog/series/critical-thinking/
   tone: blue
   status: Ongoing
   questions:
-    - "便利在什么时候开始替代自主判断？"
-    - "怎样的拒绝权才是真正可用的？"
-    - "制度如何让自动化决定可以被纠正？"
+    - "一个判断成立，需要哪些没有说出口的前提？"
+    - "自由、责任与因果之间真的互相排斥吗？"
+    - "技术和制度如何改变我们理解选择的方式？"
   shelf:
-    - "Human agency"
-    - "Algorithmic accountability"
-    - "Automation and judgment"
-    - "The politics of recommendation"
+    - "Agency and responsibility"
+    - "Causality and free will"
+    - "Technology and judgment"
+    - "The politics of explanation"

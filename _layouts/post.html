@@ -9,27 +9,23 @@ author_profile: false
 {% assign series_record = site.data.blog_series | where: "slug", page.series_slug | first %}
 {% assign page_title = page.paper_title | default: page.title %}
 
-<article class="longform-post">
+<article class="article-shell longform-post">
   {% if series_record %}<a class="longform-post__back" href="{{ series_record.url | relative_url }}" target="_self"><span aria-hidden="true">←</span> {{ series_record.title }}</a>{% else %}<a class="longform-post__back" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> My Blog</a>{% endif %}
 
   <div class="longform-post__layout">
     <div class="longform-post__main">
-      <header class="longform-post__header">
-        <p class="blog-eyebrow">{{ page.format | default: "Essay" }} · {{ page.date | date: "%b %-d, %Y" }} · {{ minutes }} min read</p>
-        <h1>{{ page_title }}</h1>
-        {% if page.visualization %}
-          <figure class="longform-post__visualization">
-            <iframe
-              src="{{ page.visualization | relative_url }}"
-              title="{{ page.visualization_title | default: page_title | escape }}"
-              loading="eager"
-            ></iframe>
-          </figure>
-        {% endif %}
-        {% if page.subtitle %}<p class="longform-post__subtitle">{{ page.subtitle }}</p>{% endif %}
-      </header>
+      {% include blog/article-header.html page_title=page_title minutes=minutes variant_class="longform-post__header" %}
+      {% if page.visualization %}
+        <figure class="longform-post__visualization">
+          <iframe
+            src="{{ page.visualization | relative_url }}"
+            title="{{ page.visualization_title | default: page_title | escape }}"
+            loading="eager"
+          ></iframe>
+        </figure>
+      {% endif %}
 
-      <div class="longform-post__body">{{ content }}</div>
+      <div class="article-body longform-post__body">{{ content }}</div>
     </div>
   </div>
 

@@ -7,14 +7,16 @@ tags:
   - AI
   - Society
 format: Essay
-series: "AI & Human Agency"
-series_slug: ai-human-agency
+series: "Critical Thinking"
+series_slug: critical-thinking
 topics:
   - "AI & Technology"
   - "Society & Politics"
+  - "Philosophy & Ideas"
 topic_slugs:
   - ai-technology
   - society-politics
+  - philosophy-ideas
 reading_time: 7
 lang: zh-CN
 ---

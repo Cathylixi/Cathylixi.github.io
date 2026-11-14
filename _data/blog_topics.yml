@@ -22,3 +22,8 @@
   title: "Memory & History"
   description: "被保存、被省略与被重新讲述的过去。"
   url: /blog/topics/memory-history/
+
+- slug: philosophy-ideas
+  title: "Philosophy & Ideas"
+  description: "重新检查关于自由、因果、责任与知识的日常直觉。"
+  url: /blog/topics/philosophy-ideas/
