@@ -6,7 +6,7 @@ Treat every website article as a two-destination publication:
 
 1. Store and update the website source in `_posts/`.
 2. Build and verify the Jekyll site before publishing.
-3. Create or update the matching Google Doc in the user's Google Drive during the same task.
+3. Create or update the matching Google Doc in the user's Google Drive during the same task, and keep it inside the Drive folder named `my blog`.
 4. Use the article's displayed website title as the Google Doc title. Prefer `paper_title`, then fall back to `title`.
 5. Copy the article metadata and readable body into the Google Doc, but omit Jekyll front matter and implementation-only markup.
 6. Search Drive for an existing document with the same canonical title before creating a new one, so revisions update the existing document instead of producing duplicates.
