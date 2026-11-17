@@ -18,8 +18,8 @@ tags:
   - Film
   - Queer Cinema
 format: "Academic Web Essay"
-series: "Queer Cinema"
-series_slug: queer-cinema
+series: "Future Discussions"
+series_slug: future-discussions
 topics:
   - "Queer Studies"
   - "Film & Visual Culture"

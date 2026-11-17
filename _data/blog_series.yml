@@ -36,3 +36,17 @@
     - "Causality and free will"
     - "Technology and judgment"
     - "The politics of explanation"
+
+- slug: future-discussions
+  title: "Future Discussions"
+  description: "尚未定稿、但值得继续追问的写作计划与研究提纲。"
+  introduction: "这里收录仍在生长的想法：已有问题、结构或材料，但结论尚未封闭。它们会随着阅读、观看与生活经验继续被修订。"
+  topic_slug: queer-studies
+  topic_title: "Queer Studies"
+  url: /blog/series/future-discussions/
+  tone: yellow
+  status: In development
+  questions:
+    - "哪些亲密关系、历史经验与身份仍缺少合适的语言？"
+    - "一个问题需要哪些材料，才能从提纲发展成完整论证？"
+    - "在结论形成之前，如何保存矛盾、犹疑与尚未解决的部分？"

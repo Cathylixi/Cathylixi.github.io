@@ -8,6 +8,8 @@ tags:
   - Relationships
 format: Essay
 paper_status: Draft
+series: "Future Discussions"
+series_slug: future-discussions
 topics:
   - "Queer Studies"
   - "Society & Politics"
