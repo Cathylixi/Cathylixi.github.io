@@ -159,9 +159,14 @@ U=g(S),\quad Y=h(S,g(S)).
 
 ### 2.1 单凭预测残差无法识别自由意志
 
+<aside class="story-intro" aria-label="情境引子" markdown="1">
+<div class="story-intro__label" markdown="0">引子</div>
+
 设想系统根据小林已有的消费记录，预测他今天在咖啡店花 20 元，实际却花了 30 元。系统只保存了消费总额，没有记录商品和价格明细。多出来的 10 元，能否说明小林通过自主选择增加了支出？
 
 即使知道他的真实消费基线是 22 元，扣除 2 元的预测偏差后，剩下的 8 元仍有不同解释：一种情况下，小林没有额外加购，8 元全部来自未记录的附加收费；另一种情况下，他决定加购 3 元的点心，其余 5 元来自附加收费。两种情况都能产生 30 元的总支出。
+
+</aside>
 
 在行为遗传学中，[Turkheimer（2011，第 827 页）](https://uva.theopenscholar.com/files/eric-turkheimer/files/genetics_and_human_8.pdf)曾提出，将遗传与家庭共有环境之外的行为变异作为衡量人的自主程度的起点。[Morris（2025，第 3.2 节）](https://doi.org/10.1017/thg.2025.22)对此提出批评，指出剩余变异还可能包含测量误差、未测量的环境影响和随机发育差异。
 
@@ -197,11 +202,16 @@ R_{\mathrm{res}}=g(G,E)-\hat f(G,E)+\xi\tag{2.2}
 
 ### 2.2 判断可以在确定过程中影响行动
 
+<aside class="story-intro" aria-label="情境引子" markdown="1">
+<div class="story-intro__label" markdown="0">引子</div>
+
 设想小林按天气预报决定是否带伞：降雨概率达到 60% 就带伞，低于 60% 就不带。按这条标准，看到 20% 的预报，他判断不必带伞，空手出门；看到 80% 的预报，他判断需要带伞，拿起了伞。
 
 几次出门后，小林觉得随身带伞比原先预想的更不方便。重新权衡淋雨风险和携带负担后，他把门槛提高到 80%。再看到 70% 的预报时，他就不带伞了。
 
 *再设想另一种情形：一个隐藏装置直接控制小林的手拿起伞，随后才让他产生“今天应该带伞”的念头。即使随后产生的是“不想带伞”，只要装置仍发出同一指令，拿伞的动作也会发生。*
+
+</aside>
 
 先把人和周围环境放在一起考虑。用 <span class="inline-math" markdown="0">\(S\)</span> 表示完整状态，<span class="inline-math" markdown="0">\(t\)</span> 表示从零开始的离散步数，<span class="inline-math" markdown="0">\(S_{t}\)</span> 表示第 <span class="inline-math" markdown="0">\(t\)</span> 步的状态，<span class="inline-math" markdown="0">\(S_{0}\)</span> 表示初态。用 <span class="inline-math" markdown="0">\(F\)</span> 表示状态更新函数，每个允许状态有且仅有一个下一状态，更新后仍在模型允许的范围内；用 <span class="inline-math" markdown="0">\(a_{t}\)</span> 表示第 <span class="inline-math" markdown="0">\(t\)</span> 步的行动，<span class="inline-math" markdown="0">\(f\)</span> 表示从完整状态得到行动的函数。本节将 <span class="inline-math" markdown="0">\(F\)</span> 与 <span class="inline-math" markdown="0">\(f\)</span> 设为固定的确定函数：
 
@@ -243,7 +253,12 @@ J(z,r)=\begin{cases}1,&amp;r\ge\theta,\\0,&amp;r&lt;\theta,\end{cases}\qquad A(z
 
 #### 2.3.1 预测可以包含本人的判断过程
 
+<aside class="story-intro" aria-label="情境引子" markdown="1">
+<div class="story-intro__label" markdown="0">引子</div>
+
 *观察者提前算出小林中午会选面条，却没有把预测告诉他。到了中午，小林比较口味和饱腹感，选择了面条。提前算出他的选择，是否就意味着替他作了决定？*
+
+</aside>
 
 在决定论假设下，小林理解理由、作出判断并执行决定的过程，也都有确定的前因。预测者若能算准这次选择，可以将他的思考过程一并纳入计算。提前知道判断的结果，并没有绕过或替代判断。反过来，即使身体动作被外部装置接管，观察者也可能算准。两种情形都可能被准确预测，产生动作的过程却不同：一种通过小林的判断，另一种通过装置的指令。
 
@@ -251,7 +266,12 @@ J(z,r)=\begin{cases}1,&amp;r\ge\theta,\\0,&amp;r&lt;\theta,\end{cases}\qquad A(z
 
 #### 2.3.2 公开预告可能因反向回应而失准
 
+<aside class="story-intro" aria-label="情境引子" markdown="1">
+<div class="story-intro__label" markdown="0">引子</div>
+
 *回到确定的情形。设想有一台自动开关，预测者先在屏幕上显示它稍后将停在“0”还是“1”。开关随后读取预告，严格执行相反的结果：预告为“0”就停在“1”，预告为“1”就停在“0”。预测者知道这条程序，还能让屏幕上的预告与开关最终的状态一致吗？*
+
+</aside>
 
 沿用可预测性悖论中的反向响应设定（[Rummens 与 Cuypers, 2010，第 2—3 节](https://doi.org/10.1007/s10670-009-9199-1)），用 <span class="inline-math" markdown="0">\(p\)</span> 表示屏幕上提前公布的预告，<span class="inline-math" markdown="0">\(a\)</span> 表示开关最终的状态。反向规则与准确预告的要求合在一起，得到：
 
@@ -333,10 +353,10 @@ a_{t+1}=b_t,\qquad b_{t+1}=1-a_t.\tag{2.6}
 
 在 Newcomb 问题中，桌上摆着两个盒子：透明盒固定装着一千美元，不透明盒里可能装着一百万美元，也可能是空的（[Nozick, 1969](https://pdf.stafforini.com/nozick-1969-newcomb-problem-two.pdf)）。预测者先按自己的判断装盒：预测行动者只拿不透明盒，就放入百万；预测行动者拿两盒，就让不透明盒空着。钱放好后，行动者再决定只拿不透明盒，还是两盒一起拿。用 <span class="inline-math" markdown="0">\(U\)</span> 表示行动者的拿盒选择，<span class="inline-math" markdown="0">\(G\)</span> 表示不透明盒的装盒状态，各种组合的收益如下：
 
-| 不透明盒的状态 | 只拿一盒：<span class="inline-math" markdown="0">\(U = 1 |\)</span> 拿两盒：<span class="inline-math" markdown="0">\(U = 0 |
-|\)</span> :---- | :---- | :---- |
-| 装有百万：<span class="inline-math" markdown="0">\(G = 1 | 1,000,000\)</span> 美元 | 1,001,000 美元 |
-| 空盒：<span class="inline-math" markdown="0">\(G = 0 | 0\)</span> 美元 | 1,000 美元 |
+| 不透明盒的状态 | 只拿一盒：<span class="inline-math" markdown="0">\(U = 1\)</span> | 拿两盒：<span class="inline-math" markdown="0">\(U = 0\)</span> |
+| :---- | :---- | :---- |
+| 装有百万：<span class="inline-math" markdown="0">\(G = 1\)</span> | 1,000,000 美元 | 1,001,000 美元 |
+| 空盒：<span class="inline-math" markdown="0">\(G = 0\)</span> | 0 美元 | 1,000 美元 |
 
 如果盒子已经装好、不再变化，多拿透明盒始终会多得一千元美元。但如果预测者在“一盒组”和“两盒组”中的准确率均为 99%，按最终选择分别统计平均收益，一盒组为 990,000 美元，两盒组为 11,000 美元。这两种计算并不矛盾：前者在盒子状态 <span class="inline-math" markdown="0">\(G\)</span> 已定的前提下，比较不同选择 <span class="inline-math" markdown="0">\(U\)</span> 的收益差（[Lewis, 1979](https://gwern.net/doc/statistics/decision/1979-lewis.pdf)）；后者按最终选择分组，比较各组的平均收益，两组中装有百万的比例本就不同（[Wolpert & Benford, 2010](https://arxiv.org/abs/0904.2540)）。
 
@@ -392,7 +412,12 @@ Black 要保证及时干预，就得提前识别 Jones 是否会偏离目标。W
 
 ### 3.2 有因的反思与自我形成
 
+<aside class="story-intro" aria-label="情境引子" markdown="1">
+<div class="story-intro__label" markdown="0">引子</div>
+
 *奶奶小时候学过一条规矩：煮汤要放一勺盐。她照着做了几十年。有天换了食材，孙女提醒说，这批原料本身带咸味，再放一勺可能太咸。奶奶先尝了一口，又盛出两小碗比较不同加盐量的味道，发现一律放一勺并不总合适。这次她少放了盐，后来煮汤也开始根据食材和实际味道调整盐量。孙女不在时，她也这样做。对于“一律少放盐”的建议，她仍会尝过汤后再判断。按决定论 D 的设定，她从听懂提醒、尝汤比较到改变做法，每一步都有确定的前因。*
+
+</aside>
 
 用 <span class="inline-math" markdown="0">\(t = 0, 1,\)</span> … 标记前后各轮：第 <span class="inline-math" markdown="0">\(t\)</span> 轮既有的判断方式记为 <span class="inline-math" markdown="0">\(M_{t}\)</span>，这一轮遇到的新经验与理由记为 <span class="inline-math" markdown="0">\(E_{t}\)</span>。行动者结合新经验检视旧规矩，决定沿用还是修订，从而形成下一轮的判断方式 <span class="inline-math" markdown="0">\(M_{t+1}\)</span>，这一更新过程记为 <span class="inline-math" markdown="0">\(U\)</span>。到了第 <span class="inline-math" markdown="0">\(t+1\)</span> 轮，他便依据新的判断方式 <span class="inline-math" markdown="0">\(M_{t+1}\)</span> 与当下的情况 <span class="inline-math" markdown="0">\(E_{t+1}\)</span> 作出判断并付诸行动。这里用 <span class="inline-math" markdown="0">\(A\)</span> 表示判断与执行的整个过程，这一轮的行动记为 <span class="inline-math" markdown="0">\(a_{t+1}\)</span>：
 

@@ -6,7 +6,7 @@ For `2026-11-14-determinism-and-free-will.md`, use the dedicated converter after
 exporting the current Google Doc as Markdown:
 
 ```sh
-python3 automation/google-doc-sync/sync-determinism.py /path/to/export.md
+python3 automation/google-doc-sync/sync-determinism.py /path/to/export.md --document-structure /path/to/current-document.json
 ```
 
 The JSON output's `content` is the article to publish. It retains the document
@@ -25,6 +25,21 @@ publish the ordinary image-based Markdown export directly over this article.
 For an already assembled legacy article, `determinism_math.py ARTICLE.md` applies
 the same conversion in place. It is idempotent. These are local publishing
 helpers, independent of the four-article Apps Script registry below.
+
+### Story introduction boxes
+
+The author marks story introductions in Google Docs with **gray + italic +
+10 pt**, all three together. Italics alone, a narrative example, or a previous
+selection is not enough. Read the current structured document and pass its JSON
+with `--document-structure /path/to/current-document.json` when syncing. This
+refreshes `determinism-story-intros.json` from the actual text-run styles.
+
+`story_intros.py ARTICLE.md --document-structure CURRENT_DOC.json` applies the
+same selection to an existing math-preserving article. Adjacent marked story
+paragraphs share one `story-intro` box at their existing location. The converter
+rejects missing or ambiguous story text; it does not invent introductions or
+move paragraphs. Google Docs remains the source for selection and wording;
+the website adds only the border, background, and small “引子” label.
 
 This Apps Script publishes every registered Google document in My Drive/my blog
 to its canonical Markdown article in this repository.

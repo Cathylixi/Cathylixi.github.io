@@ -1,8 +1,11 @@
 import argparse, base64, hashlib, json, re
 from determinism_math import CATALOGUE, upgrade_math
+from story_intros import MANIFEST_PATH, apply_intros, extract_intros
 from pathlib import Path
 parser = argparse.ArgumentParser(description='Convert the canonical Google Doc Markdown export to a math-preserving article.')
 parser.add_argument('export', type=Path)
+parser.add_argument('--document-structure', type=Path, required=True,
+                    help='Fresh structured Docs read, used to select gray italic 10 pt stories.')
 args = parser.parse_args()
 md = args.export.read_text()
 root = Path(__file__).resolve().parents[2]
@@ -35,4 +38,7 @@ j = lambda s: json.dumps(s, ensure_ascii=False)
 meta = ['---', 'layout: academic-post', 'title: '+j(title), 'paper_title: '+j(title), 'paper_subtitle: '+j(subtitle), 'paper_status: "Draft"', 'subtitle: '+j(intro), 'summary: '+j(summary), 'abstract: '+j(abstract), 'keywords:']
 meta += ['  - '+j(k) for k in keywords]
 meta += ['cover_text: "CAUSE × CHOICE"', 'tags:', '  - Philosophy', '  - Free Will', 'format: "Academic Web Essay"', 'series: "Critical Thinking"', 'series_slug: critical-thinking', 'topics:', '  - "Philosophy & Ideas"', '  - "Society & Politics"', 'topic_slugs:', '  - philosophy-ideas', '  - society-politics', 'reading_time: 65', 'lang: zh-CN', 'source_document: "https://docs.google.com/document/d/1UBmeLqhMXht8KGxwWQ8XzM4x5VrTKDjh5Uf3fHAp7SE"', 'last_modified_at: 2026-11-24', '---', '', body, '']
-print(json.dumps({'content': upgrade_math('\n'.join(meta)), 'assets': len(images), 'headings': len(re.findall(r'^#{2,4} ', body, re.M))}, ensure_ascii=False))
+stories = extract_intros(json.loads(args.document_structure.read_text()))
+MANIFEST_PATH.write_text(json.dumps(stories, ensure_ascii=False, indent=2) + '\n')
+content = apply_intros(upgrade_math('\n'.join(meta)), stories)
+print(json.dumps({'content': content, 'assets': len(images), 'headings': len(re.findall(r'^#{2,4} ', body, re.M))}, ensure_ascii=False))

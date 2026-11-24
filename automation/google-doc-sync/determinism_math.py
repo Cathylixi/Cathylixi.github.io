@@ -70,8 +70,10 @@ def inline_math(body):
     # Combine neighbouring variables and operators into one math span. Stop at
     # prose punctuation and links; retain the original surrounding whitespace.
     math_token = r'\ue000\d+\ue001'
-    bridge = r'(?:\\[+*=<>|\[\]()\-]|[0-9A-Za-ẑα-ωΑ-Ω𝒞+*/=<>|≥≤≠∈∧¬≈→−′()\[\]{}.,\s-])'
-    prefix = r'(?:\\[|\[\]()]|[([|¬−-])*'
+    # Raw pipes and newlines delimit Markdown table cells/rows. A math span
+    # must never consume them, or Kramdown splits the span across table cells.
+    bridge = r'(?:\\[+*=<>|\[\]()\-]|[0-9A-Za-ẑα-ωΑ-Ω𝒞+*/=<>≥≤≠∈∧¬≈→−′()\[\]{}., \t-])'
+    prefix = r'(?:\\[|\[\]()]|[([¬−-])*'
     expression = prefix + math_token + r'(?:' + math_token + '|' + bridge + r')*'
     def render(match):
         original = match[0]

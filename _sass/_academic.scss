@@ -399,6 +399,40 @@ $academic-paper: #fbfbfa;
   line-height: 1.7;
 }
 
+// A story prelude is selected by the author's gray / italic / 10 pt marker in
+// Google Docs, not by its subject or by italics alone. Group adjacent paragraphs.
+.academic-post__body .story-intro {
+  margin: 1.25rem 0 2rem;
+  padding: clamp(1.1rem, 3vw, 1.65rem) clamp(1.15rem, 3.5vw, 1.85rem);
+  border: 1px solid #d9dedb;
+  border-radius: 4px;
+  background: #f6f7f4;
+  color: #666;
+  break-inside: avoid;
+}
+
+.academic-post__body .story-intro__label {
+  margin: 0 0 0.8rem;
+  color: #737b76;
+  font-size: 0.65rem;
+  font-style: normal;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+}
+
+.academic-post__body .story-intro p {
+  margin: 0 0 0.85rem;
+  color: #666;
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.85;
+}
+
+.academic-post__body .story-intro p:last-child {
+  margin-bottom: 0;
+}
+
 .academic-outline,
 .academic-supplement {
   margin-top: 5rem;
