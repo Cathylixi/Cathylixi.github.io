@@ -295,6 +295,50 @@ $academic-paper: #fbfbfa;
   color: #3e474b;
 }
 
+// Display equations share one full-width, centered layout. Long equations
+// scroll inside their own block on small screens instead of shrinking the text.
+.academic-post__body .display-math {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  padding: 0.35rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  text-align: center;
+  -webkit-overflow-scrolling: touch;
+}
+
+.academic-post__body .display-math mjx-container[display="true"] {
+  display: block;
+  min-width: min-content;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+.academic-post__body mjx-container svg {
+  max-width: none;
+}
+
+.academic-post--native-math .academic-post__body a {
+  overflow-wrap: anywhere;
+}
+
+.academic-post__body .inline-math {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+}
+
+@media print {
+  .academic-post__body .display-math {
+    overflow: visible;
+    break-inside: avoid;
+  }
+}
+
 .academic-post__body > h2,
 .academic-post__body .academic-outline > h2,
 .academic-post__body .academic-supplement > h2 {

@@ -1,5 +1,31 @@
 # My Blog: Google Docs → GitHub sync
 
+## Determinism essay: preserve LaTeX
+
+For `2026-11-14-determinism-and-free-will.md`, use the dedicated converter after
+exporting the current Google Doc as Markdown:
+
+```sh
+python3 automation/google-doc-sync/sync-determinism.py /path/to/export.md
+```
+
+The JSON output's `content` is the article to publish. It retains the document
+text and links and replaces its 21 formula images plus seven native/text display
+equations with 28 centered LaTeX blocks. The 22 existing equation labels are
+explicit, including the intentional P2–P8 sequence. Inline sub/superscripts are
+restored as mathematics. `math_renderer: native` selects the locally hosted
+MathJax 3.2.2 SVG renderer; other articles keep their existing renderer.
+
+`determinism-math.json` stores the current display LaTeX and source-image hashes.
+If an image or native formula changes in Docs, update and verify the catalogue
+before publishing. The converter rejects unknown/changed images and missing or
+duplicate formula blocks rather than silently reusing old mathematics. Do not
+publish the ordinary image-based Markdown export directly over this article.
+
+For an already assembled legacy article, `determinism_math.py ARTICLE.md` applies
+the same conversion in place. It is idempotent. These are local publishing
+helpers, independent of the four-article Apps Script registry below.
+
 This Apps Script publishes every registered Google document in My Drive/my blog
 to its canonical Markdown article in this repository.
 

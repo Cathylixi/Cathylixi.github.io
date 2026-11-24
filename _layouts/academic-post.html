@@ -9,7 +9,7 @@ author_profile: false
 {% assign series_record = site.data.blog_series | where: "slug", page.series_slug | first %}
 {% assign page_title = page.paper_title | default: page.title %}
 
-<article class="article-shell academic-post">
+<article class="article-shell academic-post{% if page.math_renderer == 'native' %} academic-post--native-math{% endif %}">
   {% if series_record %}<a class="longform-post__back" href="{{ series_record.url | relative_url }}" target="_self"><span aria-hidden="true">←</span> {{ series_record.title }}</a>{% else %}<a class="longform-post__back" href="{{ '/blog/' | relative_url }}" target="_self"><span aria-hidden="true">←</span> My Blog</a>{% endif %}
 
   {% include blog/article-header.html page_title=page_title minutes=minutes variant_class="academic-post__hero" %}

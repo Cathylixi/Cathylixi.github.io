@@ -1,5 +1,6 @@
 ---
 layout: academic-post
+math_renderer: native
 title: "如果一切皆有原因，我们还自由吗？"
 paper_title: "如果一切皆有原因，我们还自由吗？"
 paper_subtitle: "决定论下的自主控制与自由的来源"
@@ -62,7 +63,7 @@ last_modified_at: 2026-11-24
 
 ### 1.2 为什么从决定论出发
 
-如果决定论 *D* 成立，人的思考和选择也都有确定的前因。[van Inwagen（1975）](https://andrewmbailey.com/pvi/Incompatibility_of_Free_Will_and_Determinism.pdf)认为，在这种情况下，人无法采取不同于实际所做的行动。他的理由是：我们无法改变自己出生以前的世界，也无法改变物理规律；如果过去的条件与规律已经决定了今天的行动，那么，要采取另一种行动，就必须能够使既定的过去或某条规律不再成立。因此，在他看来，即使经过冷静思考、没有受到胁迫，也不具备他所讨论的自由。
+如果决定论 <span class="inline-math" markdown="0">\(D\)</span> 成立，人的思考和选择也都有确定的前因。[van Inwagen（1975）](https://andrewmbailey.com/pvi/Incompatibility_of_Free_Will_and_Determinism.pdf)认为，在这种情况下，人无法采取不同于实际所做的行动。他的理由是：我们无法改变自己出生以前的世界，也无法改变物理规律；如果过去的条件与规律已经决定了今天的行动，那么，要采取另一种行动，就必须能够使既定的过去或某条规律不再成立。因此，在他看来，即使经过冷静思考、没有受到胁迫，也不具备他所讨论的自由。
 
 从决定论出发，是为了直接检验“行动被决定，所以行动不自由”这一推论。例如，小林对比了两班车的时间后，选了早班车。即使整个思考和决定过程都由过去决定，他权衡之后形成的判断，仍可能是他选择早班车的原因。
 
@@ -82,11 +83,15 @@ last_modified_at: 2026-11-24
 
 行动有原因，也不等于行动受到外在约束。休谟在《人类理解研究》第八节指出，人的动机、性格和处境与行动存在规律性的联系，我们也据此预期他人的行为。同时，他把自由理解为能够按照自己的意愿行动或不行动，例如想走动时能够走动，而非受到囚禁或束缚。在这一理解下，动机与行动之间的因果联系，并不妨碍按意愿行动的自由（[Hume, 1748](https://davidhume.org/texts/e/8)）。
 
-用 *L* 表示自然规律，从模型所考虑的完整状态中任选一个，记为 *S*。在规律 *L* 下，从 *S* 出发的每一种完整演化过程称为一条后续历史。所有这样的后续历史组成集合 𝒞*L*(*S*)，其中历史的条数记为 \|𝒞*L*(*S*)\|。
+用 <span class="inline-math" markdown="0">\(L\)</span> 表示自然规律，从模型所考虑的完整状态中任选一个，记为 <span class="inline-math" markdown="0">\(S\)</span>。在规律 <span class="inline-math" markdown="0">\(L\)</span> 下，从 <span class="inline-math" markdown="0">\(S\)</span> 出发的每一种完整演化过程称为一条后续历史。所有这样的后续历史组成集合 <span class="inline-math" markdown="0">\(\mathcal{C}_L(S)\)</span>，其中历史的条数记为 <span class="inline-math" markdown="0">\(|\mathcal{C}_L(S)|\)</span>。
 
-先要求模型所考虑的每个完整状态 *S* 至少有一条后续历史，即 \|𝒞*L*(*S*)\| ≥ 1。决定论 *D* 进一步要求，每个完整状态恰好只有一条后续历史：
+先要求模型所考虑的每个完整状态 <span class="inline-math" markdown="0">\(S\)</span> 至少有一条后续历史，即 <span class="inline-math" markdown="0">\(|\mathcal{C}_L(S)| \ge  1\)</span>。决定论 <span class="inline-math" markdown="0">\(D\)</span> 进一步要求，每个完整状态恰好只有一条后续历史：
 
-<img src="/assets/blog/determinism/equation-1.png" alt="原稿公式 1" loading="lazy">
+<div class="display-math" id="equation-1-1" markdown="0">
+\[
+\forall S,\quad |\mathcal{C}_L(S)|=1.\tag{1.1}
+\]
+</div>
 
 [van Inwagen（1975）](https://andrewmbailey.com/pvi/Incompatibility_of_Free_Will_and_Determinism.pdf)提醒，定义当前状态时，不应把未来结果也写进去。例如，先把“这个人十秒后一定举手”规定为当前状态的一部分，再据此宣布未来唯一，就是把结论写进了前提。
 
@@ -94,9 +99,13 @@ last_modified_at: 2026-11-24
 
 ### 1.5 非决定性与概率
 
-决定论要求每个完整状态在相同规律下只有一种未来，其否定记作 ¬ *D*。沿用上一节“每个完整状态至少有一条后续历史”的前提，非决定性意味着至少有一个状态允许多条后续历史：
+决定论要求每个完整状态在相同规律下只有一种未来，其否定记作 ¬ <span class="inline-math" markdown="0">\(D\)</span>。沿用上一节“每个完整状态至少有一条后续历史”的前提，非决定性意味着至少有一个状态允许多条后续历史：
 
-<img src="/assets/blog/determinism/equation-2.png" alt="原稿公式 2" loading="lazy">
+<div class="display-math" id="equation-1-2" markdown="0">
+\[
+\neg D\iff\exists S,\quad |\mathcal{C}_L(S)|&gt;1.\tag{1.2}
+\]
+</div>
 
 规律允许多个未来，并不意味着它已经为这些未来分配概率；即使只有两种可能，也不意味着两者各有一半机会。在 [Norton（2008）](https://sites.pitt.edu/~jdnorton/papers/DomePSA2006_final.pdf)的穹顶模型中，一个起初静止于顶点的质点，既可以始终不动，也可以在某个时刻开始滑动；这些运动都符合模型中的牛顿方程，方程却没有为它们分配概率。
 
@@ -112,33 +121,37 @@ last_modified_at: 2026-11-24
 
 ### 1.7 自由的两种要求与来源问题
 
-选择若已由完整的过去与自然规律唯一确定，是否仍能算自由？ 对此，一种严格的理解将“我本来能选别的”界定为：即使选择前的完整过去与自然规律保持不变，行动者仍能自主选择另一种行动。本文用 *FL* 表示这项自由意志论标准，按这一标准，自由与决定论不能同时成立。
+选择若已由完整的过去与自然规律唯一确定，是否仍能算自由？ 对此，一种严格的理解将“我本来能选别的”界定为：即使选择前的完整过去与自然规律保持不变，行动者仍能自主选择另一种行动。本文用 <span class="inline-math" markdown="0">\(F_{L}\)</span> 表示这项自由意志论标准，按这一标准，自由与决定论不能同时成立。
 
-相容论认为，即使行动有确定的前因，人仍可能通过自己的判断作主。本文用 *FC* 表示所讨论的相容论自由标准：一个人能够理解和回应理由、反思自己的想法，并据此行动，且这些能力由本人掌握。
+相容论认为，即使行动有确定的前因，人仍可能通过自己的判断作主。本文用 <span class="inline-math" markdown="0">\(F_{C}\)</span> 表示所讨论的相容论自由标准：一个人能够理解和回应理由、反思自己的想法，并据此行动，且这些能力由本人掌握。
 
-前面两种自由标准都要求行动者能够作主。设想小林脑中有一台装置。它已经植入“走左边”的念头，并会在小林试图怀疑或拒绝时强制消除他的反对。小林真心想走左边，也确实按照这个想法行动。按照 *FL* 标准，他无法自主选择另一条路；按照 *FC* 标准，他审查和修正想法的能力已被装置接管。
+前面两种自由标准都要求行动者能够作主。设想小林脑中有一台装置。它已经植入“走左边”的念头，并会在小林试图怀疑或拒绝时强制消除他的反对。小林真心想走左边，也确实按照这个想法行动。按照 <span class="inline-math" markdown="0">\(F_{L}\)</span> 标准，他无法自主选择另一条路；按照 <span class="inline-math" markdown="0">\(F_{C}\)</span> 标准，他审查和修正想法的能力已被装置接管。
 
 判断怎样指导行动，属于实际过程控制的问题；判断能力怎样形成、本人能否审查和修正自己的想法，则涉及来源自主性。本文重点考察形成与检验的历史：一个人学习、检验和修正判断的过程是否被外力架空，以及他能否在反思中逐步调整自己的动机与判断标准。
 
 ### 1.8 选择、后果与自由的关系
 
-给定同一种自由标准，以 *F* 表示相应的自由命题，可列出它与决定论 *D* 的四种真假组合：
+给定同一种自由标准，以 <span class="inline-math" markdown="0">\(F\)</span> 表示相应的自由命题，可列出它与决定论 <span class="inline-math" markdown="0">\(D\)</span> 的四种真假组合：
 
-$$
-D∧F,\ D∧¬F,\ ¬D∧F,\ ¬D∧¬F.
-$$
+<div class="display-math" id="equation-logic-combinations" markdown="0">
+\[
+D\land F,\quad D\land\neg F,\quad\neg D\land F,\quad\neg D\land\neg F.
+\]
+</div>
 
-本文关心的是第一项 *D* ∧ *F*：在决定论成立的情况下，人是否仍能自由行动。要回答这个问题，先看选择本身被确定，与选择之后的后果被确定，有什么区别。
+本文关心的是第一项 <span class="inline-math" markdown="0">\(D \land  F\)</span>：在决定论成立的情况下，人是否仍能自由行动。要回答这个问题，先看选择本身被确定，与选择之后的后果被确定，有什么区别。
 
-用 *S* 表示选择前的完整状态，*U* 表示作出的选择。给定 *S* 和 *U*，确定规则 *h* 给出唯一后果 *Y* \= *h*(*S*, *U*)。若先假定 *U* 是 *FL* 意义上的自由选择，再假定选择之后的过程按确定规则展开，就构成“自由选择之后的确定演化”。
+用 <span class="inline-math" markdown="0">\(S\)</span> 表示选择前的完整状态，<span class="inline-math" markdown="0">\(U\)</span> 表示作出的选择。给定 <span class="inline-math" markdown="0">\(S\)</span> 和 <span class="inline-math" markdown="0">\(U\)</span>，确定规则 <span class="inline-math" markdown="0">\(h\)</span> 给出唯一后果 <span class="inline-math" markdown="0">\(Y = h(S, U)\)</span>。若先假定 <span class="inline-math" markdown="0">\(U\)</span> 是 <span class="inline-math" markdown="0">\(F_{L}\)</span> 意义上的自由选择，再假定选择之后的过程按确定规则展开，就构成“自由选择之后的确定演化”。
 
-接下来，把选择本身也纳入确定过程。若对模型所考虑的每个状态 *S*，有且仅有一个选择 *U* 与之对应，用函数 *g* 表示这一对应关系，则：
+接下来，把选择本身也纳入确定过程。若对模型所考虑的每个状态 <span class="inline-math" markdown="0">\(S\)</span>，有且仅有一个选择 <span class="inline-math" markdown="0">\(U\)</span> 与之对应，用函数 <span class="inline-math" markdown="0">\(g\)</span> 表示这一对应关系，则：
 
-$$
-U=g(S),\ Y=h(S,g(S)).
-$$
+<div class="display-math" id="equation-choice-and-outcome" markdown="0">
+\[
+U=g(S),\quad Y=h(S,g(S)).
+\]
+</div>
 
-此时，给定 *S*，选择 *U* 与后果 *Y* 都被唯一确定，这一模型不满足 *FL*。本文接下来检验，这一确定过程能否满足 *FC*：行动者能否通过自己的理解、判断和反思作主。具体而言，第二章将在决定论模型中论证判断如何实质性地引导行动，第三章将进一步阐明有确定前因的反思机制为何足以构成自由并划清自主的边界，第四章则把视角推进到非决定性与复杂动态环境，检验理性审议与持续校准如何维系控制，最后由第五章总结全书所支持的现实行动自由。
+此时，给定 <span class="inline-math" markdown="0">\(S\)</span>，选择 <span class="inline-math" markdown="0">\(U\)</span> 与后果 <span class="inline-math" markdown="0">\(Y\)</span> 都被唯一确定，这一模型不满足 <span class="inline-math" markdown="0">\(F_{L}\)</span>。本文接下来检验，这一确定过程能否满足 <span class="inline-math" markdown="0">\(F_{C}\)</span>：行动者能否通过自己的理解、判断和反思作主。具体而言，第二章将在决定论模型中论证判断如何实质性地引导行动，第三章将进一步阐明有确定前因的反思机制为何足以构成自由并划清自主的边界，第四章则把视角推进到非决定性与复杂动态环境，检验理性审议与持续校准如何维系控制，最后由第五章总结全书所支持的现实行动自由。
 
 ## 第二章：决定论下，人仍能通过判断控制行动
 
@@ -152,23 +165,35 @@ $$
 
 在行为遗传学中，[Turkheimer（2011，第 827 页）](https://uva.theopenscholar.com/files/eric-turkheimer/files/genetics_and_human_8.pdf)曾提出，将遗传与家庭共有环境之外的行为变异作为衡量人的自主程度的起点。[Morris（2025，第 3.2 节）](https://doi.org/10.1017/thg.2025.22)对此提出批评，指出剩余变异还可能包含测量误差、未测量的环境影响和随机发育差异。
 
-用 *a* 表示行为的数值，*G* 表示基因条件，*E* 表示已记录的环境条件，*W* 表示假定的自由意志因素（允许其贡献为零）；*ε* 表示其余未单独区分的影响，用随机项描述，以反映我们对未记录条件的不确定性。用 *f* 表示这些因素共同产生行为的函数，*f̂* 表示根据已记录条件建立的预测函数，*R*res 表示实际行为减去预测值所得的残差，即 *R*res \= *a* − *f̂*(*G*, *E*)。比较不同情形时，固定 *G*、*E* 和同一个预测函数 *f̂*：
+用 <span class="inline-math" markdown="0">\(a\)</span> 表示行为的数值，<span class="inline-math" markdown="0">\(G\)</span> 表示基因条件，<span class="inline-math" markdown="0">\(E\)</span> 表示已记录的环境条件，<span class="inline-math" markdown="0">\(W\)</span> 表示假定的自由意志因素（允许其贡献为零）；<span class="inline-math" markdown="0">\(\varepsilon\)</span> 表示其余未单独区分的影响，用随机项描述，以反映我们对未记录条件的不确定性。用 <span class="inline-math" markdown="0">\(f\)</span> 表示这些因素共同产生行为的函数，<span class="inline-math" markdown="0">\(\hat f\)</span> 表示根据已记录条件建立的预测函数，<span class="inline-math" markdown="0">\(R_{\mathrm{res}}\)</span> 表示实际行为减去预测值所得的残差，即 <span class="inline-math" markdown="0">\(R_{\mathrm{res}} = a - \hat f(G, E)\)</span>。比较不同情形时，固定 <span class="inline-math" markdown="0">\(G\)</span>、<span class="inline-math" markdown="0">\(E\)</span> 和同一个预测函数 <span class="inline-math" markdown="0">\(\hat f\)</span>：
 
-*a* \= *f*(*G*, *E*, *W*, *ε*)   **(2.1)**
+<div class="display-math" id="equation-2-1" markdown="0">
+\[
+a=f(G,E,W,\varepsilon)\tag{2.1}
+\]
+</div>
 
-先看一个加法模型，将各项都按行为 *a* 的同一单位计量。用 *g*(*G*, *E*) 表示固定 *G*、*E* 后的行为基线，用 *ξ* \= *W* \+ *ε* 表示两项额外影响的总和，则 *a* \= *g*(*G*, *E*) \+ *ξ*。将这一关系代入残差定义，得到：
+先看一个加法模型，将各项都按行为 <span class="inline-math" markdown="0">\(a\)</span> 的同一单位计量。用 <span class="inline-math" markdown="0">\(g(G, E)\)</span> 表示固定 <span class="inline-math" markdown="0">\(G\)</span>、<span class="inline-math" markdown="0">\(E\)</span> 后的行为基线，用 <span class="inline-math" markdown="0">\(\xi = W + \varepsilon\)</span> 表示两项额外影响的总和，则 <span class="inline-math" markdown="0">\(a = g(G, E) + \xi\)</span>。将这一关系代入残差定义，得到：
 
-*R*res \= *g*(*G*, *E*) − *f̂*(*G*, *E*) \+ *ξ*   **(2.2)**
+<div class="display-math" id="equation-2-2" markdown="0">
+\[
+R_{\mathrm{res}}=g(G,E)-\hat f(G,E)+\xi\tag{2.2}
+\]
+</div>
 
-即使知道真实基线，从残差中扣掉它与预测值的偏差后，得到的仍是两项之和 *ξ*。在加法模型中，给 *W* 加上一个常数，同时从 *ε* 中减去同一个常数，两项的总和就保持不变[（Stringer, 2024，第 2.1 节）](https://onlinelibrary.wiley.com/doi/full/10.1002/cjs.11786)。在这个反例中，设 *W* 可以取 0 或某个非零实数 *c*，*ε* 可以取任意实数，用上标 (0) 和 (*c*) 区分这两种情形。对任意给定的 *ξ*，下面两种拆分都成立：
+即使知道真实基线，从残差中扣掉它与预测值的偏差后，得到的仍是两项之和 <span class="inline-math" markdown="0">\(\xi\)</span>。在加法模型中，给 <span class="inline-math" markdown="0">\(W\)</span> 加上一个常数，同时从 <span class="inline-math" markdown="0">\(\varepsilon\)</span> 中减去同一个常数，两项的总和就保持不变[（Stringer, 2024，第 2.1 节）](https://onlinelibrary.wiley.com/doi/full/10.1002/cjs.11786)。在这个反例中，设 <span class="inline-math" markdown="0">\(W\)</span> 可以取 0 或某个非零实数 <span class="inline-math" markdown="0">\(c\)</span>，<span class="inline-math" markdown="0">\(\varepsilon\)</span> 可以取任意实数，用上标 (0) 和 <span class="inline-math" markdown="0">\((c)\)</span> 区分这两种情形。对任意给定的 <span class="inline-math" markdown="0">\(\xi\)</span>，下面两种拆分都成立：
 
-<img src="/assets/blog/determinism/equation-3.png" alt="原稿公式 3" loading="lazy">
+<div class="display-math" id="equation-unnumbered-3" markdown="0">
+\[
+(W^{(0)},\varepsilon^{(0)})=(0,\xi),\quad (W^{(c)},\varepsilon^{(c)})=(c,\xi-c),\quad c\ne0.
+\]
+</div>
 
-无论 *ξ* 服从什么概率分布，都可以按上述两种方式分别定义 *W* 和 *ε*。两种拆分保留同一个总和 *ξ*，对它的每个取值都得到相同的行为与残差，因此观测分布也相同。这种“观测等价”意味着，仅凭这些分布，无法确定 *W* 贡献了多少[（Rothenberg, 1971，第 578 页）](https://pages.stern.nyu.edu/~dbackus/Identification/id/Rothenberg_id_Econometrica_71.pdf)。
+无论 <span class="inline-math" markdown="0">\(\xi\)</span> 服从什么概率分布，都可以按上述两种方式分别定义 <span class="inline-math" markdown="0">\(W\)</span> 和 <span class="inline-math" markdown="0">\(\varepsilon\)</span>。两种拆分保留同一个总和 <span class="inline-math" markdown="0">\(\xi\)</span>，对它的每个取值都得到相同的行为与残差，因此观测分布也相同。这种“观测等价”意味着，仅凭这些分布，无法确定 <span class="inline-math" markdown="0">\(W\)</span> 贡献了多少[（Rothenberg, 1971，第 578 页）](https://pages.stern.nyu.edu/~dbackus/Identification/id/Rothenberg_id_Econometrica_71.pdf)。
 
-回到式 （2.1） 的一般函数 *f*，用 *ε*0、*εc* 分别表示两种情形中的其余影响。只要模型允许两组输入满足 *f*(*G*, *E*, 0, *ε*0) \= *f*(*G*, *E*, *c*, *εc*)（*c* ≠ 0），不同的 *W* 就会产生相同的行为与残差。这一不可分辨条件也适用于非线性函数，前面的加法反例给出了满足它的具体构造。
+回到式 （2.1） 的一般函数 <span class="inline-math" markdown="0">\(f\)</span>，用 <span class="inline-math" markdown="0">\(\varepsilon_0\)</span>、<span class="inline-math" markdown="0">\(\varepsilon_c\)</span> 分别表示两种情形中的其余影响。只要模型允许两组输入满足 <span class="inline-math" markdown="0">\(f(G, E, 0, \varepsilon_0) = f(G, E, c, \varepsilon_c)\)</span>（<span class="inline-math" markdown="0">\(c \ne  0\)</span>），不同的 <span class="inline-math" markdown="0">\(W\)</span> 就会产生相同的行为与残差。这一不可分辨条件也适用于非线性函数，前面的加法反例给出了满足它的具体构造。
 
-在这两种情形中，行为、残差、已知条件和预测函数完全相同，关于 *W* 是否为零的正确判断却相反。任何仅仅依据这些信息的方法，都无法保证在两种情形中判断正确。因此，在包含这类反例、又缺乏额外约束的模型范围内，单凭预测残差无法普遍识别 *W*，也无法确定其贡献大小。
+在这两种情形中，行为、残差、已知条件和预测函数完全相同，关于 <span class="inline-math" markdown="0">\(W\)</span> 是否为零的正确判断却相反。任何仅仅依据这些信息的方法，都无法保证在两种情形中判断正确。因此，在包含这类反例、又缺乏额外约束的模型范围内，单凭预测残差无法普遍识别 <span class="inline-math" markdown="0">\(W\)</span>，也无法确定其贡献大小。
 
 ### 2.2 判断可以在确定过程中影响行动
 
@@ -178,25 +203,37 @@ $$
 
 *再设想另一种情形：一个隐藏装置直接控制小林的手拿起伞，随后才让他产生“今天应该带伞”的念头。即使随后产生的是“不想带伞”，只要装置仍发出同一指令，拿伞的动作也会发生。*
 
-先把人和周围环境放在一起考虑。用 *S* 表示完整状态，*t* 表示从零开始的离散步数，*St* 表示第 *t* 步的状态，*S0* 表示初态。用 *F* 表示状态更新函数，每个允许状态有且仅有一个下一状态，更新后仍在模型允许的范围内；用 *at* 表示第 *t* 步的行动，*f* 表示从完整状态得到行动的函数。本节将 *F* 与 *f* 设为固定的确定函数：
+先把人和周围环境放在一起考虑。用 <span class="inline-math" markdown="0">\(S\)</span> 表示完整状态，<span class="inline-math" markdown="0">\(t\)</span> 表示从零开始的离散步数，<span class="inline-math" markdown="0">\(S_{t}\)</span> 表示第 <span class="inline-math" markdown="0">\(t\)</span> 步的状态，<span class="inline-math" markdown="0">\(S_{0}\)</span> 表示初态。用 <span class="inline-math" markdown="0">\(F\)</span> 表示状态更新函数，每个允许状态有且仅有一个下一状态，更新后仍在模型允许的范围内；用 <span class="inline-math" markdown="0">\(a_{t}\)</span> 表示第 <span class="inline-math" markdown="0">\(t\)</span> 步的行动，<span class="inline-math" markdown="0">\(f\)</span> 表示从完整状态得到行动的函数。本节将 <span class="inline-math" markdown="0">\(F\)</span> 与 <span class="inline-math" markdown="0">\(f\)</span> 设为固定的确定函数：
 
-<img src="/assets/blog/determinism/equation-4.png" alt="原稿公式 4" loading="lazy">
+<div class="display-math" id="equation-unnumbered-4" markdown="0">
+\[
+S_{t+1}=F(S_t),\quad a_t=f(S_t).
+\]
+</div>
 
-给定初态和固定规则，后续状态与行动便唯一确定。同一个函数 *f* 可以根据不同状态给出不同行动，确定的过程因而可以包含不断变化的判断与反思。
+给定初态和固定规则，后续状态与行动便唯一确定。同一个函数 <span class="inline-math" markdown="0">\(f\)</span> 可以根据不同状态给出不同行动，确定的过程因而可以包含不断变化的判断与反思。
 
-每一步对应一轮判断与行动，用 *zt* 表示当时的信念、记忆、目标和修正规则，*rt* 表示本轮收到的理由信息，*jt* 表示形成的判断，*at* 表示行动，*et* 表示行动后的反馈。再用 *J* 表示形成判断的过程，*A* 表示执行过程，*U* 表示依据理由和反馈修订信念或规则的更新函数：
+每一步对应一轮判断与行动，用 <span class="inline-math" markdown="0">\(z_{t}\)</span> 表示当时的信念、记忆、目标和修正规则，<span class="inline-math" markdown="0">\(r_{t}\)</span> 表示本轮收到的理由信息，<span class="inline-math" markdown="0">\(j_{t}\)</span> 表示形成的判断，<span class="inline-math" markdown="0">\(a_{t}\)</span> 表示行动，<span class="inline-math" markdown="0">\(e_{t}\)</span> 表示行动后的反馈。再用 <span class="inline-math" markdown="0">\(J\)</span> 表示形成判断的过程，<span class="inline-math" markdown="0">\(A\)</span> 表示执行过程，<span class="inline-math" markdown="0">\(U\)</span> 表示依据理由和反馈修订信念或规则的更新函数：
 
-<img src="/assets/blog/determinism/equation-5.png" alt="原稿公式 5" loading="lazy">
+<div class="display-math" id="equation-2-3" markdown="0">
+\[
+\begin{aligned} j_t&amp;=J(z_t,r_t),\\ a_t&amp;=A(z_t,j_t),\\ z_{t+1}&amp;=U(z_t,r_t,e_t).\end{aligned}\tag{2.3}
+\]
+</div>
 
-完整状态 *St* 包含人的内部状态 *zt* 和外部环境状态。这里把判断、执行和更新函数 *J*、*A*、*U* 设为固定的确定函数，理由信息的产生、行动后的反馈和环境变化也都服从确定规则。这些过程共同构成整体更新规则 *F*，决定下一步的完整状态。由 *St* 确定 *zt* 和 *rt*，再把判断结果代入执行函数，便得到 *f*(*St*) \= *A*(*zt*, *J*(*zt*, *rt*))。
+完整状态 <span class="inline-math" markdown="0">\(S_{t}\)</span> 包含人的内部状态 <span class="inline-math" markdown="0">\(z_{t}\)</span> 和外部环境状态。这里把判断、执行和更新函数 <span class="inline-math" markdown="0">\(J\)</span>、<span class="inline-math" markdown="0">\(A\)</span>、<span class="inline-math" markdown="0">\(U\)</span> 设为固定的确定函数，理由信息的产生、行动后的反馈和环境变化也都服从确定规则。这些过程共同构成整体更新规则 <span class="inline-math" markdown="0">\(F\)</span>，决定下一步的完整状态。由 <span class="inline-math" markdown="0">\(S_{t}\)</span> 确定 <span class="inline-math" markdown="0">\(z_{t}\)</span> 和 <span class="inline-math" markdown="0">\(r_{t}\)</span>，再把判断结果代入执行函数，便得到 <span class="inline-math" markdown="0">\(f(S_{t}) = A(z_{t}, J(z_{t}, r_{t}))\)</span>。
 
-在下面这个按判断执行的简单模型中，可以通过改变理由、观察判断与动作怎样随之变化，检验判断的作用。比较同一轮的两种情形，暂时省略时间下标。用 *r* 表示理由信息的数值，*θ* 表示判断门槛，*a* \= 1 表示采取行动，*a* \= 0 表示不采取行动。保持人的内部状态 *z* 和门槛 *θ* 不变，让行动按判断执行：
+在下面这个按判断执行的简单模型中，可以通过改变理由、观察判断与动作怎样随之变化，检验判断的作用。比较同一轮的两种情形，暂时省略时间下标。用 <span class="inline-math" markdown="0">\(r\)</span> 表示理由信息的数值，<span class="inline-math" markdown="0">\(\theta\)</span> 表示判断门槛，<span class="inline-math" markdown="0">\(a = 1\)</span> 表示采取行动，<span class="inline-math" markdown="0">\(a = 0\)</span> 表示不采取行动。保持人的内部状态 <span class="inline-math" markdown="0">\(z\)</span> 和门槛 <span class="inline-math" markdown="0">\(\theta\)</span> 不变，让行动按判断执行：
 
-<img src="/assets/blog/determinism/equation-6.png" alt="原稿公式 6" loading="lazy">
+<div class="display-math" id="equation-unnumbered-6" markdown="0">
+\[
+J(z,r)=\begin{cases}1,&amp;r\ge\theta,\\0,&amp;r&lt;\theta,\end{cases}\qquad A(z,j)=j.
+\]
+</div>
 
 规则与阈值保持不变；当理由数值跨过阈值时，判断随之改变，并通过执行过程改变行动。
 
-再看装置接管的情形：原来的执行过程 *A*(*z*, *j*) 被替代，只要指令不变，事后形成什么判断都不改变动作。装置也能随指令改变动作，但这种变化绕过了本人的判断。可见，动作能够回应输入，仍不足以说明判断起了作用。前一种模型中，理由可以通过判断影响行动，经验反馈也可以修订后续判断的标准；这些作用都可以发生在确定过程中。
+再看装置接管的情形：原来的执行过程 <span class="inline-math" markdown="0">\(A(z, j)\)</span> 被替代，只要指令不变，事后形成什么判断都不改变动作。装置也能随指令改变动作，但这种变化绕过了本人的判断。可见，动作能够回应输入，仍不足以说明判断起了作用。前一种模型中，理由可以通过判断影响行动，经验反馈也可以修订后续判断的标准；这些作用都可以发生在确定过程中。
 
 ### 2.3 预测选择不等于替人决定
 
@@ -210,23 +247,31 @@ $$
 
 在决定论假设下，小林理解理由、作出判断并执行决定的过程，也都有确定的前因。预测者若能算准这次选择，可以将他的思考过程一并纳入计算。提前知道判断的结果，并没有绕过或替代判断。反过来，即使身体动作被外部装置接管，观察者也可能算准。两种情形都可能被准确预测，产生动作的过程却不同：一种通过小林的判断，另一种通过装置的指令。
 
-若采用本文的 *FL* 标准，同一完整过去与自然规律下仍允许行动者自主作出不同选择 *a*1 ≠ *a*2。用 *S* 表示选择前的完整状态，*L* 表示自然规律；仅依据 (*S*, *L*) 运作的预测器面对相同输入只能给出单一结果，因此无法保证在所有允许的延续中都预测正确。
+若采用本文的 <span class="inline-math" markdown="0">\(F_{L}\)</span> 标准，同一完整过去与自然规律下仍允许行动者自主作出不同选择 <span class="inline-math" markdown="0">\(a_1 \ne  a_2\)</span>。用 <span class="inline-math" markdown="0">\(S\)</span> 表示选择前的完整状态，<span class="inline-math" markdown="0">\(L\)</span> 表示自然规律；仅依据 <span class="inline-math" markdown="0">\((S, L)\)</span> 运作的预测器面对相同输入只能给出单一结果，因此无法保证在所有允许的延续中都预测正确。
 
 #### 2.3.2 公开预告可能因反向回应而失准
 
 *回到确定的情形。设想有一台自动开关，预测者先在屏幕上显示它稍后将停在“0”还是“1”。开关随后读取预告，严格执行相反的结果：预告为“0”就停在“1”，预告为“1”就停在“0”。预测者知道这条程序，还能让屏幕上的预告与开关最终的状态一致吗？*
 
-沿用可预测性悖论中的反向响应设定（[Rummens 与 Cuypers, 2010，第 2—3 节](https://doi.org/10.1007/s10670-009-9199-1)），用 *p* 表示屏幕上提前公布的预告，*a* 表示开关最终的状态。反向规则与准确预告的要求合在一起，得到：
+沿用可预测性悖论中的反向响应设定（[Rummens 与 Cuypers, 2010，第 2—3 节](https://doi.org/10.1007/s10670-009-9199-1)），用 <span class="inline-math" markdown="0">\(p\)</span> 表示屏幕上提前公布的预告，<span class="inline-math" markdown="0">\(a\)</span> 表示开关最终的状态。反向规则与准确预告的要求合在一起，得到：
 
-<img src="/assets/blog/determinism/equation-7.png" alt="原稿公式 7" loading="lazy">
+<div class="display-math" id="equation-2-4" markdown="0">
+\[
+a=1-p,\quad p=a\implies p=1-p,\qquad p,a\in\{0,1\}.\tag{2.4}
+\]
+</div>
 
 此时，0 和 1 都无法满足这个方程。因此，只要开关读取预告并严格执行反向规则，公开预告就必然失准。[Wolpert（2008）](https://doi.org/10.1016/j.physd.2008.03.040)从更一般的推断装置框架论证了预测能力的限制。
 
-预测者仍可以算准开关的动作，但须区分内部答案 *q* 与公开预告 *p*。在包含预测者、开关和显示程序的确定系统中，显示程序先定好 *p*；预测者在开关动作前按反向规则算出 *q*，但不把 *q* 告诉开关，也不根据它更改原定预告 *p*。于是：
+预测者仍可以算准开关的动作，但须区分内部答案 <span class="inline-math" markdown="0">\(q\)</span> 与公开预告 <span class="inline-math" markdown="0">\(p\)</span>。在包含预测者、开关和显示程序的确定系统中，显示程序先定好 <span class="inline-math" markdown="0">\(p\)</span>；预测者在开关动作前按反向规则算出 <span class="inline-math" markdown="0">\(q\)</span>，但不把 <span class="inline-math" markdown="0">\(q\)</span> 告诉开关，也不根据它更改原定预告 <span class="inline-math" markdown="0">\(p\)</span>。于是：
 
-<img src="/assets/blog/determinism/equation-8.png" alt="原稿公式 8" loading="lazy">
+<div class="display-math" id="equation-2-5" markdown="0">
+\[
+a=1-p,\qquad q=1-p=a.\tag{2.5}
+\]
+</div>
 
-例如，显示程序准备公布 *p* \= 0，预测者便算出 *q* \= 1，开关随后也停在 *a* \= 1。内部答案正确，公开预告错误，三个数都由初始条件和程序唯一确定。若改为公布 1，开关就停在 0，原先的内部答案随之失效。
+例如，显示程序准备公布 <span class="inline-math" markdown="0">\(p = 0\)</span>，预测者便算出 <span class="inline-math" markdown="0">\(q = 1\)</span>，开关随后也停在 <span class="inline-math" markdown="0">\(a = 1\)</span>。内部答案正确，公开预告错误，三个数都由初始条件和程序唯一确定。若改为公布 1，开关就停在 0，原先的内部答案随之失效。
 
 预测者可以把行动者的判断过程纳入计算；公开预告还可能成为行动者据以判断的新信息。当双方互相预测时，各自的判断与行动又会成为对方下一步回应的依据。
 
@@ -234,9 +279,13 @@ $$
 
 上一节以一个行动者的选择为中心，讨论预测怎样进入他的判断与行动。进一步看，如果两个行动者都根据对彼此的预测调整选择，各自的判断又会怎样影响双方的行动？ 这里借用博弈论分析策略与收益的思路（[Nash, 1950](https://doi.org/10.1073/pnas.36.1.48)），通过一个简化的重复猜币模型考察这一过程。
 
-甲乙每轮各出 0 或 1，甲希望两者相同，乙希望不同。用 *t* 表示从 0 开始的轮次，*at*、*bt* 分别表示甲乙第 *t* 轮的选择。先给双方各定一条规则：都把对方上一轮的动作当作本轮预测，甲按预测选择相同的数，乙按预测选择相反的数。双方同时根据上一轮的信息行动，于是：
+甲乙每轮各出 0 或 1，甲希望两者相同，乙希望不同。用 <span class="inline-math" markdown="0">\(t\)</span> 表示从 0 开始的轮次，<span class="inline-math" markdown="0">\(a_{t}\)</span>、<span class="inline-math" markdown="0">\(b_{t}\)</span> 分别表示甲乙第 <span class="inline-math" markdown="0">\(t\)</span> 轮的选择。先给双方各定一条规则：都把对方上一轮的动作当作本轮预测，甲按预测选择相同的数，乙按预测选择相反的数。双方同时根据上一轮的信息行动，于是：
 
-<img src="/assets/blog/determinism/equation-9.png" alt="原稿公式 9" loading="lazy">
+<div class="display-math" id="equation-2-6" markdown="0">
+\[
+a_{t+1}=b_t,\qquad b_{t+1}=1-a_t.\tag{2.6}
+\]
+</div>
 
 如果开始时两人都出 0，随后双方的选择依次为 (0, 1)、(1, 1)、(1, 0)，再回到 (0, 0)。规则固定，行动仍随彼此的回应而变化。只看其中一轮，两人相同时，乙改选就能获胜；两人不同时，甲改选就能获胜。因此，没有一种动作组合能让双方都无法通过单独改选提高收益，即不存在纯策略均衡。前面的确定规则仍然可以逐轮产生实际动作。
 
@@ -244,44 +293,56 @@ $$
 
 上一节说明，判断与行动可以在固定规则下不断变化；当相互作用更加复杂时，微小差异还可能经由反馈逐级放大。在经典引力模型中，物理三体运动就展现了这种情形：在无碰撞的演化时段内，给定质量、初始位置和速度，运动方程确定唯一轨迹；同样的规律既允许规则的周期轨道（[Chenciner 与 Montgomery, 2000](https://doi.org/10.2307/2661357)），也允许某些构型中的混沌演化，使有限精度的长期预测受到限制（[Stone 与 Leigh, 2019](https://doi.org/10.1038/s41586-019-1833-8)）。类似地，当多个行动者按固定规则相互回应时，判断形成的微小差异是否也会经由反馈放大，而整套过程仍保持确定性？
 
-设 *n* ≥ 2 名玩家参与一项重复的定时协调任务，*i* 表示玩家编号，*t* 表示从 0 开始的轮次。固定共同的周期起点，每轮周期长度记为 1，用 *ai*, *t* ∈ \[0, 1\) 表示玩家 *i* 在第 *t* 轮选择的行动时点；周期首尾相接，时点到达或超过 1 时，只取小数部分。
+设 <span class="inline-math" markdown="0">\(n \ge  2\)</span> 名玩家参与一项重复的定时协调任务，<span class="inline-math" markdown="0">\(i\)</span> 表示玩家编号，<span class="inline-math" markdown="0">\(t\)</span> 表示从 0 开始的轮次。固定共同的周期起点，每轮周期长度记为 1，用 <span class="inline-math" markdown="0">\(a_{i,t} \in  [0, 1)\)</span> 表示玩家 <span class="inline-math" markdown="0">\(i\)</span> 在第 <span class="inline-math" markdown="0">\(t\)</span> 轮选择的行动时点；周期首尾相接，时点到达或超过 1 时，只取小数部分。
 
-玩家理解并遵循一条共同约定：观察其他人的行动时点，把这些时点相加，取小数部分作为自己下一轮应当行动的时点。用 *ji*, *t* 表示他据此形成的判断，frac 表示只取小数部分；所有玩家同时更新，并按各自判断执行：
+玩家理解并遵循一条共同约定：观察其他人的行动时点，把这些时点相加，取小数部分作为自己下一轮应当行动的时点。用 <span class="inline-math" markdown="0">\(j_{i,t}\)</span> 表示他据此形成的判断，frac 表示只取小数部分；所有玩家同时更新，并按各自判断执行：
 
-<img src="/assets/blog/determinism/equation-10.png" alt="原稿公式 10" loading="lazy">
+<div class="display-math" id="equation-2-7" markdown="0">
+\[
+\begin{aligned}j_{i,t}&amp;=\operatorname{frac}\!\left(\sum_{k\ne i}a_{k,t}\right),\\ a_{i,t+1}&amp;=j_{i,t}.\end{aligned}\tag{2.7}
+\]
+</div>
 
-在这套规则下，如果只有两人，双方每轮只是互相交换行动时点，最多两轮就会回到原样，差异不会扩大。到了三人（记为甲、乙、丙，第 *t* 轮的行动时点简记为 *at* \= *a*1, *t*、*bt* \= *a*2, *t*、*ct* \= *a*3, *t*），每人下一轮都要把另外两人的时点加起来取小数：
+在这套规则下，如果只有两人，双方每轮只是互相交换行动时点，最多两轮就会回到原样，差异不会扩大。到了三人（记为甲、乙、丙，第 <span class="inline-math" markdown="0">\(t\)</span> 轮的行动时点简记为 <span class="inline-math" markdown="0">\(a_{t} = a_{1,t}\)</span>、<span class="inline-math" markdown="0">\(b_{t} = a_{2,t}\)</span>、<span class="inline-math" markdown="0">\(c_{t} = a_{3,t}\)</span>），每人下一轮都要把另外两人的时点加起来取小数：
 
-<img src="/assets/blog/determinism/equation-11.png" alt="原稿公式 11" loading="lazy">
+<div class="display-math" id="equation-2-8" markdown="0">
+\[
+\begin{aligned}a_{t+1}&amp;=\operatorname{frac}(b_t+c_t),\\b_{t+1}&amp;=\operatorname{frac}(c_t+a_t),\\c_{t+1}&amp;=\operatorname{frac}(a_t+b_t).\end{aligned}\tag{2.8}
+\]
+</div>
 
-沿式 （2.8），可以直接看一次判断改动怎样在三人之间传开：假设首轮只有甲因判断不同而调整了 *ε*，乙、丙保持不变。只要这点调整没有改变各次求和的整数部分，乙、丙看到后，下一轮便会依据各自的判断跟着调整 *ε*；再下一轮，甲同时看到两人的变化，判断和行动就会跟着改变 2*ε*。
+沿式 （2.8），可以直接看一次判断改动怎样在三人之间传开：假设首轮只有甲因判断不同而调整了 <span class="inline-math" markdown="0">\(\varepsilon\)</span>，乙、丙保持不变。只要这点调整没有改变各次求和的整数部分，乙、丙看到后，下一轮便会依据各自的判断跟着调整 <span class="inline-math" markdown="0">\(\varepsilon\)</span>；再下一轮，甲同时看到两人的变化，判断和行动就会跟着改变 2<span class="inline-math" markdown="0">\(\varepsilon\)</span>。
 
-逐个追踪每个人的后续变化会很繁琐，要看这种互相回应在多轮之后会不会持续放大差异，可以直接观察所有人行动时点之和的变化。用 *st* 表示这个总和的小数部分。推广到 *n* 人时，按式 （2.7），每个人的行动都会被其余 *n* − 1 人各计入一次，因此：
+逐个追踪每个人的后续变化会很繁琐，要看这种互相回应在多轮之后会不会持续放大差异，可以直接观察所有人行动时点之和的变化。用 <span class="inline-math" markdown="0">\(s_{t}\)</span> 表示这个总和的小数部分。推广到 <span class="inline-math" markdown="0">\(n\)</span> 人时，按式 （2.7），每个人的行动都会被其余 <span class="inline-math" markdown="0">\(n - 1\)</span> 人各计入一次，因此：
 
-<img src="/assets/blog/determinism/equation-12.png" alt="原稿公式 12" loading="lazy">
+<div class="display-math" id="equation-2-9" markdown="0">
+\[
+\begin{aligned}s_t&amp;=\operatorname{frac}\!\left(\sum_{i=1}^{n}a_{i,t}\right),\\s_{t+1}&amp;=\operatorname{frac}((n-1)s_t).\end{aligned}\tag{2.9}
+\]
+</div>
 
-三名玩家时，式 （2.9） 变为每轮翻倍再取小数：*st*\+1 \= frac(2*st*)。把初始值 *s*0 写成二进制小数，每更新一轮，小数点后的第一位数字就被去掉，后面的数字整体向前移一位（[Boghosian 等人, 2019](https://doi.org/10.1002/adts.201900125)）。例如，两个初始值只有小数点后第 10 位不同，其余各位相同，它们起初相差 2−10；更新 9 轮后，这一差异移到第一位，两者相差 1/2。
+三名玩家时，式 （2.9） 变为每轮翻倍再取小数：<span class="inline-math" markdown="0">\(s_{t+1} = \operatorname{frac}(2s_{t})\)</span>。把初始值 <span class="inline-math" markdown="0">\(s_0\)</span> 写成二进制小数，每更新一轮，小数点后的第一位数字就被去掉，后面的数字整体向前移一位（[Boghosian 等人, 2019](https://doi.org/10.1002/adts.201900125)）。例如，两个初始值只有小数点后第 10 位不同，其余各位相同，它们起初相差 <span class="inline-math" markdown="0">\(2^{-10}\)</span>；更新 9 轮后，这一差异移到第一位，两者相差 1/2。
 
-这不只是单次误差放大的巧合：三名玩家时，无论初始区间多窄，只要宽度大于零，区间内所有初值经过足够多轮更新，它们在同一轮的可能取值就能覆盖 \[0, 1)。推广到任意 *n* ≥ 3 名玩家时，*st* 每轮放大 *n* − 1 倍再取小数，也有同样的效果。任意小的初始范围内都能找到随后明显分离的轨迹（李雅普诺夫指数为 *λ* \= ln(*n* − 1\) \> 0）。*st* 的变化由固定规则确定，却对初始细节高度敏感，同时仍有周期轨道。这一结果依赖“把其他人的行动时点直接相加，而不取平均”的具体规则。
+这不只是单次误差放大的巧合：三名玩家时，无论初始区间多窄，只要宽度大于零，区间内所有初值经过足够多轮更新，它们在同一轮的可能取值就能覆盖 \[0, 1)。推广到任意 <span class="inline-math" markdown="0">\(n \ge  3\)</span> 名玩家时，<span class="inline-math" markdown="0">\(s_{t}\)</span> 每轮放大 <span class="inline-math" markdown="0">\(n - 1\)</span> 倍再取小数，也有同样的效果。任意小的初始范围内都能找到随后明显分离的轨迹（李雅普诺夫指数为 <span class="inline-math" markdown="0">\(\lambda = \ln(n - 1) &gt; 0\)</span>）。<span class="inline-math" markdown="0">\(s_{t}\)</span> 的变化由固定规则确定，却对初始细节高度敏感，同时仍有周期轨道。这一结果依赖“把其他人的行动时点直接相加，而不取平均”的具体规则。
 
-作为对照，让三人各自取另外两人行动时点的平均值，不再取小数部分。设三人的平均值为 *m* \= (*at* \+ *bt* \+ *ct*) / 3。更新后均值不变，且 *at*\+1 − *m* \= −(*at* − *m*) / 2，乙、丙同理。每个人与平均值的差距每轮都缩小一半，三人的行动时点便逐轮靠拢。求和与取平均产生了不同的长期走势；在两套规则中，玩家都依据他人的行动形成判断，并按判断调整下一轮行动。
+作为对照，让三人各自取另外两人行动时点的平均值，不再取小数部分。设三人的平均值为 <span class="inline-math" markdown="0">\(m = (a_{t} + b_{t} + c_{t}) / 3\)</span>。更新后均值不变，且 <span class="inline-math" markdown="0">\(a_{t+1} - m = -(a_{t} - m) / 2\)</span>，乙、丙同理。每个人与平均值的差距每轮都缩小一半，三人的行动时点便逐轮靠拢。求和与取平均产生了不同的长期走势；在两套规则中，玩家都依据他人的行动形成判断，并按判断调整下一轮行动。
 
 ### 2.6 Newcomb：先被预测，再作选择
 
 上一节讨论了确定反馈怎样使长期预测变得困难。但如果预测者已经提前猜准了行动者的选择，行动者自己的判断还起什么作用？
 
-在 Newcomb 问题中，桌上摆着两个盒子：透明盒固定装着一千美元，不透明盒里可能装着一百万美元，也可能是空的（[Nozick, 1969](https://pdf.stafforini.com/nozick-1969-newcomb-problem-two.pdf)）。预测者先按自己的判断装盒：预测行动者只拿不透明盒，就放入百万；预测行动者拿两盒，就让不透明盒空着。钱放好后，行动者再决定只拿不透明盒，还是两盒一起拿。用 *U* 表示行动者的拿盒选择，*G* 表示不透明盒的装盒状态，各种组合的收益如下：
+在 Newcomb 问题中，桌上摆着两个盒子：透明盒固定装着一千美元，不透明盒里可能装着一百万美元，也可能是空的（[Nozick, 1969](https://pdf.stafforini.com/nozick-1969-newcomb-problem-two.pdf)）。预测者先按自己的判断装盒：预测行动者只拿不透明盒，就放入百万；预测行动者拿两盒，就让不透明盒空着。钱放好后，行动者再决定只拿不透明盒，还是两盒一起拿。用 <span class="inline-math" markdown="0">\(U\)</span> 表示行动者的拿盒选择，<span class="inline-math" markdown="0">\(G\)</span> 表示不透明盒的装盒状态，各种组合的收益如下：
 
-| 不透明盒的状态 | 只拿一盒：*U* \= 1 | 拿两盒：*U* \= 0 |
-| :---- | :---- | :---- |
-| 装有百万：*G* \= 1 | 1,000,000 美元 | 1,001,000 美元 |
-| 空盒：*G* \= 0 | 0 美元 | 1,000 美元 |
+| 不透明盒的状态 | 只拿一盒：<span class="inline-math" markdown="0">\(U = 1 |\)</span> 拿两盒：<span class="inline-math" markdown="0">\(U = 0 |
+|\)</span> :---- | :---- | :---- |
+| 装有百万：<span class="inline-math" markdown="0">\(G = 1 | 1,000,000\)</span> 美元 | 1,001,000 美元 |
+| 空盒：<span class="inline-math" markdown="0">\(G = 0 | 0\)</span> 美元 | 1,000 美元 |
 
-如果盒子已经装好、不再变化，多拿透明盒始终会多得一千元美元。但如果预测者在“一盒组”和“两盒组”中的准确率均为 99%，按最终选择分别统计平均收益，一盒组为 990,000 美元，两盒组为 11,000 美元。这两种计算并不矛盾：前者在盒子状态 *G* 已定的前提下，比较不同选择 *U* 的收益差（[Lewis, 1979](https://gwern.net/doc/statistics/decision/1979-lewis.pdf)）；后者按最终选择分组，比较各组的平均收益，两组中装有百万的比例本就不同（[Wolpert & Benford, 2010](https://arxiv.org/abs/0904.2540)）。
+如果盒子已经装好、不再变化，多拿透明盒始终会多得一千元美元。但如果预测者在“一盒组”和“两盒组”中的准确率均为 99%，按最终选择分别统计平均收益，一盒组为 990,000 美元，两盒组为 11,000 美元。这两种计算并不矛盾：前者在盒子状态 <span class="inline-math" markdown="0">\(G\)</span> 已定的前提下，比较不同选择 <span class="inline-math" markdown="0">\(U\)</span> 的收益差（[Lewis, 1979](https://gwern.net/doc/statistics/decision/1979-lewis.pdf)）；后者按最终选择分组，比较各组的平均收益，两组中装有百万的比例本就不同（[Wolpert & Benford, 2010](https://arxiv.org/abs/0904.2540)）。
 
-在一种按固定规则运行的解释中，预测者根据掌握的部分既有信息 *z*，提前估计行动者会怎样权衡理由，并据此装盒（*z* → *G*）。行动者则结合既有条件与当下考虑的理由 *r*，形成判断 *j*，再按判断拿盒（(*z*, *r*) → *j* → *U*）。
+在一种按固定规则运行的解释中，预测者根据掌握的部分既有信息 <span class="inline-math" markdown="0">\(z\)</span>，提前估计行动者会怎样权衡理由，并据此装盒（<span class="inline-math" markdown="0">\(z \to  G\)</span>）。行动者则结合既有条件与当下考虑的理由 <span class="inline-math" markdown="0">\(r\)</span>，形成判断 <span class="inline-math" markdown="0">\(j\)</span>，再按判断拿盒（<span class="inline-math" markdown="0">\((z, r) \to  j \to  U\)</span>）。
 
-盒内状态 *G* 已定，行动者也仍照判断拿盒；此时可以比较他接触不同理由 *r* 的情形。如果新理由让判断 *j* 从“拿两盒”变为“只拿一盒”，选择 *U* 也会随之改变。预测者只是提前估计了这段思考，并没有替行动者作出决定，行动者实际仍通过权衡和判断作出选择。
+盒内状态 <span class="inline-math" markdown="0">\(G\)</span> 已定，行动者也仍照判断拿盒；此时可以比较他接触不同理由 <span class="inline-math" markdown="0">\(r\)</span> 的情形。如果新理由让判断 <span class="inline-math" markdown="0">\(j\)</span> 从“拿两盒”变为“只拿一盒”，选择 <span class="inline-math" markdown="0">\(U\)</span> 也会随之改变。预测者只是提前估计了这段思考，并没有替行动者作出决定，行动者实际仍通过权衡和判断作出选择。
 
 ### 2.7 Frankfurt：待命干预与实际路径
 
@@ -295,7 +356,7 @@ Black 要保证及时干预，就得提前识别 Jones 是否会偏离目标。W
 
 2.2 节的模型假设选择由本人的理由与判断驱动，而 2.7 节的待命干预讨论则进一步引出了一个实证问题：如果大脑在人意识到意图之前就已经出现动作准备信号，有意识的判断在随后的行动中究竟还起什么作用？
 
-早期神经科学研究确实发现了这类提前出现的信号。Libet 等人让受试者自行决定何时屈动手腕或手指，同时记录脑电；动作结束后，受试者对照旋转光点报出最初意识到自己想动的时刻（记为意识时刻 *tW*）。研究者以肌电测得的动作起点为准，对齐多次脑电记录并求平均后发现，受试者临时起意时，准备电位平均比 *tW* 早约 350 毫秒；事先有所计划时，这一时间差大约为 800 毫秒（[Libet et al., 1983](https://doi.org/10.1093/brain/106.3.623)）。Matsuhashi 与 Hallett 改用随机提示音当场探测受试者是否已经意识到想动，推算出意识出现的时刻平均比实际动作早 1.42 秒，也比事后看钟报出的时刻早得多（[Matsuhashi & Hallett, 2008](https://doi.org/10.1111/j.1460-9568.2008.06525.x)）。在更长的时间尺度上，Soon 等人利用功能磁共振成像（fMRI）监测受试者自主选择按左键或右键的过程，发现早在受试者自报作出选择的时刻之前约 7 秒，前额极的神经活动记录就已能以约六成的准确率预测随后的按键方向；计入血流反应延迟后，相关神经活动甚至可能比自报时刻早约 10 秒（[Soon et al., 2008](https://doi.org/10.1038/nn.2112)）。
+早期神经科学研究确实发现了这类提前出现的信号。Libet 等人让受试者自行决定何时屈动手腕或手指，同时记录脑电；动作结束后，受试者对照旋转光点报出最初意识到自己想动的时刻（记为意识时刻 <span class="inline-math" markdown="0">\(t_{W}\)</span>）。研究者以肌电测得的动作起点为准，对齐多次脑电记录并求平均后发现，受试者临时起意时，准备电位平均比 <span class="inline-math" markdown="0">\(t_{W}\)</span> 早约 350 毫秒；事先有所计划时，这一时间差大约为 800 毫秒（[Libet et al., 1983](https://doi.org/10.1093/brain/106.3.623)）。Matsuhashi 与 Hallett 改用随机提示音当场探测受试者是否已经意识到想动，推算出意识出现的时刻平均比实际动作早 1.42 秒，也比事后看钟报出的时刻早得多（[Matsuhashi & Hallett, 2008](https://doi.org/10.1111/j.1460-9568.2008.06525.x)）。在更长的时间尺度上，Soon 等人利用功能磁共振成像（fMRI）监测受试者自主选择按左键或右键的过程，发现早在受试者自报作出选择的时刻之前约 7 秒，前额极的神经活动记录就已能以约六成的准确率预测随后的按键方向；计入血流反应延迟后，相关神经活动甚至可能比自报时刻早约 10 秒（[Soon et al., 2008](https://doi.org/10.1038/nn.2112)）。
 
 然而，后续研究从信号本质、执行可逆性与任务性质三个层面表明，这些提前出现的脑活动并不能证明有意识的判断只是事后旁观。首先，就信号本身的含义而言，Schurger 等人提出的随机累积模型指出，神经活动在不断波动中累积到阈值时才会触发动作；研究者把每次动作发生的时刻对齐，再对动作前的模拟波形求平均，同样能得到一条看似提前爬升的曲线（[Schurger et al., 2012](https://doi.org/10.1073/pnas.1210467109)；[Schurger et al., 2021](https://doi.org/10.1016/j.tics.2021.04.001)）。这意味着，平均准备电位的提前爬升未必代表无意识早已拍板，而可能是随机神经波动跨过动作阈值的统计结果。
 
@@ -333,17 +394,25 @@ Black 要保证及时干预，就得提前识别 Jones 是否会偏离目标。W
 
 *奶奶小时候学过一条规矩：煮汤要放一勺盐。她照着做了几十年。有天换了食材，孙女提醒说，这批原料本身带咸味，再放一勺可能太咸。奶奶先尝了一口，又盛出两小碗比较不同加盐量的味道，发现一律放一勺并不总合适。这次她少放了盐，后来煮汤也开始根据食材和实际味道调整盐量。孙女不在时，她也这样做。对于“一律少放盐”的建议，她仍会尝过汤后再判断。按决定论 D 的设定，她从听懂提醒、尝汤比较到改变做法，每一步都有确定的前因。*
 
-用 *t* \= 0, 1, … 标记前后各轮：第 *t* 轮既有的判断方式记为 *Mt*，这一轮遇到的新经验与理由记为 *Et*。行动者结合新经验检视旧规矩，决定沿用还是修订，从而形成下一轮的判断方式 *Mt*\+1，这一更新过程记为 *U*。到了第 *t*\+1 轮，他便依据新的判断方式 *Mt*\+1 与当下的情况 *Et*\+1 作出判断并付诸行动。这里用 *A* 表示判断与执行的整个过程，这一轮的行动记为 *at*\+1：
+用 <span class="inline-math" markdown="0">\(t = 0, 1,\)</span> … 标记前后各轮：第 <span class="inline-math" markdown="0">\(t\)</span> 轮既有的判断方式记为 <span class="inline-math" markdown="0">\(M_{t}\)</span>，这一轮遇到的新经验与理由记为 <span class="inline-math" markdown="0">\(E_{t}\)</span>。行动者结合新经验检视旧规矩，决定沿用还是修订，从而形成下一轮的判断方式 <span class="inline-math" markdown="0">\(M_{t+1}\)</span>，这一更新过程记为 <span class="inline-math" markdown="0">\(U\)</span>。到了第 <span class="inline-math" markdown="0">\(t+1\)</span> 轮，他便依据新的判断方式 <span class="inline-math" markdown="0">\(M_{t+1}\)</span> 与当下的情况 <span class="inline-math" markdown="0">\(E_{t+1}\)</span> 作出判断并付诸行动。这里用 <span class="inline-math" markdown="0">\(A\)</span> 表示判断与执行的整个过程，这一轮的行动记为 <span class="inline-math" markdown="0">\(a_{t+1}\)</span>：
 
-<img src="/assets/blog/determinism/equation-13.png" alt="原稿公式 13" loading="lazy">
+<div class="display-math" id="equation-C1" markdown="0">
+\[
+\begin{aligned}M_{t+1}&amp;=U(M_t,E_t),\\a_{t+1}&amp;=A(M_{t+1},E_{t+1}).\end{aligned}\tag{C1}
+\]
+</div>
 
-即使规则 *U* 与 *A* 本身固定不变，新的经验仍可能通过 *U* 改变判断方式，进而影响后来的行动。*Mt* 已经包含过往教育、尝试与评价的影响，修订后的 *Mt*\+1 又会成为下一轮继续修订的起点。
+即使规则 <span class="inline-math" markdown="0">\(U\)</span> 与 <span class="inline-math" markdown="0">\(A\)</span> 本身固定不变，新的经验仍可能通过 <span class="inline-math" markdown="0">\(U\)</span> 改变判断方式，进而影响后来的行动。<span class="inline-math" markdown="0">\(M_{t}\)</span> 已经包含过往教育、尝试与评价的影响，修订后的 <span class="inline-math" markdown="0">\(M_{t+1}\)</span> 又会成为下一轮继续修订的起点。
 
-将 *Mt* 简化为二值规矩 *m*：*m* \= 0 表示一律加一勺，*m* \= 1 表示按已有盐量决定。模型用 *r* 记录奶奶是否理解并接受了修订证据：*r* \= 1 表示本轮接受修订，*r* \= 0 表示本轮未发生这次修订；修订后的 *m*′ 对应 *Mt*\+1。每锅汤的目标总盐量设为 1，下一锅已有盐量 *c* ≥ 0 属于下一轮的情况 *Et*\+1。*j* 是判断应加的盐量，*a* 是实际加盐量，max 表示取两数中较大的一个：
+将 <span class="inline-math" markdown="0">\(M_{t}\)</span> 简化为二值规矩 <span class="inline-math" markdown="0">\(m\)</span>：<span class="inline-math" markdown="0">\(m = 0\)</span> 表示一律加一勺，<span class="inline-math" markdown="0">\(m = 1\)</span> 表示按已有盐量决定。模型用 <span class="inline-math" markdown="0">\(r\)</span> 记录奶奶是否理解并接受了修订证据：<span class="inline-math" markdown="0">\(r = 1\)</span> 表示本轮接受修订，<span class="inline-math" markdown="0">\(r = 0\)</span> 表示本轮未发生这次修订；修订后的 <span class="inline-math" markdown="0">\(m'\)</span> 对应 <span class="inline-math" markdown="0">\(M_{t+1}\)</span>。每锅汤的目标总盐量设为 1，下一锅已有盐量 <span class="inline-math" markdown="0">\(c \ge  0\)</span> 属于下一轮的情况 <span class="inline-math" markdown="0">\(E_{t+1}\)</span>。<span class="inline-math" markdown="0">\(j\)</span> 是判断应加的盐量，<span class="inline-math" markdown="0">\(a\)</span> 是实际加盐量，max 表示取两数中较大的一个：
 
-<img src="/assets/blog/determinism/equation-14.png" alt="原稿公式 14" loading="lazy">
+<div class="display-math" id="equation-C2" markdown="0">
+\[
+\begin{aligned}m'&amp;=\max(m,r),\\j&amp;=(1-m')\cdot1+m'\max(0,1-c),\\a&amp;=j.\end{aligned}\tag{C2}
+\]
+</div>
 
-原先 *m* \= 0，本轮 *r* \= 1 时更新为 *m*′ \= 1，下一锅 *c* \= 0.8 时得到 *j* \= *a* \= 0.2；若本轮 *r* \= 0，则保留 *m*′ \= 0，面对同样的已有盐量，得到 *j* \= *a* \= 1。若已修订为 *m*′ \= 1，后续便沿用这条新规矩。再遇到一锅已有盐量为 0.1 的汤，就得到 *j* \= *a* \= 0.9。由此可见，奶奶从早年学来的规矩出发，即便每一步都有确定的前因，她依然能通过理解和尝试改变未来行动。
+原先 <span class="inline-math" markdown="0">\(m = 0\)</span>，本轮 <span class="inline-math" markdown="0">\(r = 1\)</span> 时更新为 <span class="inline-math" markdown="0">\(m' = 1\)</span>，下一锅 <span class="inline-math" markdown="0">\(c = 0.8\)</span> 时得到 <span class="inline-math" markdown="0">\(j = a = 0.2\)</span>；若本轮 <span class="inline-math" markdown="0">\(r = 0\)</span>，则保留 <span class="inline-math" markdown="0">\(m' = 0\)</span>，面对同样的已有盐量，得到 <span class="inline-math" markdown="0">\(j = a = 1\)</span>。若已修订为 <span class="inline-math" markdown="0">\(m' = 1\)</span>，后续便沿用这条新规矩。再遇到一锅已有盐量为 0.1 的汤，就得到 <span class="inline-math" markdown="0">\(j = a = 0.9\)</span>。由此可见，奶奶从早年学来的规矩出发，即便每一步都有确定的前因，她依然能通过理解和尝试改变未来行动。
 
 ### 3.3 决定论下的自主权为什么能算自由
 
@@ -353,23 +422,27 @@ Black 要保证及时干预，就得提前识别 Jones 是否会偏离目标。W
 
 反对者还可以把追问再往前推一步：促成选择的欲望和标准本身，是不是也得由人更早的自由选择来确立？ 奶奶决定修改食谱时，手里已经得有一套口味偏好和评判标准。如果这套标准也必须出自她更早的自由选择，那上一次选择又凭什么作标准？ 照这个要求一路追问下去，就会陷入无限回溯。Strawson 在讨论终极道德责任时，正是借这一回溯指出，人不可能在核心心理特质上充当自己的最终原因。即便把偶然因素算进来，它本身也同样不能让这些标准变成人自主选择的结果（[Strawson, 1994](https://doi.org/10.1007/BF00989879)）。
 
-在成长和与人相处的过程中，如果不同意见一露头就被压下去，那么就算一个人真心认可自己的想法、也能讲清为什么这么做，他依然很难有机会回头审视原来的标准。Fischer 与 Ravizza 在讨论道德责任时也指出，行动者的决策机制能否真正算作他自己的，离不开他的成长经历（[Fischer & Ravizza, 1998](https://www.homepages.ucl.ac.uk/~uctytho/dfwCompatFischerRavizza.htm)）。可见，决定论本身并不妨碍自我掌控；只要成长与反思的历史条件未遭压制，上述五个层面的能力便能在现实中得以保全。因此，决定论 *D* 与本文所辩护的行动自由 *FC* 可以共存。
+在成长和与人相处的过程中，如果不同意见一露头就被压下去，那么就算一个人真心认可自己的想法、也能讲清为什么这么做，他依然很难有机会回头审视原来的标准。Fischer 与 Ravizza 在讨论道德责任时也指出，行动者的决策机制能否真正算作他自己的，离不开他的成长经历（[Fischer & Ravizza, 1998](https://www.homepages.ucl.ac.uk/~uctytho/dfwCompatFischerRavizza.htm)）。可见，决定论本身并不妨碍自我掌控；只要成长与反思的历史条件未遭压制，上述五个层面的能力便能在现实中得以保全。因此，决定论 <span class="inline-math" markdown="0">\(D\)</span> 与本文所辩护的行动自由 <span class="inline-math" markdown="0">\(F_{C}\)</span> 可以共存。
 
 ### 3.4 外部干预与自主的边界
 
-假设另有装置强行决定奶奶的加盐量。她判断该加 0.2 勺，装置却让她实际加了 1 勺。她仍能尝汤和作判断，却无法按判断加盐。沿用 3.2 的记号，*j* 是奶奶判断应加的盐量，*a* 是实际加盐量。现在加入接管开关 *b*：*b* \= 0 表示未接管，*b* \= 1 表示装置完全接管，*k* 是装置规定的加盐量。在这个简化模型中，装置接管后便按 *k* 加盐，不随奶奶的判断改变：
+假设另有装置强行决定奶奶的加盐量。她判断该加 0.2 勺，装置却让她实际加了 1 勺。她仍能尝汤和作判断，却无法按判断加盐。沿用 3.2 的记号，<span class="inline-math" markdown="0">\(j\)</span> 是奶奶判断应加的盐量，<span class="inline-math" markdown="0">\(a\)</span> 是实际加盐量。现在加入接管开关 <span class="inline-math" markdown="0">\(b\)</span>：<span class="inline-math" markdown="0">\(b = 0\)</span> 表示未接管，<span class="inline-math" markdown="0">\(b = 1\)</span> 表示装置完全接管，<span class="inline-math" markdown="0">\(k\)</span> 是装置规定的加盐量。在这个简化模型中，装置接管后便按 <span class="inline-math" markdown="0">\(k\)</span> 加盐，不随奶奶的判断改变：
 
-$$
-a=(1-b)j+bk,\ b∈\{0,1\}.
-$$
+<div class="display-math" id="equation-C3" markdown="0">
+\[
+a=(1-b)j+bk,\quad b\in\{0,1\}.\tag{C3}
+\]
+</div>
 
-**(C3)**
+在式 （C3） 中固定 <span class="inline-math" markdown="0">\(b\)</span> 与 <span class="inline-math" markdown="0">\(k\)</span>，用 <span class="inline-math" markdown="0">\(a(j)\)</span> 表示判断为 <span class="inline-math" markdown="0">\(j\)</span> 时的实际加盐量。设奶奶在两种假设情形中分别作出不同判断 <span class="inline-math" markdown="0">\(j_1\)</span>、<span class="inline-math" markdown="0">\(j_2\)</span>，由式 （C3） 可得：
 
-在式 （C3） 中固定 *b* 与 *k*，用 *a*(*j*) 表示判断为 *j* 时的实际加盐量。设奶奶在两种假设情形中分别作出不同判断 *j*1、*j*2，由式 （C3） 可得：
+<div class="display-math" id="equation-C4" markdown="0">
+\[
+a(j_1)-a(j_2)=(1-b)(j_1-j_2).\tag{C4}
+\]
+</div>
 
-<img src="/assets/blog/determinism/equation-15.png" alt="原稿公式 15" loading="lazy">
-
-未被接管（*b* \= 0）时，实际加盐量会随奶奶的判断而变；一旦装置接管（*b* \= 1），加盐量便恒定为 *k*，不再受她判断的影响。正因如此，在装置接管下，即便某次实际加盐量恰好符合她的判断（*j* \= *k*），也不能说明是判断控制了动作。同一确定的执行规则，既可以落实奶奶本人的判断，也可以执行外部装置的指令。
+未被接管（<span class="inline-math" markdown="0">\(b = 0\)</span>）时，实际加盐量会随奶奶的判断而变；一旦装置接管（<span class="inline-math" markdown="0">\(b = 1\)</span>），加盐量便恒定为 <span class="inline-math" markdown="0">\(k\)</span>，不再受她判断的影响。正因如此，在装置接管下，即便某次实际加盐量恰好符合她的判断（<span class="inline-math" markdown="0">\(j = k\)</span>），也不能说明是判断控制了动作。同一确定的执行规则，既可以落实奶奶本人的判断，也可以执行外部装置的指令。
 
 以上考察的是判断对动作的执行控制；外部干预还可能直接作用于判断本身，阻断行动者检验与修订规矩的通道。奶奶早年学会一律加一勺，后来仍能检验和修订这条规矩，也能决定是否继续照办。若装置不控制她的手，而是在她准备少加盐时改写记忆、把判断恢复成一律加一勺，情况就不同了。她可能真诚认可结果，也能说出貌似合理的解释，但她通过尝汤和比较形成的新判断会被强制改回，无法改变后来的做法。同样，单次强行植入的信念也可能造成持续的检验障碍：《黑暗森林》中的受试者真心相信“水有毒”，却难以根据相反理由改变看法（刘慈欣, 2008）。这表明，仅凭当事人主观上真诚认同，并不足以证明他仍具备审查该信念的能力。
 
@@ -377,7 +450,7 @@ $$
 
 3.1 提出的设计者反例还要追问：如果连奶奶后来的反思也属于设计者对整条历史的安排，她是否仍然是在自己作主？ 在这一设定中，设计者并未安插持续否决她评价的装置，因此，整条历史被预先选定，与她实际运用理性能力并不冲突。奶奶仍能理解和评价理由，检验并修订规矩；她既能经比较改判，也能经审查保留原判断，并让判断指导加盐。
 
-前节已将人能审视行动依据、决定是否照办并落实于行动，作为行动自由的根据。借鉴 McKenna 直接质疑“被操纵者必然不自由”这一前提的回应方式（[McKenna, 2008](https://doi.org/10.1111/j.1933-1592.2008.00179.x)；相关争论见 [Pereboom & McKenna, 2022](https://academic.oup.com/edited-volume/38853/chapter/337828071)），只要这些能力及相关历史条件在现实中得以保留，历史出自设计本身不足以否定奶奶的行动自由。至此，我们已在决定论前提下完成了对行动自由 *FC* 的辩护与边界界定；然而，如果现实世界与大脑并不满足严格决定论，这种基于审议与校准的控制能力又该如何成立？这正是下一章要直面的挑战。
+前节已将人能审视行动依据、决定是否照办并落实于行动，作为行动自由的根据。借鉴 McKenna 直接质疑“被操纵者必然不自由”这一前提的回应方式（[McKenna, 2008](https://doi.org/10.1111/j.1933-1592.2008.00179.x)；相关争论见 [Pereboom & McKenna, 2022](https://academic.oup.com/edited-volume/38853/chapter/337828071)），只要这些能力及相关历史条件在现实中得以保留，历史出自设计本身不足以否定奶奶的行动自由。至此，我们已在决定论前提下完成了对行动自由 <span class="inline-math" markdown="0">\(F_{C}\)</span> 的辩护与边界界定；然而，如果现实世界与大脑并不满足严格决定论，这种基于审议与校准的控制能力又该如何成立？这正是下一章要直面的挑战。
 
 ## 第四章：Potter 的挑战与非决定性下的控制
 
@@ -387,63 +460,91 @@ $$
 
 ### 4.1 从唯一未来到多种允许的延续
 
-沿用1.4—1.5的记号，*S* 表示完整状态，*L* 表示规律，*𝒞L*(*S*) 表示允许的全部后续历史；竖线表示其中历史的条数。仍要求每个允许状态至少有一条后续历史。对照关系为：
+沿用1.4—1.5的记号，<span class="inline-math" markdown="0">\(S\)</span> 表示完整状态，<span class="inline-math" markdown="0">\(L\)</span> 表示规律，<span class="inline-math" markdown="0">\(\mathcal{C}_L(S)\)</span> 表示允许的全部后续历史；竖线表示其中历史的条数。仍要求每个允许状态至少有一条后续历史。对照关系为：
 
-<img src="/assets/blog/determinism/equation-16.png" alt="原稿公式 16" loading="lazy">
+<div class="display-math" id="equation-P2" markdown="0">
+\[
+\begin{aligned}D&amp;\iff\forall S,\quad |\mathcal{C}_L(S)|=1,\\\neg D&amp;\iff\exists S,\quad |\mathcal{C}_L(S)|&gt;1.\end{aligned}\tag{P2}
+\]
+</div>
 
 如果实际状态精确而观察记录不够精确，一个初态集合表示的是观察者尚不能区分的多个初态；每个具体初态仍对应唯一轨迹。物理上的非决定性则是在同一完整状态与相同规律下，允许不同的实际延续。
 
-即使整体不满足决定论，某次选择仍可能只有一种结果。在一个具体的输入模型中，仍用 *S* 表示选择前的完整状态，将随后参与选择的额外输入记为 *η*，行动记为 *a*，用固定的行动函数 *f* 表示三者的关系：
+即使整体不满足决定论，某次选择仍可能只有一种结果。在一个具体的输入模型中，仍用 <span class="inline-math" markdown="0">\(S\)</span> 表示选择前的完整状态，将随后参与选择的额外输入记为 <span class="inline-math" markdown="0">\(\eta\)</span>，行动记为 <span class="inline-math" markdown="0">\(a\)</span>，用固定的行动函数 <span class="inline-math" markdown="0">\(f\)</span> 表示三者的关系：
 
-*a* \= *f*(*S*, *η*)
+<div class="display-math" id="equation-extra-input" markdown="0">
+\[
+a=f(S,\eta)
+\]
+</div>
 
-若 *η* 由 *S* 唯一确定，这一步的行动也唯一确定。若采用离散随机模型，则要另行规定 *η* 的概率。固定 *S* 与规律后，只要 *η* 至少有两个概率大于零的取值，并分别产生不同的行动，这次选择就允许不同结果。例如，按真随机硬币的正反面作出不同回答，人决定了采用掷币办法，具体回答却取决于硬币落在哪一面。
+若 <span class="inline-math" markdown="0">\(\eta\)</span> 由 <span class="inline-math" markdown="0">\(S\)</span> 唯一确定，这一步的行动也唯一确定。若采用离散随机模型，则要另行规定 <span class="inline-math" markdown="0">\(\eta\)</span> 的概率。固定 <span class="inline-math" markdown="0">\(S\)</span> 与规律后，只要 <span class="inline-math" markdown="0">\(\eta\)</span> 至少有两个概率大于零的取值，并分别产生不同的行动，这次选择就允许不同结果。例如，按真随机硬币的正反面作出不同回答，人决定了采用掷币办法，具体回答却取决于硬币落在哪一面。
 
 对于需要权衡相反理由的选择，Potter 与 Mitchell 认为，决定是在行动者比较理由、调整权重的过程中形成的。他们把这种审议理解为一种控制：行动者可以引导决定的形成，而不必事先固定每个微观细节（[Potter et al., 2026](https://doi.org/10.1007/s11229-026-05455-7); [Potter & Mitchell, 2026](https://doi.org/10.1007/s11229-026-05570-5)）。
 
 ### 4.2 有界影响下的行动阈值
 
-为了刻画理由权衡如何在非决定性波动下引导决定，下面把上一节的行动函数具体设为一条阈值规则。用 *r* 概括选择前状态 *S* 中评估得到的理由强度；用 *θ* 表示采取行动的固定阈值，用 *a*∈{0,1} 表示行动，其中1是采取行动，0是不采取行动。本节沿用 *η* 表示选择过程中的额外输入，并将它具体设为有界实数，用非负数 *b* 表示其绝对值上限。模型允许 *η* 取\[-*b*,*b*\]中的任意值，不另行指定概率分布。再假定将 *η* 与 *r* 相加后同阈值比较：
+为了刻画理由权衡如何在非决定性波动下引导决定，下面把上一节的行动函数具体设为一条阈值规则。用 <span class="inline-math" markdown="0">\(r\)</span> 概括选择前状态 <span class="inline-math" markdown="0">\(S\)</span> 中评估得到的理由强度；用 <span class="inline-math" markdown="0">\(\theta\)</span> 表示采取行动的固定阈值，用 <span class="inline-math" markdown="0">\(a\in {0,1}\)</span> 表示行动，其中1是采取行动，0是不采取行动。本节沿用 <span class="inline-math" markdown="0">\(\eta\)</span> 表示选择过程中的额外输入，并将它具体设为有界实数，用非负数 <span class="inline-math" markdown="0">\(b\)</span> 表示其绝对值上限。模型允许 <span class="inline-math" markdown="0">\(\eta\)</span> 取<span class="inline-math" markdown="0">\([-b,b]\)</span>中的任意值，不另行指定概率分布。再假定将 <span class="inline-math" markdown="0">\(\eta\)</span> 与 <span class="inline-math" markdown="0">\(r\)</span> 相加后同阈值比较：
 
-<img src="/assets/blog/determinism/equation-17.png" alt="原稿公式 17" loading="lazy">
+<div class="display-math" id="equation-P3" markdown="0">
+\[
+a(r,\eta)=\begin{cases}1,&amp;r+\eta\ge\theta,\\0,&amp;r+\eta&lt;\theta,\end{cases}\qquad b\ge0,\quad\eta\in[-b,b].\tag{P3}
+\]
+</div>
 
-若 *η* 是未知但固定的量，区间表示尚不能排除的输入；若同一选择前状态允许不同 *η* 实际实现，区间则表示该环节的不同可能输入。给定 *r* 和 *b*，*r*\+*η* 的取值范围为：
+若 <span class="inline-math" markdown="0">\(\eta\)</span> 是未知但固定的量，区间表示尚不能排除的输入；若同一选择前状态允许不同 <span class="inline-math" markdown="0">\(\eta\)</span> 实际实现，区间则表示该环节的不同可能输入。给定 <span class="inline-math" markdown="0">\(r\)</span> 和 <span class="inline-math" markdown="0">\(b\)</span>，<span class="inline-math" markdown="0">\(r+\eta\)</span> 的取值范围为：
 
-$$
-r+η∈[r-b,r+b].
-$$
+<div class="display-math" id="equation-P4" markdown="0">
+\[
+r+\eta\in[r-b,r+b].\tag{P4}
+\]
+</div>
 
-(*P*4\)
+要使所有允许值都触发行动，最小值也必须达到阈值。于是 <span class="inline-math" markdown="0">\(r-b\ge \theta\)</span>，等价于 <span class="inline-math" markdown="0">\(r\ge \theta+b\)</span>。反过来，满足这一条件，区间里的全部值确实都达到阈值，所以这个条件既必要也充分。
 
-要使所有允许值都触发行动，最小值也必须达到阈值。于是 *r*\-*b*≥*θ*，等价于 *r*≥*θ*\+*b*。反过来，满足这一条件，区间里的全部值确实都达到阈值，所以这个条件既必要也充分。
+要使所有允许值都不触发行动，最大值也必须严格低于阈值。于是 <span class="inline-math" markdown="0">\(r+b&lt;\theta\)</span>，等价于 <span class="inline-math" markdown="0">\(r&lt;\theta-b\)</span>。这里必须保留严格小于：恰好达到阈值时，规则已经输出1。
 
-要使所有允许值都不触发行动，最大值也必须严格低于阈值。于是 *r*\+*b*\<*θ*，等价于 *r*\<*θ*\-*b*。这里必须保留严格小于：恰好达到阈值时，规则已经输出1。
+要使两种行动都可能，区间下端必须低于阈值，上端必须达到阈值。合起来得到 <span class="inline-math" markdown="0">\(\theta-b\le r&lt;\theta+b\)</span>（即 <span class="inline-math" markdown="0">\(r-b&lt;\theta\le r+b\)</span>）。满足这一条件时，分别取 <span class="inline-math" markdown="0">\(\eta=-b\)</span> 与 <span class="inline-math" markdown="0">\(\eta=b\)</span>，便能得到0与1。下式第三行用集合列出给定输入区间对应的全部行动结果：
 
-要使两种行动都可能，区间下端必须低于阈值，上端必须达到阈值。合起来得到 *θ*−*b*≤*r*\<*θ*\+*b*（即 *r*−*b*\<*θ*≤*r*\+*b*）。满足这一条件时，分别取 *η*\=−*b* 与 *η*\=*b*，便能得到0与1。下式第三行用集合列出给定输入区间对应的全部行动结果：
+<div class="display-math" id="equation-P5" markdown="0">
+\[
+\begin{aligned}(\forall\eta\in[-b,b],\;a(r,\eta)=1)&amp;\iff r\ge\theta+b,\\(\forall\eta\in[-b,b],\;a(r,\eta)=0)&amp;\iff r&lt;\theta-b,\\\{a(r,\eta):\eta\in[-b,b]\}=\{0,1\}&amp;\iff\theta-b\le r&lt;\theta+b.\end{aligned}\tag{P5}
+\]
+</div>
 
-<img src="/assets/blog/determinism/equation-18.png" alt="原稿公式 18" loading="lazy">
-
-当 *b*\=0 时，第三行中 *r* 的取值区间为空，前两行退回通常的确定阈值规则。
+当 <span class="inline-math" markdown="0">\(b=0\)</span> 时，第三行中 <span class="inline-math" markdown="0">\(r\)</span> 的取值区间为空，前两行退回通常的确定阈值规则。
 
 例如，把阈值设为1，影响上限设为0.1，逐项代入可得：
 
-<img src="/assets/blog/determinism/equation-19.png" alt="原稿公式 19" loading="lazy">
+<div class="display-math" id="equation-P6" markdown="0">
+\[
+\begin{aligned}r=1.4&amp;:\quad r+\eta\in[1.3,1.5],\quad a=1;\\r=0.6&amp;:\quad r+\eta\in[0.5,0.7],\quad a=0;\\r=0.95&amp;:\quad r+\eta\in[0.85,1.05],\quad a\in\{0,1\}.\end{aligned}\tag{P6}
+\]
+</div>
 
-前两行中，*η* 在允许范围内怎样变化，都不会改变输出；不同理由分别稳定地产生行动和不行动。第三行的两种结果来自 *η* 的不同取值，模型没有规定主体怎样选择 *η*。设行动者因新信息重新评估理由，将 *r* 从0.95提高到1.2。影响后的范围变为\[1.1,1.3\]，规则稳定地输出1。可见，即便选择过程存在有界的不确定输入 *η*，只要理由强度远离阈值临界区，行动依然能够保持确定而稳定的输出；而当权衡恰好落在临界区间内时，行动者仍可通过重新审视处境、调整理由权重，将自己带出受微小波动左右的区域。
+前两行中，<span class="inline-math" markdown="0">\(\eta\)</span> 在允许范围内怎样变化，都不会改变输出；不同理由分别稳定地产生行动和不行动。第三行的两种结果来自 <span class="inline-math" markdown="0">\(\eta\)</span> 的不同取值，模型没有规定主体怎样选择 <span class="inline-math" markdown="0">\(\eta\)</span>。设行动者因新信息重新评估理由，将 <span class="inline-math" markdown="0">\(r\)</span> 从0.95提高到1.2。影响后的范围变为\[1.1,1.3\]，规则稳定地输出1。可见，即便选择过程存在有界的不确定输入 <span class="inline-math" markdown="0">\(\eta\)</span>，只要理由强度远离阈值临界区，行动依然能够保持确定而稳定的输出；而当权衡恰好落在临界区间内时，行动者仍可通过重新审视处境、调整理由权重，将自己带出受微小波动左右的区域。
 
 ### 4.3 混沌系统中的误差增长与持续校准
 
 前节在给定状态估计下考察了有界不确定性对行动的影响；然而，导言中 Potter 等人指出的另一重挑战在于，无论是大脑还是外部环境，复杂非线性系统都可能将初始的微小差异逐级放大。当行动者置身于持续变化的环境中时，判断所依赖的状态估计究竟能可靠多久？ [Lorenz（1963）](https://wind.mit.edu/~emanuel/Lorenz/EdLorenz/Deterministic_63.pdf)在确定性的对流模型中展示了初态敏感性，[Stone 与 Leigh（2019）](https://doi.org/10.1038/s41586-019-1833-8)则研究了某些非层级三体构型的混沌散射。这类动力学模型表明，初始估计的微小偏差在混沌时段内可能逐渐放大，从而限制可靠预测的时长。
 
-在适用的混沌演化时段内，可用指数关系近似轨道状态估计误差的增长。用 *δ*(0)\>0 表示初始估计误差的大小，*δ*(*t*) 表示经过时间 *t*≥0 后的估计误差，并以 *λ*\>0 表示这一时段内近似不变的增长率：
+在适用的混沌演化时段内，可用指数关系近似轨道状态估计误差的增长。用 <span class="inline-math" markdown="0">\(\delta(0)&gt;0\)</span> 表示初始估计误差的大小，<span class="inline-math" markdown="0">\(\delta(t)\)</span> 表示经过时间 <span class="inline-math" markdown="0">\(t\ge 0\)</span> 后的估计误差，并以 <span class="inline-math" markdown="0">\(\lambda&gt;0\)</span> 表示这一时段内近似不变的增长率：
 
-<img src="/assets/blog/determinism/equation-20.png" alt="原稿公式 20" loading="lazy">
+<div class="display-math" id="equation-P7" markdown="0">
+\[
+\delta(t)\approx\delta(0)e^{\lambda t},\qquad\lambda&gt;0.\tag{P7}
+\]
+</div>
 
-设允许的最大误差为 *δ*\*，且 *δ*\*\>*δ*(0)。将误差达到这一上限的估计时间记为 *t*max。令式（P7）中的 *δ*(*t*) 达到 *δ*\*，将两边除以 *δ*(0) 后取自然对数，得到 *λt*max≈ln\[*δ*\*/*δ*(0)\]，因而：
+设允许的最大误差为 <span class="inline-math" markdown="0">\(\delta^*\)</span>，且 <span class="inline-math" markdown="0">\(\delta^*&gt;\delta(0)\)</span>。将误差达到这一上限的估计时间记为 <span class="inline-math" markdown="0">\(t_{\max}\)</span>。令式（P7）中的 <span class="inline-math" markdown="0">\(\delta(t)\)</span> 达到 <span class="inline-math" markdown="0">\(\delta^*\)</span>，将两边除以 <span class="inline-math" markdown="0">\(\delta(0)\)</span> 后取自然对数，得到 <span class="inline-math" markdown="0">\(\lambda t_{\max}\approx ln[\delta^*/\delta(0)]\)</span>，因而：
 
-<img src="/assets/blog/determinism/equation-21.png" alt="原稿公式 21" loading="lazy">
+<div class="display-math" id="equation-P8" markdown="0">
+\[
+t_{\max}\approx\frac{1}{\lambda}\ln\frac{\delta^*}{\delta(0)}.\tag{P8}
+\]
+</div>
 
-在 *λ* 与容许误差不变时，初始误差越小，这一估计时长越长。新观测若能缩小当前估计误差，就可把更新后的误差作为下一段预测的初始误差，用式（P8）重新估算预测时长。
+在 <span class="inline-math" markdown="0">\(\lambda\)</span> 与容许误差不变时，初始误差越小，这一估计时长越长。新观测若能缩小当前估计误差，就可把更新后的误差作为下一段预测的初始误差，用式（P8）重新估算预测时长。
 
 [Grover 与 Sato（2012）](https://merl.com/publications/docs/TR2012-062.pdf)在平面圆型限制性三体模型中，将新观测用于航天器的轨道估计：他们先按运动方程传播状态的概率分布，再根据间断获得的新观测更新这一分布。这一过程揭示了一个普遍的控制难题：当观测精度、更新频率和计算资源都有限时，系统必须依靠持续的信息反馈与误差修正，才能把估计误差维持在容许范围内。
 
@@ -493,11 +594,11 @@ $$
 
 ## 第五章：我们最终支持怎样的自由
 
-本文最终辩护的，既非脱离因果律的绝对自由意志（*FL*），也非架空现实条件的抽象自主，而是一种扎根于理性审视与执行控制的现实行动自由（*FC*）。全书的核心论证表明，选择拥有确定的过往前因，并不意味着理解、权衡与判断只是因果链条上的冗余旁观。在决定论前提下，行动者依然能够凭借新经验检视并修订既有规矩，使判断实质性地引导后续行动；判定自由的关键，在于本人能否在实际生活中审查行动依据并主导执行，而不在于他是否无中生有地创造了最初的判断标准，也不因历史出自塑造或设计而自动失效。
+本文最终辩护的，既非脱离因果律的绝对自由意志（<span class="inline-math" markdown="0">\(F_{L}\)</span>），也非架空现实条件的抽象自主，而是一种扎根于理性审视与执行控制的现实行动自由（<span class="inline-math" markdown="0">\(F_{C}\)</span>）。全书的核心论证表明，选择拥有确定的过往前因，并不意味着理解、权衡与判断只是因果链条上的冗余旁观。在决定论前提下，行动者依然能够凭借新经验检视并修订既有规矩，使判断实质性地引导后续行动；判定自由的关键，在于本人能否在实际生活中审查行动依据并主导执行，而不在于他是否无中生有地创造了最初的判断标准，也不因历史出自塑造或设计而自动失效。
 
 将视角从确定性模型推向充满不确定性与波动的真实世界，这一立场同样成立。无论面对大脑层面的不确定性（[Potter & Mitchell, 2026](https://doi.org/10.1007/s11229-026-05570-5)），还是动态环境中的误差放大与信息干扰，理性的审议指引与持续的观测校准依然能够维系行动控制。历史经验与当代神经科学也为这些能力提供了现实佐证：从达尔文刻意记录反证、直面理论异议的自我纠偏习惯（[Darwin, 1859](https://darwin-online.org.uk/converted/published/1859_Origin_F373/1859_Origin_F373.html)；[Darwin, 1876–1882](https://darwin-online.org.uk/converted/manuscripts/Darwin_C_R_CUL-DAR26.1-121.html)），到人类在动作准备阶段仍能依据新提示及时调节乃至中止执行的神经机制（[Schultze-Kraft et al., 2016](https://doi.org/10.1073/pnas.1513569112)；[Maoz et al., 2019](https://doi.org/10.7554/eLife.39787)），都印证了人在现实中确实具备审视观念与调节行动的能力。
 
-归根到底，本文所支持的是一种有限、有条件且可能受损的行动自由。它之所以有限，是因为人总是在既有的历史背景、有限的信息精度与特定的神经生理约束下进行权衡，不可能摆脱一切前因而凭空抉择；它之所以可能受损，是因为一旦外部强制、信息封锁或神经机制失调切断了“检验理由—修订判断—主导执行”的链条，自由便会随之削弱乃至丧失。但只要这些核心能力在现实中得以运转，决定论 *D* 的成立便不会剥夺人的自主。承认自由的有限与脆弱，恰恰使我们得以在真实的因果世界里，看清人究竟凭什么为自己的选择负责。
+归根到底，本文所支持的是一种有限、有条件且可能受损的行动自由。它之所以有限，是因为人总是在既有的历史背景、有限的信息精度与特定的神经生理约束下进行权衡，不可能摆脱一切前因而凭空抉择；它之所以可能受损，是因为一旦外部强制、信息封锁或神经机制失调切断了“检验理由—修订判断—主导执行”的链条，自由便会随之削弱乃至丧失。但只要这些核心能力在现实中得以运转，决定论 <span class="inline-math" markdown="0">\(D\)</span> 的成立便不会剥夺人的自主。承认自由的有限与脆弱，恰恰使我们得以在真实的因果世界里，看清人究竟凭什么为自己的选择负责。
 
 将这一立场推向现实与未来，自由便不再只是一个形而上学的概念之争，而是一项需要持续维护的实践课题。随着神经调控、算法分发与信息操控技术的演进，外部干预对人的判断前提与注意力结构的塑造将愈发隐蔽，这要求我们更加警惕信息封锁与隐性接管，通过透明的信息环境与审慎的公共制度，护住行动者核查证据、独立反思的空间。与此同时，看清自由的有限性，也让我们得以用更公允的尺度看待人类自身：我们既不必因行动受制于过往经历与自然规律而滑向宿命论的消极，也不应以脱离一切因果约束的完美主体标准去苛责他人。
 

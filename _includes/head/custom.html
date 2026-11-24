@@ -9,6 +9,23 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="/assets/css/academicons.css"/>
 
+{% if page.math_renderer == 'native' %}
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)']],
+      displayMath: [['\\[', '\\]']],
+      tags: 'none',
+      processEscapes: true
+    },
+    svg: { fontCache: 'global', displayAlign: 'center', displayIndent: '0' },
+    options: {
+      enableMenu: false
+    }
+  };
+</script>
+<script defer src="{{ '/assets/js/mathjax/tex-svg.js' | relative_url }}"></script>
+{% else %}
 <script type="text/x-mathjax-config"> MathJax.Hub.Config({ TeX: { equationNumbers: { autoNumber: "all" } } }); </script>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
@@ -19,5 +36,6 @@
   });
 </script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+{% endif %}
 
 <!-- end custom head snippets -->
