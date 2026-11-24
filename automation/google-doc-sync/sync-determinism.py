@@ -25,6 +25,8 @@ subtitle = get(r'^## ——(.+)$')
 intro = re.search(r'^我们的选择.+$', md, re.M)[0]
 summary = get(r'^Summary: (.+)$')
 abstract = md.split('# Abstract\n')[1].split('\n主题：')[0].strip().replace('\n\n', ' ')
+# The layout renders this metadata as text, not Markdown.
+abstract = re.sub(r'\*([^*]+)\*', r'\1', abstract)
 keywords = get(r'^主题：(.+)$').split('；')
 body = md[md.index('# 第一章'):].strip()
 body = re.sub(r'^(#{1,5}) ', lambda m: m[1]+'# ', body, flags=re.M)
