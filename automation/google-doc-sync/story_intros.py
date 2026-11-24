@@ -69,7 +69,7 @@ def apply_intros(markdown, manifest):
     """Wrap matching paragraphs, retaining their text, links, and native math."""
     # Re-applying a refreshed manifest first removes the previous presentation.
     markdown = re.sub(r'<aside class="story-intro"[^>]*>\s*'
-                      r'<div class="story-intro__label"[^>]*>引子</div>\s*'
+                      r'(?:<div class="story-intro__label"[^>]*>引子</div>\s*)?'
                       r'(.*?)\s*</aside>', lambda m: m[1], markdown, flags=re.S)
     paragraphs = markdown.split('\n\n')
     matches = []
@@ -85,8 +85,7 @@ def apply_intros(markdown, manifest):
             raise ValueError('Story paragraphs are no longer consecutive: ' + group['heading'])
         matches.append(indices)
     for indices in reversed(matches):
-        paragraphs[indices[0]] = ('<aside class="story-intro" aria-label="情境引子" markdown="1">\n'
-                                 '<div class="story-intro__label" markdown="0">引子</div>\n\n'
+        paragraphs[indices[0]] = ('<aside class="story-intro" aria-label="故事情境" markdown="1">\n\n'
                                  + paragraphs[indices[0]])
         paragraphs[indices[-1]] += '\n\n</aside>'
     return '\n\n'.join(paragraphs)

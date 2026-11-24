@@ -159,8 +159,7 @@ U=g(S),\quad Y=h(S,g(S)).
 
 ### 2.1 单凭预测残差无法识别自由意志
 
-<aside class="story-intro" aria-label="情境引子" markdown="1">
-<div class="story-intro__label" markdown="0">引子</div>
+<aside class="story-intro" aria-label="故事情境" markdown="1">
 
 设想系统根据小林已有的消费记录，预测他今天在咖啡店花 20 元，实际却花了 30 元。系统只保存了消费总额，没有记录商品和价格明细。多出来的 10 元，能否说明小林通过自主选择增加了支出？
 
@@ -202,8 +201,7 @@ R_{\mathrm{res}}=g(G,E)-\hat f(G,E)+\xi\tag{2.2}
 
 ### 2.2 判断可以在确定过程中影响行动
 
-<aside class="story-intro" aria-label="情境引子" markdown="1">
-<div class="story-intro__label" markdown="0">引子</div>
+<aside class="story-intro" aria-label="故事情境" markdown="1">
 
 设想小林按天气预报决定是否带伞：降雨概率达到 60% 就带伞，低于 60% 就不带。按这条标准，看到 20% 的预报，他判断不必带伞，空手出门；看到 80% 的预报，他判断需要带伞，拿起了伞。
 
@@ -253,8 +251,7 @@ J(z,r)=\begin{cases}1,&amp;r\ge\theta,\\0,&amp;r&lt;\theta,\end{cases}\qquad A(z
 
 #### 2.3.1 预测可以包含本人的判断过程
 
-<aside class="story-intro" aria-label="情境引子" markdown="1">
-<div class="story-intro__label" markdown="0">引子</div>
+<aside class="story-intro" aria-label="故事情境" markdown="1">
 
 *观察者提前算出小林中午会选面条，却没有把预测告诉他。到了中午，小林比较口味和饱腹感，选择了面条。提前算出他的选择，是否就意味着替他作了决定？*
 
@@ -266,8 +263,7 @@ J(z,r)=\begin{cases}1,&amp;r\ge\theta,\\0,&amp;r&lt;\theta,\end{cases}\qquad A(z
 
 #### 2.3.2 公开预告可能因反向回应而失准
 
-<aside class="story-intro" aria-label="情境引子" markdown="1">
-<div class="story-intro__label" markdown="0">引子</div>
+<aside class="story-intro" aria-label="故事情境" markdown="1">
 
 *回到确定的情形。设想有一台自动开关，预测者先在屏幕上显示它稍后将停在“0”还是“1”。开关随后读取预告，严格执行相反的结果：预告为“0”就停在“1”，预告为“1”就停在“0”。预测者知道这条程序，还能让屏幕上的预告与开关最终的状态一致吗？*
 
@@ -412,8 +408,7 @@ Black 要保证及时干预，就得提前识别 Jones 是否会偏离目标。W
 
 ### 3.2 有因的反思与自我形成
 
-<aside class="story-intro" aria-label="情境引子" markdown="1">
-<div class="story-intro__label" markdown="0">引子</div>
+<aside class="story-intro" aria-label="故事情境" markdown="1">
 
 *奶奶小时候学过一条规矩：煮汤要放一勺盐。她照着做了几十年。有天换了食材，孙女提醒说，这批原料本身带咸味，再放一勺可能太咸。奶奶先尝了一口，又盛出两小碗比较不同加盐量的味道，发现一律放一勺并不总合适。这次她少放了盐，后来煮汤也开始根据食材和实际味道调整盐量。孙女不在时，她也这样做。对于“一律少放盐”的建议，她仍会尝过汤后再判断。按决定论 D 的设定，她从听懂提醒、尝汤比较到改变做法，每一步都有确定的前因。*
 

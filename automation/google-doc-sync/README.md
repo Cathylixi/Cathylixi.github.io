@@ -39,7 +39,7 @@ same selection to an existing math-preserving article. Adjacent marked story
 paragraphs share one `story-intro` box at their existing location. The converter
 rejects missing or ambiguous story text; it does not invent introductions or
 move paragraphs. Google Docs remains the source for selection and wording;
-the website adds only the border, background, and small “引子” label.
+the website adds only the border and background, with no visible label.
 
 This Apps Script publishes every registered Google document in My Drive/my blog
 to its canonical Markdown article in this repository.
